@@ -1,0 +1,25 @@
+---
+title: test2 baby
+date: 20223-03-14
+---
+
+# this test2 svx
+
+cool `float` there. this math won't work $\sin(x)$ though.
+
+```python
+def howdy(num_friends: int):
+	print('howdy to my ' + str() + ' friends!')
+
+howdy(0)
+```
+
+$$
+	f(x) = x^2
+$$
+
+- list 1
+  - sublist 1
+- list 2
+
+words!
