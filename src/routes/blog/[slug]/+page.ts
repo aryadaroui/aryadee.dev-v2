@@ -1,12 +1,16 @@
+import {error} from '@sveltejs/kit';
+
 export async function load({ params }) {
-	// console.log('trying to load :-(');
-	// debugger;
-	const post = await import(`../${params.slug}.svx`);
-	const { title, date } = post.metadata;
-	const content = post.default;
+	// error handling for imported file
+	// TODO: check to see if route exists, to throw 404 or 500
+	try {
+		const post = await import(`../../../posts/${params.slug}.svx`);
+		const { title, date } = post.metadata;
+		const content = post.default;
 
-	console.log(content);
-
-
-	return { title, date, content };
+		return { title, date, content };
+	} catch (e) {
+		console.error(e);
+		throw error(500, 'Internal Server Error');
+	}
 }

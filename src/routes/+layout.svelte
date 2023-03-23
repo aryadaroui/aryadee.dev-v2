@@ -1,19 +1,41 @@
-<script lang="ts">
-	export const prerender = true;
+<script>
+	// import '/src/styles/main.scss';
+	// import '/src/styles/main.scss';
 </script>
-
-<nav>
-	<a rel="prefetch" href="/">Static math</a>
-	<a rel="prefetch" href="/dynamic-md">Dynamic math in markdown</a>
-	<a rel="prefetch" href="/dynamic-svelte">Dynamic math in svelte</a>
-</nav>
-<hr />
 
 <slot />
 
-<style>
-	nav {
-		display: flex;
-		gap: 1em;
+<!-- <style lang="scss">
+	// @import '../styles/main.scss';
+	// @use '/src/styles/vars';
+	
+	// a {
+	// 	color: vars.$link-color
+	// }
+		// @import '/src/styles/hack.css';
+		// @import '/src/styles/main.scss';
+		// @use '/src/styles/main.scss';
+</style> -->
+
+<style global lang="scss">
+
+@import '../styles/main.scss';
+// @use '../styles/vars';
+// @use '../styles/vars'
+
+
+	// $red-color: #ff0000;
+
+	:global(body) {
+		background-color: black;
+		font-family: Hack, monospace;
+		color: $test-red;
+		// color: beige;
+		margin: 0;
 	}
+
+	// ::selection {
+	// 	background: #f5dce860;
+	// 	/* WebKit/Blink Browsers */
+	// }
 </style>

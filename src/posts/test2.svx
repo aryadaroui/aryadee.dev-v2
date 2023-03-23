@@ -23,3 +23,8 @@ $$
 - list 2
 
 words!
+
+
+<!-- <style lang="scss">
+	@import '/src/styles/main.scss';
+</style> -->

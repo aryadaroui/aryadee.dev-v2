@@ -7,3 +7,8 @@
 	<!-- <p>Published: {data.date}</p> -->
 	<svelte:component this={data.content} />
 </article>
+
+
+<!-- <style lang="scss">
+	@import '/src/styles/main.scss';
+</style> -->

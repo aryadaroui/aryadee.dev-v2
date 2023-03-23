@@ -2,8 +2,3 @@
 
 <a href="/blog/test1">1</a>
 <a href="/blog/test2">2</a>
-
-
-$$
-does this work
-$$
