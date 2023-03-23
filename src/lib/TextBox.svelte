@@ -18,7 +18,7 @@
 		flex: 1;
 
 		:global(ul) {
-			font-family: 'Swiss 721';
+			font-family: $sans;
 			font-weight: 300;
 			margin-bottom: 0;
 		}
@@ -36,7 +36,7 @@
 		}
 
 		:global(p) {
-			font-family: 'Swiss 721';
+			font-family: $sans;
 			font-weight: 300;
 		}
 
@@ -49,7 +49,7 @@
 		}
 
 		:global(h1) {
-			font-family: 'Swiss 721';
+			font-family: $sans;
 		}
 		:global(h1):first-child {
 			margin-top: 0;
@@ -59,7 +59,7 @@
 		}
 
 		:global(h2) {
-			font-family: 'Swiss 721';
+			font-family: $sans;
 		}
 		:global(h2):first-child {
 			margin-top: 0;
@@ -69,8 +69,8 @@
 		}
 
 		:global(h3) {
-			font-family: 'Swiss 721';
-			color: pink;
+			font-family: $sans;
+			color: $accent-color;
 			font-weight: 300;
 		}
 		:global(h3):first-child {

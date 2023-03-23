@@ -4,7 +4,11 @@
 	import Page2 from './Page2.svelte';
 
 	onMount(() => {
-		Shape.init(document.getElementById('shape-container'), '#DFCCAF', document.getElementById('page-1'));
+		Shape.init(
+			document.getElementById('shape-container'),
+			'#E2C09B',
+			document.getElementById('page-1')
+		);
 
 		let scroll_down_button = document.querySelector('#scroll-down-button');
 		scroll_down_button.addEventListener('click', function () {
@@ -15,7 +19,7 @@
 		scroll_up_button.addEventListener('click', function () {
 			window.scrollTo({
 				top: 0,
-				behavior: 'smooth',
+				behavior: 'smooth'
 			});
 		});
 
@@ -85,7 +89,9 @@
 <div id="tooltip" class="hint-tooltip">
 	<p>
 		<span class="blackground">
-			<span id="key-tip">[key] </span><span id="plus-tip"> + </span><span id="mouse-tip"> [mouse]</span>
+			<span id="key-tip">[key] </span><span id="plus-tip"> + </span><span id="mouse-tip">
+				[mouse]</span
+			>
 		</span>
 	</p>
 </div>
@@ -104,7 +110,7 @@
 				<p>
 					<span class="blackground"
 						>computer engineer. ndarray lover.
-						<span style="color: #f5dce8">a person from planet earth.</span>
+						<span class="accent">a person from planet earth.</span>
 					</span>
 				</p>
 
@@ -119,13 +125,13 @@
 					<p>
 						<a href="/photo-art-audio" class="chevron-link">
 							<span class="select-chevron blackground">»</span>
-							<span class="link blackground">/photo-art-audio</span>
+							<span class="link blackground">/photo-art-music</span>
 						</a>
 					</p>
 					<p>
 						<a href="/filmic-beta" class="chevron-link">
 							<span class="select-chevron blackground">»</span>
-							<span class="link blackground">/filmic-beta</span>
+							<span class="link blackground">/projects</span>
 						</a>
 					</p>
 				</nav>
@@ -138,24 +144,18 @@
 				</div>
 			</div>
 		</div>
-
-
 	</section>
-	<!-- <section id="page-2">
+	<section id="page-2">
 		<Page2 />
 		<div class="scroll-button-container">
 			<button id="scroll-up-button" class="scroll-button">
 				<span style="vertical-align: 2px;"> ♥ ♥ ♥ </span>
 			</button>
 		</div>
-	</section> -->
+	</section>
 </main>
 
 <style lang="scss">
-	// @import '$styles/hack.css';
-	// @import '/src/styles/main.scss';
-	// @import '/src/styles/main.scss';
-
 	main {
 		margin: auto;
 		overflow-x: hidden;
@@ -168,30 +168,30 @@
 
 	button {
 		font-family: Hack;
-		color: beige;
+		color: $ink-color;
 		background-color: transparent;
 	}
 
 	a {
-		color: $test-red;
+		color: $link-color;
 		text-decoration: none;
 	}
 
 	a:hover {
-		color: beige;
+		color: $link-color;
 	}
 
 	#fader {
 		position: absolute;
 		z-index: 1;
-		background-color: black;
+		background-color: $background-color;
 		opacity: 0;
 		width: 100vw;
 		height: 100vh;
 	}
 
 	:global(.opaque) {
-		color: beige;
+		color: $ink-color;
 	}
 
 	:global(.black-fade-in) {
@@ -213,8 +213,8 @@
 	}
 
 	.scroll-button {
-		background-color: black;
-		border: beige 0.5px solid;
+		background-color: $background-color;
+		border: $ink-color 0.5px solid;
 		width: 80px;
 		height: 40px;
 		text-align: center;
@@ -245,7 +245,7 @@
 		right: 62px;
 		bottom: 47px;
 		// opacity: 0.2;
-		color: rgba(245, 245, 220, 0.2);
+		color: $gray-soft;
 
 		position: absolute;
 		user-select: none;
@@ -256,12 +256,12 @@
 	}
 
 	.blackground {
-		background: black;
+		background: $background-color;
 	}
 
 	#shape-container {
 		position: absolute;
-		background-color: black;
+		background-color: $background-color;
 		left: 0px;
 
 		@media only screen and (max-width: 600px) {
@@ -302,8 +302,7 @@
 	}
 
 	a {
-		// color: $link-color;
-		color: #9ee2fd;
+		color: $link-color;
 		text-decoration: none;
 	}
 
@@ -322,27 +321,27 @@
 	@keyframes hint {
 		0% {
 			// opacity: 1;
-			color: rgba(245, 245, 220, 0.2);
+			color: $gray-soft;
 		}
 		10% {
-			color: hsl(330, 100%, 85%);
+			color: $accent-color;
 		}
 		50% {
 			// opacity: 1;
-			color: hsl(330, 100%, 85%);
+			color: $accent-color;
 		}
 		100% {
 			// opacity: 0.2;
-			color: rgba(245, 245, 220, 0.2);
+			color: $gray-soft;
 		}
 	}
 
 	@keyframes fast {
 		0% {
-			color: rgba(245, 245, 220, 1);
+			color: $ink-color;
 		}
 		100% {
-			color: rgba(245, 245, 220, 0.2);
+			color: $gray-soft;
 		}
 	}
 
@@ -365,14 +364,14 @@
 	}
 
 	.corner-border {
-		background: linear-gradient(to right, beige 1px, transparent 1px) 0 0,
-			linear-gradient(to right, beige 1px, transparent 1px) 0 100%,
-			linear-gradient(to left, beige 1px, transparent 1px) 100% 0,
-			linear-gradient(to left, beige 1px, transparent 1px) 100% 100%,
-			linear-gradient(to bottom, beige 1px, transparent 1px) 0 0,
-			linear-gradient(to bottom, beige 1px, transparent 1px) 100% 0,
-			linear-gradient(to top, beige 1px, transparent 1px) 0 100%,
-			linear-gradient(to top, beige 1px, transparent 1px) 100% 100%;
+		background: linear-gradient(to right, $ink-color 1px, transparent 1px) 0 0,
+			linear-gradient(to right, $ink-color 1px, transparent 1px) 0 100%,
+			linear-gradient(to left, $ink-color 1px, transparent 1px) 100% 0,
+			linear-gradient(to left, $ink-color 1px, transparent 1px) 100% 100%,
+			linear-gradient(to bottom, $ink-color 1px, transparent 1px) 0 0,
+			linear-gradient(to bottom, $ink-color 1px, transparent 1px) 100% 0,
+			linear-gradient(to top, $ink-color 1px, transparent 1px) 0 100%,
+			linear-gradient(to top, $ink-color 1px, transparent 1px) 100% 100%;
 		background-repeat: no-repeat;
 		background-size: 10px 10px;
 	}
@@ -383,10 +382,12 @@
 		height: auto;
 		min-height: 100vh;
 		width: 100vw;
-		background-color: rgba(20, 20, 20, 0.5);
+		// background-color: rgba(20, 20, 20, 0.5);
+		// background-color: #3a353045;
+		background-color: #19191950;
 		border-top: #6d6d6357 1px solid;
-		backdrop-filter: blur(50px) saturate(200%);
-		-webkit-backdrop-filter: blur(50px);
+		backdrop-filter: blur(70px) brightness(1.2);
+		// -webkit-backdrop-filter: blur(70px);
 
 		display: flex;
 		flex-direction: column;

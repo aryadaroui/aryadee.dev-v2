@@ -43,7 +43,7 @@
 		:global(h2) {
 			font-family: 'Swiss 721', Helvetica, sans-serif;
 			font-weight: 300;
-			color: #9ee2fd;
+			color: $link-color;
 			font-size: 1.1em;
 
 			margin-left: 20px;

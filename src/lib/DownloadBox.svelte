@@ -34,7 +34,7 @@
 		max-width: 600px;
 
 		:global(h2) {
-			color: #9ee2fd;
+			color: $link-color;
 			position: absolute;
 			font-family: 'Swiss 721';
 			font-weight: 200;

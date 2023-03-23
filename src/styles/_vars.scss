@@ -1,8 +1,40 @@
 
-$test-red: red;
-$primary-color: beige;
-$secondary-color: #f5dce8;
-$tertiary-color: #9ee2fd;
+// $test-red: red;
 
-$text-color: $primary-color;
-$link-color: $tertiary-color;
+
+// general color palette. visible in /palette.png
+
+$gray-hard: #0b0a0a;  // darker
+$brown-hard: #382B25; // dark
+$tan-hard: #DEB587;  // lighter
+$pink-hard: #FF4C8B; // light
+$cyan-hard: #1ED3D3; // light
+
+$gray-mid: #191715;  // back
+$brown-mid: #694D41; // paper
+$tan-mid: #E8CDAE;   // front
+$pink-mid: #FF99BE;  // accent
+$cyan-mid: #7AECEC;  // utility
+
+$gray-soft: #2E2A28;  
+$brown-soft: #7E6959; 
+$tan-soft: #FFE9C8;   
+$pink-soft: #FBD4DF;  
+$cyan-soft: #BEF6F2;  
+
+// document colors
+
+$ink-color: $tan-soft;
+$accent-color: $pink-mid;
+$link-color: $cyan-mid;
+$paper-color: $brown-hard;
+$background-color: $gray-hard;
+
+// border-color-translucent
+
+
+// fonts
+
+$sans: 'Swiss 721', sans-serif;
+$mono: 'Hack', monospace;
+// $serif: 'Georgia', serif;

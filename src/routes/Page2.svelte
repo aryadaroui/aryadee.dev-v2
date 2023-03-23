@@ -108,7 +108,6 @@
 </div>
 
 <style lang="scss">
-	// @import '/src/styles/main.scss';
 
 	.vstack {
 		display: flex;
@@ -137,8 +136,6 @@
 		font-size: 0.85em;
 		text-shadow: 0px 5px 20px black;
 		text-align: right;
-
-
 	}
 
 	#double-column {
@@ -208,16 +205,16 @@
 	}
 
 	.select-chevron {
-		color: beige;
+		color: $ink-color;
 	}
 
 	a {
 		font-family: Hack;
-		color: #9ee2fd;
+		color: $link-color;
 		text-decoration: none;
 	}
 
 	a:hover {
-		color: beige;
+		color: $ink-color;
 	}
 </style>

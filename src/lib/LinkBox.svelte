@@ -40,7 +40,7 @@
 		margin: 0;
 
 		:global(h2) {
-			color: #9ee2fd;
+			color: $link-color;
 			font-family: 'Swiss 721';
 			font-weight: 200;
 
