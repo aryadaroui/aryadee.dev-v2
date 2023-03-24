@@ -19,9 +19,10 @@
 	.paper {
 		background-color: $paper-color;
 		font-family: $sans;
-		max-width: 1200px;
+		max-width: 1000px;
 		margin:auto;
 		font-size: 1.2em;
+		padding: 100px;
 	}
 
 	a {
@@ -37,7 +38,7 @@
 		color: $pink-mid;
 		padding: 0.15em;
 		border-radius: 0.3em;
-		font-size: 0.9em;
+		font-size: 0.91em;
 		font-family: $mono;
 	}
 

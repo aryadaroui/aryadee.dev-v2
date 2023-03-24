@@ -386,8 +386,8 @@
 		// background-color: #3a353045;
 		background-color: rgba($gray-mid, 0.3);
 		border-top: #6d6d6357 1px solid;
-		backdrop-filter: blur(70px) brightness(1.2);
-		// -webkit-backdrop-filter: blur(70px);
+		backdrop-filter: blur(50px);
+		-webkit-backdrop-filter: blur(50px);
 
 		display: flex;
 		flex-direction: column;

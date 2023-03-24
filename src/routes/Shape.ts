@@ -19,9 +19,10 @@ const fps = 60;
  * @param color - the color of the shape
  */
 export function init(domContainer: Element, color: string, domController: Element): void {
-	camera = new THREE.PerspectiveCamera(50, (window.innerWidth) / window.innerHeight, 1, 2500);
-	camera.position.y = 150;
-	camera.position.z = 700;
+	camera = new THREE.PerspectiveCamera(35, (window.innerWidth) / window.innerHeight, 1, 2500);
+	camera.position.y = 600;
+	camera.position.z = 600;
+	// camera.position.x = 60;
 
 	scene = new THREE.Scene();
 	// scene.background = new THREE.Color(0, 0, 0);
@@ -112,8 +113,6 @@ function render() {
 
 	shape.rotation.x = timer * 0.0001;
 	shape.rotation.z = timer * 0.00005;
-	// shape.rotation.x = timer * (1 *  0.00001);
-	// shape.rotation.z = timer * (12 * 0.00001);
 
 
 	controls.update();

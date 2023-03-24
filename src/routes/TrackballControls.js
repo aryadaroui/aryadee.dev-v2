@@ -3,6 +3,7 @@
 // `Cannot write file '/Users/aryadaroui/Documents/Code/aryadee.dev-2.0-scratch/src/routes/TrackballControls.js' because it would overwrite input file.`
 // Which I'm convinced is a benign Svelte VS Code extension problem, but converting this to a TS file and enabling no-check shuts it up.
 
+import { debug } from 'svelte/internal';
 import {
 	EventDispatcher,
 	MOUSE,
@@ -413,6 +414,8 @@ class TrackballControls extends EventDispatcher {
 
 		function onPointerDown( event ) {
 
+			console.log('onPointerDown')
+
 			if ( scope.enabled === false ) return;
 			if ( _modifier_pressed === false ) return;
 
@@ -443,6 +446,7 @@ class TrackballControls extends EventDispatcher {
 		}
 
 		function onPointerMove( event ) {
+
 
 			if ( scope.enabled === false ) return;
 			if ( _modifier_pressed === false ) return;
@@ -505,10 +509,13 @@ class TrackballControls extends EventDispatcher {
 
 			window.removeEventListener( 'keydown', keydown );
 
+
+
 			// cmd (meta), shift, or alt
 			if (event.Code = 224 || event.Code == 16 || event.Code == 16) { 
 				_modifier_pressed = true;
 			}
+
 
 			if ( _keyState !== STATE.NONE ) {
 
