@@ -24,7 +24,7 @@
 		border: $border-link-translucent 1px solid;
 		box-shadow: 0px 5px 20px black;
 		border-radius: 10px;
-		background-image: url(./plus_gray.svg);
+		// background-image: url(./plus_gray.svg);
 		background-size: 95px;
 		background-repeat: repeat;
 		display: flex;
@@ -45,7 +45,7 @@
 
 
 	#download-box:hover {
-		background-image: url(./plus.svg);
+		background-image: url(./plus_gray.svg);
 		background-size: 95px;
 		background-repeat: repeat;
 		// border: rgba(245, 245, 220, 0.5) 1px solid;

@@ -43,7 +43,7 @@ export function init(domContainer: Element, color: string, domController: Elemen
 	renderer = new THREE.WebGLRenderer({ alpha: true });
 	renderer.setSize((window.innerWidth), window.innerHeight);
 
-	// @ts-ignore: this is property *does* exist
+	// @ts-ignore: this property *does* exist
 	renderer.setClearAlpha(1.0);
 
 	// effect = new AsciiEffect(renderer, ' .-:/+░ed#@▒▓', );

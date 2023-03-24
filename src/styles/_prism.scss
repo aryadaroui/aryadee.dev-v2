@@ -27,13 +27,13 @@ pre > code[class*="language-"] {
 
 pre[class*="language-"],
 :not(pre) > code[class*="language-"] {
-	background: #2a2a2a;
+	background: rgb(36, 34, 34);
 }
 
 pre[class*="language-"] {
 	padding: 15px;
-	border-radius: 4px;
-	border: 1px solid #e1e1e8;
+	border-radius: 10px;
+	border: 1px solid #3c3735;
 	overflow: auto;
 	position: relative;
 }

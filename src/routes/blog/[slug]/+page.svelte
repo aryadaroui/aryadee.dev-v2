@@ -15,6 +15,9 @@
 
 <style global lang="scss">
 
+	body {
+		background-color: $gray-mid;
+	}
 
 	.paper {
 		background-color: $paper-color;

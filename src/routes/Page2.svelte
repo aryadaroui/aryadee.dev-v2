@@ -4,6 +4,7 @@
 	import PostBox from '$lib/PostBox.svelte';
 	import TextBox from '$lib/TextBox.svelte';
 	import LinkBox from '$lib/LinkBox.svelte';
+	import PostBox2 from '$lib/PostBox2.svelte';
 </script>
 
 <div id="double-column">
@@ -14,7 +15,7 @@
 			<div class="hstack">
 				<TextBox>
 					<h3>My name is Arya “Dee” Daroui</h3>
-					<p>I like to <code>code</code>, take photos, and make music.</p>
+					<p>I like to code, take photos, and make music.</p>
 					<p>Most of my content is at the intersection of these things.</p>
 				</TextBox>
 				<div>
@@ -60,19 +61,19 @@
 			<div class="hstack">
 				<div class="vstack">
 					<!-- <div> -->
-					<LinkBox link={"/blog/workflow"}>
+					<LinkBox link={'/blog/workflow'}>
 						<h2>Workflow</h2>
 					</LinkBox>
 					<!-- </div> -->
 					<!-- <div> -->
-					<LinkBox link={"/maxim"}>
+					<LinkBox link={'/maxim'}>
 						<h2>Maxim</h2>
 					</LinkBox>
 					<!-- </div> -->
 				</div>
 
 				<!-- <div> -->
-				<DownloadBox link={"/arya_d_resume.pdf"}>
+				<DownloadBox link={'/arya_d_resume.pdf'}>
 					<h2>Resumé.pdf</h2>
 				</DownloadBox>
 				<!-- </div> -->
@@ -82,8 +83,8 @@
 
 	<div>
 		<div id="col-2" class="column">
-			<h1>Select posts</h1>
-			<PostBox link={'/post1'} thumbnail={'thesis_thumb.png'}>
+			<h1>Highlight posts</h1>
+			<!-- <PostBox link={'/post1'} thumbnail={'thesis_thumb.png'}>
 				<h2>Applying a JPEG encoder benchmark on a modeled, multi-core "checkerboard" computer</h2>
 				<p>A checkerboard computer is one with a grid of processing cells.</p>
 			</PostBox>
@@ -94,7 +95,27 @@
 			<PostBox link={'/post1'} thumbnail={'devblog2_thumb.png'}>
 				<h2>Filmic devblog 2</h2>
 				<p>Llala</p>
-			</PostBox>
+			</PostBox> -->
+			<PostBox2
+			title={'Deploying a JPEG encoder on a modeled, multi-core "checkerboard" CPU'}
+			tags={['C++', 'embedded systems', 'image processing']}
+			thumbnail={'thesis_thumb.png'}
+			link={'/post1'}
+			/>
+			<PostBox2
+			title={'Filmic, an analog film emulation app'}
+			tags={['TypeScript', 'WebGL', 'Svelte', 'image processing']}
+			thumbnail={'filmic_thumb.png'}
+			link={'/post1'}
+			alt={'alt text'}
+			/>
+			<PostBox2
+				title={'Filmic devblog 2: film grain and halation'}
+				tags={['Python', 'image processing']}
+				thumbnail={'devblog2_thumb.png'}
+				link={'/post1'}
+				alt={'alt text'}
+				/>
 			<div id="legal">
 				<p>
 					<a href="/privacy-and-copyright" class="chevron-link">
@@ -108,7 +129,6 @@
 </div>
 
 <style lang="scss">
-
 	.vstack {
 		display: flex;
 		flex: 1;
@@ -123,7 +143,6 @@
 		justify-content: space-between;
 		gap: 20px;
 	}
-
 
 	h1 {
 		font-family: 'Swiss 721';

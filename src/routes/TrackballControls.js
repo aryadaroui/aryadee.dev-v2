@@ -1,9 +1,5 @@
-// @ts-nocheck
-// This realistically should be a JS file because that's what it was originally, but SvelteKit / Vite keeps throwing the error:
-// `Cannot write file '/Users/aryadaroui/Documents/Code/aryadee.dev-2.0-scratch/src/routes/TrackballControls.js' because it would overwrite input file.`
-// Which I'm convinced is a benign Svelte VS Code extension problem, but converting this to a TS file and enabling no-check shuts it up.
 
-import { debug } from 'svelte/internal';
+
 import {
 	EventDispatcher,
 	MOUSE,

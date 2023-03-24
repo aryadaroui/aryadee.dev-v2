@@ -4,11 +4,7 @@
 	import Page2 from './Page2.svelte';
 
 	onMount(() => {
-		Shape.init(
-			document.getElementById('shape-container'),
-			'#E2C09B',
-			document.getElementById('page-1')
-		);
+		Shape.init(document.getElementById('shape-container'), '#E2C09B', document.getElementById('page-1'));
 
 		let scroll_down_button = document.querySelector('#scroll-down-button');
 		scroll_down_button.addEventListener('click', function () {
@@ -19,7 +15,7 @@
 		scroll_up_button.addEventListener('click', function () {
 			window.scrollTo({
 				top: 0,
-				behavior: 'smooth'
+				behavior: 'smooth',
 			});
 		});
 
@@ -89,9 +85,7 @@
 <div id="tooltip" class="hint-tooltip">
 	<p>
 		<span class="blackground">
-			<span id="key-tip">[key] </span><span id="plus-tip"> + </span><span id="mouse-tip">
-				[mouse]</span
-			>
+			<span id="key-tip">[key] </span><span id="plus-tip"> + </span><span id="mouse-tip"> [mouse]</span>
 		</span>
 	</p>
 </div>
@@ -121,20 +115,20 @@
 							<span class="link blackground">/blog</span>
 						</a>
 					</p>
-
-					<p>
-						<a href="/photo-art-audio" class="chevron-link">
-							<span class="select-chevron blackground">»</span>
-							<span class="link blackground">/photo-art-music</span>
-						</a>
-					</p>
 					<p>
 						<a href="/filmic-beta" class="chevron-link">
 							<span class="select-chevron blackground">»</span>
 							<span class="link blackground">/projects</span>
 						</a>
 					</p>
+					<p>
+						<a href="/photo-art-audio" class="chevron-link">
+							<span class="select-chevron blackground">»</span>
+							<span class="link blackground">/photo-art-music</span>
+						</a>
+					</p>
 				</nav>
+
 				<div id="mail-link">
 					<a href="mailto:adaroui@uci.edu" class="chevron-link">
 						<span class="select-chevron blackground">»</span>
@@ -219,6 +213,8 @@
 		height: 40px;
 		text-align: center;
 		z-index: 2;
+		user-select: none;
+		cursor: pointer;
 
 		&:hover {
 			filter: brightness(66%);
@@ -403,7 +399,19 @@
 		}
 	}
 
-	#scroll-up-button {
+	#scroll-up-button.scroll-button {
 		transform: scale(1, -1);
+		border-radius: 10px;
+		box-shadow: 0px 5px 20px black;
+		background-color: rgba(5, 5, 5, 0.4);
 	}
+
+	#scroll-up-button.scroll-button:active {
+
+		box-shadow: 0px 1px 10px black;
+
+		transform: translateY(2px) scale(1, -1);
+
+	}
+
 </style>
