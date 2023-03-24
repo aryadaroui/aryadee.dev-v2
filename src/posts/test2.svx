@@ -5,6 +5,10 @@ date: 20223-03-14
 
 # this test2 svx
 
+what's up here's a link [to somethin](https://google.com)
+
+## second heading
+
 cool `float` there. this math won't work $\sin(x)$ though.
 
 ```python
@@ -13,6 +17,8 @@ def howdy(num_friends: int):
 
 howdy(0)
 ```
+
+
 
 $$
 	f(x) = x^2
@@ -25,6 +31,3 @@ $$
 words!
 
 
-<!-- <style lang="scss">
-	@import '/src/styles/main.scss';
-</style> -->

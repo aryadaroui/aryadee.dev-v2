@@ -19,8 +19,9 @@
 	}
 
 	#download-box {
-		background-color: rgba(5, 5, 5, 0.6);
-		border: rgba(158, 226, 253, 0.3) 1px solid;
+		background-color: rgba(5, 5, 5, 0.7);
+		// border: rgba(158, 226, 253, 0.3) 1px solid;
+		border: $border-link-translucent 1px solid;
 		box-shadow: 0px 5px 20px black;
 		border-radius: 10px;
 		background-image: url(./plus_gray.svg);
@@ -47,7 +48,8 @@
 		background-image: url(./plus.svg);
 		background-size: 95px;
 		background-repeat: repeat;
-		border: rgba(245, 245, 220, 0.5) 1px solid;
+		// border: rgba(245, 245, 220, 0.5) 1px solid;
+		border: $border-link-translucent-hover 1px solid;
 
 		:global(h2) {
 			text-decoration: underline;

@@ -13,8 +13,8 @@
 
 			<div class="hstack">
 				<TextBox>
-					<h3>My name is Arya "Dee" Daroui</h3>
-					<p>I like to code, take photos, and make music.</p>
+					<h3>My name is Arya “Dee” Daroui</h3>
+					<p>I like to <code>code</code>, take photos, and make music.</p>
 					<p>Most of my content is at the intersection of these things.</p>
 				</TextBox>
 				<div>
@@ -60,19 +60,19 @@
 			<div class="hstack">
 				<div class="vstack">
 					<!-- <div> -->
-					<LinkBox>
+					<LinkBox link={"/blog/workflow"}>
 						<h2>Workflow</h2>
 					</LinkBox>
 					<!-- </div> -->
 					<!-- <div> -->
-					<LinkBox>
+					<LinkBox link={"/maxim"}>
 						<h2>Maxim</h2>
 					</LinkBox>
 					<!-- </div> -->
 				</div>
 
 				<!-- <div> -->
-				<DownloadBox>
+				<DownloadBox link={"/arya_d_resume.pdf"}>
 					<h2>Resumé.pdf</h2>
 				</DownloadBox>
 				<!-- </div> -->

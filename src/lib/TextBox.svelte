@@ -8,11 +8,12 @@
 
 
 	#text-box {
-		background-color: rgba(5, 5, 5, 0.6);
+		background-color: rgba(5, 5, 5, 0.7);
 		border-radius: 10px;
 		padding: 20px;
 		box-shadow: 0px 5px 20px black;
-		border: rgba(245, 245, 220, 0.2) 1px solid;
+		// border: rgba(245, 245, 220, 0.2) 1px solid;
+		border: $border-translucent 1px solid;
 
 		max-width: 800px;
 		flex: 1;

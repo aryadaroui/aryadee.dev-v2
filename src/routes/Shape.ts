@@ -12,7 +12,7 @@ let controls: TrackballControls; // from TrackBallControls
 let effect: AsciiEffect; // from AsciiEffect
 
 const start = Date.now();
-let fps = 60;
+const fps = 60;
 
 /** Initializes the scene for the shape and attaches it to the dom
  * @param domElement - the element to append to
@@ -41,6 +41,7 @@ export function init(domContainer: Element, color: string, domController: Elemen
 
 	renderer = new THREE.WebGLRenderer({ alpha: true });
 	renderer.setSize((window.innerWidth), window.innerHeight);
+
 	// @ts-ignore: this is property *does* exist
 	renderer.setClearAlpha(1.0);
 

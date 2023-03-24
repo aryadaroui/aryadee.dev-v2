@@ -384,7 +384,7 @@
 		width: 100vw;
 		// background-color: rgba(20, 20, 20, 0.5);
 		// background-color: #3a353045;
-		background-color: #19191950;
+		background-color: rgba($gray-mid, 0.3);
 		border-top: #6d6d6357 1px solid;
 		backdrop-filter: blur(70px) brightness(1.2);
 		// -webkit-backdrop-filter: blur(70px);

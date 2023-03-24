@@ -9,28 +9,33 @@ $brown-hard: #382B25; // dark
 $tan-hard: #DEB587;  // lighter
 $pink-hard: #FF4C8B; // light
 $cyan-hard: #1ED3D3; // light
+$blue-hard: #1E91D3; // light
 
 $gray-mid: #191715;  // back
 $brown-mid: #694D41; // paper
 $tan-mid: #E8CDAE;   // front
 $pink-mid: #FF99BE;  // accent
 $cyan-mid: #7AECEC;  // utility
+$blue-mid: #7AC6EC;  // utility
 
 $gray-soft: #2E2A28;  
 $brown-soft: #7E6959; 
-$tan-soft: #FFE9C8;   
-$pink-soft: #FBD4DF;  
-$cyan-soft: #BEF6F2;  
+$tan-soft: #FFEFD8;   
+$pink-soft: #FAC6D5;  
+$cyan-soft: #BCF8F3;  
+$blue-soft: #A5E0F5;
 
 // document colors
 
 $ink-color: $tan-soft;
 $accent-color: $pink-mid;
 $link-color: $cyan-mid;
-$paper-color: $brown-hard;
+$paper-color: $gray-soft;
 $background-color: $gray-hard;
 
-// border-color-translucent
+$border-translucent: rgba($tan-mid, 0.2);
+$border-link-translucent: rgba($blue-mid, 0.4);
+$border-link-translucent-hover: rgba($tan-mid, 0.8);
 
 
 // fonts
