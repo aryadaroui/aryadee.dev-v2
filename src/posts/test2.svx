@@ -1,6 +1,9 @@
 ---
 title: test2 baby
-date: 20223-03-14
+date: 13 Mar 2023
+tags:
+  - python
+  - image processing
 ---
 
 # this test2 svx

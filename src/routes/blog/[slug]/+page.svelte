@@ -1,5 +1,7 @@
 <script>
 	export let data;
+
+	console.log(data);
 </script>
 
 <article>
@@ -7,6 +9,7 @@
 	<!-- <p>Published: {data.date}</p> -->
 
 	<div class="paper">
+		<p>{data.date}</p>
 		<svelte:component this={data.content} />
 	</div>
 </article>
