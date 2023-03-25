@@ -47,10 +47,10 @@
 						<b>Signal processing</b> – imaging · audio · n-D data
 					</li>
 					<li>
-						<b>Data</b> – analysis · visualization · some ML
+						<b>Data</b> – analysis · visualization · machine learning
 					</li>
 					<li>
-						<b>Low-level</b> – parallelization · modeling
+						<b>Systems</b> – parallelization · modeling
 					</li>
 					<li>
 						<b>Web</b> – frontend · graphics
@@ -97,25 +97,32 @@
 				<p>Llala</p>
 			</PostBox> -->
 			<PostBox2
-			title={'Deploying a JPEG encoder on a modeled, multi-core "checkerboard" CPU'}
-			tags={['C++', 'embedded systems', 'image processing']}
-			thumbnail={'thesis_thumb.png'}
-			link={'/post1'}
-			/>
+				title={'Deploying a JPEG encoder on a modeled, multi-core "checkerboard" CPU'}
+				tags={['C++', 'SystemC', 'embedded systems', 'parallelization', 'modeling', 'image processing']}
+				img_src={'thesis_thumb.png'}
+				alt={'thumbnail of thesis'}
+				link={'/post1'} />
 			<PostBox2
-			title={'Filmic, an analog film emulation app'}
-			tags={['TypeScript', 'WebGL', 'Svelte', 'image processing']}
-			thumbnail={'filmic_thumb.png'}
-			link={'/post1'}
-			alt={'alt text'}
-			/>
+				title={'Filmic, an analog film emulation app'}
+				tags={['TypeScript', 'WebGL', 'Svelte', 'image processing']}
+				img_src={'filmic_thumb.png'}
+				link={'/post1'}
+				alt={'thumbnail of filmic app'} />
 			<PostBox2
 				title={'Filmic devblog 2: film grain and halation'}
-				tags={['Python', 'image processing']}
-				thumbnail={'devblog2_thumb.png'}
+				tags={['Python', 'image processing', 'Jupyter']}
+				img_src={'devblog2_thumb.png'}
 				link={'/post1'}
-				alt={'alt text'}
-				/>
+				alt={'thumbnail of filmic devblog 2'} />
+			<!-- <TextBox>
+				<h3>Cool links :-)</h3>
+				<ul>
+					<li>
+						<a href="https://neal.fun/absurd-trolley-problems/">Absurd trolley problems</a>
+					</li>
+
+				</ul>
+			</TextBox> -->
 			<div id="legal">
 				<p>
 					<a href="/privacy-and-copyright" class="chevron-link">

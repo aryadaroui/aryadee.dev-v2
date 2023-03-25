@@ -14,20 +14,21 @@ let effect: AsciiEffect; // from AsciiEffect
 const start = Date.now();
 const fps = 60;
 
+const x_speed = 0.0001;
+const y_speed = 0.00005;
+
 /** Initializes the scene for the shape and attaches it to the dom
  * @param domElement - the element to append to
  * @param color - the color of the shape
  */
 export function init(domContainer: Element, color: string, domController: Element): void {
-	camera = new THREE.PerspectiveCamera(35, (window.innerWidth) / window.innerHeight, 1, 2500);
+
+	camera = new THREE.PerspectiveCamera(36, (window.innerWidth) / window.innerHeight, 1, 2500);
 	camera.position.y = 600;
 	camera.position.z = 600;
-	// camera.position.x = 60;
 
 	scene = new THREE.Scene();
-	// scene.background = new THREE.Color(0, 0, 0);
-	// scene.background = null;
-	// new THREE.Color( 0xff0000 )
+
 
 	const pointLight1 = new THREE.PointLight(0xffffff);
 	pointLight1.position.set(2000, 2000, 2000);
@@ -46,9 +47,7 @@ export function init(domContainer: Element, color: string, domController: Elemen
 	// @ts-ignore: this property *does* exist
 	renderer.setClearAlpha(1.0);
 
-	// effect = new AsciiEffect(renderer, ' .-:/+░ed#@▒▓', );
 	effect = new AsciiEffect(renderer, '▓▒@#de░+/:-. ');
-	// effect = new AsciiEffect(renderer, '@#de+/:-. ');
 	effect.setSize((window.innerWidth), window.innerHeight);
 
 	effect.domElement.style.color = color;
@@ -66,7 +65,10 @@ export function init(domContainer: Element, color: string, domController: Elemen
 	controls.rotateSpeed = 9.0;
 	window.addEventListener('resize', onWindowResize);
 
+	render();
 	animate();
+
+	// return toggle_motion;
 }
 
 function onWindowResize() {
@@ -83,25 +85,12 @@ function onWindowResize() {
 
 
 function animate(): void {
-
-
-	//reduce framerate
 	setTimeout(() => {
 
 		requestAnimationFrame(animate);
-
-		//must be called to enable rotating
-		// controls.update();
-		// renderer.render(scene, camera);
 		render();
 
-
 	}, 1000 / fps);
-
-	// 
-
-	// requestAnimationFrame(animate);
-	// render();
 }
 
 function render() {
@@ -111,8 +100,8 @@ function render() {
 
 	const timer = Date.now() - start;
 
-	shape.rotation.x = timer * 0.0001;
-	shape.rotation.z = timer * 0.00005;
+	shape.rotation.x = timer * x_speed;
+	shape.rotation.z = timer * y_speed;
 
 
 	controls.update();
@@ -122,3 +111,13 @@ function render() {
 	// renderer.render(scene, camera);
 
 }
+
+// function toggle_motion(): void {
+// 	if (x_speed === 0.0001) {
+// 		x_speed = 0;
+// 		y_speed = 0;
+// 	} else {
+// 		x_speed = 0.0001;
+// 		y_speed = 0.00005;
+// 	}
+// }

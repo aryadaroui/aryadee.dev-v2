@@ -3,11 +3,63 @@
 	export let tags: string[];
 
 	export let link: string;
-	export let thumbnail: string;
+	// export let thumbnail: string;
 	export let alt: string;
 	export let img_src: string;
 
-	img_src = thumbnail;
+	const langs = [
+		'Python',
+		'TypeScript',
+		'JavaScript',
+		'C',
+		'C++',
+		'Rust',
+		'HTML',
+		'CSS',
+		'Markdown',
+		'LaTeX',
+		'BibTeX',
+		'TeX',
+		'Git',
+	];
+	const tools = [
+		'NumPy',
+		'Pandas',
+		'SciKit',
+		'OpenCV',
+		'Plotly',
+		'Rich',
+		'Svelte',
+		'SvelteKit',
+		'D3.js',
+		'Three.js',
+		'WebGL',
+		'SystemC',
+		'Boost',
+		'Tauri',
+		'Rayon',
+		'Git',
+		'VS Code',
+		'Jupyter'
+	];
+	const domains = [
+		'signal processing',
+		'image processing',
+		'audio processing',
+		'n-D data',
+		'data analysis',
+		'data visualization',
+		'machine learning',
+		'parallelization',
+		'embedded systems',
+		'modeling',
+		'frontend',
+		'graphics',
+	];
+
+	let lang_tags = tags.filter((tag) => langs.includes(tag));
+	let tool_tags = tags.filter((tag) => tools.includes(tag));
+	let domain_tags = tags.filter((tag) => domains.includes(tag));
 </script>
 
 <a href={link} id="post-box">
@@ -19,9 +71,7 @@
 			<h2>{title}</h2>
 		</div>
 		<div class="tags">
-				{#each tags as tag}
-					<span class="tag">{tag}</span>
-				{/each}
+			{#each lang_tags as tag}<span class="tag lang">{tag}</span>{/each}{#each tool_tags as tag}<span class="tag tool">{tag}</span>{/each}{#each domain_tags as tag}<span class="tag domain">{tag}</span>{/each}
 		</div>
 	</div>
 </a>
@@ -45,17 +95,34 @@
 	}
 
 	.tag {
-		background-color: $gray-mid;
-		border: $brown-mid 1px solid;
 		border-radius: 0.4em;
 		padding: 0.3em;
 
-		font-size: 0.8em;
+		font-size: 0.75em;
 		font-weight: 300;
-		color: $ink-color;
 		text-overflow: ellipsis;
 		display: inline-block;
-		margin: 0.2em;
+		margin: 0.4em;
+		margin-left: 0;
+		margin-bottom: 0;
+	}
+
+	.lang {
+		background-color: $gray-soft;
+		border: $brown-soft 1px solid;
+		color: $tan-soft;
+	}
+
+	.tool {
+		background-color: $gray-mid;
+		border: $brown-mid 1px solid;
+		color: $tan-mid;
+	}
+
+	.domain {
+		background-color: $gray-hard;
+		border: hsl(19, 20%, 25%) 1px solid; // $brown-hard but lighter
+		color: $tan-hard;
 	}
 
 	#post-box {

@@ -4,7 +4,7 @@
 	import Page2 from './Page2.svelte';
 
 	onMount(() => {
-		Shape.init(document.getElementById('shape-container'), '#E2C09B', document.getElementById('page-1'));
+		let toggle_motion_func = Shape.init(document.getElementById('shape-container'), '#E2C09B', document.getElementById('page-1'));
 
 		let scroll_down_button = document.querySelector('#scroll-down-button');
 		scroll_down_button.addEventListener('click', function () {
@@ -72,6 +72,15 @@
 			}
 		});
 
+		// // for reducing motion
+		// let reduce_motion_button = document.querySelector('#reduce-motion-button');
+		// let motion_text = document.querySelector('#motion-text');
+
+		// reduce_motion_button.addEventListener('click', function () {
+		// 	motion_text.classList.toggle('crossed-out');
+		// 	toggle_motion_func();
+		// });
+
 		document.getElementById('fader').classList.add('black-fade-in');
 	});
 </script>
@@ -89,6 +98,8 @@
 		</span>
 	</p>
 </div>
+
+<!-- <button id="reduce-motion-button"> reduce <span id="motion-text">motion</span> </button> -->
 
 <div class="scroll-button-container">
 	<button id="scroll-down-button" class="scroll-button">
@@ -208,7 +219,7 @@
 
 	.scroll-button {
 		background-color: $background-color;
-		border: $ink-color 0.5px solid;
+		border: $ink-color 1px solid;
 		width: 80px;
 		height: 40px;
 		text-align: center;
@@ -236,6 +247,36 @@
 	}
 
 	// PAGE 1
+
+	// #reduce-motion-button {
+	// 	position: absolute;
+	// 	left: 62px;
+	// 	bottom: 60px;
+	// 	background-color: $background-color;
+	// 	border: $ink-color 0.5px solid;
+	// 	z-index: 4;
+	// 	// border: none;
+	// 	padding: 0.5em;
+	// 	user-select: none;
+	// 	cursor: pointer;
+
+	// 	&:hover {
+	// 		filter: brightness(66%);
+	// 	}
+
+	// 	&:active {
+	// 		filter: brightness(33%);
+	// 	}
+
+	// 	@media only screen and (max-width: 600px) {
+	// 		left: 20px;
+	// 		bottom: 55px;
+	// 	}
+	// }
+
+	// .crossed-out {
+	// 	text-decoration: line-through;
+	// }
 
 	#tooltip {
 		right: 62px;
@@ -407,11 +448,8 @@
 	}
 
 	#scroll-up-button.scroll-button:active {
-
-		box-shadow: 0px 1px 10px black;
+		box-shadow: 0px 1px 15px black;
 
 		transform: translateY(2px) scale(1, -1);
-
 	}
-
 </style>
