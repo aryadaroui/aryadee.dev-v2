@@ -138,8 +138,8 @@
 
 		border-radius: 10px;
 		border: $border-link-translucent 1px solid;
-		background-color: rgba(5, 5, 5, 0.6);
-		box-shadow: 0px 5px 20px black;
+		background-color: rgba($background-color, 0.7);		
+		// box-shadow: 0px 5px 20px black;
 		overflow: hidden;
 
 		:hover h2 {

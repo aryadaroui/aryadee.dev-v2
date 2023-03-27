@@ -27,16 +27,19 @@
 				<h3>Languages and tools I &lt;3</h3>
 				<ul>
 					<li>
-						<b>Python</b> – NumPy · Pandas · SciKit · OpenCV · Plotly · Rich
+						<span class="tag lang">Python</span> <span class="tag tool">NumPy</span> <span class="tag tool">Pandas</span>
+						<span class="tag tool">SciKit</span> <span class="tag tool">OpenCV</span> <span class="tag tool">Plotly</span>
+						<span class="tag tool">Rich</span>
 					</li>
 					<li>
-						<b>TypeScript</b> – Svelte(Kit) · WebGL · D3
+						<span class="tag lang">TypeScript</span> <span class="tag tool">Svelte(Kit)</span>
+						<span class="tag tool">WebGL</span> <span class="tag tool"> D3.js</span>
 					</li>
 					<li>
-						<b>C & C++</b> – SystemC · Boost
+						<span class="tag lang">C & C++</span> <span class="tag tool">SystemC</span> <span class="tag tool">Boost</span>
 					</li>
 					<li>
-						<b>Rust</b> – Tauri · Rayon
+						<span class="tag lang">Rust</span> <span class="tag tool">Tauri</span> <span class="tag tool">Rayon</span>
 					</li>
 				</ul>
 
@@ -44,16 +47,16 @@
 
 				<ul>
 					<li>
-						<b>Signal processing</b> – imaging · audio · n-D data
+						Signals: <span class="tag domain">image processing</span> <span class="tag domain">audio</span> <span class="tag domain">n-D data</span>
 					</li>
 					<li>
-						<b>Data</b> – analysis · visualization · machine learning
+						Data: <span class="tag domain">data analysis</span> <span class="tag domain">visualization</span> <span class="tag domain">machine learning</span>
 					</li>
 					<li>
-						<b>Systems</b> – parallelization · modeling
+						Systems: <span class="tag domain">parallelization</span> <span class="tag domain">modeling</span>
 					</li>
 					<li>
-						<b>Web</b> – frontend · graphics
+						WebDev: <span class="tag domain">frontend</span> <span class="tag domain">graphics</span>
 					</li>
 				</ul>
 			</TextBox>

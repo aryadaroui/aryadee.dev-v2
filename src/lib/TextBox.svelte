@@ -2,21 +2,53 @@
 	<slot />
 </div>
 
-<style lang="scss">
+<style global lang="scss">
 	// @import '/src/styles/main.scss';
 	// @use '/src/styles/vars';
 
+	.tag {
+		border-radius: 0.4em;
+		padding: 0.3em;
+
+		font-size: 0.85em;
+		font-weight: 300;
+		text-overflow: ellipsis;
+		display: inline-block;
+		margin: 0.4em;
+		margin-left: 0;
+		margin-bottom: 0;
+	}
+
+	.lang {
+		background-color: $gray-soft;
+		border: $brown-soft 1px solid;
+		color: $tan-soft;
+	}
+
+	.tool {
+		background-color: $gray-mid;
+		border: $brown-mid 1px solid;
+		color: $tan-mid;
+	}
+
+	.domain {
+		background-color: $gray-hard;
+		border: hsl(19, 20%, 25%) 1px solid; // $brown-hard but lighter
+		color: $tan-hard;
+	}
+
 
 	#text-box {
-		background-color: rgba(5, 5, 5, 0.7);
+		// background-color: rgba(5, 5, 5, 0.7);
+		background-color: rgba($gray-hard, 0.8);		
 		border-radius: 10px;
 		padding: 20px;
-		box-shadow: 0px 5px 20px black;
-		// border: rgba(245, 245, 220, 0.2) 1px solid;
+		// box-shadow: 0px 5px 20px black;
 		border: $border-translucent 1px solid;
 
 		max-width: 800px;
 		flex: 1;
+		color: rgba($tan-soft, 0.95);
 
 		:global(ul) {
 			font-family: $sans;

@@ -19,10 +19,9 @@
 	}
 
 	#link-box {
-		background-color: rgba(5, 5, 5, 0.7);
-		// border: rgba(158, 226, 253, 0.3) 1px solid;
+		background-color: rgba($background-color, 0.7);		
 		border: $border-link-translucent 1px solid;
-		box-shadow: 0px 5px 20px black;
+		// box-shadow: 0px 5px 20px black;
 		border-radius: 10px;
 
 		// background-image: url(./arrow_gray.svg);

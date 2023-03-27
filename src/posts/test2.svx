@@ -6,15 +6,15 @@ tags:
   - image processing
 ---
 
-# this test2 svx
+# h1 this test2 svx
 
 what's up here's a link [to somethin](https://google.com)
 
-## second heading
+## h2 second heading
 
 cool `float` there. this math won't work $\sin(x)$ though.
 
-```python
+```python title=hello.py
 def howdy(num_friends: int):
 	print('howdy to my ' + str() + ' friends!')
 
@@ -32,5 +32,9 @@ $$
 - list 2
 
 words!
+
+> a quote box
+
+and something else
 
 

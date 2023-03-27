@@ -410,8 +410,6 @@ class TrackballControls extends EventDispatcher {
 
 		function onPointerDown( event ) {
 
-			console.log('onPointerDown')
-
 			if ( scope.enabled === false ) return;
 			if ( _modifier_pressed === false ) return;
 

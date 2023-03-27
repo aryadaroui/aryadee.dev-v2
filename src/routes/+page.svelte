@@ -4,7 +4,7 @@
 	import Page2 from './Page2.svelte';
 
 	onMount(() => {
-		let toggle_motion_func = Shape.init(document.getElementById('shape-container'), '#E2C09B', document.getElementById('page-1'));
+		Shape.init(document.getElementById('shape-container'), '#E2C09B', document.getElementById('page-1'));
 
 		let scroll_down_button = document.querySelector('#scroll-down-button');
 		scroll_down_button.addEventListener('click', function () {
@@ -111,9 +111,9 @@
 	<section id="page-1" style="touch-action: pan-y;">
 		<div id="page-1-content" class="corner-border">
 			<div id="hello">
-				<h1><span class="blackground"> aryadee </span></h1>
+				<h1><span class="blackground allow-pointer-events"> aryadee </span></h1>
 				<p>
-					<span class="blackground"
+					<span class="blackground allow-pointer-events"
 						>computer engineer. ndarray lover.
 						<span class="accent">a person from planet earth.</span>
 					</span>
@@ -123,19 +123,19 @@
 					<p>
 						<a href="/blog" class="chevron-link">
 							<span class="select-chevron blackground">»</span>
-							<span class="link blackground">/blog</span>
+							<span class="link blackground allow-pointer-events">/blog</span>
 						</a>
 					</p>
 					<p>
 						<a href="/filmic-beta" class="chevron-link">
 							<span class="select-chevron blackground">»</span>
-							<span class="link blackground">/projects</span>
+							<span class="link blackground allow-pointer-events">/projects</span>
 						</a>
 					</p>
 					<p>
 						<a href="/photo-art-audio" class="chevron-link">
 							<span class="select-chevron blackground">»</span>
-							<span class="link blackground">/photo-art-music</span>
+							<span class="link blackground allow-pointer-events">/photo-art-music</span>
 						</a>
 					</p>
 				</nav>
@@ -143,7 +143,7 @@
 				<div id="mail-link">
 					<a href="mailto:adaroui@uci.edu" class="chevron-link">
 						<span class="select-chevron blackground">»</span>
-						<span class="link blackground">adaroui@uci.edu</span>
+						<span class="link blackground allow-pointer-events">adaroui@uci.edu</span>
 						<span class="select-chevron blackground">»</span>
 					</a>
 				</div>
@@ -308,6 +308,8 @@
 
 	#hello {
 		margin: auto;
+		position: absolute;
+		pointer-events: none;
 
 		max-width: 1300px;
 
@@ -316,6 +318,10 @@
 		@media only screen and (max-width: 600px) {
 			padding: 1px 25px 25px 25px;
 		}
+	}
+
+	.allow-pointer-events {
+		pointer-events: auto;
 	}
 
 	.chevron-link {
@@ -421,10 +427,11 @@
 		width: 100vw;
 		// background-color: rgba(20, 20, 20, 0.5);
 		// background-color: #3a353045;
-		background-color: rgba($gray-mid, 0.3);
+		// background-color: rgba($gray-mid, 0.3);
+		background-color: rgba($gray-mid, 0.7);
 		border-top: #6d6d6357 1px solid;
-		backdrop-filter: blur(50px);
-		-webkit-backdrop-filter: blur(50px);
+		backdrop-filter: blur(27px);
+		// -webkit-backdrop-filter: blur(50px);
 
 		display: flex;
 		flex-direction: column;
@@ -444,7 +451,7 @@
 		transform: scale(1, -1);
 		border-radius: 10px;
 		box-shadow: 0px 5px 20px black;
-		background-color: rgba(5, 5, 5, 0.4);
+		background-color: rgba($background-color, 0.7);		
 	}
 
 	#scroll-up-button.scroll-button:active {
