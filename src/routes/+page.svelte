@@ -450,13 +450,13 @@
 	#scroll-up-button.scroll-button {
 		transform: scale(1, -1);
 		border-radius: 10px;
-		box-shadow: 0px 5px 20px black;
+		// box-shadow: 0px 5px 20px black;
 		background-color: rgba($background-color, 0.7);		
 	}
 
-	#scroll-up-button.scroll-button:active {
-		box-shadow: 0px 1px 15px black;
+	// #scroll-up-button.scroll-button:active {
+	// 	// box-shadow: 0px 1px 15px black;
 
-		transform: translateY(2px) scale(1, -1);
-	}
+	// 	// transform: translateY(2px) scale(1, -1);
+	// }
 </style>

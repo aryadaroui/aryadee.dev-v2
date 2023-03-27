@@ -12,9 +12,9 @@ what's up here's a link [to somethin](https://google.com)
 
 ## h2 second heading
 
-cool `float` there. this math won't work $\sin(x)$ though.
+cool `float` there. this--math -- --- won't work $\sin(x)$ though.
 
-```python title=hello.py
+```python {2} showLineNumbers
 def howdy(num_friends: int):
 	print('howdy to my ' + str() + ' friends!')
 

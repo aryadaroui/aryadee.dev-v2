@@ -158,12 +158,12 @@
 		font-family: 'Swiss 721';
 		font-weight: 900;
 		margin: 0;
-		text-shadow: 0px 5px 20px black;
+		// text-shadow: 0px 5px 20px black;
 	}
 
 	#legal {
 		font-size: 0.85em;
-		text-shadow: 0px 5px 20px black;
+		// text-shadow: 0px 5px 20px black;
 		text-align: right;
 	}
 

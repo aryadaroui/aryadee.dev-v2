@@ -37,8 +37,14 @@
 	"dependencies": {
 		"@types/three": "^0.149.0",
 		"mathlifier": "^1.2.1",
+		"rehype-pretty-code": "^0.9.4",
+		"rehype-stringify": "^9.0.3",
+		"remark-parse": "^10.0.1",
+		"remark-rehype": "^10.1.0",
 		"sass": "^1.59.3",
-		"three": "^0.150.1"
+		"shiki": "^0.14.1",
+		"three": "^0.150.1",
+		"unified": "^10.1.2"
 	},
 	"license": "MIT"
 }
