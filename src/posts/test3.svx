@@ -7,7 +7,7 @@ tags:
 
 # test3.svx
 
-```python {2} showLineNumbers title="test3.py"
+```python {2} showLineNumbers title="test3.py" /daisy/
 
 print("Hello World")
 print("Daisy daisy")
