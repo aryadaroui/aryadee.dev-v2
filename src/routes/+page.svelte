@@ -109,12 +109,12 @@
 
 <main>
 	<section id="page-1" style="touch-action: pan-y;">
-		<div id="page-1-content" >
+		<div id="page-1-content">
 			<div id="hello">
 				<h1><span class="blackground allow-pointer-events"> aryadee </span></h1>
 				<p>
-					<span class="blackground allow-pointer-events"
-						>computer engineer.<wbr /> ndarray lover.<wbr /> <span class="accent">a person from planet earth.</span>
+					<span class="blackground allow-pointer-events">
+						<span class="avoid-wrap">computer engineer.</span> <span class="avoid-wrap">ndarray lover.</span> <span class="accent avoid-wrap">a person from planet earth.</span>
 					</span>
 				</p>
 
@@ -199,6 +199,10 @@
 
 	:global(.black-fade-in) {
 		animation: 3s ease-in-out normal fade-in;
+	}
+
+	.avoid-wrap {
+		display: inline-block;
 	}
 
 	@keyframes fade-in {
@@ -297,6 +301,9 @@
 
 	.blackground {
 		background: $background-color;
+		padding: 0.1em 0.2em 0.1em 0.2em;
+		border-radius: 0.2em;
+		line-height: 1.3;
 		@media only screen and (max-width: 600px) {
 			background: rgb(16, 13, 13); // this is unfortunately hard coded.
 		}
@@ -410,8 +417,8 @@
 		height: calc(100vh - 100px);
 
 		@media only screen and (max-width: 600px) {
-			margin: 20px;
-			height: calc(100vh - 40px);
+			margin: 0px;
+			// height: calc(100vh - 40px);
 		}
 	}
 

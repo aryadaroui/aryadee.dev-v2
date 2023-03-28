@@ -12,7 +12,7 @@
 
 		<!-- <div class="paper"> -->
 		<title>{data.title}</title>
-		<div data-title>{data.title}</div>
+		<!-- <div data-title>{data.title}</div> -->
 		<div data-date>{data.date}</div>
 
 		<hr />
@@ -21,7 +21,19 @@
 		<!-- </div> -->
 	</article>
 	<aside class="table-of-contents">
-		<Toc breakpoint="1050" />
+		<Toc
+			breakpoint="1050"
+			title=""
+			headingSelector=":is(h1, h2, h3, h4):not(.toc-exclude)"
+			activeHeadingScrollOffset="200"
+			--toc-active-color="#FFEFD8"
+			--toc-active-bg="#1E91D3a9"
+			--toc-li-hover-color="#7AC6EC"
+			--toc-z-index="3"
+			--toc-mobile-bg="#26211D"
+			--toc-mobile-shadow="box-shadow: 0px 5px 30px rgba(black, 0.7);"
+			--toc-mobile-btn-color="#FFEFD8"
+			--toc-mobile-btn-border-radius="10px"/>
 	</aside>
 </main>
 
@@ -32,7 +44,7 @@
 	}
 
 	aside.table-of-contents {
-		position: sticky;
+		// position: sticky;
 		top: 0;
 		float: right;
 		flex-shrink: 0;
