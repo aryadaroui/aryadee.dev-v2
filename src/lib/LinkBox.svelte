@@ -19,14 +19,16 @@
 	}
 
 	#link-box {
-		background-color: rgba($background-color, 0.7);		
+		background-color: $background-translucent;
 		border: $border-link-translucent 1px solid;
-		// box-shadow: 0px 5px 20px black;
-		border-radius: 10px;
-
+		box-shadow: 0px 5px 30px black;
+		border-radius: 15px;
 		// background-image: url(./arrow_gray.svg);
 		background-size: 88px;
 		background-repeat: repeat;
+
+		// backdrop-filter: blur(27px);
+
 
 		display: flex;
 		justify-content: center;
@@ -50,7 +52,7 @@
 
 	#link-box:hover {
 		background-image: url(./arrow_gray.svg);
-		background-size: 88px;
+		background-size: 120px;
 		background-repeat: repeat;
 		// border: rgba(245, 245, 220, 0.5) 1px solid;
 		border: $border-link-translucent-hover 1px solid;

@@ -60,10 +60,7 @@ const config = defineConfig({
 	},
 
 	remarkPlugins: [remarkMath],
-	rehypePlugins: [
-		// [rehypePrettyCode, prettyCodeOptions],
-		rehypeKatex
-	],
+	rehypePlugins: [rehypeKatex],
 
 	highlight: { highlighter },
 

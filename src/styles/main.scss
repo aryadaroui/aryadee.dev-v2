@@ -2,7 +2,7 @@
 @use './vars';
 
 :global(body) {
-    background-color: black;
+    background-color: $background-color;
     color: $ink-color;
     font-family: Hack, monospace;
     margin: 0;

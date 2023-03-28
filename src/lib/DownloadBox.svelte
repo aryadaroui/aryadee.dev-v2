@@ -12,17 +12,16 @@
 	// @import '/src/styles/main.scss';
 	// @use '/src/styles/vars';
 
-
 	a {
 		text-decoration: none;
 		flex: 2;
 	}
 
 	#download-box {
-		background-color: rgba($background-color, 0.7);		
+		background-color: $background-translucent;
 		border: $border-link-translucent 1px solid;
-		// box-shadow: 0px 5px 20px black;
-		border-radius: 10px;
+		box-shadow: 0px 5px 30px black;
+		border-radius: 15px;
 		background-size: 95px;
 		background-repeat: repeat;
 		display: flex;
@@ -32,6 +31,8 @@
 		min-height: 200px;
 		max-width: 600px;
 
+		// backdrop-filter: blur(27px);
+
 		:global(h2) {
 			color: $link-color;
 			position: absolute;
@@ -40,11 +41,9 @@
 		}
 	}
 
-
-
 	#download-box:hover {
 		background-image: url(./plus_gray.svg);
-		background-size: 95px;
+		background-size: 112px;
 		background-repeat: repeat;
 		// border: rgba(245, 245, 220, 0.5) 1px solid;
 		border: $border-link-translucent-hover 1px solid;

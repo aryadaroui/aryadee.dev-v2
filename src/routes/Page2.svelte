@@ -47,16 +47,16 @@
 
 				<ul>
 					<li>
-						Signals: <span class="tag domain">image processing</span> <span class="tag domain">audio</span> <span class="tag domain">n-D data</span>
+						<b>Signals</b>: <span class="tag domain">image processing</span> <span class="tag domain">audio</span> <span class="tag domain">n-D data</span>
 					</li>
 					<li>
-						Data: <span class="tag domain">data analysis</span> <span class="tag domain">visualization</span> <span class="tag domain">machine learning</span>
+						<b>Data</b>: <span class="tag domain">data analysis</span> <span class="tag domain">visualization</span> <span class="tag domain">machine learning</span>
 					</li>
 					<li>
-						Systems: <span class="tag domain">parallelization</span> <span class="tag domain">modeling</span>
+						<b>Systems</b>: <span class="tag domain">parallelization</span> <span class="tag domain">modeling</span>
 					</li>
 					<li>
-						WebDev: <span class="tag domain">frontend</span> <span class="tag domain">graphics</span>
+						<b>WebDev</b>: <span class="tag domain">frontend</span> <span class="tag domain">graphics</span>
 					</li>
 				</ul>
 			</TextBox>
@@ -154,11 +154,15 @@
 		gap: 20px;
 	}
 
+	b {
+		font-weight: 600;
+	}
+
 	h1 {
 		font-family: 'Swiss 721';
 		font-weight: 900;
 		margin: 0;
-		// text-shadow: 0px 5px 20px black;
+		text-shadow: 0px 5px 30px black;
 	}
 
 	#legal {
@@ -238,9 +242,12 @@
 	}
 
 	a {
-		font-family: Hack;
+		font-family: $sans;
+		font-weight: 200;
+		font-size: 1.2em;
 		color: $link-color;
 		text-decoration: none;
+		text-shadow: 0px 5px 30px black;
 	}
 
 	a:hover {

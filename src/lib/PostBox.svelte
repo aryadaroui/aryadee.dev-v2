@@ -35,8 +35,7 @@
 		max-height: 600px;
 
 		background-color: rgba(5, 5, 5, 0.6);
-		border-radius: 10px;
-		border: rgba(158, 226, 253, 0.3) 1px solid;
+		border-radius: 15px;		border: rgba(158, 226, 253, 0.3) 1px solid;
 
 		box-shadow: 0px 5px 20px black;
 
@@ -79,7 +78,7 @@
 		height: 80px;
 		border-bottom: #6d6d6357 1px solid;
 		overflow: hidden;
-		border-radius: 10px 10px 0px 0px;
+		border-radius: 15px 10px 0px 0px;
 	}
 
 	.thumbnail {

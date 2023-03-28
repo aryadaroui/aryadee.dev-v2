@@ -3,15 +3,14 @@
 
 
 // general color palette. visible in /palette.png
-
-$gray-hard: #0b0a0a;  // darker
+$gray-hard: #171312;  // darker
 $brown-hard: #382B25; // dark
-$tan-hard: #DEB587;  // lighter
+$tan-hard: #E2BE97;  // lighter
 $pink-hard: #FF4C8B; // light
 $cyan-hard: #1ED3D3; // light
 $blue-hard: #1E91D3; // light
 
-$gray-mid: #191715;  // back
+$gray-mid: #26211D;  // back
 $brown-mid: #694D41; // paper
 $tan-mid: #E8CDAE;   // front
 $pink-mid: #FF99BE;  // accent
@@ -30,12 +29,13 @@ $blue-soft: #A5E0F5;
 $ink-color: $tan-soft;
 $accent-color: $pink-mid;
 $link-color: $cyan-mid;
-$paper-color: $gray-soft;
+$paper-color: $gray-mid;
 $background-color: $gray-hard;
 
 $border-translucent: rgba($tan-mid, 0.3);
 $border-link-translucent: rgba($blue-mid, 0.4);
 $border-link-translucent-hover: rgba($tan-mid, 0.8);
+$background-translucent: rgba($gray-hard, 0.8);
 
 
 // fonts

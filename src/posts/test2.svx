@@ -14,7 +14,15 @@ what's up here's a link [to somethin](https://google.com)
 
 cool `float` there. this--math -- --- won't work $\sin(x)$ though.
 
-```python {2} showLineNumbers
+### h3 third heading`
+
+cool
+
+#### h4 fourth heading
+
+words
+
+```python
 def howdy(num_friends: int):
 	print('howdy to my ' + str() + ' friends!')
 
@@ -26,6 +34,13 @@ howdy(0)
 $$
 	f(x) = x^2
 $$
+
+$$
+  \int_0^1 x^2 dx = \frac{1}{3}
+$$
+
+
+
 
 - list 1
   - sublist 1

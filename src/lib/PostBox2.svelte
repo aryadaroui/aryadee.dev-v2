@@ -40,7 +40,7 @@
 		'Rayon',
 		'Git',
 		'VS Code',
-		'Jupyter'
+		'Jupyter',
 	];
 	const domains = [
 		'signal processing',
@@ -71,7 +71,9 @@
 			<h2>{title}</h2>
 		</div>
 		<div class="tags">
-			{#each lang_tags as tag}<span class="tag lang">{tag}</span>{/each}{#each tool_tags as tag}<span class="tag tool">{tag}</span>{/each}{#each domain_tags as tag}<span class="tag domain">{tag}</span>{/each}
+			{#each lang_tags as tag}<span class="tag lang">{tag}</span>{/each}{#each tool_tags as tag}<span class="tag tool"
+					>{tag}</span
+				>{/each}{#each domain_tags as tag}<span class="tag domain">{tag}</span>{/each}
 		</div>
 	</div>
 </a>
@@ -134,12 +136,14 @@
 		text-decoration: none;
 		color: $link-color;
 
+		// backdrop-filter: blur(27px);
+
 		font-family: $sans;
 
-		border-radius: 10px;
+		border-radius: 15px;
 		border: $border-link-translucent 1px solid;
-		background-color: rgba($background-color, 0.7);		
-		// box-shadow: 0px 5px 20px black;
+		background-color: $background-translucent;
+		box-shadow: 0px 5px 30px black;
 		overflow: hidden;
 
 		:hover h2 {

@@ -40,10 +40,14 @@
 
 	#text-box {
 		// background-color: rgba(5, 5, 5, 0.7);
-		background-color: rgba($gray-hard, 0.8);		
-		border-radius: 10px;
-		padding: 20px;
-		// box-shadow: 0px 5px 20px black;
+		background-color: $background-translucent;
+		border-radius: 15px;		padding: 20px;
+		box-shadow: 0px 5px 30px black;
+		// box-shadow: 6px 6px 15px #1d1a19, -6px -6px 15px #3f3a37;
+
+		// backdrop-filter: blur(27px);
+
+
 		border: $border-translucent 1px solid;
 
 		max-width: 800px;

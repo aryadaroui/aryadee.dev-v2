@@ -109,13 +109,12 @@
 
 <main>
 	<section id="page-1" style="touch-action: pan-y;">
-		<div id="page-1-content" class="corner-border">
+		<div id="page-1-content" >
 			<div id="hello">
 				<h1><span class="blackground allow-pointer-events"> aryadee </span></h1>
 				<p>
 					<span class="blackground allow-pointer-events"
-						>computer engineer. ndarray lover.
-						<span class="accent">a person from planet earth.</span>
+						>computer engineer.<wbr /> ndarray lover.<wbr /> <span class="accent">a person from planet earth.</span>
 					</span>
 				</p>
 
@@ -123,19 +122,19 @@
 					<p>
 						<a href="/blog" class="chevron-link">
 							<span class="select-chevron blackground">»</span>
-							<span class="link blackground allow-pointer-events">/blog</span>
+							<span class="link blackground allow-pointer-events">blog</span>
 						</a>
 					</p>
 					<p>
 						<a href="/filmic-beta" class="chevron-link">
 							<span class="select-chevron blackground">»</span>
-							<span class="link blackground allow-pointer-events">/projects</span>
+							<span class="link blackground allow-pointer-events">projects</span>
 						</a>
 					</p>
 					<p>
 						<a href="/photo-art-audio" class="chevron-link">
 							<span class="select-chevron blackground">»</span>
-							<span class="link blackground allow-pointer-events">/photo-art-music</span>
+							<span class="link blackground allow-pointer-events">photo-art-music</span>
 						</a>
 					</p>
 				</nav>
@@ -164,7 +163,7 @@
 	main {
 		margin: auto;
 		overflow-x: hidden;
-		font-size: 1.2em;
+		font-size: 1.29em;
 
 		@media only screen and (max-width: 400px) {
 			font-size: 0.9em;
@@ -179,7 +178,6 @@
 
 	a {
 		color: $link-color;
-		text-decoration: none;
 	}
 
 	a:hover {
@@ -220,11 +218,13 @@
 	.scroll-button {
 		background-color: $background-color;
 		border: $ink-color 1px solid;
-		width: 80px;
-		height: 40px;
+		width: 100px;
+		height: 50px;
+		font-size: large;
 		text-align: center;
 		z-index: 2;
 		user-select: none;
+		border-radius: 15px;
 		cursor: pointer;
 
 		&:hover {
@@ -283,6 +283,9 @@
 		bottom: 47px;
 		// opacity: 0.2;
 		color: $gray-soft;
+		// font-family: $sans;
+		// font-weight: 200;
+		// font-size: 1.5em;
 
 		position: absolute;
 		user-select: none;
@@ -294,6 +297,9 @@
 
 	.blackground {
 		background: $background-color;
+		@media only screen and (max-width: 600px) {
+			background: rgb(16, 13, 13); // this is unfortunately hard coded.
+		}
 	}
 
 	#shape-container {
@@ -307,6 +313,9 @@
 	}
 
 	#hello {
+		font-family: $sans;
+		font-size: 1.4em;
+		font-weight: 200;
 		margin: auto;
 		position: absolute;
 		pointer-events: none;
@@ -428,9 +437,10 @@
 		// background-color: rgba(20, 20, 20, 0.5);
 		// background-color: #3a353045;
 		// background-color: rgba($gray-mid, 0.3);
-		background-color: rgba($gray-mid, 0.7);
+		background-color: hsla(0, 0%, 0%, 0.7);
+
 		border-top: #6d6d6357 1px solid;
-		backdrop-filter: blur(27px);
+		backdrop-filter: blur(27px) saturate(1.3) brightness(1.3);
 		// -webkit-backdrop-filter: blur(50px);
 
 		display: flex;
@@ -449,9 +459,8 @@
 
 	#scroll-up-button.scroll-button {
 		transform: scale(1, -1);
-		border-radius: 10px;
-		// box-shadow: 0px 5px 20px black;
-		background-color: rgba($background-color, 0.7);		
+		border-radius: 15px; // box-shadow: 0px 5px 20px black;
+		background-color: rgba($background-color, 0.7);
 	}
 
 	// #scroll-up-button.scroll-button:active {

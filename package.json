@@ -43,6 +43,7 @@
 		"remark-rehype": "^10.1.0",
 		"sass": "^1.59.3",
 		"shiki": "^0.14.1",
+		"svelte-toc": "^0.5.4",
 		"three": "^0.150.1",
 		"unified": "^10.1.2"
 	},
