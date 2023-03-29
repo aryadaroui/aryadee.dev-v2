@@ -130,8 +130,8 @@
 	}
 
 	div[data-rehype-pretty-code-fragment] {
-		margin-top: 2em;
-		margin-bottom: 2em;
+		// margin-top: 1em;
+		// margin-bottom: 1em;
 		border-radius: 15px;
 		border: #2e2a28 1px solid;
 		overflow: hidden;
@@ -139,7 +139,7 @@
 
 		border-radius: 15px;
 		background: #2e2a28;
-		box-shadow: 0px 5px 30px rgba(black, 0.7);
+		// box-shadow: 0px 5px 30px rgba(black, 0.7);
 
 		// box-shadow: 6px 6px 15px #1d1a19, -6px -6px 15px #3f3a37;
 	}

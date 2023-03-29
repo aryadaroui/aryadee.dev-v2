@@ -14,7 +14,7 @@ const config = {
 	// Consult https://github.com/sveltejs/svelte-preprocess
 	// for more information about pre processors
 	preprocess: [preprocess({
-		scss: {prependData: '@import "./src/styles/vars";'}
+		scss: { prependData: '@import "./src/styles/vars";' }
 	}), mdsvex(mdsvexConfig)],
 	// preprocess: [vitePreprocess(), mdsvex(mdsvexConfig)],
 

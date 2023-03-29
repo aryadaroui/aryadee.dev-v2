@@ -21,9 +21,7 @@ weights = np.repeat(1.0, window)/window
 smas = np.convolve(values, weights, 'valid')
 ```
 
-<Callout title="Note" icon="$lib/icons/fire.svg">
-
-hello world
+<Callout title="Note">
 
 ```python showLineNumbers /weights/
 print("Hello World")
