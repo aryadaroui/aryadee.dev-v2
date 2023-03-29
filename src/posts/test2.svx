@@ -14,7 +14,7 @@ what's up here's a link [to somethin](https://google.com)
 
 cool `float` there. this--math -- --- won't work $\sin(x)$ though.
 
-### h3 third heading`
+### h3 third heading
 
 cool
 

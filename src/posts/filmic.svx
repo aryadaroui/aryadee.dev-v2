@@ -259,7 +259,7 @@ axarr[2, 2].axis('off'); axarr[2, 2].set_title('offset = 1.0', color='#CCCCCC')
 
 
     
-![png](filmic-devblog1-film-grain-and-halation_files/filmic-devblog1-film-grain-and-halation_5_1.png)
+<!-- ![png](filmic-devblog1-film-grain-and-halation_files/filmic-devblog1-film-grain-and-halation_5_1.png) -->
     
 
 
@@ -296,7 +296,7 @@ show_img_gray(noise)
 
 
     
-![png](filmic-devblog1-film-grain-and-halation_files/filmic-devblog1-film-grain-and-halation_7_1.png)
+<!-- ![png](filmic-devblog1-film-grain-and-halation_files/filmic-devblog1-film-grain-and-halation_7_1.png) -->
     
 
 
@@ -325,7 +325,7 @@ show_img_rgb(img_out)
 
 
     
-![png](filmic-devblog1-film-grain-and-halation_files/filmic-devblog1-film-grain-and-halation_9_1.png)
+<!-- ![png](filmic-devblog1-film-grain-and-halation_files/filmic-devblog1-film-grain-and-halation_9_1.png) -->
     
 
 
@@ -391,7 +391,7 @@ axarr[1, 1].imshow(rescaled); axarr[1, 1].axis('off'); axarr[1, 1].set_title('re
 
 
     
-![png](filmic-devblog1-film-grain-and-halation_files/filmic-devblog1-film-grain-and-halation_11_2.png)
+<!-- ![png](filmic-devblog1-film-grain-and-halation_files/filmic-devblog1-film-grain-and-halation_11_2.png) -->
     
 
 
@@ -410,7 +410,7 @@ show_img_left_right(img_rgb2, img_out)
 
 
     
-![png](filmic-devblog1-film-grain-and-halation_files/filmic-devblog1-film-grain-and-halation_13_1.png)
+<!-- ![png](filmic-devblog1-film-grain-and-halation_files/filmic-devblog1-film-grain-and-halation_13_1.png) -->
     
 
 

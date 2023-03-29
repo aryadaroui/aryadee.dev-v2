@@ -113,8 +113,7 @@
 			<div id="hello">
 				<h1><span class="blackground allow-pointer-events"> aryadee </span></h1>
 				<p>
-					<span class="blackground allow-pointer-events">
-						<span class="avoid-wrap">computer engineer.</span> <span class="avoid-wrap">ndarray lover.</span> <span class="accent avoid-wrap">a person from planet earth.</span>
+					<span class="blackground allow-pointer-events"><span class="avoid-wrap">computer engineer.</span>&nbsp;<span class="avoid-wrap">ndarray lover.</span>&nbsp;<span class="accent avoid-wrap">a person from planet earth.</span>
 					</span>
 				</p>
 
@@ -208,9 +207,11 @@
 	@keyframes fade-in {
 		from {
 			opacity: 1;
+			// filter: blur(27px);
 		}
 		to {
 			opacity: 0;
+			// filter: none;
 		}
 	}
 

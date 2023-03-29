@@ -172,7 +172,7 @@
 	}
 
 	#post-box:hover {
-		background-image: url(./arrow_gray.svg);
+		background-image: url(./assets/arrow_gray.svg);
 		background-size: 150px;
 		background-repeat: repeat;
 		border: $border-link-translucent-hover 1px solid;

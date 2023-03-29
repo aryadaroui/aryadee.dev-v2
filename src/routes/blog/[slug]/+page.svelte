@@ -12,7 +12,7 @@
 
 		<!-- <div class="paper"> -->
 		<title>{data.title}</title>
-		<!-- <div data-title>{data.title}</div> -->
+		<div data-title>{data.title}</div>
 		<div data-date>{data.date}</div>
 
 		<hr />
@@ -24,11 +24,11 @@
 		<Toc
 			breakpoint="1050"
 			title=""
-			headingSelector=":is(h1, h2, h3, h4):not(.toc-exclude)"
-			activeHeadingScrollOffset="200"
+			headingSelector=":is(h1, h2, h3):not(.toc-exclude)"
+			activeHeadingScrollOffset="150"
 			--toc-active-color="#FFEFD8"
-			--toc-active-bg="#1E91D3a9"
-			--toc-li-hover-color="#7AC6EC"
+			--toc-active-bg="#1ED3D350"
+			--toc-li-hover-color="#1ED3D3dd"
 			--toc-z-index="3"
 			--toc-mobile-bg="#26211D"
 			--toc-mobile-shadow="box-shadow: 0px 5px 30px rgba(black, 0.7);"
@@ -48,12 +48,14 @@
 		top: 0;
 		float: right;
 		flex-shrink: 0;
+		// background-color: #121110;
 	}
 
 	[data-title] {
-		font-weight: 300;
+		font-weight: 200;
 		font-size: 2.5em;
 		margin-bottom: 0;
+		width: 100%;
 	}
 	body {
 		background-color: #0e0d0d;
@@ -62,16 +64,34 @@
 	}
 
 	h1 {
-		font-size: 2.5em;
+		font-size: 2em;
 		font-weight: 300;
-		// background-color: $tan-mid;
-		// color: #0e0d0d;
+		color: $pink-hard;
+	}
+	h2 {
+		font-size: 1.6em;
+		font-weight: 300;
+		color: $pink-mid;
+	}
+	h3 {
+		font-size: 1.2em;
+		font-weight: 300;
+		color: $pink-soft;
+	}
+	h4 {
+		font-size: 1.1em;
+		font-weight: 300;
+		color: $tan-hard;
+	}
+
+	hr {
+		border: $tan-mid 0.5px solid;
 	}
 
 	article {
 		background-color: $background-color;
 		font-family: $sans;
-		color: rgba($ink-color, 0.85);
+		color: rgba($ink-color, 0.9);
 		max-width: 1000px;
 		// margin: auto;
 		font-size: 1.2em;
@@ -83,28 +103,39 @@
 
 	a {
 		color: $link-color;
+		text-decoration: none;
 	}
 
-	h2 {
-		color: $accent-color;
+	a:hover {
+		color: $tan-hard;
+		text-decoration: underline;
 	}
+
+
 
 	pre > code {
 		display: grid;
 	}
 
 	p code {
-		padding: 0.4rem;
-		border-radius: 0.5rem;
+		padding: 0.4em;
+		border-radius: 0.5em;
+		border: $border-translucent 1px solid;
+	}
+
+	li code {
+		padding: 0.4em;
+		border-radius: 0.5em;
 		border: $border-translucent 1px solid;
 	}
 
 	div[data-rehype-pretty-code-fragment] {
-		margin-top: 1rem;
-		margin-bottom: 1rem;
+		margin-top: 2em;
+		margin-bottom: 2em;
 		border-radius: 15px;
 		border: #2e2a28 1px solid;
 		overflow: hidden;
+
 
 		border-radius: 15px;
 		background: #2e2a28;
@@ -130,7 +161,8 @@
 
 	code {
 		padding: 0.5rem;
-		border-radius: 15px;
+		// border-radius: 15px;
+		font-size: 0.85em;
 	}
 
 	pre {

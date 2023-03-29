@@ -51,7 +51,7 @@
 	}
 
 	#link-box:hover {
-		background-image: url(./arrow_gray.svg);
+		background-image: url(./assets/arrow_gray.svg);
 		background-size: 120px;
 		background-repeat: repeat;
 		// border: rgba(245, 245, 220, 0.5) 1px solid;

@@ -5,6 +5,8 @@
 	import TextBox from '$lib/TextBox.svelte';
 	import LinkBox from '$lib/LinkBox.svelte';
 	import PostBox2 from '$lib/PostBox2.svelte';
+	import Accordion from '$lib/Callout.svelte';
+
 </script>
 
 <div id="double-column">
@@ -117,6 +119,7 @@
 				img_src={'devblog2_thumb.png'}
 				link={'/post1'}
 				alt={'thumbnail of filmic devblog 2'} />
+
 			<!-- <TextBox>
 				<h3>Cool links :-)</h3>
 				<ul>

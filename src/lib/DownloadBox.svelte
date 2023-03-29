@@ -42,7 +42,7 @@
 	}
 
 	#download-box:hover {
-		background-image: url(./plus_gray.svg);
+		background-image: url(./assets/plus_gray.svg);
 		background-size: 112px;
 		background-repeat: repeat;
 		// border: rgba(245, 245, 220, 0.5) 1px solid;

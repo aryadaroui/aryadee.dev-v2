@@ -5,9 +5,13 @@ tags:
   - python
 ---
 
+<script>
+ import Callout from '$lib/Callout.svelte';
+</script>
+
 # test3.svx
 
-```python {2-5} showLineNumbers title="test3.py" /weights/
+```python {2-5} showLineNumbers title="test3.py"
 print("Hello World")
 print("Daisy daisy")
 print("Give me your answer do")
@@ -16,5 +20,23 @@ window = 10
 weights = np.repeat(1.0, window)/window
 smas = np.convolve(values, weights, 'valid')
 ```
+
+<Callout title="Note" icon="$lib/icons/fire.svg">
+
+hello world
+
+```python showLineNumbers /weights/
+print("Hello World")
+print("Daisy daisy")
+print("Give me your answer do")
+
+window = 10
+weights = np.repeat(1.0, window)/window
+smas = np.convolve(values, weights, 'valid')
+```
+
+</Callout>
+
+
 
 asdf
