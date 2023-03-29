@@ -423,18 +423,18 @@
 		}
 	}
 
-	.corner-border {
-		background: linear-gradient(to right, $ink-color 1px, transparent 1px) 0 0,
-			linear-gradient(to right, $ink-color 1px, transparent 1px) 0 100%,
-			linear-gradient(to left, $ink-color 1px, transparent 1px) 100% 0,
-			linear-gradient(to left, $ink-color 1px, transparent 1px) 100% 100%,
-			linear-gradient(to bottom, $ink-color 1px, transparent 1px) 0 0,
-			linear-gradient(to bottom, $ink-color 1px, transparent 1px) 100% 0,
-			linear-gradient(to top, $ink-color 1px, transparent 1px) 0 100%,
-			linear-gradient(to top, $ink-color 1px, transparent 1px) 100% 100%;
-		background-repeat: no-repeat;
-		background-size: 10px 10px;
-	}
+	// .corner-border {
+	// 	background: linear-gradient(to right, $ink-color 1px, transparent 1px) 0 0,
+	// 		linear-gradient(to right, $ink-color 1px, transparent 1px) 0 100%,
+	// 		linear-gradient(to left, $ink-color 1px, transparent 1px) 100% 0,
+	// 		linear-gradient(to left, $ink-color 1px, transparent 1px) 100% 100%,
+	// 		linear-gradient(to bottom, $ink-color 1px, transparent 1px) 0 0,
+	// 		linear-gradient(to bottom, $ink-color 1px, transparent 1px) 100% 0,
+	// 		linear-gradient(to top, $ink-color 1px, transparent 1px) 0 100%,
+	// 		linear-gradient(to top, $ink-color 1px, transparent 1px) 100% 100%;
+	// 	background-repeat: no-repeat;
+	// 	background-size: 10px 10px;
+	// }
 
 	#page-2 {
 		position: relative;

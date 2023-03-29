@@ -1,6 +1,6 @@
-<script>
+<!-- <script>
 	// import '/src/styles/main.scss';
-</script>
+</script> -->
 
 <slot />
 

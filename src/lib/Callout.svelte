@@ -15,7 +15,7 @@
 	import warning from '$lib/icons/warning.svelte';
 
 	export let title = '';
-	export let icon = 'heart';
+	export let icon = 'info';
 	export let color = '';
 
 	let icon_component = {
@@ -126,18 +126,20 @@
 			border-radius: 15px;
 			border: $border-translucent 1px solid;
 			margin: 0;
-			padding: 1px 11px 1px 11px;
+			padding: 1px 8px 1px 8px;
 
 			font-family: $sans;
 			font-weight: 300;
 			font-size: 1.2em;
+			overflow: hidden;
 
 			.title {
 				position: relative;
-				padding: 10px;
+				padding: 10px 2px 10px 2px;
 				display: flex;
 				justify-content: space-between;
 				align-items: center;
+				// border: $accent-color 1px solid;
 				// background-color: #135477;
 				// background-color: $accent-color;
 
@@ -157,9 +159,6 @@
 			padding-top: 20px;
 			border-radius: 0px 0px 15px 15px;
 
-			div[data-rehype-pretty-code-fragment] {
-				box-shadow: none;
-			}
 		}
 
 		svg {

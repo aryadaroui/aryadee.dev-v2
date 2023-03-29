@@ -20,7 +20,15 @@ const config = {
 
 	kit: {
 		adapter: adapter()
-	}
+	},
+
+	// temporary, while the a11y warnings are being fixed
+	onwarn: (warning, handler) => {
+        if (warning.code.startsWith('a11y-')) {
+            return;
+        }
+        handler(warning);
+    },
 };
 
 export default config;

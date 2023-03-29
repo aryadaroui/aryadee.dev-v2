@@ -21,7 +21,14 @@ weights = np.repeat(1.0, window)/window
 smas = np.convolve(values, weights, 'valid')
 ```
 
-<Callout title="Note">
+<Callout title="spaghetti" icon="note"  color="blue">
+
+
+omg a callout!
+
+$$
+\sum \frac{1}{n}
+$$
 
 ```python showLineNumbers /weights/
 print("Hello World")
