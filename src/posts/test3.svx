@@ -21,19 +21,25 @@ weights = np.repeat(1.0, window)/window
 smas = np.convolve(values, weights, 'valid')
 ```
 
-<Callout title="spaghetti" icon="note"  color="blue">
 
 
-omg a callout!
 
-$$
-\sum \frac{1}{n}
-$$
 
-```python showLineNumbers /weights/
+
+
+
+
+
+
+
+<Callout title="A callout!" icon="terminal"  >
+
+Wow look at this code!
+
+```python {2}  /weights/
 print("Hello World")
 print("Daisy daisy")
-print("Give me your answer do")
+print("Give me your answer do") asdf asdf asd fas df asd fasdf asdfas df asdf s aasdfa sdfa sdf as df asd fas df asd f asdf asd f asd f
 
 window = 10
 weights = np.repeat(1.0, window)/window
@@ -43,5 +49,105 @@ smas = np.convolve(values, weights, 'valid')
 </Callout>
 
 
+<Callout title="A callout!" icon="heart"  >
+
+Wow look at this code!
+
+
+```python {2}  /weights/
+print("Hello World")
+print("Daisy daisy")
+print("Give me your answer do") asdf asdf asd fas df asd fasdf asdfas df asdf s aasdfa sdfa sdf as df asd fas df asd f asdf asd f asd f
+
+window = 10
+weights = np.repeat(1.0, window)/window
+smas = np.convolve(values, weights, 'valid')
+```
+
+</Callout>
+
+<Callout title="A callout!" icon="bug"  >
+
+Wow look at this code!
+
+
+```python {2}  /weights/
+print("Hello World")
+print("Daisy daisy")
+print("Give me your answer do") asdf asdf asd fas df asd fasdf asdfas df asdf s aasdfa sdfa sdf as df asd fas df asd f asdf asd f asd f
+
+window = 10
+weights = np.repeat(1.0, window)/window
+smas = np.convolve(values, weights, 'valid')
+```
+
+</Callout>
+
+<Callout title="A callout!" icon="warning"  >
+
+Wow look at this code!
+
+
+```python {2}  /weights/
+print("Hello World")
+print("Daisy daisy")
+print("Give me your answer do") asdf asdf asd fas df asd fasdf asdfas df asdf s aasdfa sdfa sdf as df asd fas df asd f asdf asd f asd f
+
+window = 10
+weights = np.repeat(1.0, window)/window
+smas = np.convolve(values, weights, 'valid')
+```
+
+</Callout>
+
+<Callout title="A callout!" icon="lightning"  >
+
+Wow look at this code!
+
+
+```python {2}  /weights/
+print("Hello World")
+print("Daisy daisy")
+print("Give me your answer do") asdf asdf asd fas df asd fasdf asdfas df asdf s aasdfa sdfa sdf as df asd fas df asd f asdf asd f asd f
+
+window = 10
+weights = np.repeat(1.0, window)/window
+smas = np.convolve(values, weights, 'valid')
+```
+
+</Callout>
+
+<Callout title="A callout!" icon="smile"  >
+
+Wow look at this code!
+
+
+```python {2}  /weights/
+print("Hello World")
+print("Daisy daisy")
+print("Give me your answer do") asdf asdf asd fas df asd fasdf asdfas df asdf s aasdfa sdfa sdf as df asd fas df asd f asdf asd f asd f
+
+window = 10
+weights = np.repeat(1.0, window)/window
+smas = np.convolve(values, weights, 'valid')
+```
+
+</Callout>
+
+<Callout title="A callout!" icon="code"  >
+
+Wow look at this code!
+
+```python {2}  /weights/
+print("Hello World")
+print("Daisy daisy")
+print("Give me your answer do") asdf asdf asd fas df asd fasdf asdfas df asdf s aasdfa sdfa sdf as df asd fas df asd f asdf asd f asd f
+
+window = 10
+weights = np.repeat(1.0, window)/window
+smas = np.convolve(values, weights, 'valid')
+```
+
+</Callout>
 
 asdf

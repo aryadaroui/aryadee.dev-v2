@@ -1,15 +1,16 @@
-@use './prism';
+// @use './prism';
 @use './vars';
 
 :global(body) {
-    background-color: $background-color;
+    // background-color: $background-color;
     color: $ink-color;
-    font-family: Hack, monospace;
+    font-family: $sans;
+    // font-family: Hack, monospace;
     margin: 0;
 }
 
 ::selection {
-    background: #fbd4df50;
+    background: rgba($blue-mid, $alpha: 0.3);
 }
 
 .accent {

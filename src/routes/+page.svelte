@@ -4,6 +4,7 @@
 	import Page2 from './Page2.svelte';
 
 	onMount(() => {
+		console.log('onMount HOME');
 		Shape.init(document.getElementById('shape-container'), '#E2C09B', document.getElementById('page-1'));
 
 		let scroll_down_button = document.querySelector('#scroll-down-button');
@@ -113,7 +114,9 @@
 			<div id="hello">
 				<h1><span class="blackground allow-pointer-events"> aryadee </span></h1>
 				<p>
-					<span class="blackground allow-pointer-events"><span class="avoid-wrap">computer engineer.</span>&nbsp;<span class="avoid-wrap">ndarray lover.</span>&nbsp;<span class="accent avoid-wrap">a person from planet earth.</span>
+					<span class="blackground allow-pointer-events"
+						><span class="avoid-wrap">computer engineer.</span>&nbsp;<span class="avoid-wrap">ndarray lover.</span>&nbsp;<span
+							class="accent avoid-wrap">a person from planet earth.</span>
 					</span>
 				</p>
 
@@ -159,6 +162,14 @@
 </main>
 
 <style lang="scss">
+	// :global(body) {
+	// 	background-color: $background-color;
+	// }
+
+	:root {
+		background-color: $background-color;
+	}
+
 	main {
 		margin: auto;
 		overflow-x: hidden;
@@ -287,8 +298,8 @@
 		right: 62px;
 		bottom: 47px;
 		// opacity: 0.2;
-		color: $gray-soft;
-		// font-family: $sans;
+		color: $brown-soft;
+		font-family: $mono;
 		// font-weight: 200;
 		// font-size: 1.5em;
 
@@ -306,7 +317,7 @@
 		border-radius: 0.2em;
 		line-height: 1.3;
 		@media only screen and (max-width: 600px) {
-			background: rgb(16, 13, 13); // this is unfortunately hard coded.
+			background: rgb(26, 22, 20); // this is unfortunately hard coded.
 		}
 	}
 
@@ -381,7 +392,7 @@
 	@keyframes hint {
 		0% {
 			// opacity: 1;
-			color: $gray-soft;
+			color: $brown-soft;
 		}
 		10% {
 			color: $accent-color;
@@ -392,7 +403,7 @@
 		}
 		100% {
 			// opacity: 0.2;
-			color: $gray-soft;
+			color: $brown-soft;
 		}
 	}
 
@@ -401,7 +412,7 @@
 			color: $ink-color;
 		}
 		100% {
-			color: $gray-soft;
+			color: $brown-soft;
 		}
 	}
 

@@ -6,6 +6,7 @@
 	import LinkBox from '$lib/LinkBox.svelte';
 	import PostBox2 from '$lib/PostBox2.svelte';
 	import Accordion from '$lib/Callout.svelte';
+	import Heart from '$lib/icons/heart.svelte';
 
 </script>
 
@@ -26,7 +27,7 @@
 			</div>
 
 			<TextBox>
-				<h3>Languages and tools I &lt;3</h3>
+				<h3>Languages and tools I&thinsp;&thinsp;<Heart /></h3>
 				<ul>
 					<li>
 						<span class="tag lang">Python</span> <span class="tag tool">NumPy</span> <span class="tag tool">Pandas</span>

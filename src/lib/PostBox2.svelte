@@ -122,7 +122,7 @@
 	}
 
 	.domain {
-		background-color: $gray-hard;
+		background-color: $gray-harder;
 		border: hsl(19, 20%, 25%) 1px solid; // $brown-hard but lighter
 		color: $tan-hard;
 	}

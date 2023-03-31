@@ -3,9 +3,10 @@
 
 
 // general color palette. visible in /palette.png
-$gray-hard: #171312;  // darker
+$gray-harder: #171312;
+$gray-hard: #251f1d;  // darker
 $brown-hard: #382B25; // dark
-$tan-hard: #E2BE97;  // lighter
+$tan-hard: #EFC79C;  // lighter
 $pink-hard: #F7679C; // light
 $cyan-hard: #1ED3D3; // light
 $blue-hard: #1E91D3; // light
@@ -29,17 +30,19 @@ $blue-soft: #A5E0F5;
 $ink-color: $tan-soft;
 $accent-color: $pink-mid;
 $link-color: $cyan-mid;
-$paper-color: $gray-mid;
+$paper-color: $gray-hard;
 $background-color: $gray-hard;
+$void-color: $gray-harder;
 
 $border-translucent: rgba($tan-mid, 0.3);
 $border-link-translucent: rgba($blue-mid, 0.4);
 $border-link-translucent-hover: rgba($tan-mid, 0.8);
-$background-translucent: rgba($gray-hard, 0.8);
+$background-translucent: rgba($paper-color, 0.8);
 
 
 // fonts
 
 $sans: 'Swiss 721', sans-serif;
+// $sans: 'Switzer', sans-serif;
 $mono: 'Hack', monospace;
 // $serif: 'Georgia', serif;

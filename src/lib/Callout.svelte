@@ -48,24 +48,26 @@
 		warning: 'orange',
 	};
 
+	// TODO: add black, white, gray transparent
+
 	const foreground_colors = {
-		purple: '#805AD5',
-		blue: '#1E91D3',
-		green: '#38A169',
-		yellow: '#ECC94B',
-		orange: '#ED8936',
-		red: '#E53E3E',
-		pink: '#D53F8C',
+		purple: '#C267F7',
+		blue: '#6789F7',
+		green: '#45DDA8',
+		yellow: '#E8D16F',
+		orange: '#F79767',
+		red: '#F76767',
+		pink: '#F7679C',
 	};
 
 	const background_colors = {
-		purple: '#6039D5',
-		blue: '#034467',
-		green: '#189069',
-		yellow: '#CAC74B',
-		orange: '#CD6736',
-		red: '#C51E1E',
-		pink: '#A51F6C',
+		purple: '#49304F',
+		blue: '#34384F',
+		green: '#345144',
+		yellow: '#564B2E',
+		orange: '#563B2E',
+		red: '#56302E',
+		pink: '#56303A',
 	};
 
 	if (color === '') {
@@ -111,7 +113,7 @@
 	</button>
 
 	{#if is_expanded}
-		<div class="content" transition:slide={{ duration: 200 }} style="background: {background_color};">
+		<div class="content" transition:slide={{ duration: 300 }} style="background: {background_color};">
 			<slot />
 		</div>
 	{/if}
@@ -162,7 +164,7 @@
 		}
 
 		svg {
-			transition: transform 0.2s ease-out;
+			transition: transform 0.25s ease-out;
 		}
 
 		[aria-expanded='true'] {
