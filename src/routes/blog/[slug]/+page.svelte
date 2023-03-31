@@ -2,36 +2,10 @@
 	import { onMount } from 'svelte';
 	export let data;
 	import Toc from 'svelte-toc';
-
-	// console.log(data);
-
-	// console.log(document.querySelectorAll('[data-rehype-pretty-code]'));
-
-	// document.querySelectorAll('[data-rehype-pretty-code]').forEach(
-	// 	(el) => {
-	// 		el.onclick = () => {
-	// 			console.log('clicked');
-	// 		}
-	// 	}
-	// )
-
-	// onMount(() => {
-	// 	console.log(document.querySelectorAll('[data-rehype-pretty-code-fragment]'));
-	// 	document.querySelectorAll('[data-rehype-pretty-code-fragment]').forEach((el) => {
-	// 		el.setAttribute('tabindex', '0');
-
-	// 		// console.log(el);
-
-	// 		// el.addEventListener('click', () => {
-	// 		// 	// console.log('clicked');
-
-	// 		// 	// focus the element
-	// 		// });
-	// 	});
-	// });
 </script>
 
 <main>
+	<div class="margin-padding" />
 	<article>
 		<!-- <h1>{data.title}</h1> -->
 		<!-- <p>Published: {data.date}</p> -->
@@ -46,7 +20,7 @@
 		<svelte:component this={data.content} />
 		<!-- </div> -->
 	</article>
-	<!-- <aside class="table-of-contents">
+	<aside class="table-of-contents">
 		<Toc
 			breakpoint="1050"
 			title=""
@@ -56,11 +30,11 @@
 			--toc-active-bg="#1ED3D350"
 			--toc-li-hover-color="#1ED3D3dd"
 			--toc-z-index="3"
-			--toc-mobile-bg="#26211D"
+			--toc-mobile-bg="#171312"
 			--toc-mobile-shadow="box-shadow: 0px 5px 30px rgba(black, 0.7);"
 			--toc-mobile-btn-color="#FFEFD8"
 			--toc-mobile-btn-border-radius="10px" />
-	</aside> -->
+	</aside>
 </main>
 
 <style global lang="scss">
@@ -78,20 +52,56 @@
 		font-size: 1.4em;
 		padding: 100px;
 		padding-top: 50px;
-		min-width: 600px;
+		min-width: 500px;
 
-		flex-grow: 2;
+		flex-grow: 3;
+		margin-left: 2vw;
+
+		@media (max-width: 1050px) {
+			// width: 0;
+			// flex-shrink: 1;
+			// flex-grow: 1;
+			// visibility: hidden;
+			margin-left: 0;
+		}
+	}
+
+	div.margin-padding {
+		max-width: 300px;
+		flex-shrink: 0;
+		flex-grow: 1;
+
+		@media (max-width: 1050px) {
+			width: 0;
+			// flex-shrink: 1;
+			// flex-grow: 1;
+			visibility: hidden;
+		}
 	}
 
 	aside.table-of-contents {
-		// position: absolute;
-		top: 0;
+		// position: sticky;
+		// left: 0;
+		// right: 0;
+		// top: 0;
 		// float: right;
 		// left: 100%;
 		flex-shrink: 0;
 		font-size: 1.2em;
-		max-width: 300px;
-		background-color: #121110;
+		// max-width: 300px;
+		width: 300px;
+
+		z-index: 3;
+		// height: 100vh;
+		// width: 100%;
+		// background-color: #121110;
+
+		// margin-right: auto;
+		@media (max-width: 1050px) {
+			width: 0;
+			flex-shrink: 1;
+			flex-grow: 1;
+		}
 	}
 
 	[data-title] {
@@ -176,9 +186,11 @@
 	div[data-rehype-pretty-code-fragment] {
 		// margin-top: 1em;
 		// margin-bottom: 1em;
+		position: relative;
 		border-radius: 15px;
 		border: #2e2a28 1px solid;
 		overflow: hidden;
+		z-index: 100;
 
 
 		width: 100%;
@@ -198,28 +210,50 @@
 		// box-shadow: 6px 6px 15px #1d1a19, -6px -6px 15px #3f3a37;
 	}
 
+	// a lot of silliness to make the code blocks responsive but not overflow
 	div[data-rehype-pretty-code-fragment]:focus {
-		// position: absolute;
 
-		// margin: 50px;
-		// left: 10px;
-		// margin: 0;
-		// bottom: 10px;
+		position: relative;
 		border: 1px solid $blue-hard;
-		width: 99vw;
+		transition: all 0.3s ease;
 		z-index: 100;
 
+		left: 0;
+
+		width: 98vw;
 		margin-left: calc(50% - 50vw);
 		margin-right: calc(50% - 50vw);
 
-		transition: all 0.3s ease;
+		// @media (max-width: 1820px) {
+		// 	margin-left: calc(50% - 42vw);
+		// 	width: 90vw;
+		// }
 
-		// transition: width 0.3s ease;
-		// transition: margin 0.3s ease;
+		// @media (max-width: 1550px) {
+		// 	margin-left: -100px;
+		// 	width: 95vw;
+		// }
 
-		// margin-right: calc(70% - 50vw);
-		// padding-left: calc(50vw - 50%);
-		// padding-right: calc(50vw - 50%);
+		@media (max-width: 1800px) {
+			// margin-left: calc(45% - 45vw);
+			margin-left: calc(((100vw - 100% - 300px - 200px) * -1) - 80px);
+			width: 97vw;
+
+		}
+
+
+		@media (max-width: 1050px) {
+			margin-left: calc(50% - 49vw);
+			width: 98vw;
+
+		}
+
+
+		@media (max-width: 690px) {
+			margin-left: calc(50% - 50vw);
+			width: 98vw;
+
+		}
 	}
 
 	code {
@@ -244,7 +278,6 @@
 		overflow: scroll;
 
 		tab-size: 1.2em;
-
 
 		span.highlighted {
 			background-color: rgba($blue-mid, $alpha: 0.15);
