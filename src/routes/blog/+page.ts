@@ -12,17 +12,20 @@ export async function load() {
 
 		const posts = [];
 		for (const post_path in post_paths) {
-			post_paths[post_path]().then((post) => {
+			await post_paths[post_path]().then((post) => {
 				// debugger;
 				if (Object.prototype.hasOwnProperty.call(post, "metadata")) {
-					posts.push({
+					 posts.push({
 						post_path: post_path,
+						slug: post_path.split('/').pop().split('.').shift(),
 						title: post.metadata.title,
 						tags: post.metadata.tags,
 					});
 				}
 			});
 		}
+
+
 
 
 		return { posts };

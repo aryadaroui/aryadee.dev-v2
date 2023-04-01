@@ -1,6 +1,10 @@
 <script>
 	import PostBox2 from '$lib/PostBox2.svelte';
 
+	export let data;
+	let posts = data.posts;
+
+	// console.log(posts);
 </script>
 
 <!-- <h1>blog</h1>
@@ -15,12 +19,20 @@
 	alt={'thumbnail of thesis'}
 	link={'/post1'} /> -->
 
-
 <main>
 	<p>howdy</p>
+		{#each posts as post}
+			<PostBox2
+				title={post.title}
+				tags={['TypeScript', 'WebGL', 'Svelte', 'image processing']}
+				img_src={'filmic_thumb.png'}
+				link={"/blog/" + post.slug}
+				alt={'thumbnail of filmic app'} />
+		{/each}
+
+
+	<p>more stuff</p>
 </main>
-
-
 
 <style lang="scss">
 	main {
@@ -28,8 +40,7 @@
 		max-width: 1200px;
 		background-color: $background-color;
 	}
-	:root{
+	:root {
 		background-color: $void-color;
-
 	}
 </style>

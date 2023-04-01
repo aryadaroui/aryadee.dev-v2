@@ -5,15 +5,20 @@ update:
 tags:
 ---
 
+<img src="/workflow.webp" >
+
 # Workflow
 - Exercise!
 - Avoid caffeine
 - DRAW diagrams!!!
 
+I (Alex Turner) present a "top right vector" which, when added to forward passes in a range of mazes, attracts the agent to the top-right corner of each maze. Furthermore, the cheese and top-right vectors compose with each other, allowing (limited but substantial) mix-and-match modification of the network's runtime goals. 
+
+
+
 # Hardware
 - 💻 M1 mac laptop
 	- Doesn't burn my legs when I try to watch a YouTube video. 10 / 10.
-	- I know CMake is hard and that the one guy who made all the build scripts got layed off, but a surprising number of apps still aren't ARM64 native.
 - ⌨️ Keychron K3 w/ banana switches
 	- Because the stock Apple keyboard isn't great, and full mechanical keyboards are too tall.
 - 🖱️ Razer Basilisk v3
@@ -23,11 +28,12 @@ tags:
 
 # Software
 
+
 ## Languages
 - 🐍 Python
 	- Almost every idea of mine starts its life as a Python script. As plans grow more ambitious in performance or UI--only then do I start to reach elsewhere. But even in those areas, with stellar modules like NumPy, and Textual really stretch out when I'm ready to move to another lang.
 - 🦕 TypeScript
-		- JS is as prolific as it is a pain, but TypeScript smoothes out a lot of the rough edges. Silly `[Object object]`  stuff still happens and there's fractured support for types on npm, but there's only so much you can do when JS is the foundation. On the other hand, using it for frameworks and tools that support it out-the-box (like Svelte) is a delight.
+		- JS is as prolific as it is a pain, but TypeScript smoothes out a lot of the rough edges. Silly `[Object object]` stuff still happens and there's fractured support for types on npm, but there's only so much you can do when JS is the foundation. On the other hand, using it for frameworks and tools that support it out-the-box (like Svelte) is a delight.
 - 🧮 C & C++
 	- My first love. Its roundabout syntax will forever be burned into my soul, and its 100 line template errors into my eyes. I try to reach for Rust everytime I feel like something should be done in C++, but I still yearn for more opportunities to write awful code in C.
 - 🦀 Rust
