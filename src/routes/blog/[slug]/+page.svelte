@@ -1,6 +1,7 @@
 <script>
 	import { onMount } from 'svelte';
 	export let data;
+	// @ts-ignore cannot find module & types. it does exist
 	import Toc from 'svelte-toc';
 </script>
 
@@ -43,6 +44,14 @@
 		justify-content: center;
 	}
 
+	ul {
+		// line-height: 1.8em;
+
+		li {
+			margin-bottom: 0.5em;
+		}
+	}
+
 	article {
 		background-color: $paper-color;
 		font-family: $sans;
@@ -78,6 +87,7 @@
 			visibility: hidden;
 		}
 	}
+
 
 	aside.table-of-contents {
 		// position: sticky;
@@ -190,8 +200,7 @@
 		border-radius: 15px;
 		border: #2e2a28 1px solid;
 		overflow: hidden;
-		z-index: 100;
-
+		// z-index: 100;
 
 		width: 100%;
 		// width: 45vw;
@@ -212,7 +221,6 @@
 
 	// a lot of silliness to make the code blocks responsive but not overflow
 	div[data-rehype-pretty-code-fragment]:focus {
-
 		position: relative;
 		border: 1px solid $blue-hard;
 		transition: all 0.3s ease;
@@ -238,21 +246,16 @@
 			// margin-left: calc(45% - 45vw);
 			margin-left: calc(((100vw - 100% - 300px - 200px) * -1) - 80px);
 			width: 97vw;
-
 		}
-
 
 		@media (max-width: 1050px) {
 			margin-left: calc(50% - 49vw);
 			width: 98vw;
-
 		}
-
 
 		@media (max-width: 690px) {
 			margin-left: calc(50% - 50vw);
 			width: 98vw;
-
 		}
 	}
 

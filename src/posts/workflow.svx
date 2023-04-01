@@ -1,0 +1,122 @@
+---
+title: Workflow and tools
+date: 31 Mar 2021
+update:
+tags:
+---
+
+# Workflow
+- Exercise!
+- Avoid caffeine
+- DRAW diagrams!!!
+
+# Hardware
+- 💻 M1 mac laptop
+	- Doesn't burn my legs when I try to watch a YouTube video. 10 / 10.
+	- I know CMake is hard and that the one guy who made all the build scripts got layed off, but a surprising number of apps still aren't ARM64 native.
+- ⌨️ Keychron K3 w/ banana switches
+	- Because the stock Apple keyboard isn't great, and full mechanical keyboards are too tall.
+- 🖱️ Razer Basilisk v3
+	- Extra buttons remapped with Better Touch Tool for near feature parity with trackpad gestures. Total game changer.
+- 🖥️ Dual 2560×1440 (2.5k) 120 Hz displays.
+	- 1920×1080 is too small and 4k is scaled poorly on macOS. The sweetspot of 2.5k can run higher refresh rates, which is arguably more important.
+
+# Software
+
+## Languages
+- 🐍 Python
+	- Almost every idea of mine starts its life as a Python script. As plans grow more ambitious in performance or UI--only then do I start to reach elsewhere. But even in those areas, with stellar modules like NumPy, and Textual really stretch out when I'm ready to move to another lang.
+- 🦕 TypeScript
+		- JS is as prolific as it is a pain, but TypeScript smoothes out a lot of the rough edges. Silly `[Object object]`  stuff still happens and there's fractured support for types on npm, but there's only so much you can do when JS is the foundation. On the other hand, using it for frameworks and tools that support it out-the-box (like Svelte) is a delight.
+- 🧮 C & C++
+	- My first love. Its roundabout syntax will forever be burned into my soul, and its 100 line template errors into my eyes. I try to reach for Rust everytime I feel like something should be done in C++, but I still yearn for more opportunities to write awful code in C.
+- 🦀 Rust
+	- I'm still slowly learning Rust, but from my experience so far, it does so many things right. There're enough people espousing the borrow checker, so I'll speak to its other benefits:
+		- Its package management system (Cargo) is intuitive to use
+		- Its tooling and integration (mainly rust-analyzer) is awesome
+		- Its base language features (traits, options, unsafe encapsulation) are the right steps forward in language design
+
+## General apps
+-  📝 VS Code 
+	- Maybe one day we'll wonder if it was a good idea to let Microsoft curate the entire development experience end-to-end. But until that day comes, I'll be using Copilot to save seconds of my life writing boilerplate.
+- 📓 Obsidian
+	- In a market full of paid markdown notes app, Obsidian is a standout in providing a ton of customization and plugin options for programmer-types who love to tinker with their workflow for *free*.
+- 🎨 Affinity Designer & Affinity Photo
+	- A one time fee, and nearly all the same features as Adobe's expensive subscription options.
+- 🪟 Lasso + Rectangle
+	- With these two apps paired together, you get better and more intuitive window management than (I've personally experienced) on Windows.
+- 💾 iCloud
+	- Syncs all my Obsidian notes, audio projects, photos, and code seamlessly and dependably. Not great for sharing files with people outside the Apple ecosystem, though.
+
+# Photo
+- 📷 Fujifilm X-E4
+	- I love the compact, casualness of the rangefinder body
+	- I really thought the film simulations would be a gimmick, but they're actually great
+- 🔭 35mm f/0.95
+	- Super cheap manual focus lens with significant chromatic abberation, but the fast aperture is to die for
+	- This is by far my favorite lens and is almost always on my camera (despite how heavy it is--phew!)
+- 🖌️ Pixelmator Pro, Affinity Photo, Filmic, TrueGrain 2
+
+# Music
+- 🎸 Modded Jazzmaster
+	- Series / parallel rhythm circuit
+	- Bass, mid, treble EQ circuit
+- 🎹 Minilogue XD
+	- The programmable digital oscillator opens up so many options beyond a normal synth
+- 🎚️ Logic Pro X
+	- For a fairly cheap one-time fee, you get the whole app plus all stock plugins that are actually really good
+	- Admittedly, it's a bit buggy
+
+
+# Other
+
+## Favorite fonts
+- Mono: Hack<br>
+<div class="specimen">
+	<span class="hack">How strange it is to be anything at all</span>
+</div>
+- Sans: Switzer<br>
+<div class="specimen">
+	<span class="sans">How strange it is to be anything at all</span>
+</div>
+- Serif: Computer Modern
+<div class="specimen">
+	<span class="serif">How strange it is to be anything at all</span><br>
+</div>
+
+
+<style>
+	@font-face {
+	font-family: "CMU Serif";
+	font-style: roman;
+	font-weight: 500;
+	unicode-range: U+21-7E, U+192, U+3C0, U+2202, U+2206, U+220F, U+2211, U+221A, U+221E, U+222B, U+2260, U+D835, U+DC00-DC54, U+DC56-DC67;
+	src: url('https://cdn.jsdelivr.net/gh/dreampulse/computer-modern-web-font@master/font/Serif/cmunrm.woff') format('woff'),
+		 url('https://cdn.jsdelivr.net/gh/dreampulse/computer-modern-web-font@master/font/Serif/cmunrm.ttf') format('truetype')
+}
+
+.specimen {
+background-color: #171312;
+text-align: center;
+border-radius: 0.5em;
+padding: 0.5em;
+}
+
+.hack {
+	font-family: Hack;
+	font-size: 1.45em;
+}
+
+.sans {
+	font-family: Switzer;
+	font-size: 1.6em;
+
+}
+
+.serif {
+	font-family: "CMU Serif";
+	font-size: 1.6em;
+
+}
+
+</style>

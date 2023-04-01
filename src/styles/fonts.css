@@ -46,7 +46,7 @@
 
 /* TODO: restyle with Switzer */
 
-/* @font-face {
+@font-face {
 	font-family: switzer;
 	font-style: normal;
 	font-weight: 100;
@@ -170,7 +170,7 @@
 	font-style: italic;
 	font-weight: 900;
 	src: local('Switzer'), url(https://fonts.cdnfonts.com/s/85792/Switzer-BlackItalic.woff) format('woff')
-} */
+}
 
 
 /* Swiss 721 */
