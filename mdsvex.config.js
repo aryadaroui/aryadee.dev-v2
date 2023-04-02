@@ -12,6 +12,9 @@ import rehypeStringify from 'rehype-stringify'
 
 import { visit } from 'unist-util-visit';
 
+// import fs from 'fs';
+import bubble_dark from './src/styles/bubble_dark.json' assert {type: "json"};
+
 function addCustomAttribute() {
 	return function transformer(tree) {
 		visit(tree, ['element'], function (node) {
@@ -47,11 +50,12 @@ ${code}
 
 
 	// console.log(file)
-	return file;
+	return file.toString().replaceAll('{', "&#123;").replaceAll('}', "&#125;");
 }
 
 const prettyCodeOptions = {
 	theme: "rose-pine-moon",
+	// theme: bubble_dark,
 	onVisitLine(node) {
 		// Prevent lines from collapsing in `display: grid` mode, and allow empty
 		// lines to be copy/pasted

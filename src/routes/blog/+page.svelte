@@ -22,7 +22,12 @@
 
 <main>
 	<p>howdy</p>
-	<ImgCap src="/workflow.webp" alt="Programming with my cat." caption="Pair programming is important." make_fit="true" />
+
+	<!-- <pre>
+		<code>
+			
+		</code>
+	</pre> -->
 
 	{#each posts as post}
 		<PostBox2

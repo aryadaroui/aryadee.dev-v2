@@ -24,12 +24,10 @@ words
 
 ```python
 def howdy(num_friends: int):
-	print('howdy to my ' + str() + ' friends!')
+	print('howdy to my ' + str(num_friends) + ' friends!')
 
 howdy(0)
 ```
-
-
 
 $$
 	f(x) = x^2
@@ -39,6 +37,14 @@ $$
   \int_0^1 x^2 dx = \frac{1}{3}
 $$
 
+can we test some javascript please?
+
+```js
+// some simple javascript
+function howdy(num_friends) {
+  console.log('howdy to my ' + num_friends + ' friends!');
+}
+```
 
 
 

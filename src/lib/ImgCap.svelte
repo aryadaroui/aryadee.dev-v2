@@ -5,7 +5,7 @@
 	export let make_fit = "true";
 
 	// debugger;
-	console.log(make_fit);
+	// console.log(make_fit);
 </script>
 
 <div id="img-cap">
