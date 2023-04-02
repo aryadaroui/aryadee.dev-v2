@@ -141,7 +141,7 @@
 		font-family: $sans;
 
 		border-radius: 15px;
-		border: $border-link-translucent 1px solid;
+		border: $border-link-translucent 2px solid;
 		background-color: $background-translucent;
 		box-shadow: 0px 5px 30px black;
 		overflow: hidden;
@@ -175,7 +175,7 @@
 		background-image: url(./assets/arrow_gray.svg);
 		background-size: 150px;
 		background-repeat: repeat;
-		border: $border-link-translucent-hover 1px solid;
+		border: $border-link-translucent-hover 2px solid;
 
 		text-decoration: underline;
 		text-decoration-thickness: 1.5px;

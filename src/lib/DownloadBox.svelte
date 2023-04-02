@@ -19,7 +19,7 @@
 
 	#download-box {
 		background-color: $background-translucent;
-		border: $border-link-translucent 1px solid;
+		border: $border-link-translucent 2px solid;
 		box-shadow: 0px 5px 30px black;
 		border-radius: 15px;
 		background-size: 95px;
@@ -46,7 +46,7 @@
 		background-size: 112px;
 		background-repeat: repeat;
 		// border: rgba(245, 245, 220, 0.5) 1px solid;
-		border: $border-link-translucent-hover 1px solid;
+		border: $border-link-translucent-hover 2px solid;
 
 		:global(h2) {
 			text-decoration: underline;

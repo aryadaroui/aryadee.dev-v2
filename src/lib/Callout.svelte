@@ -126,34 +126,59 @@
 
 			width: 100%;
 			border-radius: 15px;
-			border: $border-translucent 1px solid;
+			border: $border-link-translucent 1px solid;
+			// border: none;
 			margin: 0;
-			padding: 1px 8px 1px 8px;
+			padding: 1px 1px 1px 1px;
 
 			font-family: $sans;
 			font-weight: 300;
 			font-size: 1.2em;
 			overflow: hidden;
 
+			// transition: all 0.3s ease;
+
+			// transition: border 0.3s ease;
+
+			// transition: border 0.3s ease;
+
+			// transition: border 0.3s ease;
+
+
 			.title {
 				position: relative;
-				padding: 10px 2px 10px 2px;
+				padding: 8px 12px 8px 15px;
 				display: flex;
 				justify-content: space-between;
 				align-items: center;
-				// border: $accent-color 1px solid;
-				// background-color: #135477;
-				// background-color: $accent-color;
+
+				border-radius: 13px;
 
 				z-index: 2;
 			}
+		}
+
+		button:hover {
+
+			transition: all 1.0 ease;
+
+
+			border: rgba($blue-mid, $alpha: 1.0) 1px solid;
+
+
+		}
+
+		button:hover + div.content {
+			border: rgba($blue-mid, $alpha: 1.0) 1px solid;
+			border-top: none;
+
 		}
 
 		div.content {
 			position: relative;
 			z-index: 1;
 
-			border: $border-translucent 1px solid;
+			border: $border-link-translucent 1px solid;
 			border-top: none;
 
 			top: -15px;

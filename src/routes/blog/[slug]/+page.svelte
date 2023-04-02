@@ -173,9 +173,13 @@
 
 		p code {
 			padding: 0.4em;
-			border-radius: 0.25em;
+			border-radius: 0.4em;
 			background-color: $void-color;
 			border: $border-translucent 1px solid;
+
+			span.line {
+				padding: 0;
+			}
 		}
 
 		li code {
@@ -190,7 +194,7 @@
 			font-size: 0.8em;
 			display: inline-block;
 			width: calc(100% - 1rem);
-			background-color: rgba($background-color, 0.5);
+			background-color: $void-color;
 
 			padding: 0.5em;
 			text-align: right;
@@ -205,39 +209,55 @@
 			// margin-bottom: 1em;
 			position: relative;
 			border-radius: 15px;
-			border: #2e2a28 1px solid;
+			border: rgba($blue-mid, 0.5) 1px solid;
 			overflow: hidden;
+			cursor: pointer;
 			// z-index: 100;
 
 			width: 100%;
 			// width: 45vw;
 
-			transition: all 0.3s ease;
-			// transition: margin 0.3s ease;
+			// transition: margin-left 0.3s ease;
+			transition: width 0.3s ease, margin-left 0.3s ease;
+			margin-bottom: 2px;
+			// transition: border 0.0s none;
 
 			border-radius: 15px;
 
 			pre {
-				background-color: hsl(240, 17%, 11%);
+				background-color: hsl(231, 20%, 20%);
 			}
+
 			// background: #2e2a28;
 			// box-shadow: 0px 5px 30px rgba(black, 0.7);
 
 			// box-shadow: 6px 6px 15px #1d1a19, -6px -6px 15px #3f3a37;
 		}
 
+		div[data-rehype-pretty-code-fragment]:hover {
+			border: rgba($blue-mid, 1) 1px solid;
+			transition: border 0s ease;
+		}
+
 		// a lot of silliness to make the code blocks responsive but not overflow
 		div[data-rehype-pretty-code-fragment]:focus {
 			position: relative;
-			border: 1px solid $blue-hard;
-			transition: all 0.3s ease;
+			border: 2px solid $blue-hard;
+			transition: width 0.3s ease, margin-left 0.3s ease, border-color 0.3s ease;
+			margin-bottom: 0px;
+
+			// transition: left 0.3s ease;
+			// transition: border-color 0.3s ease;
+			// transition: border-width 0.0s none;
 			z-index: 100;
 
-			left: 0;
+			cursor: auto;
+
+			// left: 0;
 
 			width: 98vw;
 			margin-left: calc(50% - 50vw);
-			margin-right: calc(50% - 50vw);
+			// margin-right: calc(50% - 50vw);
 
 			// @media (max-width: 1820px) {
 			// 	margin-left: calc(50% - 42vw);
@@ -248,6 +268,11 @@
 			// 	margin-left: -100px;
 			// 	width: 95vw;
 			// }
+
+			span:not(.line) {
+				cursor: text;
+				// border: $accent-color 1px solid;
+			}
 
 			@media (max-width: 1800px) {
 				// margin-left: calc(45% - 45vw);
@@ -283,11 +308,13 @@
 			tab-size: 1.2em;
 
 			span.highlighted {
-				background-color: rgba($blue-mid, $alpha: 0.15);
-				border-left: $blue-hard 2px solid;
+				background-color: rgba(#e8d16f, $alpha: 0.15);
+				border-left: #e8d16f 5px solid;
 				filter: brightness(1.1);
 				z-index: 0;
 				position: relative;
+
+				padding-left: 0.8em;
 			}
 
 			span.word {

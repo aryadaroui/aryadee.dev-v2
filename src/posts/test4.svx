@@ -1,0 +1,16 @@
+---
+title: test4
+date: 13 Mar 2023
+tags:
+  - python
+---
+
+# test4.svx
+
+here's some  inline code `print("Hello World"){:python}` an an array `["a", "b", "c"]{:js}` and token `some_function{:.support.function}`
+
+```python {2} showLineNumbers title="test3.py"
+print("Daisy daisy")
+print("give me your answer do")
+
+```

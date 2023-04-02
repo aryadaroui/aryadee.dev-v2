@@ -3,6 +3,7 @@ import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex-svelte';
 import rehypePrettyCode from 'rehype-pretty-code';
 // import rehypePrettyCode from './src/lib/rehype-pretty-code.js';
+import rehypePrettyCodeMdsvex from './rehype-pretty-code-mdsvex.js';
 
 import { unified } from 'unified'
 import remarkParse from 'remark-parse'
@@ -59,7 +60,7 @@ const prettyCodeOptions = {
 		}
 	},
 	onVisitHighlightedLine(node) {
-		node.properties.className.push('line--highlighted');
+		node.properties.className.push('highlighted');
 	},
 	onVisitHighlightedWord(node, id) {
 		node.properties.className = ['word'];
@@ -95,9 +96,10 @@ const config = defineConfig({
 	},
 
 	remarkPlugins: [remarkMath],
-	rehypePlugins: [rehypeKatex],
+	rehypePlugins: [[rehypePrettyCodeMdsvex, prettyCodeOptions], rehypeKatex],
+	// rehypePlugins: [rehypeKatex],
 
-	highlight: { highlighter },
+	highlight: {highlighter},
 
 });
 
