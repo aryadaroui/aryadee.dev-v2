@@ -12,7 +12,7 @@ what's up here's a link [to somethin](https://google.com)
 
 ## h2 second heading
 
-cool `float` there. this--math -- --- won't work $\sin(x)$ though.
+cool `float{:c}` there. this--math -- --- won't work $\sin(x)$ though.
 
 ### h3 third heading
 

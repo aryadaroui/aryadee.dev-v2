@@ -5,14 +5,22 @@ update:
 tags:
 ---
 
-<img src="/workflow.webp" >
+<script>
+import ImgCap from '$lib/ImgCap.svelte'
+</script>
+
+<!-- <img src="/workflow.webp" > -->
+
+<ImgCap src="/workflow.webp" alt="Programming with my cat." caption="Pair programming is important." make_fit=true/>
+
 
 # Workflow
 - Exercise!
 - Avoid caffeine
 - DRAW diagrams!!!
 
-I (Alex Turner) present a "top right vector" which, when added to forward passes in a range of mazes, attracts the agent to the top-right corner of each maze. Furthermore, the cheese and top-right vectors compose with each other, allowing (limited but substantial) mix-and-match modification of the network's runtime goals. 
+We believe that capable enough AI systems could pose very large risks to the world. We don’t think today’s systems are capable enough to pose these sorts of risks, but we think that this situation could change quickly and it’s important to be monitoring the risks consistently. Because of this, ARC is partnering with leading AI labs such as Anthropic and OpenAI as a third-party evaluator to assess potentially dangerous capabilities of today’s state-of-the-art ML models. The dangerous capability we are focusing on is the ability to autonomously gain resources and evade human oversight.
+
 
 
 
@@ -33,7 +41,7 @@ I (Alex Turner) present a "top right vector" which, when added to forward passes
 - 🐍 Python
 	- Almost every idea of mine starts its life as a Python script. As plans grow more ambitious in performance or UI--only then do I start to reach elsewhere. But even in those areas, with stellar modules like NumPy, and Textual really stretch out when I'm ready to move to another lang.
 - 🦕 TypeScript
-		- JS is as prolific as it is a pain, but TypeScript smoothes out a lot of the rough edges. Silly `[Object object]` stuff still happens and there's fractured support for types on npm, but there's only so much you can do when JS is the foundation. On the other hand, using it for frameworks and tools that support it out-the-box (like Svelte) is a delight.
+		- JS is as prolific as it is a pain, but TypeScript smoothes out a lot of the rough edges. Silly `[Object object]{:python}` stuff still happens and there's fractured support for types on npm, but there's only so much you can do when JS is the foundation. On the other hand, using it for frameworks and tools that support it out-the-box (like Svelte) is a delight.
 - 🧮 C & C++
 	- My first love. Its roundabout syntax will forever be burned into my soul, and its 100 line template errors into my eyes. I try to reach for Rust everytime I feel like something should be done in C++, but I still yearn for more opportunities to write awful code in C.
 - 🦀 Rust

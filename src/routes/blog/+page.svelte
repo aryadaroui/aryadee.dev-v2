@@ -1,5 +1,6 @@
 <script>
 	import PostBox2 from '$lib/PostBox2.svelte';
+	import ImgCap from '$lib/ImgCap.svelte';
 
 	export let data;
 	let posts = data.posts;
@@ -21,15 +22,16 @@
 
 <main>
 	<p>howdy</p>
-		{#each posts as post}
-			<PostBox2
-				title={post.title}
-				tags={['TypeScript', 'WebGL', 'Svelte', 'image processing']}
-				img_src={'filmic_thumb.png'}
-				link={"/blog/" + post.slug}
-				alt={'thumbnail of filmic app'} />
-		{/each}
+	<ImgCap src="/workflow.webp" alt="Programming with my cat." caption="Pair programming is important." make_fit="true" />
 
+	{#each posts as post}
+		<PostBox2
+			title={post.title}
+			tags={['TypeScript', 'WebGL', 'Svelte', 'image processing']}
+			img_src={'filmic_thumb.png'}
+			link={'/blog/' + post.slug}
+			alt={'thumbnail of filmic app'} />
+	{/each}
 
 	<p>more stuff</p>
 </main>
