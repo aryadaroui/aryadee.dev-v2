@@ -119,7 +119,7 @@
 		}
 
 		article {
-			background-color: $paper-color;
+			background-color: $void-color;
 			font-family: $sans;
 			color: rgba($ink-color, 0.9);
 			max-width: 720px;
@@ -201,7 +201,7 @@
 			p code {
 				padding: 0.4em;
 				border-radius: 0.4em;
-				background-color: $void-color;
+				background-color: hsl(230, 15%, 15%);
 				border: $border-translucent 1px solid;
 
 				span.line {
@@ -313,7 +313,7 @@
 				@media (max-width: 1500px) {
 					// margin-left: calc(45% - 45vw);
 					// margin-left: calc(((100vw - 100% - 300px - 200px) * -1) - 80px);
-					margin-left: calc(((98vw - 100% - 300px - 160px) * -1) - 90px);
+					margin-left: calc(((98vw - 100% - 300px - 160px) * -1) - 85px);
 					width: 96vw;
 				}
 
