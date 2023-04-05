@@ -22,6 +22,10 @@ cool
 
 words
 
+here is less than  &amp;lt; `<` what about `f(x) => { x^2 } {:js}`
+
+lets get more complicated with curly braces in js inline `f(x) => x^2{:js}`  asdfg {'{'}spgahetti{'}'} `{apple}`
+
 ```python
 def howdy(num_friends: int):
 	print('howdy to my ' + str(num_friends) + ' friends!')
@@ -38,6 +42,16 @@ $$
 $$
 
 can we test some javascript please?
+
+lmao will html work?
+
+```svelte
+<a href={link}>
+	<div id="link-box">
+		<slot />
+	</div>
+</a>
+```
 
 ```js
 // some simple javascript

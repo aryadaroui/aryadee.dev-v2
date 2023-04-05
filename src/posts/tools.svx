@@ -1,0 +1,172 @@
+---
+title: Tools
+date: 31 Mar 2021
+update:
+tags:
+---
+
+<script>
+import ImgCap from '$lib/ImgCap.svelte'
+</script>
+
+<!-- <img src="/workflow.webp" > -->
+
+<ImgCap src="/workflow.webp" alt="Programming with my cat." caption="A mouse enthusiast like his dad." make_fit=true/>
+
+# Hardware
+
+What I'm using to type all this.
+
+- 💻 M1 mac laptop
+	- Doesn't burn my legs when I try to watch a YouTube video. 10 / 10.
+- ⌨️ Keychron K3 with banana switches
+- 🖱️ Razer Basilisk v3
+	- Extra buttons remapped with [Better Touch Tool](https://folivora.ai/) for near feature parity with trackpad gestures. Total game changer.
+- 🖥️ Dual 2560×1440 (2.5k) 120 Hz displays.
+	- 1920×1080 is too small and 4k is scaled poorly on macOS; 2.5k is the sweet spot.
+
+# Software
+
+What's sending my daily screentime reminder to the moon.
+
+## Languages
+- 🐍 Python
+	- Almost every idea of mine starts as a Python script. Development and prototyping speed is fast, and NumPy & Pandas basically covers 99% of my data processing needs.
+- 🦕 TypeScript
+	- Web tech is awesome. You can write a performant web app, optimize it with hardware acceleration, and you can even run it natively with a bit of work. The cost is choosing from a million different configuration options that may or may not be compatible, and trying to glue them together with JavaScript, the language where `typeof NaN == 'number'{:js}`.
+	- Fortunately, TypeScript smoothes most of the rough edges. Silly `[Object object]{:python}` stuff still happens, and there's fractured support for types in packages, but when using frameworks like SvelteKit (all I ever use) that have first-class support, it's a joy to code in.
+- 🧮 C & C++
+	- My first love. Its roundabout syntax will forever be burned into my soul, and its 100 line template errors into my eyes. I reach for Rust everytime I feel like something should be done in C++ now, but I occasionally use C to optimize some Python functions.
+- 🦀 Rust
+	- Rust does so many things right from the start:
+		- unified package management (Cargo)
+		- tooling integration (rust-analyzer)
+		- ergonomic language features (options, unsafe encapsulation)
+		- and yes, the infamous type checker
+	- My usage of Rust has been limited to small projects, but I've been itching to use it more
+
+## General apps
+-  📝 VS Code 
+	- Maybe one day we'll wonder if it was a good idea to let Microsoft curate the entire development experience end-to-end. But until that day comes, I'll be using Copilot to save seconds of my life writing boilerplate.
+- 📓 Obsidian
+	- In a market full of paid markdown notes app, Obsidian is a standout in providing a ton of customization and plugin options for programmer-types who love to tinker with their workflow for *free*.
+- 📐 MindNode and draw.io
+	- MindNode is greating for drawing out object interfaces and data structures, although that's not exactly its intended use
+	- draw.io is great for basically everything else. I have seen people make some pretty ugly diagrams with it, but if you actually use its full featureset, it's pretty easy to make beautiful, maintanable diagrams
+- 🎨 Affinity Designer & Affinity Photo
+	- A one time fee, and nearly all the same features as Adobe's expensive subscription options.
+- 🪟 Lasso + Rectangle
+	- With these two apps paired together, you get better and more intuitive window management than on Windows.
+- 💾 iCloud
+	- Syncs all my Obsidian notes, audio projects, photos, and code seamlessly and dependably. Not great for sharing files with people outside the Apple ecosystem, though.
+
+# Mind
+
+What I hold myself to, and general advice.
+
+- 📐 Diagram everything
+	- Don't keep it all in your head. Drawing things out helps you understand the problem
+	- It's useful not just for yourself, but whoever gets stuck with your code (including future you)
+	- Applying logic to visualizations is FUN
+- 🎁 Content and format
+	- If you don't make it presentable, no one will want to use it
+	- You can blitz a working feature and tidy right after. But don't forget the tidy!
+- 💪🏻 Mind and body: enjoy the ride
+	- Problem solving is fun, but there is no joy when your body is miserable
+	- Taking breaks to exercise makes you work more effectively
+
+# Photo
+
+What I use to take pictures of my cat.
+
+- 📷 Fujifilm X-E4
+	- Solid, compact rangefinder body with enough physical controls
+	- I really thought the film simulations would be a gimmick, but they're actually great
+- 🔭 7artisans 35mm f/0.95
+	- Cheap manual focus lens with significant chromatic abberation, but the fast aperture is to die for
+	- My go-to lens. If it's not on my camera, I still bring it as a backup. But wow is it heavy
+- 🖌️ Pixelmator Pro, Affinity Photo, Filmic, TrueGrain 2
+
+# Music
+
+What I use to make music with my cat.
+
+- 🎸 Modded Jazzmaster
+	- Series / parallel rhythm circuit
+	- Bass, mid, treble EQ circuit
+- 🎹 Minilogue XD
+	- The programmable digital oscillator opens up so many options beyond a normal synth
+- 🎚️ Logic Pro X
+	- For a fairly cheap one-time fee, you get the whole app plus all stock plugins that are actually really good
+	- Admittedly, it's a bit buggy
+
+# Other
+
+What else?
+
+## Favorite fonts
+- Mono: Hack<br>
+<div class="specimen">
+	<span class="hack">How strange it is to be anything at all</span>
+</div>
+- Sans: Switzer<br>
+<div class="specimen">
+	<span class="sans">How strange it is to be anything at all</span>
+</div>
+- Serif: Computer Modern
+<div class="specimen">
+	<span class="serif">How strange it is to be anything at all</span><br>
+</div>
+
+
+<style>
+	@font-face {
+	font-family: "CMU Serif";
+	font-style: roman;
+	font-weight: 500;
+	unicode-range: U+21-7E, U+192, U+3C0, U+2202, U+2206, U+220F, U+2211, U+221A, U+221E, U+222B, U+2260, U+D835, U+DC00-DC54, U+DC56-DC67;
+	src: url('https://cdn.jsdelivr.net/gh/dreampulse/computer-modern-web-font@master/font/Serif/cmunrm.woff') format('woff'),
+		 url('https://cdn.jsdelivr.net/gh/dreampulse/computer-modern-web-font@master/font/Serif/cmunrm.ttf') format('truetype')
+}
+
+ul {
+	list-style: none;
+	padding-left: 0em;
+}
+
+ul ul {
+	list-style: disc;
+	padding-left: 2em;
+
+}
+
+ul ul ul {
+	list-style: circle;
+	padding-left: 1em;
+}
+
+.specimen {
+background-color: #171312;
+text-align: center;
+border-radius: 0.5em;
+padding: 0.5em;
+}
+
+.hack {
+	font-family: Hack;
+	font-size: 1.45em;
+}
+
+.sans {
+	font-family: Switzer;
+	font-size: 1.6em;
+
+}
+
+.serif {
+	font-family: "CMU Serif";
+	font-size: 1.6em;
+
+}
+
+</style>

@@ -12,7 +12,7 @@
 		<!-- <p>Published: {data.date}</p> -->
 
 		<!-- <div class="paper"> -->
-		<title>{data.title}</title>
+		<title>{data.title} - aryadee</title>
 		<div data-title>{data.title}</div>
 		<div data-date>{data.date}</div>
 
@@ -46,7 +46,7 @@
 	// }
 
 	:root {
-		background-color: $void-color;
+		background-color: $background-color;
 	}
 
 	main#post {
@@ -57,9 +57,9 @@
 		justify-content: center;
 
 		@media (max-width: 690px) {
-				// display: block;
-				// width: 100vw;
-			}
+			// display: block;
+			// width: 100vw;
+		}
 
 		.katex {
 			font-size: 1.1em;
@@ -119,7 +119,7 @@
 		}
 
 		article {
-			background-color: $void-color;
+			background-color: $background-color;
 			font-family: $sans;
 			color: rgba($ink-color, 0.9);
 			max-width: 720px;
@@ -209,11 +209,19 @@
 				}
 			}
 
+			li li {
+				font-size: 1em;
+			}
+
 			li code {
 				padding: 0.25em;
 				border-radius: 0.5em;
 				background-color: $void-color;
 				border: $border-translucent 1px solid;
+
+				span.line {
+					padding: 0;
+				}
 			}
 
 			div[data-rehype-pretty-code-title] {

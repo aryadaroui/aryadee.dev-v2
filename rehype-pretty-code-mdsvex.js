@@ -5,6 +5,47 @@ import proc from 'process';
 import  fileURLToPath  from 'url';
 import path from 'path';
 
+function encodeEntities(str) {
+	const entityMap = {
+	  "&": "&amp;",
+	  "<": "&lt;",
+	  ">": "&gt;",
+	  '"': '&quot;',
+	  "'": '&#39;',
+	  "{": '&#123;',
+	  "}": '&#125;'
+	};
+  
+	return str.replace(/[&<>"'{}]/g, function (s) {
+	  return entityMap[s];
+	});
+  }
+
+  function decodeEntities(str) {
+	const entityMap = {
+	  "&amp;": "&",
+	  "&lt;": "<",
+	  "&gt;": ">",
+	  '&quot;': '"',
+	  '&#39;': "'",
+	  '&#123;': "{",
+	  '&#125;': "}"
+	};
+  
+	return str.replace(/&(#?[0-9a-zA-Z]+);/g, function (s, entity) {
+	  return entityMap[s] || (entity.charAt(0) === "#" ? String.fromCharCode(parseInt(entity.substr(1), 10)) : s);
+	});
+  }
+
+//   function encodeTreeValues(tree) {
+//     visit(tree, (node) => {
+//            if (node.value) {
+//                   node.value = encodeEntities(node.value)
+//            }
+//     });
+// }
+
+
 /**
  * @typedef {import('unist').Node} Node
  * @typedef {import('unist').Parent} Parent
@@ -12716,6 +12757,8 @@ function toFragment({
 
       if (inline) {
         if (keepBackground) code.properties['style'] = pre.properties['style'];
+        // console.log("\nin toFrament inline", JSON.stringify(code, null, 5));
+        // console.log("\nin toFrament inline", JSON.stringify(code, null, 5));
         return code;
       }
 
@@ -12808,21 +12851,34 @@ function rehypePrettyCodeMdsvex(options = {}) {
         (node.tagName === 'code' && parent.tagName !== 'pre') ||
         node.tagName === 'inlineCode'
       ) {
-        const value = node.children[0].value;
+        let value = node.children[0].value;
 
         if (!value) {
           return;
         }
 
+
         // TODO: allow escape characters to break out of highlighting
         // console.log("inside rehype inline", value);
 
+        // instead of using html ampersand codes, convert them to proper characters then convert back to the ampersands after.
+        // easier said than done
+
+        // value = decodeEntities(value);
+
+        // console.log("inline value start", value);
+
         // const strippedValue = value.replace(/{:[a-zA-Z.-]+}/, '');
-        const strippedValue = value.replace(/&#123;:[a-zA-Z.-]+&#125;/, '');
-        // console.log("strippedValue", strippedValue);
         // const meta = value.match(/{:([a-zA-Z.-]+)}$/)?.[1];
+
+        let strippedValue = value.replace(/&#123;:[a-zA-Z.-]+&#125;/, '');
         const meta = value.match(/&#123;:([a-zA-Z.-]+)&#125;$/)?.[1];
+
+        // console.log("strippedValue", strippedValue);
         // console.log("meta", meta);
+
+
+        
 
         if (!meta) {
           return;
@@ -12833,6 +12889,7 @@ function rehypePrettyCodeMdsvex(options = {}) {
         const trees = {};
         for (const [mode, highlighter] of highlighters.entries()) {
           if (!isLang || (meta === 'ansi' && !highlighter.ansiToHtml)) {
+            // token path
             const color =
               highlighter
                 .getTheme()
@@ -12840,19 +12897,45 @@ function rehypePrettyCodeMdsvex(options = {}) {
                   scope?.includes(tokensMap[meta.slice(1)] ?? meta.slice(1))
                 )?.settings.foreground ?? 'inherit';
 
+            // console.log("path color")
+
+            // console.log("trees[mode]", trees[mode]);
             trees[mode] = hastParser.parse(
               `<pre><code><span style="color:${color}">${strippedValue}</span></code></pre>`
             );
           } else {
+            // language path
+            let parsed_html;
             let html;
             if (meta === 'ansi') {
+                // console.log("ansi to html")
               html = highlighter.ansiToHtml(strippedValue);
             } else {
+            //   console.log("code to html")
+              strippedValue = decodeEntities(strippedValue);
               html = highlighter.codeToHtml(strippedValue, meta);
+
+              console.log("\nhtml", html)
             }
-            trees[mode] = hastParser.parse(html);
+
+
+            // console.log("path html")
+            // parsed_html = encodeTreeValues( hastParser.parse(html));
+            parsed_html = hastParser.parse(html);
+            encodeTreeValues(parsed_html);
+
+
+
+
+            console.log("\nparsed_html", JSON.stringify(parsed_html, null, 7));
+
+            // trees[mode] = hastParser.parse(html) ;
+            trees[mode] = parsed_html;
           }
         }
+
+        // console.log("node before frag", node)
+        // console.log("trees before frag", trees)
 
         toFragment({node, trees, lang: isLang ? meta : '.token', inline: true, keepBackground});
       }

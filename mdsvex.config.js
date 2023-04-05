@@ -12,8 +12,7 @@ import rehypeStringify from 'rehype-stringify'
 
 import { visit } from 'unist-util-visit';
 
-// import fs from 'fs';
-import bubble_dark from './src/styles/bubble_dark.json' assert {type: "json"};
+// import bubble_dark from './src/styles/bubble_dark.json' assert {type: "json"};
 
 function addCustomAttribute() {
 	return function transformer(tree) {
@@ -49,13 +48,14 @@ ${code}
 		.process(block)
 
 
+
 	// console.log(file)
 	return file.toString().replaceAll('{', "&#123;").replaceAll('}', "&#125;");
+	// return file;
 }
 
 const prettyCodeOptions = {
 	theme: "rose-pine-moon",
-	// theme: bubble_dark,
 	onVisitLine(node) {
 		// Prevent lines from collapsing in `display: grid` mode, and allow empty
 		// lines to be copy/pasted
@@ -96,8 +96,7 @@ const prettyCodeOptions = {
 const config = defineConfig({
 	extensions: ['.svelte.md', '.md', '.svx'],
 
-	smartypants: {
-	},
+	// smartypants: false,
 
 	remarkPlugins: [remarkMath],
 	rehypePlugins: [[rehypePrettyCodeMdsvex, prettyCodeOptions], rehypeKatex],
