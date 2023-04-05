@@ -13,10 +13,11 @@ function encodeEntities(str) {
 	  '"': '&quot;',
 	  "'": '&#39;',
 	  "{": '&#123;',
-	  "}": '&#125;'
+	  "}": '&#125;',
+      " ": '&nbsp;'
 	};
   
-	return str.replace(/[&<>"'{}]/g, function (s) {
+	return str.replace(/[&<>"'{} ]/g, function (s) {
 	  return entityMap[s];
 	});
   }
@@ -29,7 +30,7 @@ function encodeEntities(str) {
 	  '&quot;': '"',
 	  '&#39;': "'",
 	  '&#123;': "{",
-	  '&#125;': "}"
+	  '&#125;': "}",
 	};
   
 	return str.replace(/&(#?[0-9a-zA-Z]+);/g, function (s, entity) {
@@ -44,7 +45,6 @@ function encodeEntities(str) {
            }
     });
 }
-
 
 
 
@@ -12917,7 +12917,7 @@ function rehypePrettyCodeMdsvex(options = {}) {
               strippedValue = decodeEntities(strippedValue);
               html = highlighter.codeToHtml(strippedValue, meta);
 
-              console.log("\nhtml", html)
+            //   console.log("\nhtml", html)
             }
 
 
@@ -12929,7 +12929,7 @@ function rehypePrettyCodeMdsvex(options = {}) {
 
 
 
-            console.log("\nparsed_html", JSON.stringify(parsed_html, null, 7));
+            // console.log("\nparsed_html", JSON.stringify(parsed_html, null, 7));
 
             // trees[mode] = hastParser.parse(html) ;
             trees[mode] = parsed_html;

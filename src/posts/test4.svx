@@ -7,28 +7,18 @@ tags:
 
 # test4.svx
 
-<!-- space problem `typeof(NaN) == 'number'{:js}` -->
 
-<!-- ```js
-typeof(NaN) == 'number'
-``` -->
-
-<!-- is this tagged? `&#123;` -->
-
-<p>word <span data-rehype-pretty-code-fragment=""><code data-language="js" data-theme="default"><span class="line"><span style="color: #EA9A97">f</span><span style="color: #E0DEF4">(</span><span style="color: #E0DEF4; font-style: italic">x</span><span style="color: #E0DEF4">) </span><span style="color: #3E8FB0">=</span><span style="color: #E0DEF4">&nbsp;</span><span style="color: #908CAA">&#123;</span><span style="color: #E0DEF4"> x^</span><span style="color: #EA9A97">2</span><span style="color: #E0DEF4"> </span><span style="color: #908CAA">&#125;</span><span style="color: #E0DEF4"> </span></span></code></span> another</p>
 
 
 `f(x) = &#123; x^2 &#125;`
 
-lang `f(x) = { x^2 } {:js}`
+lang `f(x) = { x^2 }{:js}`
 
-<!-- no lang `f(x) = { x^2 }` -->
+no lang `f(x) = { x^2 }`
 
 token `some_function{:.support.function}`
-ansi `"\033[31;1;4mHello\033[0m"{:ansi}`
 
-
-an tag `<script>{:html}`
+a tag `<script>{:html}`
 
 here's some  inline code `print("Hello World"){:python}` an an array `["a", "b", "c"]{:js}` and token `some_function{:.support.function}`
 
