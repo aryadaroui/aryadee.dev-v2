@@ -37,13 +37,15 @@ function encodeEntities(str) {
 	});
   }
 
-//   function encodeTreeValues(tree) {
-//     visit(tree, (node) => {
-//            if (node.value) {
-//                   node.value = encodeEntities(node.value)
-//            }
-//     });
-// }
+  function encodeTreeValues(tree) {
+    visit(tree, (node) => {
+           if (node.value) {
+                  node.value = encodeEntities(node.value)
+           }
+    });
+}
+
+
 
 
 /**
