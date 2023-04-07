@@ -20,7 +20,7 @@ token `some_function{:.support.function}`
 
 a tag `<script>{:html}`
 
-here's some  inline code `print("Hello World"){:python}` an an array `["a", "b", "c"]{:js}` and token `some_function{:.support.function}`
+here's some  inline code `print("Hello World"){:python}` an an array `["a", "b", "c"]{:js}` and token `some_function{:.support.function}` wow `["a", "b", "c"] ["a", "b", "c"] ["a", "b", "c"] ["a", "b", "c"]` `["a", "b", "c"] ["a", "b", "c"] ["a", "b", "c"] ["a", "b", "c"]{:js}`
 
 and a tricky one:  &amp;lt; `<` what  and just `&lt;`
 

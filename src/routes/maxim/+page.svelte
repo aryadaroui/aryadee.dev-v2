@@ -62,8 +62,8 @@
 
 			draw_sprite_stars(ctx, blue_stars);
 			ctx.fillStyle = `rgba(0, 0, 0, ${opacity})`;
-			ctx.fillRect(0, 0, canvas.width, canvas.height);
-			opacity = clamp(opacity - 0.05, 0.0, 1.0);
+			ctx.fillRect(0, 0, canvas.width, canvas.height); // TODO: just use css to fade
+			opacity = clamp(opacity - 0.025, 0.0, 1.0);
 
 			ctx.font = '32px Comic Sans MS';
 			ctx.fillStyle = 'red';
@@ -88,7 +88,7 @@
 			<div class="overlay">
 				<blockquote>
 					<p>
-						However, I continue to try and I continue, indefatigably, to reach out. There's no way I can single-handedly save
+						However, I continue to try—and I continue, indefatigably, to reach out. There's no way I can single-handedly save
 						the world or, perhaps, even make a perceptible difference—but how ashamed I would be to let a day pass without
 						making one more effort. <span class="author">― <em>Isaac Asimov</em></span>
 					</p>
@@ -99,7 +99,7 @@
 	<!-- <Footer2 /> -->
 
 	<nav class="nav-wrapper">
-		<span><a class="back-item" onclick="history.back()">back</a></span>
+		<!-- <span><a class="back-item" onclick="history.back()">back</a></span> -->
 		<span> <a href="/">home</a> </span>
 	</nav>
 
@@ -119,9 +119,9 @@
 		background-color: #090909;
 	}
 
-	.back-item {
+	/* .back-item {
 		cursor: pointer;
-	}
+	} */
 
 	.nav-wrapper {
 		position: absolute;

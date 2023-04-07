@@ -142,7 +142,7 @@
 
 			// transition: border 0.3s ease;
 
-			// transition: border 0.3s ease;
+			transition: border 0.15s ease;
 
 
 			.title {
@@ -160,23 +160,26 @@
 
 		button:hover {
 
-			transition: all 1.0 ease;
+			transition: border 0.15s ease;
 
 
 			border: rgba($blue-mid, $alpha: 1.0) 1px solid;
-
 
 		}
 
 		button:hover + div.content {
 			border: rgba($blue-mid, $alpha: 1.0) 1px solid;
 			border-top: none;
+			transition: border 0.15s ease;
 
 		}
 
 		div.content {
 			position: relative;
 			z-index: 1;
+
+			transition: border 0.15s ease;
+
 
 			border: $border-link-translucent 1px solid;
 			border-top: none;
@@ -189,7 +192,7 @@
 		}
 
 		svg {
-			transition: transform 0.25s ease-out;
+			transition: transform 0.3s ease;
 		}
 
 		[aria-expanded='true'] {

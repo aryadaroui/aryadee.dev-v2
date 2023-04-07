@@ -3,11 +3,29 @@
 	export let data;
 	// @ts-ignore cannot find module & types. it does exist
 	import Toc from 'svelte-toc';
+	import Header from '$lib/Header.svelte';
+  import Footer from '$lib/Footer.svelte';
+
+	onMount(() => {
+		window.onunhandledrejection = (e) => {
+		  console.log('we got exception, but the app has crashed', e);
+			// here we should gracefully show some fallback error or previous good known state
+			// this does not work though:
+			// current = C1; 
+			
+			// todo: This is unexpected error, send error to log server
+			// only way to reload page so that users can try again until error is resolved
+			// uncomment to reload page:
+			// window.location = "/oi-oi-oi";
+		}
+	})
 </script>
 
+<Header />
 <main id="post">
 	<div class="margin-padding" />
 	<article>
+
 		<!-- <h1>{data.title}</h1> -->
 		<!-- <p>Published: {data.date}</p> -->
 
@@ -16,27 +34,33 @@
 		<div data-title>{data.title}</div>
 		<div data-date>{data.date}</div>
 
-		<hr />
+		<!-- <hr /> -->
 
 		<svelte:component this={data.content} />
 		<!-- </div> -->
 	</article>
 	<aside class="table-of-contents">
 		<Toc
+		titleTag='strong'
 			breakpoint="1080"
-			title=""
+			title="On this page"
 			headingSelector=":is(h1, h2, h3):not(.toc-exclude)"
 			activeHeadingScrollOffset="150"
-			--toc-active-color="#FFEFD8"
-			--toc-active-bg="#1ED3D350"
-			--toc-li-hover-color="#1ED3D3dd"
+
+			--toc-li-color="#FFEFD8"
+			--toc-active-border-radius="0.5rem"
+			--toc-active-color="#F7679C"
+			--toc-active-bg="#A7687D00"
+			--toc-li-hover-color="#FF99BE"
 			--toc-z-index="3"
 			--toc-mobile-bg="#171312"
 			--toc-mobile-shadow="box-shadow: 0px 5px 30px rgba(black, 0.7);"
 			--toc-mobile-btn-color="#FFEFD8"
-			--toc-mobile-btn-border-radius="10px" />
+			--toc-mobile-btn-border-radius="10px"
+			/>
 	</aside>
 </main>
+<Footer />
 
 <style global lang="scss">
 	// body {
@@ -185,11 +209,22 @@
 			a {
 				color: $link-color;
 				text-decoration: none;
+				border-radius: 0.4rem;
+				padding: 0.2rem;
+				margin: -0.2rem;
+				// padding: 0.1rem;
+				transition: background-color 0.15s ease, color 0.15s ease;
 			}
 
 			a:hover {
-				color: $tan-hard;
-				text-decoration: underline;
+				background-color: rgba($link-background, 0.5);
+				color: $cyan-soft;
+				// color: $cyan-hard;
+				// color: $ink-color;
+				padding: 0.2rem;
+				margin: -0.2rem;
+				// color: $tan-mid;
+				// transition: background-color 0.15s ease, color 0.15s ease;
 			}
 
 			pre > code {
@@ -198,11 +233,19 @@
 				padding-bottom: 0.5em;
 			}
 
-			p code {
-				padding: 0.4em;
+			p span[data-rehype-pretty-code-fragment] code {
+				padding: 0.3em 0.4em;
 				border-radius: 0.4em;
-				background-color: hsl(230, 15%, 15%);
+				background-color: hsl(230, 10%, 10%);
 				border: $border-translucent 1px solid;
+			}
+
+			p code {
+				padding: 0.3em 0.4em;
+				border-radius: 0.4em;
+				background-color: hsl(230, 10%, 25%);
+				// background-color: $gray-harder;
+				// border: $border-translucent 1px solid;
 
 				span.line {
 					padding: 0;
@@ -229,14 +272,15 @@
 				font-size: 0.8em;
 				display: inline-block;
 				width: calc(100% - 1rem);
-				background-color: $void-color;
+				// background-color: $;
+				background-color: hsl(230, 10%, 20%);
 
 				padding: 0.5em;
 				text-align: right;
 
-				+ pre code {
-					border-radius: 0 0 15px 15px;
-				}
+				// + pre code {
+				// 	border-radius: 0 0 15px 15px;
+				// }
 			}
 
 			div[data-rehype-pretty-code-fragment] {
@@ -255,14 +299,14 @@
 				// width: 45vw;
 
 				// transition: margin-left 0.3s ease;
-				transition: width 0.3s ease, margin-left 0.3s ease;
+				transition: width 0.3s ease, margin-left 0.3s ease, border 0.15s ease;
 				margin-bottom: 2px;
 				// transition: border 0.0s none;
 
 				border-radius: 15px;
 
 				pre {
-					background-color: hsl(230, 12%, 12%);
+					background-color: hsl(230, 10%, 10%);
 				}
 
 				// background: #2e2a28;
@@ -273,7 +317,7 @@
 
 			div[data-rehype-pretty-code-fragment]:hover {
 				border: rgba($blue-mid, 1) 1px solid;
-				transition: border 0s ease;
+				transition: border 0.15s ease;
 			}
 
 			// a lot of silliness to make the code blocks responsive but not overflow

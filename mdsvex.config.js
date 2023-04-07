@@ -56,6 +56,18 @@ ${code}
 
 const prettyCodeOptions = {
 	theme: "rose-pine-moon",
+
+	tokensMap: {
+		function: 'support.function',
+		variable: 'variable.other',
+		keyword: 'keyword',
+		param: 'variable.parameter',
+		string: 'string',
+		comment: 'comment',
+		number: 'constant.numeric',
+		type: 'storage.type',
+	  },
+
 	onVisitLine(node) {
 		// Prevent lines from collapsing in `display: grid` mode, and allow empty
 		// lines to be copy/pasted

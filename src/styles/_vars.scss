@@ -4,7 +4,7 @@
 
 // general color palette. visible in /palette.png
 $gray-harder: #171312;
-$gray-hard: #1f1b18;  // darker
+$gray-hard: #221E1B;  // darker
 $brown-hard: #382B25; // dark
 $tan-hard: #EFC79C;  // lighter
 $pink-hard: #F7679C; // light
@@ -38,6 +38,8 @@ $border-translucent: rgba($tan-mid, 0.3);
 $border-link-translucent: rgba($blue-mid, 0.4);
 $border-link-translucent-hover: rgba($tan-mid, 0.8);
 $background-translucent: rgba($paper-color, 0.8);
+
+$link-background: #177587;
 
 
 // fonts

@@ -335,8 +335,10 @@ Put simply, halation is red fringing caused by backscattering in the film emulsi
 
 
 $$
-R_\alpha = \mathrm{threshold\_curve}(R) \\
-R' = R + \mathrm{gaussian}(\mathrm{radius}, \, R_\alpha) \times \mathrm{opacity}
+\begin{align*}
+R_\alpha &= \mathrm{threshold\_curve}(R) \\
+R' &= R + \mathrm{gaussian}(\mathrm{radius}, \, R_\alpha) \times \mathrm{opacity}
+\end{align*}
 $$
 
 We also give the option to for strength of the effect by multiplying by $\mathrm{opacity}$. We'll output some intermediate steps to show how this all comes together.

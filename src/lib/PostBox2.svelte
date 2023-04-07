@@ -146,15 +146,18 @@
 		box-shadow: 0px 5px 30px black;
 		overflow: hidden;
 
+		transition: background-color 0.15s ease, border 0.15s ease;
+
+
 		:hover h2 {
 			text-decoration: underline;
 			text-decoration-thickness: 0.01em;
 		}
 	}
 
-	a#post-box:hover {
-		text-decoration: none;
-	}
+	// a#post-box:hover {
+	// 	text-decoration: none;
+	// }
 
 	.thumbnail-container {
 		overflow: hidden;
@@ -172,12 +175,22 @@
 	}
 
 	#post-box:hover {
-		background-image: url(./assets/arrow_gray.svg);
+		// background-image: url(./assets/arrow_gray.svg);
+		background-color: rgba($cyan-soft, 0.2);
+
 		background-size: 150px;
 		background-repeat: repeat;
 		border: $border-link-translucent-hover 2px solid;
 
-		text-decoration: underline;
-		text-decoration-thickness: 1.5px;
+		transition: background-color 0.15s ease, border 0.15s ease;
+
+
+		// text-decoration: underline;
+		// text-decoration-thickness: 1.5px;
+
+		h2 {
+			text-decoration: none;
+			color: $cyan-soft;
+		}
 	}
 </style>

@@ -41,6 +41,9 @@
 		max-height: 200px;
 		margin: 0;
 
+		transition: background-color 0.15s ease, border 0.15s ease;
+
+
 		:global(h2) {
 			color: $link-color;
 			font-family: 'Swiss 721';
@@ -51,15 +54,22 @@
 	}
 
 	#link-box:hover {
-		background-image: url(./assets/arrow_gray.svg);
+		// background-image: url(./assets/arrow_gray.svg);
+		background-color: rgba($cyan-soft, 0.2);
 		background-size: 120px;
 		background-repeat: repeat;
 		// border: rgba(245, 245, 220, 0.5) 1px solid;
+		color: $cyan-soft;
 		border: $border-link-translucent-hover 2px solid;
 
+		transition: background-color 0.15s ease, border 0.15s ease;
+
+
 		:global(h2) {
-			text-decoration: underline;
-			text-decoration-thickness: 1.2px;
+			color: $cyan-soft;
+
+			// text-decoration: underline;
+			// text-decoration-thickness: 1.2px;
 		}
 	}
 </style>

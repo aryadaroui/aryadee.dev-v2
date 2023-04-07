@@ -4,7 +4,7 @@
 	import Page2 from './Page2.svelte';
 
 	onMount(() => {
-		console.log('onMount HOME');
+		// console.log('onMount HOME');
 		Shape.init(document.getElementById('shape-container'), '#E2C09B', document.getElementById('page-1'));
 
 		let scroll_down_button = document.querySelector('#scroll-down-button');
@@ -134,9 +134,9 @@
 						</a>
 					</p>
 					<p>
-						<a href="/photo-art-audio" class="chevron-link">
+						<a href="/creative" class="chevron-link">
 							<span class="select-chevron blackground">»</span>
-							<span class="link blackground allow-pointer-events">photo-art-music</span>
+							<span class="link blackground allow-pointer-events">creative</span>
 						</a>
 					</p>
 				</nav>
@@ -192,6 +192,7 @@
 
 	a:hover {
 		color: $link-color;
+		text-decoration: none;
 	}
 
 	#fader {
@@ -362,10 +363,14 @@
 
 	.link {
 		visibility: visible;
+		transition: background-color 0.15s ease, color 0.15s ease;
 	}
 
 	.link:hover {
-		text-decoration: underline;
+		// text-decoration: underline;
+		background-color: #1c4a52;
+		color: $cyan-soft;
+		transition: background-color 0.15s ease, color 0.15s ease;
 	}
 
 	.select-chevron {

@@ -6,6 +6,11 @@ tags:
   - image processing
 ---
 
+
+<script>
+ let text = "<strong> hello </strong>"
+</script>
+
 # h1 this test2 svx
 
 what's up here's a link [to somethin](https://google.com)
@@ -13,6 +18,9 @@ what's up here's a link [to somethin](https://google.com)
 ## h2 second heading
 
 cool `float{:c}` there. this--math -- --- won't work $\sin(x)$ though.
+
+and we have `variable{:.variable}` `function{:.function}` `keyword{:.keyword}` `param{:.param}` `string{:.string}` `number{:.number}` `comment{:.comment}` `type{:.type}`
+
 
 ### h3 third heading
 
@@ -24,9 +32,11 @@ words
 
 here is less than  &amp;lt; `<` what about `f(x) => { x^2 } {:js}`
 
-lets get more complicated with curly braces in js inline `f(x) => x^2{:js}`  asdfg {'{'}spgahetti{'}'} `{apple}`
+lets get more complicated with curly braces in js inline `f(x) => x^2{:js}`   `{apple}`
 
 ```python
+thing = 1
+CONST = 2
 def howdy(num_friends: int):
 	print('howdy to my ' + str(num_friends) + ' friends!')
 

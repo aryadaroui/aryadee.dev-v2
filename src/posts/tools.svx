@@ -31,10 +31,10 @@ What's sending my daily screentime reminder to the moon.
 
 ## Languages
 - 🐍 Python
-	- Almost every idea of mine starts as a Python script. Development and prototyping speed is fast, and NumPy & Pandas basically covers 99% of my data processing needs.
+	- Almost every idea of mine starts as a Python script. Development and prototyping speed is fast, and NumPy & Pandas basically covers 99% of my computing needs.
 - 🦕 TypeScript
-	- Web tech is awesome. You can write a performant web app, optimize it with hardware acceleration, and you can even run it natively with a bit of work. The cost is choosing from a million different configuration options that may or may not be compatible, and trying to glue them together with JavaScript, the language where `typeof NaN == 'number'{:js}`.
-	- Fortunately, TypeScript smoothes most of the rough edges. Silly `[Object object]{:python}` stuff still happens, and there's fractured support for types in packages, but when using frameworks like SvelteKit (all I ever use) that have first-class support, it's a joy to code in.
+	- Web tech is awesome. You can write a performant web app, optimize it with hardware acceleration, and you can even run it natively with a bit of work. The cost is choosing from a million different configuration options that may or may not be compatible, and trying to glue them together with JavaScript, the language where `NaN != NaN{:js}`, but `typeof NaN == 'number'{:js}`
+	- Fortunately, TypeScript smoothes out most of the rough edges--like, it'll stop you from doing `[1, 2, 3] + [4, 5, 6]{:js}` (try this in the console and see what happens). Support in packages is getting better, and when using frameworks like SvelteKit (all I ever use) that have first-class support, it's a joy to code in.
 - 🧮 C & C++
 	- My first love. Its roundabout syntax will forever be burned into my soul, and its 100 line template errors into my eyes. I reach for Rust everytime I feel like something should be done in C++ now, but I occasionally use C to optimize some Python functions.
 - 🦀 Rust
@@ -43,7 +43,7 @@ What's sending my daily screentime reminder to the moon.
 		- tooling integration (rust-analyzer)
 		- ergonomic language features (options, unsafe encapsulation)
 		- and yes, the infamous type checker
-	- My usage of Rust has been limited to small projects, but I've been itching to use it more
+	- I've mostly used it for Tauri, but I've been itching to use it more.
 
 ## General apps
 -  📝 VS Code 
@@ -98,7 +98,7 @@ What I use to make music with my cat.
 	- The programmable digital oscillator opens up so many options beyond a normal synth
 - 🎚️ Logic Pro X
 	- For a fairly cheap one-time fee, you get the whole app plus all stock plugins that are actually really good
-	- Admittedly, it's a bit buggy
+	- Admittedly, it's a bit more buggy than you'd expect
 
 # Other
 

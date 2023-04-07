@@ -1,6 +1,8 @@
 <script>
 	import PostBox2 from '$lib/PostBox2.svelte';
 	import ImgCap from '$lib/ImgCap.svelte';
+	import Header from '$lib/Header.svelte';
+  import Footer from '$lib/Footer.svelte';
 
 	export let data;
 	let posts = data.posts;
@@ -19,9 +21,10 @@
 	img_src={'thesis_thumb.png'}
 	alt={'thumbnail of thesis'}
 	link={'/post1'} /> -->
-
+<Header />
 <main>
-	<p>howdy</p>
+	<h1>Blog</h1>
+	<p>Articles, snippets, and other random thoughts.</p>
 
 	<!-- <pre>
 		<code>
@@ -29,25 +32,34 @@
 		</code>
 	</pre> -->
 
-	{#each posts as post}
-		<PostBox2
-			title={post.title}
-			tags={['TypeScript', 'WebGL', 'Svelte', 'image processing']}
-			img_src={'filmic_thumb.png'}
-			link={'/blog/' + post.slug}
-			alt={'thumbnail of filmic app'} />
-	{/each}
-
-	<p>more stuff</p>
+	<div class="post-container">
+		{#each posts as post}
+			<PostBox2
+				title={post.title}
+				tags={['TypeScript', 'WebGL', 'Svelte', 'image processing']}
+				img_src={'filmic_thumb.png'}
+				link={'/blog/' + post.slug}
+				alt={'thumbnail of filmic app'} />
+		{/each}
+	</div>
 </main>
+<Footer />
 
 <style lang="scss">
 	main {
 		margin: auto;
-		max-width: 1200px;
+		max-width: 720px;
 		background-color: $background-color;
 	}
+
+	.post-container {
+		display: flex;
+		flex-direction: column;
+		gap: 1em;
+		// flex-wrap: wrap;
+		justify-content: center;
+	}
 	:root {
-		background-color: $void-color;
+		background-color: $background-color;
 	}
 </style>

@@ -7,7 +7,6 @@
 	import PostBox2 from '$lib/PostBox2.svelte';
 	import Accordion from '$lib/Callout.svelte';
 	import Heart from '$lib/icons/heart.svelte';
-
 </script>
 
 <div id="double-column">
@@ -19,7 +18,7 @@
 				<TextBox>
 					<h3>My name is Arya “Dee” Daroui</h3>
 					<p>I like to code, take photos, and make music.</p>
-					<p>Most of my content is at the intersection of these things.</p>
+					<p>Most of what I do is at the intersection of these things.</p>
 				</TextBox>
 				<div>
 					<ImgBox />
@@ -46,30 +45,33 @@
 					</li>
 				</ul> -->
 
-				<li>
-					<span class="tag lang"><b>Python</b></span> <span class="tag tool">NumPy</span> <span class="tag tool">Pandas</span>
-					<span class="tag tool">SciKit</span> <span class="tag tool">OpenCV</span> <span class="tag tool">Plotly</span>
-				</li>
-				<li>
-					<span class="tag lang"><b>TypeScript</b></span> <span class="tag tool">Svelte(Kit)</span>
-					<span class="tag tool">WebGL</span> <span class="tag tool"> D3.js</span>
-				</li>
-				<li>
-					<span class="tag lang"><b>C & C++</b></span> <span class="tag tool">SystemC</span> <span class="tag tool">Boost</span>
-				</li>
-				<li>
-					<span class="tag lang"><b>Rust</b></span> <span class="tag tool">Tauri</span> <span class="tag tool">Rayon</span>
-				</li>
-			</ul>
+					<li>
+						<span class="tag lang"><b>Python</b></span> <span class="tag tool">NumPy</span> <span class="tag tool">Pandas</span>
+						<span class="tag tool">SciKit</span> <span class="tag tool">OpenCV</span> <span class="tag tool">Plotly</span>
+					</li>
+					<li>
+						<span class="tag lang"><b>TypeScript</b></span> <span class="tag tool">Svelte(Kit)</span>
+						<span class="tag tool">WebGL</span> <span class="tag tool"> D3.js</span>
+					</li>
+					<li>
+						<span class="tag lang"><b>C & C++</b></span> <span class="tag tool">SystemC</span>
+						<span class="tag tool">Boost</span>
+					</li>
+					<li>
+						<span class="tag lang"><b>Rust</b></span> <span class="tag tool">Tauri</span> <span class="tag tool">Rayon</span>
+					</li>
+				</ul>
 
 				<h3>Domain knowledge</h3>
 
 				<ul>
 					<li>
-						<b>Signals</b>: <span class="tag domain">image processing</span> <span class="tag domain">audio</span> <span class="tag domain">n-D data</span>
+						<b>Signals</b>: <span class="tag domain">image processing</span> <span class="tag domain">audio</span>
+						<span class="tag domain">n-D data</span>
 					</li>
 					<li>
-						<b>Data</b>: <span class="tag domain">data analysis</span> <span class="tag domain">visualization</span> <span class="tag domain">machine learning</span>
+						<b>Data</b>: <span class="tag domain">data analysis</span> <span class="tag domain">visualization</span>
+						<span class="tag domain">machine learning</span>
 					</li>
 					<li>
 						<b>Systems</b>: <span class="tag domain">parallelization</span> <span class="tag domain">modeling</span>
@@ -251,10 +253,16 @@
 
 	.link {
 		visibility: visible;
+		transition: background-color 0.15s ease, color 0.15s ease;
+		border-radius: 0.4rem;
+		padding: 0.2rem;
 	}
 
 	.link:hover {
-		text-decoration: underline;
+		// text-decoration: underline;
+		background-color: rgba($link-background, 0.5);
+		color: $cyan-soft;
+		transition: background-color 0.15s ease, color 0.15s ease;
 	}
 
 	.select-chevron {

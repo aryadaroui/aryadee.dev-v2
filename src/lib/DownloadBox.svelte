@@ -31,6 +31,8 @@
 		min-height: 200px;
 		max-width: 600px;
 
+		transition: background-color 0.15s ease, border 0.15s ease;
+
 		// backdrop-filter: blur(27px);
 
 		:global(h2) {
@@ -42,15 +44,21 @@
 	}
 
 	#download-box:hover {
-		background-image: url(./assets/plus_gray.svg);
+		// background-image: url(./assets/plus_gray.svg);
+		background-color: rgba($cyan-soft, 0.2);
 		background-size: 112px;
 		background-repeat: repeat;
 		// border: rgba(245, 245, 220, 0.5) 1px solid;
 		border: $border-link-translucent-hover 2px solid;
 
+
+		transition: background-color 0.15s ease, border 0.15s ease;
+
 		:global(h2) {
-			text-decoration: underline;
-			text-decoration-thickness: 1.2px;
+			// color: #;
+			color: $cyan-soft;
+			// text-decoration: underline;
+			// text-decoration-thickness: 1.2px;
 		}
 	}
 </style>
