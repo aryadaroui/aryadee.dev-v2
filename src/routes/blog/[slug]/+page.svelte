@@ -80,6 +80,8 @@
 		display: flex;
 		justify-content: center;
 
+		min-height: calc(100vh - 200px);
+
 		@media (max-width: 690px) {
 			// display: block;
 			// width: 100vw;
@@ -153,6 +155,7 @@
 			font-size: 1.2em;
 			padding: 80px;
 			padding-top: 50px;
+			padding-bottom: 0px;
 
 			min-width: 640px;
 

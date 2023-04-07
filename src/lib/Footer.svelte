@@ -1,8 +1,9 @@
 <div id="footer">
 	<hr />
 	<div class="container">
-		<span>Arya "Dee" Daroui  ·  <a href="mailto:adaroui@uci.edu">adaroui@uci.edu</a>  ·  <a href="/privacy-and-copyright">privacy & copyright</a></span>
+		<span>Arya "Dee" Daroui&nbsp; · &nbsp<a href="mailto:adaroui@uci.edu">adaroui@uci.edu</a>&nbsp; · &nbsp;<a href="/privacy-and-copyright">privacy & copyright</a>&nbsp;</span>
 	</div>
+	<span id="easter-egg">:-)</span>
 </div>
 
 <style lang="scss">
@@ -13,6 +14,9 @@
 		color: rgba($tan-soft, 0.7);
 		height: 100px;
 		// width: 100%;
+
+		// position: absolute;
+		// bottom: 0;
 
 		text-align: center;
 
@@ -38,7 +42,7 @@
 		}
 
 		hr {
-			width: 720px;
+			max-width: 720px;
 			height: 0px;
 			border: 1px solid $brown-soft;
 		}
@@ -49,6 +53,12 @@
 			justify-content: center;
 			align-items: center;
 		}
+
+		#easter-egg {
+			position: absolute;
+			transform: translateY(-20px);
+		}
+
 		// nav {
 		// 	margin: auto;
 		// 	display: flex;

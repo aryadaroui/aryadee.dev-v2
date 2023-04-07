@@ -6,13 +6,17 @@
 
 <div id="header">
 	<nav>
-		<a href="/" class="link home"> aryadee </a>
+		<div>
+			<a href="/" class="link home"> aryadee </a>
+		</div>
 
-		<a href="/blog" class="link" class:current={main_route === 'blog'}> blog </a>
+		<div>
+			<a href="/blog" class="link" class:current={main_route === 'blog'}> blog </a>
 
-		<a href="/projects" class="link" class:current={main_route === 'projects'}> projects </a>
+			<a href="/projects" class="link" class:current={main_route === 'projects'}> projects </a>
 
-		<a href="/creative" class="link" class:current={main_route === 'creative'}> creative </a>
+			<a href="/creative" class="link" class:current={main_route === 'creative'}> creative </a>
+		</div>
 	</nav>
 </div>
 
@@ -20,6 +24,7 @@
 	div#header {
 		background-color: $void-color;
 		width: 100%;
+
 
 		nav {
 			margin: auto;
@@ -29,6 +34,17 @@
 			font-size: 1.2em;
 			max-width: 720px;
 			height: 3em;
+
+
+			@media screen and (max-width: 500px) {
+			flex-direction: column;
+			// height: 4em;
+			gap: 10px;
+			padding-top: 5px;
+			padding-bottom: 20px;
+			// margin-bottom: 0px;
+		}
+
 
 			a {
 				text-decoration: none;
@@ -89,7 +105,7 @@
 			}
 
 			a:active {
-				color: $cyan-hard
+				color: $cyan-hard;
 				// transition: background-color 0.15s ease, color 0.15s ease;
 			}
 		}
