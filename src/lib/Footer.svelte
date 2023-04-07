@@ -1,9 +1,8 @@
 <div id="footer">
-	<hr>
+	<hr />
 	<div class="container">
-		<span>Arya "Dee" Daroui. adaroui@uci.edu. privacy-and-copyright.</span>
+		<span>Arya "Dee" Daroui  ·  <a href="mailto:adaroui@uci.edu">adaroui@uci.edu</a>  ·  <a href="/privacy-and-copyright">privacy & copyright</a></span>
 	</div>
-	
 </div>
 
 <style lang="scss">
@@ -11,14 +10,32 @@
 		margin: 20px;
 		font-weight: 300;
 		// background-color: $void-color;
-		color: $brown-soft;
+		color: rgba($tan-soft, 0.7);
 		height: 100px;
 		// width: 100%;
 
 		text-align: center;
 
+		a {
+			color: rgba($link-color, 0.8);
+			text-decoration: none;
+			border-radius: 0.4rem;
+			padding: 0.2rem;
+			margin: -0.2rem;
+			// padding: 0.1rem;
+			transition: background-color 0.15s ease, color 0.15s ease;
+		}
 
-
+		a:hover {
+			background-color: rgba($link-background, 0.5);
+			color: $cyan-soft;
+			// color: $cyan-hard;
+			// color: $ink-color;
+			padding: 0.2rem;
+			margin: -0.2rem;
+			// color: $tan-mid;
+			// transition: background-color 0.15s ease, color 0.15s ease;
+		}
 
 		hr {
 			width: 720px;
@@ -28,7 +45,6 @@
 
 		.container {
 			height: 100%;
-			// text-align: center;
 			display: flex;
 			justify-content: center;
 			align-items: center;
