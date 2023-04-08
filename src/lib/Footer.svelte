@@ -56,7 +56,7 @@
 
 		#easter-egg {
 			position: absolute;
-			transform: translateY(-20px);
+			transform: translateY(-25px);
 		}
 
 		// nav {
