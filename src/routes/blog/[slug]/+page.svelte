@@ -167,9 +167,14 @@
 			[data-title] {
 				font-weight: 200;
 				font-size: 2.5em;
-				margin-bottom: 0;
+				// margin-bottom: 0;
 				width: 100%;
 			}
+
+			[data-date] {
+				margin: 1em 0em;
+			}
+
 
 			h1 {
 				font-size: 1.8em;
