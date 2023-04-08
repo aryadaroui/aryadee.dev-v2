@@ -6,19 +6,6 @@
 	import Header from '$lib/Header.svelte';
   import Footer from '$lib/Footer.svelte';
 
-	onMount(() => {
-		window.onunhandledrejection = (e) => {
-		  console.log('we got exception, but the app has crashed', e);
-			// here we should gracefully show some fallback error or previous good known state
-			// this does not work though:
-			// current = C1; 
-			
-			// todo: This is unexpected error, send error to log server
-			// only way to reload page so that users can try again until error is resolved
-			// uncomment to reload page:
-			// window.location = "/oi-oi-oi";
-		}
-	})
 </script>
 
 <Header />
