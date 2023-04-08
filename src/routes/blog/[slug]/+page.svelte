@@ -123,6 +123,12 @@
 			// background-color: #121110;
 
 			// margin-right: auto;
+
+
+			strong {
+				color: $tan-hard;
+			}
+
 			@media (max-width: 1080px) {
 				width: 0;
 				flex-shrink: 1;
