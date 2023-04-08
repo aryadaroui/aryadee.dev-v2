@@ -19,6 +19,24 @@
 		margin-bottom: 0;
 	}
 
+	.lang-light {
+		background-color: $tan-soft;
+		border: $brown-soft 1px solid;
+		color: $brown-soft;
+	}
+
+	.tool-light {
+		background-color: $tan-mid;
+		border: $brown-mid 1px solid;
+		color: $brown-mid;
+	}
+
+	.domain-light {
+		background-color: $tan-hard;
+		border: $tan-hard 1px solid; // $brown-hard but lighter
+		color: $brown-hard;
+	}
+
 	.lang {
 		background-color: $gray-soft;
 		border: $brown-soft 1px solid;
@@ -36,6 +54,8 @@
 		border: hsl(17, 20%, 30%) 1px solid; // $brown-hard but lighter
 		color: $tan-hard;
 	}
+
+
 
 	#text-box {
 		// background-color: rgba(5, 5, 5, 0.7);

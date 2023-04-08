@@ -32,7 +32,7 @@ words
 
 here is less than  &amp;lt; `<` what about `f(x) => { x^2 } {:js}`
 
-lets get more complicated with curly braces in js inline `f(x) => x^2{:js}`   `{apple}`
+lets get more `monospace` in here! complicated with curly braces in js inline `f(x) => x^2{:js}`   `{apple}`
 
 ```python
 thing = 1

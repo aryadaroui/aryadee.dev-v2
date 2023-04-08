@@ -378,7 +378,7 @@
 				// background-color: rgba($background-color, 0.8);
 				// background-color: hsl(240, 13%, 6%);
 				font-family: $mono;
-				font-size: 0.75em;
+				font-size: 0.85em;
 
 				padding-left: 0;
 				padding-right: 0;
