@@ -2,6 +2,7 @@
 	import { onMount } from 'svelte';
 	import * as Shape from './Shape';
 	import Page2 from './Page2.svelte';
+  import Page22 from './Page22.svelte';
 
 	onMount(() => {
 		// console.log('onMount HOME');
@@ -152,7 +153,8 @@
 		</div>
 	</section>
 	<section id="page-2">
-		<Page2 />
+		<!-- <Page2 /> -->
+		<Page22 />
 		<div class="scroll-button-container">
 			<button id="scroll-up-button" class="scroll-button">
 				<span style="vertical-align: 2px;"> ♥ ♥ ♥ </span>
@@ -228,7 +230,7 @@
 	}
 
 	.background {
-		position: fixed;
+		position: absolute;
 		z-index: -1;
 	}
 
@@ -461,10 +463,11 @@
 		// background-color: rgba(20, 20, 20, 0.5);
 		// background-color: #3a353045;
 		// background-color: rgba($gray-mid, 0.3);
-		background-color: hsla(0, 0%, 0%, 0.7);
+		// background-color: hsla(0, 0%, 0%, 0.7);
+		// background-color: $background-color;
 
 		border-top: #6d6d6357 1px solid;
-		backdrop-filter: blur(27px) saturate(1.3) brightness(1.3);
+		backdrop-filter: brightness(2.0);
 		// -webkit-backdrop-filter: blur(50px);
 
 		display: flex;
