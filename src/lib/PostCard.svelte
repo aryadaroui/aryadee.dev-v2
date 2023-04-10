@@ -82,13 +82,15 @@
 	h2 {
 		font-weight: 200;
 		margin: 0;
+		font-size: 1.2em;
 	}
 
 	.thumbnail {
 		object-fit: cover;
-		transform: scale(1.15);
+		transform: scale(1.07);
 		width: 100%;
 		height: 100%;
+		image-rendering: smooth;
 	}
 
 	.tags {
@@ -128,11 +130,13 @@
 	}
 
 	#post-box {
-		display: flex;
+		// display: flex;
 		justify-content: space-between;
-		max-width: 800px;
+		max-width: 300px;
 		min-height: 100px;
+		max-height: 400px;
 		gap: 0;
+		flex-direction: column;
 		text-decoration: none;
 		color: $link-color;
 
@@ -141,7 +145,7 @@
 		font-family: $sans;
 
 		border-radius: 15px;
-		border: $border-link-translucent 2px solid;
+		border: $border-link-translucent 1px solid;
 		background-color: $background-translucent;
 		// box-shadow: 0px 5px 30px black;
 		overflow: hidden;
@@ -149,10 +153,10 @@
 		transition: background-color 0.15s ease, border 0.15s ease;
 
 
-		:hover h2 {
-			text-decoration: underline;
-			text-decoration-thickness: 0.01em;
-		}
+		// :hover h2 {
+		// 	text-decoration: underline;
+		// 	text-decoration-thickness: 0.01em;
+		// }
 	}
 
 	// a#post-box:hover {
@@ -161,8 +165,11 @@
 
 	.thumbnail-container {
 		overflow: hidden;
-		width: 25%;
-		height: auto;
+		// width: 25%;
+		// height: auto;
+		width: auto;
+		// min-height: 25%;
+		height: 30%;
 		border-right: rgba(gray, 0.5) 1px solid;
 	}
 
@@ -170,17 +177,20 @@
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
-		flex: 2;
+		// flex: 2;
+		// flex-shrink: 2;
 		padding: 15px;
+		height: 63%;
 	}
 
 	#post-box:hover {
 		// background-image: url(./assets/arrow_gray.svg);
 		background-color: rgba($cyan-soft, 0.2);
+		// background-color: $link-background;
 
 		background-size: 150px;
 		background-repeat: repeat;
-		border: $border-link-translucent-hover 2px solid;
+		border: $border-link-translucent-hover 1px solid;
 
 		transition: background-color 0.15s ease, border 0.15s ease;
 
