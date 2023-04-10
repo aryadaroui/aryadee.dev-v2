@@ -25,6 +25,7 @@
 		background-color: $gray-soft;
 		border: $brown-soft 1px solid;
 		color: $tan-soft;
+		// color: whitesmoke;
 	}
 
 	.tool {
@@ -43,21 +44,22 @@
 
 	.lang-light {
 		background-color: $tan-soft;
-		border: $brown-soft 1px solid;
+		border: $brown-soft 1.5px solid;
 		color: $brown-soft;
 	}
 
 	.tool-light {
 		background-color: $tan-mid;
-		border: $brown-mid 1px solid;
+		border: $brown-mid 1.5px solid;
 		color: $brown-mid;
 	}
 
 	.domain-light {
 		background-color: $tan-hard;
-		border: $tan-hard 1px solid; // $brown-hard but lighter
+		border: $brown-hard 1.5px solid; // $brown-hard but lighter
 		color: $brown-hard;
 	}
+
 
 
 

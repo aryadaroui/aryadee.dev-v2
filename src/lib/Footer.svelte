@@ -1,9 +1,18 @@
+<script>
+	export let line = "true";
+	export let smiley = "true";
+</script>
+
 <div id="footer">
+	{#if line === "true"}
 	<hr />
+	{/if}
 	<div class="container">
 		<span>Arya "Dee" Daroui&nbsp; · &nbsp<a href="mailto:adaroui@uci.edu">adaroui@uci.edu</a>&nbsp; · &nbsp;<a href="/privacy-and-copyright">privacy & copyright</a>&nbsp;</span>
 	</div>
-	<span id="easter-egg">:-)</span>
+	{#if smiley === "true"}
+	<span id="smiley">:-)</span>
+	{/if}
 </div>
 
 <style lang="scss">
@@ -54,7 +63,7 @@
 			align-items: center;
 		}
 
-		#easter-egg {
+		#smiley {
 			position: absolute;
 			transform: translateY(-25px);
 		}
