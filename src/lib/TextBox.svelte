@@ -14,28 +14,12 @@
 		font-weight: 300;
 		text-overflow: ellipsis;
 		display: inline-block;
-		margin: 0.4em;
+		margin: 0.2em;
 		margin-left: 0;
 		margin-bottom: 0;
 	}
 
-	.lang-light {
-		background-color: $tan-soft;
-		border: $brown-soft 1px solid;
-		color: $brown-soft;
-	}
 
-	.tool-light {
-		background-color: $tan-mid;
-		border: $brown-mid 1px solid;
-		color: $brown-mid;
-	}
-
-	.domain-light {
-		background-color: $tan-hard;
-		border: $tan-hard 1px solid; // $brown-hard but lighter
-		color: $brown-hard;
-	}
 
 	.lang {
 		background-color: $gray-soft;
@@ -53,6 +37,26 @@
 		background-color: $gray-harder;
 		border: hsl(17, 20%, 30%) 1px solid; // $brown-hard but lighter
 		color: $tan-hard;
+	}
+
+
+
+	.lang-light {
+		background-color: $tan-soft;
+		border: $brown-soft 1px solid;
+		color: $brown-soft;
+	}
+
+	.tool-light {
+		background-color: $tan-mid;
+		border: $brown-mid 1px solid;
+		color: $brown-mid;
+	}
+
+	.domain-light {
+		background-color: $tan-hard;
+		border: $tan-hard 1px solid; // $brown-hard but lighter
+		color: $brown-hard;
 	}
 
 

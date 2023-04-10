@@ -4,6 +4,7 @@
 	import PostBox2 from '$lib/PostBox2.svelte';
 	import PostCard from '$lib/PostCard.svelte';
 	import Header from '$lib/Header.svelte';
+  import LinkBox from '$lib/LinkBox.svelte';
 </script>
 
 <div id="page-2">
@@ -19,29 +20,44 @@
 		</div>
 	</div>
 	<div class="spread-stack">
-		<div>
+		<div class="flex-child">
 			<h3>Languages and tools I&thinsp;&thinsp;<Heart /></h3>
-			<ul>
+			<span class="tag lang"><b>Python</b></span> <span class="tag tool">NumPy</span> <span class="tag tool">Pandas</span> <span class="tag tool">SciKit</span> <span class="tag tool">OpenCV</span> <span class="tag tool">Plotly</span> <span class="tag tool">Rich</span> <span class="tag tool">TensorFlow</span>
+			<span class="tag lang"><b>TypeScript</b></span> <span class="tag tool">Svelte</span><span class="tag tool">SvelteKit</span> <span class="tag tool">unified.js</span> <span class="tag tool">WebGL</span> <span class="tag tool"> D3.js</span>
+			<span class="tag lang"><b>C</b></span> <span class="tag lang"><b>C++</b></span> <span class="tag tool">SystemC</span> <span class="tag tool">Boost</span> <span class="tag lang"><b>Rust</b></span> <span class="tag tool">Tauri</span> <span class="tag tool">Rayon</span>
+
+			<!-- <ul>
 				<li>
-					<span class="tag lang"><b>Python</b></span> <span class="tag tool">NumPy</span> <span class="tag tool">Pandas</span>
+					<span class="tag lang"><b>Python</b></span>  <br>
+					<span class="tag tool">NumPy</span> <span class="tag tool">Pandas</span>
 					<span class="tag tool">SciKit</span> <span class="tag tool">OpenCV</span> <span class="tag tool">Plotly</span>
 				</li>
 				<li>
-					<span class="tag lang"><b>TypeScript</b></span> <span class="tag tool">Svelte(Kit)</span>
+					<span class="tag lang"><b>TypeScript</b></span>  <br><span class="tag tool">Svelte(Kit)</span>
 					<span class="tag tool">WebGL</span> <span class="tag tool"> D3.js</span>
 				</li>
 				<li>
-					<span class="tag lang"><b>C & C++</b></span> <span class="tag tool">SystemC</span>
+					<span class="tag lang"><b>C & C++</b></span> <br> <span class="tag tool">SystemC</span>
 					<span class="tag tool">Boost</span>
 				</li>
 				<li>
-					<span class="tag lang"><b>Rust</b></span> <span class="tag tool">Tauri</span> <span class="tag tool">Rayon</span>
+					<span class="tag lang"><b>Rust</b></span> <br> <span class="tag tool">Tauri</span> <span class="tag tool">Rayon</span>
 				</li>
-			</ul>
+			</ul> -->
 		</div>
-		<div>
+		<div class="flex-child">
 			<h3>Domain knowledge</h3>
-			<ul>
+
+			<span class="tag domain"><b>Signals</b></span> <span class="tag domain">image processing</span> <span class="tag domain">audio</span>
+			<span class="tag domain">n-D data</span>
+
+			<span class="tag domain"><b>Data</b></span> <span class="tag domain">data analysis</span> <span class="tag domain">visualization</span>
+			<span class="tag domain">machine learning</span>
+
+			<span class="tag domain"><b>Systems</b></span> <span class="tag domain">parallelization</span> <span class="tag domain">modeling</span>
+
+			<span class="tag domain"><b>WebDev</b></span> <span class="tag domain">frontend</span> <span class="tag domain">graphics</span>
+			<!-- <ul>
 				<li>
 					<b>Signals</b>: <span class="tag domain">image processing</span> <span class="tag domain">audio</span>
 					<span class="tag domain">n-D data</span>
@@ -56,13 +72,18 @@
 				<li>
 					<b>WebDev</b>: <span class="tag domain">frontend</span> <span class="tag domain">graphics</span>
 				</li>
-			</ul>
+			</ul> -->
 		</div>
-		<div>
+		<div class="flex-child">
 			<h3>Links</h3>
-			Uses<br />
+			<LinkBox link="/uses" title="uses"/>
+			<LinkBox link="/maxim" title="maxim"/>
+			<LinkBox link="/resume" title="resume"/>
+
+
+			<!-- Uses<br />
 			Maxim <br />
-			Resume
+			Resume -->
 		</div>
 	</div>
 	<div class="around-stack">
@@ -96,7 +117,14 @@
 	#page-2 {
 		margin: auto;
 		max-width: 1080px;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-around;
+		gap: 72px;
 		// border: pink 1px solid;
+	}
+	h3 {
+		color: $accent-color;
 	}
 
 	.center-stack {
@@ -118,6 +146,20 @@
 		justify-content: space-around;
 
 		gap: 20px;
+	}
+
+	ul {
+		padding-left: 0px;
+		list-style-type: none;
+	}
+
+	.flex-child {
+		// display: flex;
+		// text-align: justify;
+		flex-wrap: wrap;
+		max-width: 360px;
+		justify-content: space-between;
+		align-items: flex-start;
 	}
 
 	div {
