@@ -113,7 +113,7 @@
 	<section id="page-1" style="touch-action: pan-y;">
 		<div id="page-1-content">
 			<div id="hello">
-				<h1><span class="blackground allow-pointer-events"> aryadee </span></h1>
+				<h1><span class="blackground allow-pointer-events"> arya<span class="accent">dee</span> </span></h1>
 				<p>
 					<span class="blackground allow-pointer-events"
 						><span class="avoid-wrap">computer engineer.</span>&nbsp;<span class="avoid-wrap">ndarray lover.</span>&nbsp;<span
@@ -182,6 +182,11 @@
 		}
 	}
 
+	h1 {
+		font-weight: 600;
+		padding-left: 0.6em;
+	}
+
 	button {
 		font-family: Hack;
 		color: $ink-color;
@@ -245,6 +250,7 @@
 		user-select: none;
 		border-radius: 15px;
 		cursor: pointer;
+		
 
 		&:hover {
 			filter: brightness(66%);

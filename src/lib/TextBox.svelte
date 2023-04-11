@@ -2,7 +2,7 @@
 	<slot />
 </div>
 
-<style global lang="scss">
+<style  lang="scss">
 	// @import '/src/styles/main.scss';
 	// @use '/src/styles/vars';
 
@@ -14,7 +14,7 @@
 		font-weight: 300;
 		text-overflow: ellipsis;
 		display: inline-block;
-		margin: 0.2em;
+		margin: 0.4em 0.4em;
 		margin-left: 0;
 		margin-bottom: 0;
 	}
@@ -55,7 +55,7 @@
 	}
 
 	.domain-light {
-		background-color: $tan-hard;
+		background-color: $tan-mid;
 		border: $brown-hard 1.5px solid; // $brown-hard but lighter
 		color: $brown-hard;
 	}

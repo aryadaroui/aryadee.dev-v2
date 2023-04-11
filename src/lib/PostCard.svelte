@@ -87,7 +87,7 @@
 
 	.thumbnail {
 		object-fit: cover;
-		transform: scale(1.07);
+		transform: scale(1.1);
 		width: 100%;
 		height: 100%;
 		image-rendering: smooth;
@@ -145,18 +145,20 @@
 		font-family: $sans;
 
 		border-radius: 15px;
-		border: $border-link-translucent 1px solid;
+		border: transparentize($border-link-translucent, 1.0) 1px solid;
 		background-color: $background-translucent;
 		// box-shadow: 0px 5px 30px black;
 		overflow: hidden;
 
 		transition: background-color 0.15s ease, border 0.15s ease;
 
-
 		// :hover h2 {
 		// 	text-decoration: underline;
 		// 	text-decoration-thickness: 0.01em;
 		// }
+
+		flex-grow: 1;
+		flex-basis: 0;
 	}
 
 	// a#post-box:hover {
@@ -170,7 +172,7 @@
 		width: auto;
 		// min-height: 25%;
 		height: 30%;
-		border-right: rgba(gray, 0.5) 1px solid;
+		// border-bottom: rgba($border-link-translucent-hover, 0.5) 1px solid;
 	}
 
 	.content {
@@ -185,7 +187,7 @@
 
 	#post-box:hover {
 		// background-image: url(./assets/arrow_gray.svg);
-		background-color: rgba($cyan-soft, 0.2);
+		background-color: rgba($cyan-soft, 0.3);
 		// background-color: $link-background;
 
 		background-size: 150px;
@@ -193,7 +195,6 @@
 		border: $border-link-translucent-hover 1px solid;
 
 		transition: background-color 0.15s ease, border 0.15s ease;
-
 
 		// text-decoration: underline;
 		// text-decoration-thickness: 1.5px;
