@@ -473,7 +473,7 @@
 		// background-color: $background-color;
 
 		border-top: #6d6d6357 1px solid;
-		backdrop-filter: brightness(1.5);
+		backdrop-filter: brightness(1.9);
 		// -webkit-backdrop-filter: blur(50px);
 
 		display: flex;

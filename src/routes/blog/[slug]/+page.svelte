@@ -57,7 +57,7 @@
 	// }
 
 	:root {
-		background-color: $background-color;
+		background-color: #413933;
 	}
 
 	main#post {
@@ -138,7 +138,7 @@
 		}
 
 		article {
-			background-color: $background-color;
+			background-color: #413933;
 			font-family: $sans;
 			color: rgba($ink-color, 0.9);
 			max-width: 720px;
@@ -238,13 +238,14 @@
 				padding: 0.3em 0.4em;
 				border-radius: 0.4em;
 				background-color: hsl(230, 10%, 10%);
-				border: $border-translucent 1px solid;
+				// border: $border-translucent 1px solid;
 			}
 
 			p code {
 				padding: 0.3em 0.4em;
 				border-radius: 0.4em;
-				background-color: hsl(230, 10%, 25%);
+				// background-color: hsl(230, 10%, 20%);
+				background-color: $background-translucent;
 				// background-color: $gray-harder;
 				// border: $border-translucent 1px solid;
 
@@ -260,8 +261,8 @@
 			li code {
 				padding: 0.25em;
 				border-radius: 0.5em;
-				background-color: $void-color;
-				border: $border-translucent 1px solid;
+				background-color: $background-translucent;
+				// border: $border-translucent 1px solid;
 
 				span.line {
 					padding: 0;
@@ -289,7 +290,7 @@
 				// margin-bottom: 1em;
 				position: relative;
 				border-radius: 15px;
-				border: rgba($blue-mid, 0.1) 1px solid;
+				border: rgba($blue-mid, 0.0) 1px solid;
 				overflow: hidden;
 				line-height: 1em;
 
