@@ -126,7 +126,7 @@
 
 			width: 100%;
 			border-radius: 15px;
-			border: $border-link-translucent 1px solid;
+			border: rgba($border-link-translucent, 0.0) 1px solid;
 			// border: none;
 			margin: 0;
 			padding: 1px 1px 1px 1px;
@@ -181,7 +181,7 @@
 			transition: border 0.15s ease;
 
 
-			border: $border-link-translucent 1px solid;
+			border: rgba($border-link-translucent, 0.0) 1px solid;
 			border-top: none;
 
 			top: -15px;

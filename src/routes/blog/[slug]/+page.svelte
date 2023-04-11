@@ -289,7 +289,7 @@
 				// margin-bottom: 1em;
 				position: relative;
 				border-radius: 15px;
-				border: rgba($blue-mid, 0.5) 1px solid;
+				border: rgba($blue-mid, 0.1) 1px solid;
 				overflow: hidden;
 				line-height: 1em;
 
@@ -301,7 +301,7 @@
 
 				// transition: margin-left 0.3s ease;
 				transition: width 0.3s ease, margin-left 0.3s ease, border 0.15s ease;
-				margin-bottom: 2px;
+				// margin-bottom: 2px;
 				// transition: border 0.0s none;
 
 				border-radius: 15px;
@@ -324,9 +324,9 @@
 			// a lot of silliness to make the code blocks responsive but not overflow
 			div[data-rehype-pretty-code-fragment]:focus {
 				position: relative;
-				border: 2px solid $blue-hard;
+				border: 1px solid $blue-hard;
 				transition: width 0.3s ease, margin-left 0.3s ease, border-color 0.3s ease;
-				margin-bottom: 0px;
+				// margin-bottom: 0px;
 
 				// transition: left 0.3s ease;
 				// transition: border-color 0.3s ease;
