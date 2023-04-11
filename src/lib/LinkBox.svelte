@@ -1,10 +1,11 @@
 <script lang="ts">
 	export let link: string;
+	export let title: string;
 </script>
 
 <a href={link}>
 	<div id="link-box">
-		<slot />
+		<h3>{title}</h3>
 	</div>
 </a>
 
@@ -34,22 +35,23 @@
 		justify-content: center;
 		align-items: center;
 
-		min-width: 120px;
-		min-height: 90px;
+		// min-width: 120px;
+		// min-height: 90px;
+		// height: 50px;
 
 		max-width: 800px;
-		max-height: 200px;
+		max-height: 40px;
 		margin: 0;
 
 		transition: background-color 0.15s ease, border 0.15s ease;
 
 
-		:global(h2) {
+		:global(h3) {
 			color: $link-color;
 			font-family: 'Swiss 721';
 			font-weight: 200;
 
-			margin: 10px 20px;
+			// margin: 10px 20px;
 		}
 	}
 

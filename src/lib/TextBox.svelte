@@ -2,7 +2,7 @@
 	<slot />
 </div>
 
-<style global lang="scss">
+<style  lang="scss">
 	// @import '/src/styles/main.scss';
 	// @use '/src/styles/vars';
 
@@ -14,33 +14,18 @@
 		font-weight: 300;
 		text-overflow: ellipsis;
 		display: inline-block;
-		margin: 0.4em;
+		margin: 0.4em 0.4em;
 		margin-left: 0;
 		margin-bottom: 0;
 	}
 
-	.lang-light {
-		background-color: $tan-soft;
-		border: $brown-soft 1px solid;
-		color: $brown-soft;
-	}
 
-	.tool-light {
-		background-color: $tan-mid;
-		border: $brown-mid 1px solid;
-		color: $brown-mid;
-	}
-
-	.domain-light {
-		background-color: $tan-hard;
-		border: $tan-hard 1px solid; // $brown-hard but lighter
-		color: $brown-hard;
-	}
 
 	.lang {
 		background-color: $gray-soft;
 		border: $brown-soft 1px solid;
 		color: $tan-soft;
+		// color: whitesmoke;
 	}
 
 	.tool {
@@ -54,6 +39,27 @@
 		border: hsl(17, 20%, 30%) 1px solid; // $brown-hard but lighter
 		color: $tan-hard;
 	}
+
+
+
+	.lang-light {
+		background-color: $tan-soft;
+		border: $brown-soft 1.5px solid;
+		color: $brown-soft;
+	}
+
+	.tool-light {
+		background-color: $tan-mid;
+		border: $brown-mid 1.5px solid;
+		color: $brown-mid;
+	}
+
+	.domain-light {
+		background-color: $tan-mid;
+		border: $brown-hard 1.5px solid; // $brown-hard but lighter
+		color: $brown-hard;
+	}
+
 
 
 

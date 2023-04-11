@@ -28,23 +28,6 @@
 			<TextBox>
 				<h3>Languages and tools I&thinsp;&thinsp;<Heart /></h3>
 				<ul>
-					<!-- <li>
-						<span class="tag lang">Python</span> <span class="tag tool">NumPy</span> <span class="tag tool">Pandas</span>
-						<span class="tag tool">SciKit</span> <span class="tag tool">OpenCV</span> <span class="tag tool">Plotly</span>
-						<span class="tag tool">Rich</span>
-					</li>
-					<li>
-						<span class="tag lang">TypeScript</span> <span class="tag tool">Svelte(Kit)</span>
-						<span class="tag tool">WebGL</span> <span class="tag tool"> D3.js</span>
-					</li>
-					<li>
-						<span class="tag lang">C & C++</span> <span class="tag tool">SystemC</span> <span class="tag tool">Boost</span>
-					</li>
-					<li>
-						<span class="tag lang">Rust</span> <span class="tag tool">Tauri</span> <span class="tag tool">Rayon</span>
-					</li>
-				</ul> -->
-
 					<li>
 						<span class="tag lang"><b>Python</b></span> <span class="tag tool">NumPy</span> <span class="tag tool">Pandas</span>
 						<span class="tag tool">SciKit</span> <span class="tag tool">OpenCV</span> <span class="tag tool">Plotly</span>

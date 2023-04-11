@@ -88,9 +88,7 @@
 			<div class="overlay">
 				<blockquote>
 					<p>
-						However, I continue to try—and I continue, indefatigably, to reach out. There's no way I can single-handedly save
-						the world or, perhaps, even make a perceptible difference—but how ashamed I would be to let a day pass without
-						making one more effort. <span class="author">― <em>Isaac Asimov</em></span>
+						There's no way I can single-handedly save the world or, perhaps, even make a perceptible difference—but how ashamed I would be to let a day pass without making one more effort. <span class="author">― <em>Isaac Asimov</em></span>
 					</p>
 				</blockquote>
 			</div>
@@ -231,7 +229,7 @@
 		border-bottom: 1.5px solid rgba(22, 25, 28, 0.9);
 
 		/* text-align: left; */
-		text-align: justify;
+		/* text-align: justify; */
 	}
 
 	/* @media screen and (max-width: 500px) {
