@@ -1,17 +1,18 @@
 <script>
-	export let line = "true";
-	export let smiley = "true";
+	export let line = 'true';
+	export let smiley = 'true';
 </script>
 
 <div id="footer">
-	{#if line === "true"}
-	<hr />
+	{#if line === 'true'}
+		<hr />
 	{/if}
-	<div class="container">
-		<span>Arya "Dee" Daroui&nbsp; · &nbsp<a href="mailto:adaroui@uci.edu">adaroui@uci.edu</a>&nbsp; · &nbsp;<a href="/privacy-and-copyright">privacy & copyright</a>&nbsp;</span>
+	<div class="footer">
+		<span>arya<span class="accent">dee</span></span>&nbsp; · &nbsp<a href="mailto:adaroui@uci.edu">adaroui@uci.edu</a>&nbsp; ·
+		&nbsp;<a href="/privacy-and-copyright">privacy & copyright</a>
 	</div>
-	{#if smiley === "true"}
-	<span id="smiley">:-)</span>
+	{#if smiley === 'true'}
+		<span id="smiley">:-)</span>
 	{/if}
 </div>
 
@@ -20,7 +21,7 @@
 		margin: 20px;
 		font-weight: 300;
 		// background-color: $void-color;
-		color: rgba($tan-soft, 0.7);
+		color: rgba($tan-soft, 0.8);
 		height: 100px;
 		// width: 100%;
 
@@ -29,26 +30,6 @@
 
 		text-align: center;
 
-		a {
-			color: rgba($link-color, 0.8);
-			text-decoration: none;
-			border-radius: 0.4rem;
-			padding: 0.2rem;
-			margin: -0.2rem;
-			// padding: 0.1rem;
-			transition: background-color 0.15s ease, color 0.15s ease;
-		}
-
-		a:hover {
-			background-color: rgba($link-background, 0.5);
-			color: $cyan-soft;
-			// color: $cyan-hard;
-			// color: $ink-color;
-			padding: 0.2rem;
-			margin: -0.2rem;
-			// color: $tan-mid;
-			// transition: background-color 0.15s ease, color 0.15s ease;
-		}
 
 		hr {
 			max-width: 720px;
@@ -65,52 +46,60 @@
 
 		#smiley {
 			position: absolute;
-			transform: translateY(-25px);
+			// transform: translateY(px);
 		}
 
-		// nav {
-		// 	margin: auto;
-		// 	display: flex;
-		// 	justify-content: space-between;
-		// 	align-items: center;
-		// 	font-size: 1.2em;
-		// 	max-width: 720px;
-		// 	height: 3em;
+		.footer {
+			margin: 20px;
 
-		// 	a {
-		// 		text-decoration: none;
-		// 		// color: $cyan-mid;
-		// 		color: $tan-soft;
+			font-weight: 300;
+			// background-color: $void-color;
+			// color: rgba($tan-soft, 0.7);
+			// opacity: 0.1;
+			// height: 100px;
+			// width: 100%;
 
-		// 		font-family: $sans;
-		// 		font-weight: 300;
-		// 		font-size: 1.3rem;
-		// 		margin: 0px 20px;
+			// position: absolute;
+			// bottom: 0;
+			margin-bottom: 20px;
 
-		// 		// border-radius: 0.2rem;
-		// 		// border: pink 1px solid;
-		// 		// padding: 0.5rem;
-		// 		border-radius: 0.4rem;
-		// 		padding: 0.4rem;
+			text-align: center;
 
-		// 		transition: background-color 0.15s ease, color 0.15s ease;
-		// 	}
+			> * {
+				opacity: 0.8;
+				transition: all 0.15s ease;
+			}
 
-		// 	.link {
-		// 		border-radius: 0.4rem;
-		// 		padding: 0.4rem;
-		// 	}
+			> span:hover {
+				opacity: 1;
+				transition: all 0.15s ease;
+			}
 
-		// 	.home {
-		// 		// flex: 1;
-		// 		font-size: 1.5rem;
-		// 		font-weight: 800;
-		// 	}
+			> a:hover {
+				opacity: 1;
+				transition: all 0.15s ease;
+			}
 
-		// 	.current {
-		// 		background-color: rgba($link-background, 0.5);
-		// 		color: $tan-soft;
-		// 	}
-		// }
+			a {
+				color: rgba($link-color, 0.9);
+				text-decoration: none;
+				border-radius: 0.4rem;
+				padding: 0.2rem;
+				margin: -0.2rem;
+				// padding: 0.1rem;
+				transition: background-color 0.15s ease, color 0.15s ease;
+			}
+
+			a:hover {
+				background-color: rgba($link-background, 0.6);
+				color: $cyan-soft;
+				// color: $cyan-hard;
+				// color: $ink-color;
+				padding: 0.2rem;
+				margin: -0.2rem;
+				// color: $tan-mid;
+				// transition: background-color 0.15s ease, color 0.15s ease;
+			}
+		}
 	}
 </style>

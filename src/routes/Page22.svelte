@@ -94,7 +94,7 @@
 		text-align: center;
 
 		> * {
-			opacity: 0.7;
+			opacity: 0.8;
 			transition: all 0.15s ease;
 		}
 
@@ -120,7 +120,7 @@
 		}
 
 		a:hover {
-			background-color: rgba($link-background, 0.6);
+			background-color: rgba($link-background, 0.8);
 			color: $cyan-soft;
 			// color: $cyan-hard;
 			// color: $ink-color;
