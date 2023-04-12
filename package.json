@@ -3,6 +3,7 @@
 	"version": "0.1.0",
 	"scripts": {
 		"dev": "vite dev",
+		"prebuild": "node make_thumbnails.js",
 		"build": "vite build",
 		"preview": "vite preview",
 		"package": "svelte-kit package",
@@ -42,7 +43,9 @@
 		"remark-parse": "^10.0.1",
 		"remark-rehype": "^10.1.0",
 		"sass": "^1.59.3",
+		"sharp": "^0.32.0",
 		"shiki": "^0.14.1",
+		"svelte-photoviewer": "^0.1.0",
 		"svelte-toc": "^0.5.4",
 		"three": "^0.150.1",
 		"unified": "^10.1.2",
