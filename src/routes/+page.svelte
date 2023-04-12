@@ -13,13 +13,13 @@
 			document.querySelector('#page-2').scrollIntoView({ behavior: 'smooth' });
 		});
 
-		let scroll_up_button = document.querySelector('#scroll-up-button');
-		scroll_up_button.addEventListener('click', function () {
-			window.scrollTo({
-				top: 0,
-				behavior: 'smooth',
-			});
-		});
+		// let scroll_up_button = document.querySelector('#scroll-up-button');
+		// scroll_up_button.addEventListener('click', function () {
+		// 	window.scrollTo({
+		// 		top: 0,
+		// 		behavior: 'smooth',
+		// 	});
+		// });
 
 		let tooltip = document.querySelector('#tooltip');
 		let page1 = document.querySelector('#page-1');
@@ -155,11 +155,11 @@
 	<section id="page-2">
 		<!-- <Page2 /> -->
 		<Page22 />
-		<div class="scroll-button-container">
+		<!-- <div class="scroll-button-container">
 			<button id="scroll-up-button" class="scroll-button">
 				<span style="vertical-align: 2px;"> ♥ ♥ ♥ </span>
 			</button>
-		</div>
+		</div> -->
 	</section>
 </main>
 
@@ -170,6 +170,7 @@
 
 	:root {
 		background-color: $background-color;
+		// background-color: #3A332E;
 	}
 
 	main {
@@ -473,8 +474,10 @@
 		// background-color: $background-color;
 
 		border-top: #6d6d6357 1px solid;
-		backdrop-filter: brightness(1.9);
+		backdrop-filter: brightness(1.5);
 		// -webkit-backdrop-filter: blur(50px);
+		// background-color: #3A332E;
+		// background-color: $background-color;
 
 		display: flex;
 		flex-direction: column;

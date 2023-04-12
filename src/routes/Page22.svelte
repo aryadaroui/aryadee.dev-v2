@@ -14,7 +14,7 @@
 		<div style="max-width: 500px; flex-grow: 2;">
 			<h2>Hello world!</h2>
 			<p>My name is Arya “<span class="accent">Dee</span>” Daroui.</p>
-			<p>I like to code, take photos, and make music. Most of what I share here is at the intersction of these things.</p>
+			<p>I like to code, take photos, and make music. Most of what I share here is at the intersection of these things.</p>
 			<p></p>
 		</div>
 		<div>
@@ -40,9 +40,9 @@
 		</div>
 		<div class="flex-child" style="max-width: 85px;">
 			<h3>Links</h3>
-			<a class="link-box" href="/">uses</a> 
+			<a class="link-box" href="/blog/uses">uses</a> 
 			<!-- <a class="link-box" href="/">about</a>  -->
-			<a class="link-box" href="/">maxim</a>
+			<a class="link-box" href="/maxim">maxim</a>
 			<a class="link-box" href="/">resumé</a>
 		</div>
 	</div>
@@ -70,7 +70,8 @@
 	/>
 	</div>
 	<div class="footer">
-		<span>arya<span class="accent">dee</span></span>&nbsp; · &nbsp<a href="mailto:adaroui@uci.edu">adaroui@uci.edu</a>&nbsp; · &nbsp;<a href="/privacy-and-copyright">privacy & copyright</a>
+		<span>arya<span class="accent">dee</span></span>&nbsp; · &nbsp<a href="mailto:adaroui@uci.edu">adaroui@uci.edu</a>&nbsp; · &nbsp;<a href="/privacy-and-copyright">privacy & copyright</a> <br> <br>
+		:-)
 	</div>
 
 </div>
@@ -169,10 +170,10 @@
 		gap: 50px;
 		// border: pink 1px solid;
 		font-weight: 300;
-		margin-top: 50px;
-		margin-bottom: 50px;
+		// margin-top: 50px;
+		// margin-bottom: 50px;
 
-		padding: 0px 20px;
+		padding: 40px 20px;
 	}
 	h2 {
 		color: $pink-hard;
@@ -246,13 +247,13 @@
 	}
 
 	.tool {
-		background-color: darken($gray-mid, 3%);
+		background-color: darken($gray-mid, 2%);
 		// border: $brown-mid 1px solid;
 		color: $tan-mid;
 	}
 
 	.domain {
-		background-color: darken($gray-harder, 4%);
+		background-color: darken($gray-harder, 2%);
 		// border: hsl(17, 20%, 30%) 1px solid; // $brown-hard but lighter
 		color: $tan-mid;
 	}
@@ -260,7 +261,7 @@
 
 
 	.lang-light {
-		background-color: darken($tan-soft, 2%);
+		background-color: darken($tan-soft, 6%);
 		// border: $brown-soft 1.5px solid;
 		color: darken($brown-soft, 8%);
 	}
@@ -272,7 +273,7 @@
 	}
 
 	.domain-light {
-		background-color: lighten($tan-mid, 4%);
+		background-color: lighten($tan-mid, 0%);
 		// border: $brown-hard 1.5px solid; // $brown-hard but lighter
 		color: $brown-hard;
 	}

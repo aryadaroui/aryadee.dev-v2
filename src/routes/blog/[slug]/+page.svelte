@@ -4,15 +4,13 @@
 	// @ts-ignore cannot find module & types. it does exist
 	import Toc from 'svelte-toc';
 	import Header from '$lib/Header.svelte';
-  import Footer from '$lib/Footer.svelte';
-
+	import Footer from '$lib/Footer.svelte';
 </script>
 
 <Header />
 <main id="post">
 	<div class="margin-padding" />
 	<article>
-
 		<!-- <h1>{data.title}</h1> -->
 		<!-- <p>Published: {data.date}</p> -->
 
@@ -28,12 +26,11 @@
 	</article>
 	<aside class="table-of-contents">
 		<Toc
-		titleTag='strong'
+			titleTag="strong"
 			breakpoint="1080"
 			title="On this page"
 			headingSelector=":is(h1, h2, h3):not(.toc-exclude)"
 			activeHeadingScrollOffset="150"
-
 			--toc-li-color="#FFEFD8"
 			--toc-active-border-radius="0.5rem"
 			--toc-active-color="#F7679C"
@@ -43,8 +40,7 @@
 			--toc-mobile-bg="#171312"
 			--toc-mobile-shadow="box-shadow: 0px 5px 30px rgba(black, 0.7);"
 			--toc-mobile-btn-color="#FFEFD8"
-			--toc-mobile-btn-border-radius="10px"
-			/>
+			--toc-mobile-btn-border-radius="10px" />
 	</aside>
 </main>
 <Footer />
@@ -57,7 +53,7 @@
 	// }
 
 	:root {
-		background-color: #413933;
+		background-color: $background-color;
 	}
 
 	main#post {
@@ -124,9 +120,8 @@
 
 			// margin-right: auto;
 
-
 			strong {
-				color: $tan-hard;
+				color: $tan-mid;
 			}
 
 			@media (max-width: 1080px) {
@@ -138,7 +133,7 @@
 		}
 
 		article {
-			background-color: #413933;
+			background-color: $background-color;
 			font-family: $sans;
 			color: rgba($ink-color, 0.9);
 			max-width: 720px;
@@ -180,7 +175,6 @@
 			[data-date] {
 				margin: 1em 0em;
 			}
-
 
 			h1 {
 				font-size: 1.8em;
@@ -237,7 +231,7 @@
 			p span[data-rehype-pretty-code-fragment] code {
 				padding: 0.3em 0.4em;
 				border-radius: 0.4em;
-				background-color: hsl(230, 10%, 15%);
+				background-color: hsl(230, 10%, 8%);
 				// border: $border-translucent 1px solid;
 			}
 
@@ -245,7 +239,7 @@
 				padding: 0.3em 0.4em;
 				border-radius: 0.4em;
 				// background-color: hsl(230, 10%, 20%);
-				background-color: $background-translucent;
+				background-color: $gray-harder;
 				// background-color: $gray-harder;
 				// border: $border-translucent 1px solid;
 
@@ -254,13 +248,20 @@
 				}
 			}
 
+			li span[data-rehype-pretty-code-fragment] code {
+				padding: 0.3em 0.4em;
+				border-radius: 0.4em;
+				background-color: hsl(230, 10%, 14%);
+				// border: $border-translucent 1px solid;
+			}
+
 			li li {
 				font-size: 1em;
 			}
 
 			li code {
-				padding: 0.25em;
-				border-radius: 0.5em;
+				padding: 0.3em 0.4em;
+				border-radius: 0.4em;
 				background-color: $background-translucent;
 				// border: $border-translucent 1px solid;
 
@@ -290,7 +291,7 @@
 				// margin-bottom: 1em;
 				position: relative;
 				border-radius: 15px;
-				border: rgba($blue-mid, 0.0) 1px solid;
+				border: rgba($blue-mid, 0) 1px solid;
 				overflow: hidden;
 				line-height: 1em;
 
@@ -308,7 +309,7 @@
 				border-radius: 15px;
 
 				pre {
-					background-color: hsl(230, 10%, 15%);
+					background-color: hsl(230, 10%, 8%);
 				}
 
 				// background: #2e2a28;

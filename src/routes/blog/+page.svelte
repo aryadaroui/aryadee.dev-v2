@@ -49,7 +49,7 @@
 	main {
 		margin: auto;
 		max-width: 720px;
-		background-color: $background-color;
+		background-color: #332D29;
 	}
 
 	.post-container {
@@ -60,6 +60,6 @@
 		justify-content: center;
 	}
 	:root {
-		background-color: $background-color;
+		background-color: #332D29;
 	}
 </style>
