@@ -251,7 +251,7 @@
 			li span[data-rehype-pretty-code-fragment] code {
 				padding: 0.3em 0.4em;
 				border-radius: 0.4em;
-				background-color: hsl(230, 10%, 14%);
+				background-color: hsl(230, 10%, 8%);
 				// border: $border-translucent 1px solid;
 			}
 

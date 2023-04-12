@@ -24,32 +24,32 @@
 	<div class="spread-stack">
 		<div class="flex-child">
 			<h3>Langs and tools I&thinsp;&thinsp;<Heart /></h3>
-			<span class="tag lang-light"><b>Python</b></span><span class="tag tool">NumPy</span><span class="tag tool">Pandas</span><span class="tag tool">SciKit</span><span class="tag tool">OpenCV</span><span class="tag tool">Plotly</span><span class="tag tool">Rich</span><span class="tag tool">TensorFlow</span><span class="tag tool">Jupyter</span><span class="tag lang-light"><b>TypeScript</b></span><span class="tag tool">Svelte</span><span class="tag tool">SvelteKit</span><span class="tag tool">unified.js</span><span class="tag tool">WebGL2</span><span class="tag tool">D3.js</span><span class="tag lang-light"><b>C</b></span><span class="tag lang-light"><b>C++</b></span><span class="tag tool">SystemC</span><span class="tag tool">Boost</span><span class="tag lang-light"><b>Rust</b></span><span class="tag tool">Tauri</span><span class="tag tool">Rayon</span>
+			<span class="tag lang-light"><b>Python</b></span><span class="tag tool">NumPy</span><span class="tag tool">Pandas</span><span class="tag tool">SciKit</span><span class="tag tool">OpenCV</span><span class="tag tool">Plotly</span><span class="tag tool">Rich</span><span class="tag tool">TensorFlow</span><span class="tag tool">Jupyter</span><br><span class="tag lang-light"><b>TypeScript</b></span><span class="tag tool">Svelte</span><span class="tag tool">unified.js</span><span class="tag tool">WebGL2</span><span class="tag tool">D3.js</span><br><span class="tag lang-light"><b>C</b></span><span class="tag lang-light"><b>C++</b></span><span class="tag tool">SystemC</span><span class="tag tool">Boost</span><br><span class="tag lang-light"><b>Rust</b></span><span class="tag tool">Tauri</span><span class="tag tool">Rayon</span>
 		</div>
 		<div class="flex-child" >
 			<h3>Domain knowledge</h3>
 
-			<span class="tag domain-light"><b>Signals</b></span><span class="tag domain">image processing</span><span class="tag domain">n-D data</span>
+			<span class="tag domain-light"><b>Signals</b></span><span class="tag domain">image processing</span><span class="tag domain">n-D data</span><br>
 
-			<span class="tag domain-light"><b>Data</b></span><span class="tag domain">machine learning</span><span class="tag domain">visualization</span>
+			<span class="tag domain-light"><b>Data</b></span><span class="tag domain">machine learning</span><span class="tag domain">visualization</span><br>
 
-			<span class="tag domain-light"><b>Systems</b></span><span class="tag domain">parallelization</span><span class="tag domain">modeling</span>
+			<span class="tag domain-light"><b>Systems</b></span><span class="tag domain">parallelization</span><span class="tag domain">modeling</span><br>
 
 			<span class="tag domain-light"><b>WebDev</b></span><span class="tag domain">frontend</span><span class="tag domain">graphics</span>
 
 		</div>
-		<div class="flex-child" style="max-width: 85px;">
+		<div class="flex-child" id="links">
 			<h3>Links</h3>
-			<a class="link-box" href="/blog/uses">uses</a> 
+			<a class="link-box" href="/blog/uses">Uses</a> 
 			<!-- <a class="link-box" href="/">about</a>  -->
-			<a class="link-box" href="/maxim">maxim</a>
-			<a class="link-box" href="/">resumé</a>
+			<a class="link-box" href="/maxim">Maxim</a>
+			<a class="link-box" href="/">Resumé</a>
 		</div>
 	</div>
 	<div class="around-stack">
 	<PostCard
-		title={'Deploying a JPEG encoder on a modeled, multi-core "checkerboard" CPU'}
-		tags={['C++', 'SystemC', 'embedded systems', 'parallelization', 'modeling', 'image processing']}
+		title={'A JPEG encoder on a modeled, multi-core "checkerboard" CPU'}
+		tags={['C++', 'SystemC', 'parallelization', 'modeling', 'image processing']}
 		img_src={'thesis_thumb.png'}
 		alt={'thumbnail of thesis'}
 		link={'/post1'}
@@ -168,11 +168,7 @@
 		flex-direction: column;
 		justify-content: space-around;
 		gap: 50px;
-		// border: pink 1px solid;
 		font-weight: 300;
-		// margin-top: 50px;
-		// margin-bottom: 50px;
-
 		padding: 40px 20px;
 	}
 	h2 {
@@ -195,10 +191,31 @@
 	.spread-stack {
 		display: flex;
 		flex-direction: row;
-		justify-content: space-between;
+		justify-content: space-around;
+		
 		
 		.flex-child {
 			text-align: center;
+			max-width: 400px;
+		}
+
+		#links {
+			max-width: 90px;
+		}
+
+		@media (max-width: 850px) {
+			flex-direction: column;
+			flex: wrap;
+			justify-content: center;
+
+			.flex-child {
+				// border: red 1px solid;
+				max-width: 100%;
+			}
+
+			#links {
+				max-width: 100%;
+			}
 		}
 	}
 
@@ -208,6 +225,17 @@
 		justify-content: space-around;
 
 		gap: 20px;
+
+		@media (max-width: 850px) {
+			flex-direction: column;
+			flex: wrap;
+			justify-content: center;
+
+			.flex-child {
+				// border: red 1px solid;
+				max-width: 100%;
+			}
+		}
 	}
 
 	ul {
@@ -216,10 +244,8 @@
 	}
 
 	.flex-child {
-		// display: flex;
-		// text-align: justify;
 		flex-wrap: wrap;
-		max-width: 360px;
+		// max-width: 360px;
 		justify-content: space-between;
 		align-items: flex-start;
 	}
@@ -241,20 +267,16 @@
 
 	.lang {
 		background-color: $gray-soft;
-		// border: $brown-soft 1px solid;
 		color: $tan-soft;
-		// color: whitesmoke;
 	}
 
 	.tool {
 		background-color: darken($gray-mid, 2%);
-		// border: $brown-mid 1px solid;
 		color: $tan-mid;
 	}
 
 	.domain {
 		background-color: darken($gray-harder, 2%);
-		// border: hsl(17, 20%, 30%) 1px solid; // $brown-hard but lighter
 		color: $tan-mid;
 	}
 
@@ -263,18 +285,16 @@
 	.lang-light {
 		background-color: darken($tan-soft, 6%);
 		// border: $brown-soft 1.5px solid;
-		color: darken($brown-soft, 8%);
+		color: darken($brown-soft, 16%);
 	}
 
 	.tool-light {
 		background-color: $tan-mid;
-		// border: $brown-mid 1.5px solid;
 		color: $brown-mid;
 	}
 
 	.domain-light {
 		background-color: lighten($tan-mid, 0%);
-		// border: $brown-hard 1.5px solid; // $brown-hard but lighter
 		color: $brown-hard;
 	}
 

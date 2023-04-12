@@ -93,47 +93,13 @@
 		image-rendering: smooth;
 	}
 
-	.tags {
-		margin: 0;
-		margin-top: 10px;
-	}
 
-	.tag {
-		border-radius: 0.4em;
-		padding: 0.3em;
-
-		font-size: 0.75em;
-		font-weight: 300;
-		text-overflow: ellipsis;
-		display: inline-block;
-		margin: 0.4em;
-		margin-left: 0;
-		margin-bottom: 0;
-	}
-
-	.lang {
-		background-color: $gray-soft;
-		border: $brown-soft 1px solid;
-		color: $tan-soft;
-	}
-
-	.tool {
-		background-color: $gray-mid;
-		border: $brown-mid 1px solid;
-		color: $tan-mid;
-	}
-
-	.domain {
-		background-color: $gray-harder;
-		border: hsl(19, 20%, 25%) 1px solid; // $brown-hard but lighter
-		color: $tan-hard;
-	}
 
 	#post-box {
-		// display: flex;
+		display: flex;
 		justify-content: space-between;
-		max-width: 300px;
 		min-height: 100px;
+		max-width: 300px;
 		max-height: 400px;
 		gap: 0;
 		flex-direction: column;
@@ -159,6 +125,17 @@
 
 		flex-grow: 1;
 		flex-basis: 0;
+
+
+		@media (max-width: 850px) {
+			// max-width: 400px;
+
+			flex-direction: row;
+			// max-height: 300px;
+			min-height: 150px;
+			max-width: 100%;
+			justify-content: flex-start;
+		}
 	}
 
 	// a#post-box:hover {
@@ -172,6 +149,11 @@
 		width: auto;
 		// min-height: 25%;
 		height: 30%;
+		@media (max-width: 850px) {
+			height: auto;
+			width: 25%;
+		}
+
 		// border-bottom: rgba($border-link-translucent-hover, 0.5) 1px solid;
 	}
 
@@ -179,10 +161,12 @@
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
-		// flex: 2;
+		flex: 2;
 		// flex-shrink: 2;
 		padding: 15px;
-		height: 63%;
+		// gap: 10px;
+		// height: 63%;
+
 	}
 
 	#post-box:hover {
@@ -203,5 +187,41 @@
 			text-decoration: none;
 			color: $cyan-soft;
 		}
+	}
+
+	.tags {
+		margin: 0;
+		margin-top: 10px;
+	}
+
+	.tag {
+		border-radius: 0.4em;
+		padding: 0.3em;
+
+		font-size: 0.72em;
+		font-weight: 300;
+		text-overflow: ellipsis;
+		display: inline-block;
+		margin: 0.4em;
+		margin-left: 0;
+		margin-bottom: 0;
+	}
+
+	.lang {
+		background-color: $gray-soft;
+		border: $brown-soft 1px solid;
+		color: $tan-soft;
+	}
+
+	.tool {
+		background-color: $gray-mid;
+		border: $brown-mid 1px solid;
+		color: $tan-mid;
+	}
+
+	.domain {
+		background-color: $gray-harder;
+		border: hsl(19, 20%, 25%) 1px solid; // $brown-hard but lighter
+		color: $tan-hard;
 	}
 </style>

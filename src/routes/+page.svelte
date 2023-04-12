@@ -179,7 +179,7 @@
 		font-size: 1.29em;
 
 		@media only screen and (max-width: 400px) {
-			font-size: 0.9em;
+			font-size: 1em;
 		}
 	}
 
