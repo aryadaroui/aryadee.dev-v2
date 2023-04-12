@@ -168,15 +168,16 @@
 	// 	background-color: $background-color;
 	// }
 
-	:root {
-		background-color: $background-color;
-		// background-color: #3A332E;
-	}
+	// :root {
+	// 	background-color: $background-color;
+	// 	// background-color: #3A332E;
+	// }
 
 	main {
 		margin: auto;
 		overflow-x: hidden;
-		font-size: 1.29em;
+		// font-size: 1.29em;
+		// background-color: $background-color-light;
 
 		@media only screen and (max-width: 400px) {
 			font-size: 1em;
@@ -271,38 +272,6 @@
 		justify-content: space-evenly;
 		align-items: center;
 	}
-
-	// PAGE 1
-
-	// #reduce-motion-button {
-	// 	position: absolute;
-	// 	left: 62px;
-	// 	bottom: 60px;
-	// 	background-color: $background-color;
-	// 	border: $ink-color 0.5px solid;
-	// 	z-index: 4;
-	// 	// border: none;
-	// 	padding: 0.5em;
-	// 	user-select: none;
-	// 	cursor: pointer;
-
-	// 	&:hover {
-	// 		filter: brightness(66%);
-	// 	}
-
-	// 	&:active {
-	// 		filter: brightness(33%);
-	// 	}
-
-	// 	@media only screen and (max-width: 600px) {
-	// 		left: 20px;
-	// 		bottom: 55px;
-	// 	}
-	// }
-
-	// .crossed-out {
-	// 	text-decoration: line-through;
-	// }
 
 	#tooltip {
 		right: 62px;
@@ -474,9 +443,9 @@
 		// background-color: $background-color;
 
 		border-top: #6d6d6357 1px solid;
-		backdrop-filter: brightness(1.5);
+		// backdrop-filter: brightness(1.5);
 		// -webkit-backdrop-filter: blur(50px);
-		// background-color: #3A332E;
+		background-color: #3f3833;
 		// background-color: $background-color;
 
 		display: flex;

@@ -62,7 +62,7 @@
 	let domain_tags = tags.filter((tag) => domains.includes(tag));
 </script>
 
-<a href={link} id="post-box">
+<a href={link} id="post-card">
 	<div class="thumbnail-container">
 		<img class="thumbnail" src={img_src} {alt} />
 	</div>
@@ -71,9 +71,15 @@
 			<h2>{title}</h2>
 		</div>
 		<div class="tags">
-			{#each lang_tags as tag}<span class="tag lang">{tag}</span>{/each}{#each tool_tags as tag}<span class="tag tool"
-					>{tag}</span
-				>{/each}{#each domain_tags as tag}<span class="tag domain">{tag}</span>{/each}
+			{#each lang_tags as tag}
+				<span class="tag lang">{tag}</span>
+			{/each}
+			{#each tool_tags as tag}
+				<span class="tag tool">{tag}</span>
+			{/each}
+			{#each domain_tags as tag}
+				<span class="tag domain">{tag}</span>
+			{/each}
 		</div>
 	</div>
 </a>
@@ -93,12 +99,11 @@
 		image-rendering: smooth;
 	}
 
-
-
-	#post-box {
+	#post-card {
 		display: flex;
 		justify-content: space-between;
 		min-height: 100px;
+		min-width: 300px;
 		max-width: 300px;
 		max-height: 400px;
 		gap: 0;
@@ -111,7 +116,7 @@
 		font-family: $sans;
 
 		border-radius: 15px;
-		border: transparentize($border-link-translucent, 1.0) 1px solid;
+		border: transparentize($border-link-translucent, 1) 1px solid;
 		background-color: $background-translucent;
 		// box-shadow: 0px 5px 30px black;
 		overflow: hidden;
@@ -126,7 +131,6 @@
 		flex-grow: 1;
 		flex-basis: 0;
 
-
 		@media (max-width: 850px) {
 			// max-width: 400px;
 
@@ -138,7 +142,7 @@
 		}
 	}
 
-	// a#post-box:hover {
+	// a#post-card:hover {
 	// 	text-decoration: none;
 	// }
 
@@ -166,10 +170,9 @@
 		padding: 15px;
 		// gap: 10px;
 		// height: 63%;
-
 	}
 
-	#post-box:hover {
+	#post-card:hover {
 		// background-image: url(./assets/arrow_gray.svg);
 		background-color: rgba($cyan-soft, 0.3);
 		// background-color: $link-background;

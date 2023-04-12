@@ -1,11 +1,18 @@
 // @use './prism';
 @use './vars';
 
+
+:root {
+    background-color: $background-color;
+}
+
 :global(body) {
     // background-color: $background-color;
     color: $ink-color;
     font-family: $sans;
     // font-family: Hack, monospace;
+    font-weight: 300;
+    font-size: 1.2rem;
     margin: 0;
 }
 
