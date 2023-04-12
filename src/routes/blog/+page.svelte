@@ -14,14 +14,9 @@
 <Header />
 <main>
 	<h1>Blog</h1>
-	<p>Articles, snippets, and other random thoughts.</p>
+	<p>Articles, documents, and other random snippets.</p>
 
-	<!-- <pre>
-		<code>
-			
-		</code>
-	</pre> -->
-
+	<h2>Posts</h2>
 	<div class="post-container">
 		{#each posts as post}
 			<!-- <PostBox2
@@ -38,6 +33,9 @@
 				alt={'thumbnail of filmic app'} />
 		{/each}
 	</div>
+
+	<h2>Documents</h2>
+	<p>Coming soon...</p>
 </main>
 <div class="light-background" />
 
