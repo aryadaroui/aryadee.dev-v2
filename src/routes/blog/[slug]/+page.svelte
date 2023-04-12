@@ -109,7 +109,7 @@
 			// float: right;
 			// left: 100%;
 			flex-shrink: 0;
-			font-size: 1.2em;
+			// font-size: 1.2em;
 			// max-width: 300px;
 			width: 300px;
 
@@ -140,7 +140,7 @@
 
 			line-height: 1.5em;
 			// margin: auto;
-			font-size: 1.2em;
+			// font-size: 1.2em;
 			padding: 80px;
 			padding-top: 50px;
 			padding-bottom: 0px;

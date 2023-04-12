@@ -11,37 +11,37 @@
 	// console.log(posts);
 </script>
 
-<div class="wrapper">
-	<Header />
-	<main>
-		<h1>Blog</h1>
-		<p>Articles, snippets, and other random thoughts.</p>
+<Header />
+<main>
+	<h1>Blog</h1>
+	<p>Articles, snippets, and other random thoughts.</p>
 
-		<!-- <pre>
+	<!-- <pre>
 		<code>
 			
 		</code>
 	</pre> -->
 
-		<div class="post-container">
-			{#each posts as post}
-				<!-- <PostBox2
+	<div class="post-container">
+		{#each posts as post}
+			<!-- <PostBox2
 				title={post.title}
 				tags={['TypeScript', 'WebGL', 'Svelte', 'image processing']}
 				img_src={'filmic_thumb.png'}
 				link={'/blog/' + post.slug}
 				alt={'thumbnail of filmic app'} /> -->
-				<PostCard
-					title={post.title}
-					tags={post.tags}
-					img_src={'filmic_thumb.png'}
-					link={'/blog/' + post.slug}
-					alt={'thumbnail of filmic app'} />
-			{/each}
-		</div>
-	</main>
-	<Footer line="false" />
-</div>
+			<PostCard
+				title={post.title}
+				tags={post.tags}
+				img_src={'filmic_thumb.png'}
+				link={'/blog/' + post.slug}
+				alt={'thumbnail of filmic app'} />
+		{/each}
+	</div>
+</main>
+<div class="light-background" />
+
+<Footer line="false" />
 
 <style lang="scss">
 	body {
@@ -49,7 +49,7 @@
 	}
 
 	main {
-		font-size: 1.25em;
+		// font-size: 1.25em;
 		margin: auto;
 		max-width: 1080px;
 		background-color: $background-color-light;
@@ -64,11 +64,17 @@
 		justify-content: center;
 	}
 
-	div.wrapper {
-		// display: flex;
-		// flex-direction: column;
+	div.light-background {
 		background-color: $background-color-light;
-		// min-height: 100vh;
+		width: 100vw;
+		height: 100vh;
+		z-index: -1;
+		position: absolute;
+		top: 0;
+	}
+
+	h1 {
+		color: $pink-hard;
 	}
 
 	// html {
