@@ -5,6 +5,8 @@ import { join } from 'path';
 const photosDir = './static/photos';
 const thumbnailsDir = './static/photos/thumbnails';
 
+console.log('Generating thumbnails...');
+
 readdir(photosDir, (err, files) => {
   if (err) {
     console.error(err);
@@ -18,12 +20,12 @@ readdir(photosDir, (err, files) => {
 
   // Loop through files in photos directory and generate thumbnails
   files.forEach(file => {
-    if (file.endsWith('.jpg') || file.endsWith('.jpeg') || file.endsWith('.png')) {
+    if (file.endsWith('.jpg') || file.endsWith('.jpeg') || file.endsWith('.png') || file.endsWith('.gif') || file.endsWith('.webp')) {
       const photoPath = join(photosDir, file);
       const thumbnailPath = join(thumbnailsDir, file);
 
       sharp(photoPath)
-        .resize(200)
+        .resize(500)
         .toFile(thumbnailPath, err => {
           if (err) {
             console.error(`Error generating thumbnail for ${file}: ${err}`);
@@ -34,3 +36,4 @@ readdir(photosDir, (err, files) => {
     }
   });
 });
+

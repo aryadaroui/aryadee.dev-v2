@@ -3,48 +3,12 @@
 	import Footer from '$lib/Footer.svelte';
 
 	import { FSPhotoViewer, Thumbnail, Photos, pannable } from 'svelte-photoviewer';
+	export let data;
 
-
-
-
-
-	let unsplash = [
-		{
-			id: '8YdGi6rC6Z0',
-			w: 2400,
-			h: 3000,
-		},
-		{
-			id: 'Jqa53u4Q2g4',
-			w: 2400,
-			h: 1600,
-		},
-		{
-			id: 'c6M7AoevSXE',
-			w: 2400,
-			h: 1600,
-		},
-		{
-			id: 'qCn0kU9M_uk',
-			w: 2400,
-			h: 1490,
-		},
-		{
-			id: 'p3OzJuT_Dks',
-			w: 2400,
-			h: 1600,
-		},
-		{
-			id: 'zv3ckJKftC4',
-			w: 2400,
-			h: 3200,
-		},
-	];
-	let photos = unsplash.map((x) => ({
-		src: `https://source.unsplash.com/${x.id}/${x.w}x${x.h}`,
-		thumbnail: `https://source.unsplash.com/${x.id}/${x.w}x${x.h}`,
-		key: x.id,
-		// ratio: x.w / x.h,
+	let photos = data.photo_names.map((x) => ({
+		src: `/photos/${x}`,
+		thumbnail: `/photos/thumbnails/${x}`,
+		key: x,
 	}));
 </script>
 
@@ -52,6 +16,7 @@
 <main>
 	<h1>Creative</h1>
 
+	<h2>Photos</h2>
 	<FSPhotoViewer {photos} />
 	<ul>
 		{#each photos as p}
@@ -63,6 +28,9 @@
 		{/each}
 		<li />
 	</ul>
+
+	<h2>Art</h2>
+
 </main>
 <!-- <div class="light-background" /> -->
 <Footer line="false" />
@@ -79,7 +47,6 @@
 	img:hover {
 		cursor: pointer;
 	}
-
 
 	ul {
 		display: flex;
@@ -99,7 +66,6 @@
 		flex-grow: 10;
 	}
 
-
 	main {
 		// font-size: 1.25em;
 		margin: auto;
@@ -108,10 +74,7 @@
 		padding: 20px;
 	}
 
-
-
 	h1 {
 		color: $pink-hard;
 	}
-
 </style>
