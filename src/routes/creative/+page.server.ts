@@ -6,30 +6,34 @@ import { error } from '@sveltejs/kit';
 // import imgurl from './photos/aerial.webp';
 
 export async function load() {
-	// error handling for imported file
-	// TODO: check to see if route exists, to throw 404 or 500
 	try {
-		const photos = import.meta.glob('/static/photos/*.webp');
-		// const photos = import.meta.glob()
-		// const photos = import.meta.glob('./photos/*.webp');
-		// console.log(photos);
-
-		// const imgurl = new URL ('./photos/aerial.webp', import.meta.url).href;
-
-		// console.log(imgurl)
-
+		const photos = import.meta.glob('/static/creative/photos/*.webp');
 		const photo_names = [];
 		let photo_name: string;
 
 		for (const photo in photos) {
 			photos[photo]().then(({ default: photo}) => {
 				// get file name from path
-				
 				photo_name = photo.split('/').pop()
 				photo_names.push(photo_name);
 			});
 		}
-		return { photo_names };
+
+		const art = import.meta.glob('/static/creative/art/*.webp');
+		const art_names = [];
+		let art_name: string;
+
+		for (const art_piece in art) {
+			art[art_piece]().then(({ default: art_piece}) => {
+				// get file name from path
+				art_name = art_piece.split('/').pop()
+				art_names.push(art_name);
+			});
+		}
+
+
+		// console.log(photo_names, art_names);
+		return { photo_names, art_names };
 	}
 	catch (e) {
 		console.error(e);
