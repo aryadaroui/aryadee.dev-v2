@@ -56,10 +56,12 @@
 		'frontend',
 		'graphics',
 	];
+	const category = ['code', 'photo', 'music', 'writing', 'workflow'];
 
 	let lang_tags = tags.filter((tag) => langs.includes(tag));
 	let tool_tags = tags.filter((tag) => tools.includes(tag));
 	let domain_tags = tags.filter((tag) => domains.includes(tag));
+	let category_tags = tags.filter((tag) => category.includes(tag));
 </script>
 
 <a href={link} id="post-card">
@@ -79,6 +81,9 @@
 			{/each}
 			{#each domain_tags as tag}
 				<span class="tag domain">{tag}</span>
+			{/each}
+			{#each category_tags as tag}
+				<span class="tag category">{tag}</span>
 			{/each}
 		</div>
 	</div>
@@ -226,5 +231,12 @@
 		background-color: $gray-harder;
 		border: hsl(19, 20%, 25%) 1px solid; // $brown-hard but lighter
 		color: $tan-hard;
+	}
+
+	.category {
+		background-color: $gray-soft;
+		border: transparentize($pink-soft, 0.7) 1px solid;
+		color: $pink-mid;
+		font-weight: 400;
 	}
 </style>

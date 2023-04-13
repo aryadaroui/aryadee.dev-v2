@@ -4,7 +4,7 @@ date: 31 Mar 2021
 update:
 thumbnail: /blog/uses/uses.webp
 tags: 
-  - Python
+  - workflow
 ---
 
 <script>
