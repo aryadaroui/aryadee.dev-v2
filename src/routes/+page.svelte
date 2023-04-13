@@ -453,20 +453,20 @@
 		justify-content: space-between;
 		align-content: space-between;
 
-		.scroll-button-container {
-			width: calc(100vw - 100px);
-			margin: 50px 50px 0px 50px;
-			position: relative;
-			display: flex;
-			justify-content: center;
-		}
+		// .scroll-button-container {
+		// 	width: calc(100vw - 100px);
+		// 	margin: 50px 50px 0px 50px;
+		// 	position: relative;
+		// 	display: flex;
+		// 	justify-content: center;
+		// }
 	}
 
-	#scroll-up-button.scroll-button {
-		transform: scale(1, -1);
-		border-radius: 15px; // box-shadow: 0px 5px 20px black;
-		background-color: rgba($background-color, 0.7);
-	}
+	// #scroll-up-button.scroll-button {
+	// 	transform: scale(1, -1);
+	// 	border-radius: 15px; // box-shadow: 0px 5px 20px black;
+	// 	background-color: rgba($background-color, 0.7);
+	// }
 
 	// #scroll-up-button.scroll-button:active {
 	// 	// box-shadow: 0px 1px 15px black;

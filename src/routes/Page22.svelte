@@ -10,6 +10,7 @@
 
 <div id="page-2">
 	<!-- <div>fancy header</div> -->
+	<!-- <Header /> -->
 	<div class="center-stack">
 		<div style="max-width: 500px; flex-grow: 2;">
 			<h2>Hello world!</h2>

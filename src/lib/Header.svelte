@@ -7,7 +7,7 @@
 <div id="header">
 	<nav>
 		<div>
-			<a href="/" class="link home"> aryadee </a>
+			<a href="/" class="link home"> arya<span class="accent">dee</span> </a>
 		</div>
 
 		<div>
