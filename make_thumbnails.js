@@ -40,5 +40,5 @@ function generate_thumbnails(source_dir) {
 }
 
 
-generate_thumbnails('./static/photos');
-generate_thumbnails('./static/art');
+generate_thumbnails('./static/creative/photos');
+generate_thumbnails('./static/creative/art');

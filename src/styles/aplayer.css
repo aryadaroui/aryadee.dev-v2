@@ -1,6 +1,6 @@
 .aplayer {
 	background: #171312;
-	font-family: Arial, Helvetica, sans-serif;
+	font-family: 'Swiss 721', Helvetica, sans-serif;
 	margin: 5px;
 	box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .07), 0 1px 5px 0 rgba(0, 0, 0, .1);
 	border-radius: 2px;
@@ -213,7 +213,7 @@
 	opacity: .8;
 	vertical-align: middle;
 	padding: 0;
-	font-size: 12px;
+	font-size: 16px;
 	margin: 0;
 	display: inline-block
 }
@@ -331,11 +331,11 @@
 }
 
 .aplayer .aplayer-info .aplayer-music .aplayer-title {
-	font-size: 14px
+	font-size: 16px
 }
 
 .aplayer .aplayer-info .aplayer-music .aplayer-author {
-	font-size: 12px;
+	font-size: 13px;
 	color: #999
 }
 
@@ -407,7 +407,8 @@
 }
 
 .aplayer .aplayer-info .aplayer-controller .aplayer-time .aplayer-time-inner {
-	vertical-align: middle
+	vertical-align: middle;
+	font-size: 12px;
 }
 
 .aplayer .aplayer-info .aplayer-controller .aplayer-time .aplayer-icon {
@@ -424,7 +425,7 @@
 }
 
 .aplayer .aplayer-info .aplayer-controller .aplayer-time .aplayer-icon:hover path {
-	fill: #000
+	fill: #e0dfdf
 }
 
 .aplayer .aplayer-info .aplayer-controller .aplayer-time .aplayer-icon.aplayer-icon-menu,
@@ -591,7 +592,7 @@
 	height: 32px;
 	line-height: 32px;
 	padding: 0 15px;
-	font-size: 12px;
+	font-size: 14px;
 	border-top: 1px solid #443832;
 	cursor: pointer;
 	transition: all .2s ease;
@@ -644,7 +645,7 @@
 	left: 50%;
 	-webkit-transform: translate(-50%, -50%);
 	transform: translate(-50%, -50%);
-	font-size: 12px;
+	font-size: 16px;
 	border-radius: 4px;
 	padding: 5px 10px;
 	transition: all .3s ease-in-out;
@@ -680,7 +681,7 @@
 }
 
 .aplayer .aplayer-miniswitcher .aplayer-icon:hover path {
-	fill: #000
+	fill: #d2d2d2
 }
 
 @-webkit-keyframes aplayer-roll {
