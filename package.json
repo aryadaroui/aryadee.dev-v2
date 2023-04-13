@@ -37,6 +37,7 @@
 	"type": "module",
 	"dependencies": {
 		"@types/three": "^0.149.0",
+		"aplayer": "^1.10.1",
 		"mathlifier": "^1.2.1",
 		"rehype-pretty-code": "^0.9.4",
 		"rehype-stringify": "^9.0.3",

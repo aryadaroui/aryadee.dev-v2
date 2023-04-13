@@ -3,21 +3,14 @@
 	import Footer from '$lib/Footer.svelte';
 	import { FSPhotoViewer, Thumbnail, Photos, pannable } from 'svelte-photoviewer';
 	import { onMount } from 'svelte';
+	import "../../styles/aplayer.css";
 
-	import Aplayer from "$lib/aplayer/svelte-aplayer.es.js";
-	import '$lib/aplayer/style.css';
-	// import Aplayer from '$lib/aplayer/Aplayer.svelte';
-
-	
 	export let data;
 
 	let photos;
 	let photos_;
 	let art;
 	let songs;
-
-	let show_player = "false";
-
 
 
 	photos_ = data.photo_names.map((x) => ({
@@ -35,37 +28,22 @@
 	songs = data.song_names.map((x) => ({
 		name: x,
 		url: `/creative/music/${x}`,
-		artist: "aryadee / pedestrian",
-		cover: "/mini-music-me.webp",
+		artist: 'aryadee / pedestrian',
+		cover: '/mini-music-me.webp',
 	}));
-
 
 	// photoviewer needs variable called photos to handle all images
 	photos = photos_.concat(art);
-	// console.log(photos)
 
-	// songs = [
-	// 	{
-	// 		name: "entropy",
-	// 		url: "/creative/music/entropy.m4a",
-	// 		artist: "aryadee",
-	// 		cover: "/mini-music-me.webp"
-	// 	},
-	// 	{
-	// 		name: "be",
-	// 		url: "/creative/music/be.m4a",
-	// 		artist: "aryadee",
-	// 	},
-	// ]
+	onMount(async() => {
+  		const APlayer = (await import('aplayer')).default; // dynamic client-side import
 
-	onMount(() => {
-		show_player = "true";
-		// console.log(photos)
-		// console.log(photos_)
-		// console.log(art)
-		// console.log(songs)
+		const ap = new APlayer({
+			container: document.getElementById('aplayer'),
+			audio: songs,
+			theme: '#FADFA3',
+		});
 	});
-
 </script>
 
 <Header />
@@ -73,17 +51,7 @@
 	<h1>Creative</h1>
 
 	<h2>Music</h2>
-
-	{#if show_player == "true"}
-	<div>
-		<Aplayer
-			audio={songs}
-			base_font_size="16px"
-			/>
-	</div>
-	{/if}
-
-
+	<div id="aplayer" />
 
 	<h2>Photos</h2>
 	<!-- passed in array needs to be called photos. stupid -->
@@ -158,5 +126,3 @@
 		color: $pink-hard;
 	}
 </style>
-
-
