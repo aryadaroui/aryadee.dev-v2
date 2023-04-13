@@ -2,6 +2,7 @@
 title: Uses
 date: 31 Mar 2021
 update:
+thumbnail: /blog/uses/uses.webp
 tags: 
   - Python
 ---
@@ -12,7 +13,7 @@ import ImgCap from '$lib/ImgCap.svelte'
 
 <!-- <img src="/workflow.webp" > -->
 
-<ImgCap src="/workflow.webp" alt="Programming with my cat." caption="A mouse enthusiast like his dad." make_fit=true/>
+<ImgCap src="/blog/uses/uses.webp" alt="Programming with my cat." caption="A mouse enthusiast like his dad." make_fit=true/>
 
 # Hardware
 
@@ -119,7 +120,6 @@ What else?
 	<span class="serif">How strange it is to be anything at all</span><br>
 </div>
 
-
 <style>
 	@font-face {
 	font-family: "CMU Serif";
@@ -133,24 +133,35 @@ What else?
 ul {
 	list-style: none;
 	padding-left: 0em;
+	font-weight: 600;
+	color: #FAC0D0;
 }
 
 ul ul {
 	list-style: disc;
 	padding-left: 2em;
+	font-weight: 300;
+	color: #FFEFD8;
 
 }
 
 ul ul ul {
 	list-style: circle;
 	padding-left: 1em;
+	font-weight: 300;
+	color: #FFEFD8;
+
+	
 }
 
+
 .specimen {
-background-color: #171312;
-text-align: center;
-border-radius: 0.5em;
-padding: 0.5em;
+	background-color: #171312;
+	text-align: center;
+	border-radius: 0.5em;
+	padding: 0.5em;
+	color: #FFEFD8;
+	font-weight: 300;
 }
 
 .hack {

@@ -167,7 +167,7 @@
 
 			[data-title] {
 				font-weight: 200;
-				font-size: 2.5em;
+				font-size: 3em;
 				// margin-bottom: 0;
 				width: 100%;
 			}

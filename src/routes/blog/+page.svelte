@@ -22,9 +22,9 @@
 			<PostCard
 				title={post.title}
 				tags={post.tags}
-				img_src={'filmic_thumb.png'}
+				img_src={post.thumbnail}
 				link={'/blog/' + post.slug}
-				alt={'thumbnail of filmic app'} />
+				alt={'thumbnail of post'} />
 		{/each}
 	</div>
 
