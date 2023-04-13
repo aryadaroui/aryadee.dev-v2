@@ -129,7 +129,7 @@
 						</a>
 					</p>
 					<p>
-						<a href="/filmic-beta" class="chevron-link">
+						<a href="/projects" class="chevron-link">
 							<span class="select-chevron blackground">»</span>
 							<span class="link blackground allow-pointer-events">projects</span>
 						</a>
