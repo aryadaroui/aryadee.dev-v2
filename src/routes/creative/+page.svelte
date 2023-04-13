@@ -1,24 +1,71 @@
 <script>
 	import Header from '$lib/Header.svelte';
 	import Footer from '$lib/Footer.svelte';
-
 	import { FSPhotoViewer, Thumbnail, Photos, pannable } from 'svelte-photoviewer';
+	import { onMount } from 'svelte';
+
+	import Aplayer from "$lib/aplayer/svelte-aplayer.es.js";
+	import '$lib/aplayer/style.css';
+	// import Aplayer from '$lib/aplayer/Aplayer.svelte';
+
+	
 	export let data;
 
-	let photos_ = data.photo_names.map((x) => ({
+	let photos;
+	let photos_;
+	let art;
+	let songs;
+
+	let show_player = "false";
+
+
+
+	photos_ = data.photo_names.map((x) => ({
 		src: `/creative/photos/${x}`,
 		thumbnail: `/creative/photos/thumbnails/${x}`,
 		key: x,
 	}));
 
-	let art = data.art_names.map((x) => ({
+	art = data.art_names.map((x) => ({
 		src: `/creative/art/${x}`,
 		thumbnail: `/creative/art/thumbnails/${x}`,
 		key: x,
 	}));
 
+	songs = data.song_names.map((x) => ({
+		name: x,
+		url: `/creative/music/${x}`,
+		artist: "aryadee / pedestrian",
+		cover: "/mini-music-me.webp",
+	}));
+
+
 	// photoviewer needs variable called photos to handle all images
-	let photos = photos_.concat(art);
+	photos = photos_.concat(art);
+	// console.log(photos)
+
+	// songs = [
+	// 	{
+	// 		name: "entropy",
+	// 		url: "/creative/music/entropy.m4a",
+	// 		artist: "aryadee",
+	// 		cover: "/mini-music-me.webp"
+	// 	},
+	// 	{
+	// 		name: "be",
+	// 		url: "/creative/music/be.m4a",
+	// 		artist: "aryadee",
+	// 	},
+	// ]
+
+	onMount(() => {
+		show_player = "true";
+		// console.log(photos)
+		// console.log(photos_)
+		// console.log(art)
+		// console.log(songs)
+	});
+
 </script>
 
 <Header />
@@ -27,15 +74,16 @@
 
 	<h2>Music</h2>
 
-	<audio src="/creative/music/entropy.m4a" controls></audio>
-	
-	<!-- <li><a href="/creative/music/entropy.m4a">entropy</a></li>
-	<li><a href="/creative/music/be.m4a">be</a></li>
-	<li><a href="/creative/music/waves.m4a">waves</a></li>
-	<li><a href="/creative/music/demo excerpt 1.m4a">demo 1</a></li>
-	<li><a href="/creative/music/demo excerpt 2.m4a">demo 2</a></li>
-	<li><a href="/creative/music/strangers.m4a">strangers</a></li>
-	<li><a href="/creative/music/impudent snob.m4a">impudent snob</a></li> -->
+	{#if show_player == "true"}
+	<div>
+		<Aplayer
+			audio={songs}
+			base_font_size="16px"
+			/>
+	</div>
+	{/if}
+
+
 
 	<h2>Photos</h2>
 	<!-- passed in array needs to be called photos. stupid -->
@@ -110,3 +158,5 @@
 		color: $pink-hard;
 	}
 </style>
+
+

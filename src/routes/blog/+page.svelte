@@ -19,12 +19,6 @@
 	<h2>Posts</h2>
 	<div class="post-container">
 		{#each posts as post}
-			<!-- <PostBox2
-				title={post.title}
-				tags={['TypeScript', 'WebGL', 'Svelte', 'image processing']}
-				img_src={'filmic_thumb.png'}
-				link={'/blog/' + post.slug}
-				alt={'thumbnail of filmic app'} /> -->
 			<PostCard
 				title={post.title}
 				tags={post.tags}
@@ -67,7 +61,7 @@
 		width: 100vw;
 		height: 100vh;
 		z-index: -1;
-		position: absolute;
+		position: fixed;
 		top: 0;
 	}
 

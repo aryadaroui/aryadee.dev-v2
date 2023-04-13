@@ -37,13 +37,6 @@
 			border: 1px solid $brown-soft;
 		}
 
-		.container {
-			height: 100%;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-		}
-
 		#smiley {
 			position: absolute;
 			// transform: translateY(px);

@@ -8,7 +8,8 @@ const config = {
 	},
 	css: {
 		postcss: true
-	}
+	},
+	assetsInclude: ['**/*.m4a']
 };
 
 export default config;
