@@ -9,8 +9,8 @@
 <main>
 	<h1>Projects</h1>
 
-	<p>Coming soon. I have so many things to reformat for this new website.</p>
-	<p> If you are reading this past <strong>05 May 2023</strong>, and you're looking to access Filmic or Logica please send me an angry email Lol :').</p>
+	<p>Coming soon. I just updated my blog for better automation, but I still have to reformat project markup.</p>
+	<p> If you are reading this past <strong>05 May 2023</strong>, and you're trying to access Filmic or Logica please send me an angry email Lol :').</p>
 </main>
 <!-- <div class="light-background" /> -->
 <Footer line="false" />

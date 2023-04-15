@@ -445,7 +445,7 @@
 		border-top: #6d6d6357 1px solid;
 		// backdrop-filter: brightness(1.5);
 		// -webkit-backdrop-filter: blur(50px);
-		background-color: #3f3833;
+		background-color: $background-color-light;
 		// background-color: $background-color;
 
 		display: flex;

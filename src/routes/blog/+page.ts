@@ -14,13 +14,13 @@ export async function load() {
 			is_valid_post = true;
 			slug = post_path.split('/').pop().split('.').shift();
 
+			
 			// skip files that start with an underscore. don't even check if valid post
 			// because presumably they're still being worked on
 			if (slug[0] === '_') {
 				continue;
 			}
 			await post_paths[post_path]().then((post) => {
-
 
 				//@ts-ignore
 				metadata = post.metadata;
@@ -54,8 +54,8 @@ export async function load() {
 							thumbnail: metadata.thumbnail,
 						});
 					}
-
-
+				} else {
+					console.error("http error", 500, ': metadata is missing or null in post: ' + post_path.split('/').pop());
 				}
 			});
 		}

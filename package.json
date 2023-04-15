@@ -1,6 +1,6 @@
 {
-	"name": "mdsvex-math-starter",
-	"version": "0.1.0",
+	"name": "aryadee.dev-v2",
+	"version": "1.0.0",
 	"scripts": {
 		"dev": "vite dev",
 		"prebuild": "node make_thumbnails.js",
