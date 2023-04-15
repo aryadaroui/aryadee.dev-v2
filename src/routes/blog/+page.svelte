@@ -29,45 +29,46 @@
 	</div>
 
 	<h2>Academic documents</h2>
-	<h3>Research</h3>
+	<h3>Research papers</h3>
 	<ol>
 		<li>
-			<a href="/blog/thesis daroui.pdf">Modeling a multi-core checkerboard SoC with C++ SystemC.pdf</a>, my MS thesis
+			<a href="/blog/documents/thesis daroui.pdf">Modeling a multi-core checkerboard SoC with C++ SystemC.pdf</a>, my MS thesis
 		</li>
 		<li>
-			<a href="/blog/iess paper.pdf">Demonstrating scalability of the checkerboard GPC with SystemC TLM.pdf</a>,
+			<a href="/blog/documents/iess paper.pdf">Demonstrating scalability of the checkerboard GPC with SystemC TLM.pdf</a>,
 			publication with UCI CECS Lab.
 		</li>
 		<li>
-			<a href="/blog/shark paper.pdf">Classification of shark behaviors using accelerometer signals and KNN.pdf</a>, collaborated, edited, and typeset.
+			<a href="/blog/documents/shark paper.pdf">Classification of shark behaviors using accelerometer signals and KNN.pdf</a>, collaborated, edited, and typeset.
 		</li>
 	</ol>
 
-	<h3>Signal and data processing</h3>
+	<h3>Signal and data processing reports</h3>
 	<ol>
-		<li><a href="/blog/smart upres.pdf">Super sampling neural network slideshow.pdf</a></li>
-		<li><a href="/blog/classification cnn.pdf">Simple image classification neural network report.pdf</a></li>
+		<li><a href="/blog/documents/smart upres.pdf">Super sampling neural network slideshow.pdf</a></li>
+		<li><a href="/blog/documents/classification cnn.pdf">Simple image classification neural network report.pdf</a></li>
 		<li><a href="/blog/indexing.pdf">Indexing with MapReduce report.pdf</a></li>
 		<!-- <li><a href="/nerd-stuff/thesis.pdf">image skeletonization with Lantuéjoul's method example.pdf</a></li> -->
-		<li><a href="/blog/synthboy.pdf">Digital synthesizer on Logic Pro using C++ and JUCE report.pdf</a></li>
+		<li><a href="/blog/documents/synthboy.pdf">Digital synthesizer on Logic Pro using C++ and JUCE report.pdf</a></li>
 	</ol>
 
-	<h3>Control systems lab prompts</h3>
+	<h3>Teaching</h3>
+	<h4>Control systems lab prompts</h4>
 	<ol>
-		<li><a href="/blog/lab 2.pdf">Lab 2: intro to LabVIEW.pdf</a></li>
-		<li><a href="/blog/lab 3.pdf">Lab 3: intro to Simulink.pdf</a></li>
-		<li><a href="/blog/lab 5.pdf">Lab 5: op-amp systems.pdf</a></li>
-		<li><a href="/blog/lab 7.pdf">Lab 7: harmonic oscillator.pdf</a></li>
+		<li><a href="/blog/documents/lab 2.pdf">Lab 2: intro to LabVIEW.pdf</a></li>
+		<li><a href="/blog/documents/lab 3.pdf">Lab 3: intro to Simulink.pdf</a></li>
+		<li><a href="/blog/documents/lab 5.pdf">Lab 5: op-amp systems.pdf</a></li>
+		<li><a href="/blog/documents/lab 7.pdf">Lab 7: harmonic oscillator.pdf</a></li>
 	</ol>
 	<p style="font-size: 0.8em;">
 		If you'd like the other lab prompts, please contact me; they contain material I cannot share publicly.
 	</p>
 
-	<h3>Other stuff <span style="font-size: 0.5em; font-weight:normal;"> I haven't the heart to take down</span></h3>
+	<h4>Other</h4>
 	<ol>
-		<li><a href="/blog/how to write lab reports.pdf">How to write lab reports.pdf</a></li>
-		<li><a href="/blog/ray tracing.pdf">Ray tracing diagrams.pdf</a></li>
-		<li><a href="/blog/fourier series example.pdf">Fourier series example.pdf</a></li>
+		<li><a href="/blog/documents/how to write lab reports.pdf">How to write lab reports.pdf</a></li>
+		<li><a href="/blog/documents/ray tracing.pdf">Ray tracing diagrams.pdf</a></li>
+		<li><a href="/blog/documents/fourier series example.pdf">Fourier series example.pdf</a></li>
 	</ol>
 </main>
 <div class="light-background" />
