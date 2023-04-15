@@ -612,6 +612,10 @@
 	background: #171312
 }
 
+.aplayer .aplayer-list ol li.aplayer-list-light:hover {
+	background: #382B25
+}
+
 .aplayer .aplayer-list ol li.aplayer-list-light .aplayer-list-cur {
 	display: inline-block
 }

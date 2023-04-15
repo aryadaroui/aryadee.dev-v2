@@ -56,6 +56,15 @@
 		background-color: $background-color;
 	}
 
+	blockquote {
+		border-left: 2px solid $pink-soft;
+		padding-left: 1em;
+		margin-left: 0;
+		background-color: $background-color-light;
+
+		border-radius: 0 15px 15px 0;
+	}
+
 	main#post {
 		font-family: $sans;
 		font-weight: 300;
@@ -166,9 +175,10 @@
 			}
 
 			[data-title] {
-				font-weight: 200;
+				font-weight: 100;
 				font-size: 3em;
 				// margin-bottom: 0;
+				line-height: 1.0em;
 				width: 100%;
 			}
 
@@ -176,25 +186,41 @@
 				margin: 1em 0em;
 			}
 
-			h1 {
-				font-size: 1.8em;
-				font-weight: 300;
-				color: $pink-hard;
-			}
-			h2 {
-				font-size: 1.6em;
-				font-weight: 300;
-				color: $pink-mid;
-			}
-			h3 {
-				font-size: 1.4em;
-				font-weight: 300;
-				color: $pink-soft;
-			}
-			h4 {
-				font-size: 1.2em;
-				font-weight: 300;
+			em {
 				color: $tan-hard;
+			}
+
+			strong {
+				color: $tan-mid;
+				// font-weight: 700;
+			}
+
+			h1 {
+				color: $pink-hard;
+				// padding-left: 0em;
+				font-weight: 700;
+				font-size: 1.8em;
+			}
+
+			h2 {
+				color: $pink-mid;
+				padding-left: 10px;
+				font-weight: 600;
+				font-size: 1.5em;
+			}
+
+			h3 {
+				color: $pink-soft;
+				padding-left: 20px;
+				font-weight: 500;
+				font-size: 1.2em;
+			}
+
+			h4 {
+				color: $tan-hard;
+				padding-left: 30px;
+				font-weight: 300;
+				font-size: 1.1em;
 			}
 
 			hr {

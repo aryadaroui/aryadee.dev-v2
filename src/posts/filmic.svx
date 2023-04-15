@@ -10,11 +10,11 @@ tags:
 
 In this devblog, we cover testing the concepts behind Filmic's features in Python. We'll be applying functions to alter images in a pleasing way, and confirming these ideas work before we try building UI and GPU shader code around them.
 
-## Quick background and goals
+# Quick background and goals
 
 This is a direct continuation of the last blog, where we used interpolated functions to generate a tone curve and color response for the image. Now, we'll be adding film grain and halation.
 
-## The code
+# The code
 
 Let's get started with our imports and some setup.
 
@@ -416,7 +416,7 @@ show_img_left_right(img_rgb2, img_out)
     
 
 
-## Conclusion
+# Conclusion
 
 Between these first two devblogs, we've accomplished all the major features we wanted to hit--and it looks quite good! Still, two things stick out during this process:
 
@@ -425,19 +425,19 @@ Between these first two devblogs, we've accomplished all the major features we w
 
 Well, we will explore both of these issues in the coming devblogs. We'll dive into how to use D3.js and svelte to make a a reactive GUI component, and how to use WebGL 2.0 and shaders to utilize our GPU.
 
-## Appendix
+# Appendix
 
 As with any good technical writeup, we need to quickly cover the rough edges we glossed over.
 
 
-### Luminosity vs. tonality
+## Luminosity vs. tonality
 
 I've been fast and loose with my usage of the terms luminosity and tonality. Luminosity has a very specific meaning in how it affects the HSL color space, but tonality is more of an umbrella term in that it's just a different shade of the same color, i.e. lighter or darker. When I use the term tone, I'm usually referring to the RGB intensity together in unison, rather than the L in HSL.
 
 You could argue that luminosity and value are both ways of describing tonality. And that's important, because Filmic currently (as of v0.3) uses HSV and our examples in this article are all HSL.
 
 
-### Halation is complicated
+## Halation is complicated
 
 Halation has a lot of nuances we haven't capture in our example:
 
@@ -449,7 +449,7 @@ Halation has a lot of nuances we haven't capture in our example:
 There's a lot more in this I need to explore, and will do so in its own article. Until I've figured it out, I'm leaving it out of filmic.
 
 
-## Thanks
+# Thanks
 
 If you find any typos, other errors, or want to make a comment, please contact me. And of course, feel free to reuse and remix any of this code. Please don't publicly repost these photos though! Only because they're my friends' likeness. Thanks!
 

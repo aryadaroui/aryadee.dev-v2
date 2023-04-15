@@ -11,6 +11,8 @@
 	// console.log(posts);
 </script>
 
+<title>blog - aryadee</title>
+
 <Header />
 <main>
 	<h1>Blog</h1>
@@ -39,7 +41,8 @@
 			publication with UCI CECS Lab.
 		</li>
 		<li>
-			<a href="/blog/documents/shark paper.pdf">Classification of shark behaviors using accelerometer signals and KNN.pdf</a>, collaborated, edited, and typeset.
+			<a href="/blog/documents/shark paper.pdf">Classification of shark behaviors using accelerometer signals and KNN.pdf</a>,
+			collaborated, edited, and typeset.
 		</li>
 	</ol>
 
@@ -60,7 +63,7 @@
 		<li><a href="/blog/documents/lab 5.pdf">Lab 5: op-amp systems.pdf</a></li>
 		<li><a href="/blog/documents/lab 7.pdf">Lab 7: harmonic oscillator.pdf</a></li>
 	</ol>
-	<p style="font-size: 0.8em;">
+	<p style="font-size: 0.8em; padding-left: 40px">
 		If you'd like the other lab prompts, please contact me; they contain material I cannot share publicly.
 	</p>
 
@@ -107,6 +110,28 @@
 
 	h1 {
 		color: $pink-hard;
+		// padding-left: 0em;
+		font-weight: 800;
+		font-size: 2em;
+	}
+
+	h2 {
+		color: $pink-mid;
+		padding-left: 10px;
+		font-weight: 700;
+		font-size: 1.5em;
+	}
+
+	h3 {
+		color: $pink-soft;
+		padding-left: 20px;
+		font-weight: 600;
+	}
+
+	h4 {
+		color: $tan-hard;
+		padding-left: 30px;
+		font-weight: 500;
 	}
 
 	a {

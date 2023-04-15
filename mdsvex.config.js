@@ -65,7 +65,7 @@ const prettyCodeOptions = {
 		string: 'string',
 		comment: 'comment',
 		number: 'constant.numeric',
-		type: 'storage.type',
+		type: 'support',
 	  },
 
 	onVisitLine(node) {

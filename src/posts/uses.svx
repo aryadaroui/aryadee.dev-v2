@@ -47,6 +47,8 @@ What's sending my daily screentime reminder to the moon.
 		- and yes, the infamous type checker
 	- I've mostly used it for Tauri, but I've been itching to use it more.
 
+<em>Most importantly</em>: tabs over spaces. K&R braces over Allman. >80 characters per line.
+
 ## General apps
 -  📝 VS Code 
 	- Maybe one day we'll wonder if it was a good idea to let Microsoft curate the entire development experience end-to-end. But until that day comes, I'll be using Copilot to save seconds of my life writing boilerplate.

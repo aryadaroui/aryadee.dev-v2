@@ -7,15 +7,26 @@
 
 <Header />
 <main>
+
+	<title>projects - aryadee</title>
+
 	<h1>Projects</h1>
 
 	<p>Coming soon. I just updated my blog for better automation, but I still have to reformat project markup.</p>
 	<p> If you are reading this past <strong>05 May 2023</strong>, and you're trying to access Filmic or Logica please send me an angry email Lol :').</p>
 </main>
-<!-- <div class="light-background" /> -->
+<div class="light-background" />
 <Footer line="false" />
 
 <style lang="scss">
+		div.light-background {
+		background-color: $background-color-light;
+		width: 100vw;
+		height: 100vh;
+		z-index: -1;
+		position: fixed;
+		top: 0;
+	}
 	img {
 		/* width: 100px; */
 		max-height: 100%;
@@ -49,8 +60,8 @@
 	main {
 		// font-size: 1.25em;
 		margin: auto;
-		max-width: 720px;
-		background-color: $background-color;
+		max-width: 1080px;
+		background-color: $background-color-light;
 		padding: 20px;
 	}
 

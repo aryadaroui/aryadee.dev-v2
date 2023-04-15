@@ -56,7 +56,7 @@
 		'frontend',
 		'graphics',
 	];
-	const category = ['code', 'photo', 'music', 'writing', 'workflow'];
+	const category = ['code', 'photo', 'music', 'writing', 'workflow', 'snippet'];
 
 	let lang_tags = tags.filter((tag) => langs.includes(tag));
 	let tool_tags = tags.filter((tag) => tools.includes(tag));
@@ -135,6 +135,11 @@
 
 		flex-grow: 1;
 		flex-basis: 0;
+
+		// .title {
+		// 	font-size: 1.2em;
+		// 	font-weight: 200;
+		// }
 
 		@media (max-width: 850px) {
 			// max-width: 400px;
