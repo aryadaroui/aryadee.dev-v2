@@ -31,7 +31,7 @@
 	</div>
 
 	<h2>Academic documents</h2>
-	<h3>Research papers</h3>
+	<h3>Papers</h3>
 	<ol>
 		<li>
 			<a href="/blog/documents/thesis daroui.pdf">Modeling a multi-core checkerboard SoC with C++ SystemC.pdf</a>, my MS thesis
