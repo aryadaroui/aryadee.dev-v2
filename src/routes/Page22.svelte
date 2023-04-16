@@ -53,20 +53,20 @@
 		tags={['C++', 'SystemC', 'parallelization', 'modeling', 'image processing']}
 		img_src={'thesis_thumb.png'}
 		alt={'thumbnail of thesis'}
-		link={'/post1'}
+		link={'/blog/documents/thesis daroui.pdf'}
 	/>
 	<PostCard
 		title={'Filmic, an analog film emulation app'}
 		tags={['TypeScript', 'WebGL', 'Svelte', 'image processing']}
 		img_src={'filmic_thumb.png'}
-		link={'/post1'}
+		link={'/blog/about_filmic'}
 		alt={'thumbnail of filmic app'}
 	/>
 	<PostCard
 		title={'Filmic devblog 2: film grain and halation'}
 		tags={['Python', 'image processing', 'Jupyter']}
 		img_src={'devblog2_thumb.png'}
-		link={'/post1'}
+		link={'/blog/filmic_devblog_2'}
 		alt={'thumbnail of filmic devblog 2'}
 	/>
 	</div>
@@ -281,8 +281,6 @@
 		color: $tan-mid;
 	}
 
-
-
 	.lang-light {
 		background-color: darken($tan-soft, 6%);
 		// border: $brown-soft 1.5px solid;
@@ -297,11 +295,6 @@
 	.domain-light {
 		background-color: lighten($tan-mid, 0%);
 		color: $brown-hard;
-	}
-
-	div {
-		// for debugging
-		// border: 1px solid cadetblue;
 	}
 	
 </style>
