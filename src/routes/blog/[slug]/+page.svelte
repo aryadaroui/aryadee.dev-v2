@@ -8,7 +8,7 @@
 </script>
 
 <Header />
-<main id="post">
+<main id="post">	
 	<div class="margin-padding" />
 	<article>
 		<!-- <h1>{data.title}</h1> -->
@@ -23,6 +23,8 @@
 
 		<svelte:component this={data.content} />
 		<!-- </div> -->
+		<Footer />
+
 	</article>
 	<aside class="table-of-contents">
 		<Toc
@@ -43,7 +45,6 @@
 			--toc-mobile-btn-border-radius="10px" />
 	</aside>
 </main>
-<Footer />
 
 <style global lang="scss">
 	// body {
@@ -58,11 +59,16 @@
 
 	blockquote {
 		border-left: 2px solid $pink-soft;
-		padding-left: 1em;
+		padding: 0.5em 1em 0.5em 1em;
 		margin-left: 0;
+		margin-right: 0;
 		background-color: $background-color-light;
 
 		border-radius: 0 15px 15px 0;
+
+		p {
+			margin: 0;
+		}
 	}
 
 	main#post {
@@ -145,16 +151,17 @@
 			background-color: $background-color;
 			font-family: $sans;
 			color: rgba($ink-color, 0.9);
-			max-width: 720px;
+			max-width: 600px;
+			// width: 400px;
 
-			line-height: 1.5em;
+			line-height: 1.6em;
 			// margin: auto;
 			// font-size: 1.2em;
 			padding: 80px;
 			padding-top: 50px;
 			padding-bottom: 0px;
 
-			min-width: 640px;
+			// min-width: 600px;
 
 			flex-grow: 3;
 			margin-left: 2vw;

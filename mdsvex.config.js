@@ -110,6 +110,8 @@ const config = defineConfig({
 
 	// smartypants: false,
 
+	// layout: "./src/routes/blog/[slug]/post_layout.svelte",
+
 	remarkPlugins: [remarkMath],
 	rehypePlugins: [[rehypePrettyCodeMdsvex, prettyCodeOptions], rehypeKatex],
 	// rehypePlugins: [rehypeKatex],

@@ -8,9 +8,6 @@ tags:
 thumbnail: /blog/mdsvex/thumbnail.png
 ---
 
-<script>
-import Callout from '$lib/Callout.svelte';
-</script>
 
 > Previous renditions of my blog were cumbersome to write in and didn't let me express myself how I would've liked, so I've added more automation and features for this opening. I'm using [mdsvex](https://mdsvex.com/) to parse and transform markdown, and [rehype-pretty-code](https://rehype-pretty-code.netlify.app/) to add syntax highlighting to code. I've also added a few custom components, like callouts and a sticky table of contents, generated with [svelte-toc](https://github.com/janosh/svelte-toc).
 
@@ -44,6 +41,8 @@ Inline `code` and code blocks:
 
 
 We having working inline math $f(x) = x^2$, and some block math:
+
+Baymard conducts original large-scale research studies on all aspects of the online user experience - from 'form field labels' to the 'entire mobile experience'.
 
 $$
   \int x^2 \mathrm{d}x = \frac{1}{3}x^3 + C
