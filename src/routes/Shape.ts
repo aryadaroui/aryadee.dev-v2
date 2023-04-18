@@ -23,7 +23,7 @@ const y_speed = 0.00005;
  */
 export function init(domContainer: Element, color: string, domController: Element): void {
 
-	camera = new THREE.PerspectiveCamera(36, (window.innerWidth) / window.innerHeight, 1, 2500);
+	camera = new THREE.PerspectiveCamera(36, (document.querySelector("html").getBoundingClientRect().width) / window.innerHeight, 1, 2500);
 	camera.position.y = 600;
 	camera.position.z = 600;
 
@@ -42,13 +42,13 @@ export function init(domContainer: Element, color: string, domController: Elemen
 	scene.add(shape);
 
 	renderer = new THREE.WebGLRenderer({ alpha: true });
-	renderer.setSize((window.innerWidth), window.innerHeight);
+	renderer.setSize((document.querySelector("html").getBoundingClientRect().width), window.innerHeight);
 
 	// @ts-ignore: this property *does* exist
 	renderer.setClearAlpha(1.0);
 
 	effect = new AsciiEffect(renderer, '▓▒@#de░+/:-. ');
-	effect.setSize((window.innerWidth), window.innerHeight);
+	effect.setSize((document.querySelector("html").getBoundingClientRect().width), window.innerHeight);
 
 	effect.domElement.style.color = color;
 
@@ -72,12 +72,12 @@ export function init(domContainer: Element, color: string, domController: Elemen
 
 function onWindowResize() {
 
-	camera.aspect = (window.innerWidth) / window.innerHeight;
+	camera.aspect = (document.querySelector("html").getBoundingClientRect().width) / window.innerHeight;
 	// camera.aspect = 1;
 	camera.updateProjectionMatrix();
 
-	effect.setSize((window.innerWidth), window.innerHeight);
-	renderer.setSize((window.innerWidth), window.innerHeight);
+	effect.setSize((document.querySelector("html").getBoundingClientRect().width), window.innerHeight);
+	renderer.setSize((document.querySelector("html").getBoundingClientRect().width), window.innerHeight);
 
 }
 

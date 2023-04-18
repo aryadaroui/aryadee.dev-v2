@@ -8,7 +8,7 @@
 </script>
 
 <Header />
-<main id="post">	
+<main id="post">
 	<div class="margin-padding" />
 	<article>
 		<!-- <h1>{data.title}</h1> -->
@@ -24,7 +24,6 @@
 		<svelte:component this={data.content} />
 		<!-- </div> -->
 		<Footer />
-
 	</article>
 	<aside class="table-of-contents">
 		<Toc
@@ -185,7 +184,7 @@
 				font-weight: 100;
 				font-size: 3em;
 				// margin-bottom: 0;
-				line-height: 1.0em;
+				line-height: 1em;
 				width: 100%;
 			}
 

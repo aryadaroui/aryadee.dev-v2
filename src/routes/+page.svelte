@@ -208,7 +208,7 @@
 		z-index: 1;
 		background-color: $background-color;
 		opacity: 0;
-		width: 100vw;
+		width: calc(100vw - (100vw - 100%));
 		height: 100vh;
 	}
 
@@ -262,7 +262,7 @@
 	}
 
 	.scroll-button-container {
-		width: 100vw;
+		width: calc(100vw - (100vw - 100%));
 		bottom: 50px;
 		position: absolute;
 		display: flex;
@@ -302,6 +302,9 @@
 		position: absolute;
 		background-color: $background-color;
 		left: 0px;
+
+		
+
 
 		@media only screen and (max-width: 600px) {
 			margin-top: 20px;
@@ -433,7 +436,7 @@
 		overflow: hidden;
 		height: auto;
 		min-height: 100vh;
-		width: 100vw;
+		// width: calc(100vw - (100vw - 100%));
 		// background-color: rgba(20, 20, 20, 0.5);
 		// background-color: #3a353045;
 		// background-color: rgba($gray-mid, 0.3);
@@ -452,7 +455,7 @@
 		align-content: space-between;
 
 		// .scroll-button-container {
-		// 	width: calc(100vw - 100px);
+		// 	width: calc(calc(100vw - (100vw - 100%)) - 100px);
 		// 	margin: 50px 50px 0px 50px;
 		// 	position: relative;
 		// 	display: flex;
