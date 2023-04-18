@@ -2,10 +2,11 @@
 	import { onMount } from 'svelte';
 	import * as Shape from './Shape';
 	import Page22 from './Page22.svelte';
+	import ShapeNode from './ShapeNode.svelte';
 
 	onMount(() => {
 		// console.log('onMount HOME');
-		Shape.init(document.getElementById('shape-container'), '#E2C09B', document.getElementById('page-1'));
+		// Shape.init(document.getElementById('shape-container'), '#E2C09B', document.getElementById('page-1'));
 
 		let scroll_down_button = document.querySelector('#scroll-down-button');
 		scroll_down_button.addEventListener('click', function () {
@@ -81,17 +82,18 @@
 		// 	motion_text.classList.toggle('crossed-out');
 		// 	toggle_motion_func();
 		// });
-		let fader = document.getElementById('fader');
-		fader.style.width = document.querySelector("html").getBoundingClientRect().width.toString() + " px";
+		// let fader = document.getElementById('fader');
+		// fader.style.width = document.querySelector("html").getBoundingClientRect().width.toString() + " px";
 
-		fader.classList.add('black-fade-in');
+		// fader.classList.add('black-fade-in');
 	});
 </script>
 
 <title>aryadee</title>
 <div class="background">
-	<div id="fader" />
-	<div id="shape-container" />
+	<!-- <div id="fader" /> -->
+	<ShapeNode />
+	<!-- <div id="shape-container" /> -->
 </div>
 
 <div id="tooltip" class="hint-tooltip">
@@ -205,14 +207,7 @@
 		text-decoration: none;
 	}
 
-	#fader {
-		position: absolute;
-		z-index: 1;
-		background-color: $background-color;
-		opacity: 0;
-		// width: 99vw;
-		height: 100vh;
-	}
+
 
 	:global(.opaque) {
 		color: $ink-color;
@@ -300,18 +295,18 @@
 		}
 	}
 
-	#shape-container {
-		position: absolute;
-		background-color: $background-color;
-		left: 0px;
+	// #shape-container {
+	// 	position: absolute;
+	// 	background-color: $background-color;
+	// 	left: 0px;
 
 		
 
 
-		@media only screen and (max-width: 600px) {
-			margin-top: 20px;
-		}
-	}
+	// 	@media only screen and (max-width: 600px) {
+	// 		margin-top: 20px;
+	// 	}
+	// }
 
 	#hello {
 		font-family: $sans;
