@@ -1,8 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import * as Shape from './Shape';
-	// import Page2 from './Page2.svelte';
-  import Page22 from './Page22.svelte';
+	import Page22 from './Page22.svelte';
 
 	onMount(() => {
 		// console.log('onMount HOME');
@@ -252,7 +251,6 @@
 		user-select: none;
 		border-radius: 15px;
 		cursor: pointer;
-		
 
 		&:hover {
 			filter: brightness(66%);

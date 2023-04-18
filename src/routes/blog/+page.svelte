@@ -32,6 +32,7 @@
 
 	<h2>Academic documents</h2>
 	<h3>Papers</h3>
+	<!-- maybe make post cards for these? -->
 	<ol>
 		<li>
 			<a href="/blog/documents/thesis daroui.pdf">Modeling a multi-core checkerboard SoC with C++ SystemC.pdf</a>, my MS thesis

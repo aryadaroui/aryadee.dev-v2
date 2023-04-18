@@ -154,7 +154,7 @@
 			max-width: 600px;
 			// width: 400px;
 
-			line-height: 1.6em;
+			line-height: 1.7em;
 			// margin: auto;
 			// font-size: 1.2em;
 			padding: 80px;

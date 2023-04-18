@@ -68,7 +68,6 @@ export function init(domContainer: Element, color: string, domController: Elemen
 	render();
 	animate();
 
-	// return toggle_motion;
 }
 
 function onWindowResize() {
