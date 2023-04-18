@@ -81,8 +81,10 @@
 		// 	motion_text.classList.toggle('crossed-out');
 		// 	toggle_motion_func();
 		// });
+		let fader = document.getElementById('fader');
+		fader.style.width = document.querySelector("html").getBoundingClientRect().width.toString() + " px";
 
-		document.getElementById('fader').classList.add('black-fade-in');
+		fader.classList.add('black-fade-in');
 	});
 </script>
 
@@ -208,7 +210,7 @@
 		z-index: 1;
 		background-color: $background-color;
 		opacity: 0;
-		width: calc(100vw - (100vw - 100%));
+		// width: 99vw;
 		height: 100vh;
 	}
 

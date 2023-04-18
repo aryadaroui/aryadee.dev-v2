@@ -79,6 +79,22 @@
 
 		min-height: calc(100vh - 200px);
 
+		::-webkit-scrollbar {
+			height: 12px;
+			width: 12px;
+			background: #00000000;
+		}
+
+		::-webkit-scrollbar-thumb {
+			background: #aaaaaaaa;
+			-webkit-border-radius: 1em;
+			// -webkit-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.75);
+		}
+
+		::-webkit-scrollbar-corner {
+			background: #00000000;
+		}
+
 		@media (max-width: 690px) {
 			// display: block;
 			// width: 100vw;
