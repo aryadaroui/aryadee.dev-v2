@@ -2,7 +2,7 @@
 	import { onMount } from 'svelte';
 	import Page2 from './Page2.svelte';
 	import { page } from '$app/stores';
-	import type Shape__SvelteComponent_ from '$lib/Shape.svelte'
+	import type Shape__SvelteComponent_ from '$lib/Shape.svelte';
 
 	let Shape: typeof Shape__SvelteComponent_ | null = null;
 
@@ -24,7 +24,7 @@
 		});
 
 		let tooltip = document.querySelector('#tooltip');
-		let page1 = document.querySelector('#page-1');
+		let page1 = document.querySelector('#control-layer');
 
 		let modifier_held = false;
 
@@ -100,12 +100,13 @@
 <main>
 	<section id="page-1" style="touch-action: pan-y;">
 		<div id="page-1-content">
+			<div id="control-layer" />
 			<div id="hello">
-				<h1><span class="blackground allow-pointer-events">arya<span class="accent">dee</span> </span></h1>
+				<h1><span class="blackground ">arya<span class="accent">dee</span> </span></h1>
 				<p>
-					<span class="allow-pointer-events"
-						><span class="blackground">computer engineer.</span> <span class="blackground">ndarray lover.</span> <span
-							class="accent blackground">a person from planet earth.</span>
+					<span
+						><span class="blackground">computer engineer.</span> <span class="blackground">ndarray lover.</span>
+						<span class="accent blackground">a person from planet earth.</span>
 					</span>
 				</p>
 
@@ -142,7 +143,6 @@
 	</section>
 	<section id="page-2">
 		<Page2 />
-
 	</section>
 </main>
 
@@ -157,7 +157,6 @@
 
 	h1 {
 		font-weight: 600;
-
 	}
 
 	button {
@@ -175,7 +174,6 @@
 		text-decoration: none;
 	}
 
-
 	@keyframes fade-in {
 		from {
 			opacity: 1;
@@ -184,7 +182,6 @@
 			opacity: 0;
 		}
 	}
-
 
 	// this is needed for the tooltip to work
 	:global(.opaque) {
@@ -197,7 +194,7 @@
 	}
 
 	.scroll-button {
-		background-color: $background-color;
+		background-color: $void-color;
 		border: $ink-color 1px solid;
 		width: 100px;
 		height: 50px;
@@ -240,7 +237,7 @@
 	}
 
 	.blackground {
-		background: $background-color;
+		background: $void-color;
 		display: inline-block;
 		padding: 0.1em 0.2em 0.1em 0.2em;
 		border-radius: 0.2em;
@@ -257,6 +254,8 @@
 
 		pointer-events: none;
 
+		z-index: 3;
+
 		margin-right: calc(20vw);
 
 		@media only screen and (max-width: 600px) {
@@ -264,8 +263,16 @@
 		}
 	}
 
+	#control-layer {
+		position: absolute;
+		margin: auto;
+		top: 0;
+		width: calc(100% - 2px);
+		height: 100%;
+	}
+
 	.allow-pointer-events {
-		pointer-events: auto;
+		pointer-events: all;
 	}
 
 	.chevron-link {
@@ -360,13 +367,11 @@
 
 		border-top: #6d6d6357 1px solid;
 
-		background-color: $background-color-light;
+		background-color: $background-color;
 
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
 		align-content: space-between;
-
 	}
-
 </style>

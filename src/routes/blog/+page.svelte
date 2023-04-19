@@ -81,14 +81,14 @@
 
 <style lang="scss">
 	body {
-		background-color: $background-color-light;
+		background-color: $background-color;
 	}
 
 	main {
 		// font-size: 1.25em;
 		margin: auto;
 		max-width: 1080px;
-		background-color: $background-color-light;
+		background-color: $background-color;
 		padding: 20px;
 	}
 
@@ -101,7 +101,7 @@
 	}
 
 	div.light-background {
-		background-color: $background-color-light;
+		background-color: $background-color;
 		width: 100vw;
 		height: 100vh;
 		z-index: -1;

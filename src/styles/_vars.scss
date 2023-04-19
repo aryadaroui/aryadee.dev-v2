@@ -33,12 +33,12 @@ $link-color: $cyan-mid;
 $paper-color: $gray-hard;
 $background-color: $gray-hard;
 $background-color-light: hsl(20, 8.5%, 22%);
-$void-color: $gray-harder;
+$void-color: hsl(20, 15%, 10%);
 
 $border-translucent: rgba($tan-mid, 0.3);
 $border-link-translucent: rgba($blue-mid, 0.4);
 $border-link-translucent-hover: rgba($tan-mid, 0.8);
-$background-translucent: rgba($paper-color, 0.9);
+$background-translucent: lighten($background-color, 8%);
 
 $link-background: #177587;
 

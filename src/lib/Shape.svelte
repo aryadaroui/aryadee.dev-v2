@@ -9,7 +9,7 @@
 	let shape: Shape;
 
 	onMount(() => {
-		shape = new Shape(document.getElementById('shape'), '#E2C09B', document.getElementById('page-1'));
+		shape = new Shape(document.getElementById('shape'), '#E2C09B', document.getElementById('control-layer'));
 	});
 
 	onDestroy(() => {

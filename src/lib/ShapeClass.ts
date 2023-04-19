@@ -85,8 +85,6 @@ export class Shape {
 	onWindowResize() {
 
 		const width = document.querySelector("html").getBoundingClientRect().width;
-
-		console.log("still here!");
 		this.camera.aspect = width / window.innerHeight;
 		this.camera.updateProjectionMatrix();
 

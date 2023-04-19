@@ -123,26 +123,15 @@
 		border-radius: 15px;
 		border: transparentize($border-link-translucent, 1) 1px solid;
 		background-color: $background-translucent;
-		// box-shadow: 0px 5px 30px black;
 		overflow: hidden;
 
 		transition: background-color 0.15s ease, border 0.15s ease;
 
-		// :hover h2 {
-		// 	text-decoration: underline;
-		// 	text-decoration-thickness: 0.01em;
-		// }
 
 		flex-grow: 1;
 		flex-basis: 0;
 
-		// .title {
-		// 	font-size: 1.2em;
-		// 	font-weight: 200;
-		// }
-
 		@media (max-width: 1000px) {
-			// max-width: 400px;
 
 			flex-direction: row;
 			// max-height: 300px;
@@ -152,9 +141,6 @@
 		}
 	}
 
-	// a#post-card:hover {
-	// 	text-decoration: none;
-	// }
 
 	.thumbnail-container {
 		overflow: hidden;
@@ -167,8 +153,6 @@
 			height: auto;
 			width: 25%;
 		}
-
-		// border-bottom: rgba($border-link-translucent-hover, 0.5) 1px solid;
 	}
 
 	.content {
@@ -176,25 +160,18 @@
 		flex-direction: column;
 		justify-content: space-between;
 		flex: 2;
-		// flex-shrink: 2;
 		padding: 15px;
-		// gap: 10px;
-		// height: 63%;
+
 	}
 
 	#post-card:hover {
-		// background-image: url(./assets/arrow_gray.svg);
 		background-color: rgba($cyan-soft, 0.3);
-		// background-color: $link-background;
 
 		background-size: 150px;
 		background-repeat: repeat;
 		border: $border-link-translucent-hover 1px solid;
 
 		transition: background-color 0.15s ease, border 0.15s ease;
-
-		// text-decoration: underline;
-		// text-decoration-thickness: 1.5px;
 
 		h2 {
 			text-decoration: none;

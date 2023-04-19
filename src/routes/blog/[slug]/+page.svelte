@@ -52,16 +52,16 @@
 
 	// }
 
-	:root {
-		background-color: $background-color;
-	}
+	// :root {
+	// 	background-color: $void-color;
+	// }
 
 	blockquote {
-		border-left: 2px solid $pink-soft;
+		border-left: 2px solid $tan-hard;
 		padding: 0.5em 1em 0.5em 1em;
 		margin-left: 0;
 		margin-right: 0;
-		background-color: $background-color-light;
+		background-color: $background-color;
 
 		border-radius: 0 15px 15px 0;
 
@@ -80,8 +80,8 @@
 		min-height: calc(100vh - 200px);
 
 		::-webkit-scrollbar {
-			height: 12px;
-			width: 12px;
+			height: 6px;
+			width: 6px;
 			background: #00000000;
 		}
 
@@ -163,7 +163,7 @@
 		}
 
 		article {
-			background-color: $background-color;
+			background-color: $void-color;
 			font-family: $sans;
 			color: rgba($ink-color, 0.9);
 			max-width: 600px;
@@ -279,7 +279,7 @@
 			p span[data-rehype-pretty-code-fragment] code {
 				padding: 0.3em 0.4em;
 				border-radius: 0.4em;
-				background-color: hsl(230, 10%, 8%);
+				background-color: hsl(230, 10%, 4%);
 				// border: $border-translucent 1px solid;
 			}
 
@@ -287,7 +287,7 @@
 				padding: 0.3em 0.4em;
 				border-radius: 0.4em;
 				// background-color: hsl(230, 10%, 20%);
-				background-color: $gray-harder;
+				background-color: $gray-soft;
 				// background-color: $gray-harder;
 				// border: $border-translucent 1px solid;
 
@@ -357,7 +357,7 @@
 				border-radius: 15px;
 
 				pre {
-					background-color: hsl(230, 10%, 8%);
+					background-color: hsl(230, 10%, 4%);
 				}
 
 				// background: #2e2a28;
