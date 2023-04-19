@@ -1,39 +1,27 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import * as Shape from './Shape';
 	import Page22 from './Page22.svelte';
-	// import ShapeNode from './ShapeNode.svelte';
 	import { page } from '$app/stores';
+	import type Shape__SvelteComponent_ from '$lib/Shape.svelte'
 
-	let ShapeNode;
+	let Shape: typeof Shape__SvelteComponent_ | null = null;
 
+	// only keep shape stored when on home page
 	$: {
-		console.log('page.url.pathname', $page.url.pathname);
 		if ($page.url.pathname === '/') {
-			import('./ShapeNode.svelte').then((module) => {
-				ShapeNode = module.default;
+			import('$lib/Shape.svelte').then((module) => {
+				Shape = module.default;
 			});
 		} else {
-			ShapeNode = null;
+			Shape = null;
 		}
 	}
 
 	onMount(() => {
-		// console.log('onMount HOME');
-		// Shape.init(document.getElementById('shape-container'), '#E2C09B', document.getElementById('page-1'));
-
 		let scroll_down_button = document.querySelector('#scroll-down-button');
 		scroll_down_button.addEventListener('click', function () {
 			document.querySelector('#page-2').scrollIntoView({ behavior: 'smooth' });
 		});
-
-		// let scroll_up_button = document.querySelector('#scroll-up-button');
-		// scroll_up_button.addEventListener('click', function () {
-		// 	window.scrollTo({
-		// 		top: 0,
-		// 		behavior: 'smooth',
-		// 	});
-		// });
 
 		let tooltip = document.querySelector('#tooltip');
 		let page1 = document.querySelector('#page-1');
@@ -65,7 +53,6 @@
 			if (modifier_held) {
 				plus_tip.classList.remove('opaque');
 			} else {
-				// debugger
 				plus_tip.classList.remove('opaque');
 				tooltip.classList.remove('hint-tooltip');
 				// @ts-ignore - this is a hack to force a reflow
@@ -75,7 +62,6 @@
 		});
 
 		page1.addEventListener('wheel', function () {
-			// console.log('a');
 			mouse_tip.classList.remove('show-wheel');
 			// @ts-ignore - this is a hack to force a reflow
 			void mouse_tip.offsetWidth;
@@ -87,31 +73,14 @@
 				plus_tip.classList.add('show-wheel');
 			}
 		});
-
-		// // for reducing motion
-		// let reduce_motion_button = document.querySelector('#reduce-motion-button');
-		// let motion_text = document.querySelector('#motion-text');
-
-		// reduce_motion_button.addEventListener('click', function () {
-		// 	motion_text.classList.toggle('crossed-out');
-		// 	toggle_motion_func();
-		// });
-		// let fader = document.getElementById('fader');
-		// fader.style.width = document.querySelector("html").getBoundingClientRect().width.toString() + " px";
-
-		// fader.classList.add('black-fade-in');
 	});
 </script>
 
 <title>aryadee</title>
 <div class="background">
-	<!-- <div id="fader" /> -->
-	<!-- <ShapeNode /> -->
-
-	{#if ShapeNode}
-		<svelte:component this={ShapeNode} />
+	{#if Shape}
+		<svelte:component this={Shape} />
 	{/if}
-	<!-- <div id="shape-container" /> -->
 </div>
 
 <div id="tooltip" class="hint-tooltip">
@@ -121,8 +90,6 @@
 		</span>
 	</p>
 </div>
-
-<!-- <button id="reduce-motion-button"> reduce <span id="motion-text">motion</span> </button> -->
 
 <div class="scroll-button-container">
 	<button id="scroll-down-button" class="scroll-button">
@@ -174,26 +141,12 @@
 		</div>
 	</section>
 	<section id="page-2">
-		<!-- <Page2 /> -->
 		<Page22 />
-		<!-- <div class="scroll-button-container">
-			<button id="scroll-up-button" class="scroll-button">
-				<span style="vertical-align: 2px;"> ♥ ♥ ♥ </span>
-			</button>
-		</div> -->
+
 	</section>
 </main>
 
 <style lang="scss">
-	// :global(body) {
-	// 	background-color: $background-color;
-	// }
-
-	// :root {
-	// 	background-color: $background-color;
-	// 	// background-color: #3A332E;
-	// }
-
 	main {
 		margin: auto;
 		overflow-x: hidden;
@@ -225,14 +178,6 @@
 		text-decoration: none;
 	}
 
-	:global(.opaque) {
-		color: $ink-color;
-	}
-
-	:global(.black-fade-in) {
-		animation: 3s ease-in-out normal fade-in;
-	}
-
 	.avoid-wrap {
 		display: inline-block;
 	}
@@ -240,11 +185,9 @@
 	@keyframes fade-in {
 		from {
 			opacity: 1;
-			// filter: blur(27px);
 		}
 		to {
 			opacity: 0;
-			// filter: none;
 		}
 	}
 
@@ -287,15 +230,10 @@
 	#tooltip {
 		right: 62px;
 		bottom: 47px;
-		// opacity: 0.2;
 		color: $brown-soft;
 		font-family: $mono;
-		// font-weight: 200;
-		// font-size: 1.5em;
-
 		position: absolute;
 		user-select: none;
-
 		@media only screen and (max-width: 600px) {
 			visibility: hidden;
 		}
@@ -310,16 +248,6 @@
 			background: rgb(26, 22, 20); // this is unfortunately hard coded.
 		}
 	}
-
-	// #shape-container {
-	// 	position: absolute;
-	// 	background-color: $background-color;
-	// 	left: 0px;
-
-	// 	@media only screen and (max-width: 600px) {
-	// 		margin-top: 20px;
-	// 	}
-	// }
 
 	#hello {
 		font-family: $sans;
@@ -356,7 +284,6 @@
 	}
 
 	.link:hover {
-		// text-decoration: underline;
 		background-color: #1c4a52;
 		color: $cyan-soft;
 		transition: background-color 0.15s ease, color 0.15s ease;
@@ -385,18 +312,15 @@
 
 	@keyframes hint {
 		0% {
-			// opacity: 1;
 			color: $brown-soft;
 		}
 		10% {
 			color: $accent-color;
 		}
 		50% {
-			// opacity: 1;
 			color: $accent-color;
 		}
 		100% {
-			// opacity: 0.2;
 			color: $brown-soft;
 		}
 	}
@@ -424,64 +348,24 @@
 
 		@media only screen and (max-width: 600px) {
 			margin: 0px;
-			// height: calc(100vh - 40px);
 		}
 	}
-
-	// .corner-border {
-	// 	background: linear-gradient(to right, $ink-color 1px, transparent 1px) 0 0,
-	// 		linear-gradient(to right, $ink-color 1px, transparent 1px) 0 100%,
-	// 		linear-gradient(to left, $ink-color 1px, transparent 1px) 100% 0,
-	// 		linear-gradient(to left, $ink-color 1px, transparent 1px) 100% 100%,
-	// 		linear-gradient(to bottom, $ink-color 1px, transparent 1px) 0 0,
-	// 		linear-gradient(to bottom, $ink-color 1px, transparent 1px) 100% 0,
-	// 		linear-gradient(to top, $ink-color 1px, transparent 1px) 0 100%,
-	// 		linear-gradient(to top, $ink-color 1px, transparent 1px) 100% 100%;
-	// 	background-repeat: no-repeat;
-	// 	background-size: 10px 10px;
-	// }
 
 	#page-2 {
 		position: relative;
 		overflow: hidden;
 		height: auto;
 		min-height: 100vh;
-		// width: calc(100vw - (100vw - 100%));
-		// background-color: rgba(20, 20, 20, 0.5);
-		// background-color: #3a353045;
-		// background-color: rgba($gray-mid, 0.3);
-		// background-color: hsla(0, 0%, 0%, 0.7);
-		// background-color: $background-color;
 
 		border-top: #6d6d6357 1px solid;
-		// backdrop-filter: brightness(1.5);
-		// -webkit-backdrop-filter: blur(50px);
+
 		background-color: $background-color-light;
-		// background-color: $background-color;
 
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
 		align-content: space-between;
 
-		// .scroll-button-container {
-		// 	width: calc(calc(100vw - (100vw - 100%)) - 100px);
-		// 	margin: 50px 50px 0px 50px;
-		// 	position: relative;
-		// 	display: flex;
-		// 	justify-content: center;
-		// }
 	}
 
-	// #scroll-up-button.scroll-button {
-	// 	transform: scale(1, -1);
-	// 	border-radius: 15px; // box-shadow: 0px 5px 20px black;
-	// 	background-color: rgba($background-color, 0.7);
-	// }
-
-	// #scroll-up-button.scroll-button:active {
-	// 	// box-shadow: 0px 1px 15px black;
-
-	// 	// transform: translateY(2px) scale(1, -1);
-	// }
 </style>
