@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import Page22 from './Page22.svelte';
+	import Page2 from './Page2.svelte';
 	import { page } from '$app/stores';
 	import type Shape__SvelteComponent_ from '$lib/Shape.svelte'
 
@@ -101,11 +101,11 @@
 	<section id="page-1" style="touch-action: pan-y;">
 		<div id="page-1-content">
 			<div id="hello">
-				<h1><span class="blackground allow-pointer-events"> arya<span class="accent">dee</span> </span></h1>
+				<h1><span class="blackground allow-pointer-events">arya<span class="accent">dee</span> </span></h1>
 				<p>
-					<span class="blackground allow-pointer-events"
-						><span class="avoid-wrap">computer engineer.</span>&nbsp;<span class="avoid-wrap">ndarray lover.</span>&nbsp;<span
-							class="accent avoid-wrap">a person from planet earth.</span>
+					<span class="allow-pointer-events"
+						><span class="blackground">computer engineer.</span> <span class="blackground">ndarray lover.</span> <span
+							class="accent blackground">a person from planet earth.</span>
 					</span>
 				</p>
 
@@ -141,7 +141,7 @@
 		</div>
 	</section>
 	<section id="page-2">
-		<Page22 />
+		<Page2 />
 
 	</section>
 </main>
@@ -150,9 +150,6 @@
 	main {
 		margin: auto;
 		overflow-x: hidden;
-		// font-size: 1.29em;
-		// background-color: $background-color-light;
-
 		@media only screen and (max-width: 400px) {
 			font-size: 1em;
 		}
@@ -160,7 +157,7 @@
 
 	h1 {
 		font-weight: 600;
-		padding-left: 0.6em;
+
 	}
 
 	button {
@@ -178,9 +175,6 @@
 		text-decoration: none;
 	}
 
-	.avoid-wrap {
-		display: inline-block;
-	}
 
 	@keyframes fade-in {
 		from {
@@ -189,6 +183,12 @@
 		to {
 			opacity: 0;
 		}
+	}
+
+
+	// this is needed for the tooltip to work
+	:global(.opaque) {
+		color: $ink-color;
 	}
 
 	.background {
@@ -241,9 +241,9 @@
 
 	.blackground {
 		background: $background-color;
+		display: inline-block;
 		padding: 0.1em 0.2em 0.1em 0.2em;
 		border-radius: 0.2em;
-		line-height: 1.3;
 		@media only screen and (max-width: 600px) {
 			background: rgb(26, 22, 20); // this is unfortunately hard coded.
 		}
@@ -251,15 +251,13 @@
 
 	#hello {
 		font-family: $sans;
-		font-size: 1.4em;
+		font-size: clamp(1.2em, 5vw, 1.8em);
 		font-weight: 200;
-		margin: auto;
-		position: absolute;
+		user-select: none;
+
 		pointer-events: none;
 
-		max-width: 1300px;
-
-		padding: 20px 50px 50px 50px;
+		margin-right: calc(20vw);
 
 		@media only screen and (max-width: 600px) {
 			padding: 1px 25px 25px 25px;
@@ -345,6 +343,9 @@
 	#page-1-content {
 		margin: 50px;
 		height: calc(100vh - 100px);
+
+		display: flex;
+		justify-content: center;
 
 		@media only screen and (max-width: 600px) {
 			margin: 0px;

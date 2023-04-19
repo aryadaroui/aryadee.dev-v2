@@ -1,11 +1,7 @@
 <script>
 	import ImgBox from '$lib/ImgBox.svelte';
 	import Heart from '$lib/icons/heart.svelte';
-	import PostBox2 from '$lib/PostBox2.svelte';
 	import PostCard from '$lib/PostCard.svelte';
-	import Header from '$lib/Header.svelte';
-  import LinkBox from '$lib/LinkBox.svelte';
-  import Footer from '$lib/Footer.svelte';
 </script>
 
 <div id="page-2">
@@ -227,7 +223,7 @@
 
 		gap: 20px;
 
-		@media (max-width: 850px) {
+		@media (max-width: 1000px) {
 			flex-direction: column;
 			flex: wrap;
 			justify-content: center;

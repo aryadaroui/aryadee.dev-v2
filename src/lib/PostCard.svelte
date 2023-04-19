@@ -141,7 +141,7 @@
 		// 	font-weight: 200;
 		// }
 
-		@media (max-width: 850px) {
+		@media (max-width: 1000px) {
 			// max-width: 400px;
 
 			flex-direction: row;
@@ -163,7 +163,7 @@
 		width: auto;
 		// min-height: 25%;
 		height: 30%;
-		@media (max-width: 850px) {
+		@media (max-width: 1000px) {
 			height: auto;
 			width: 25%;
 		}
