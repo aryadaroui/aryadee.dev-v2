@@ -21,7 +21,7 @@ const y_speed = 0.00005;
  * @param domElement - the element to append to
  * @param color - the color of the shape
  */
-export function init(domContainer: Element, color: string, domController: Element): void {
+export function init(domContainer: Element, color: string, domController: Element) {
 
 	camera = new THREE.PerspectiveCamera(36, (document.querySelector("html").getBoundingClientRect().width) / window.innerHeight, 1, 2500);
 	camera.position.y = 600;
@@ -68,9 +68,12 @@ export function init(domContainer: Element, color: string, domController: Elemen
 	render();
 	animate();
 
+	return {shape}
 }
 
 function onWindowResize() {
+
+	console.log("still here!")
 
 	camera.aspect = (document.querySelector("html").getBoundingClientRect().width) / window.innerHeight;
 	// camera.aspect = 1;

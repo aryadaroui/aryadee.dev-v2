@@ -2,7 +2,21 @@
 	import { onMount } from 'svelte';
 	import * as Shape from './Shape';
 	import Page22 from './Page22.svelte';
-	import ShapeNode from './ShapeNode.svelte';
+	// import ShapeNode from './ShapeNode.svelte';
+	import { page } from '$app/stores';
+
+	let ShapeNode;
+
+	$: {
+		console.log('page.url.pathname', $page.url.pathname);
+		if ($page.url.pathname === '/') {
+			import('./ShapeNode.svelte').then((module) => {
+				ShapeNode = module.default;
+			});
+		} else {
+			ShapeNode = null;
+		}
+	}
 
 	onMount(() => {
 		// console.log('onMount HOME');
@@ -92,7 +106,11 @@
 <title>aryadee</title>
 <div class="background">
 	<!-- <div id="fader" /> -->
-	<ShapeNode />
+	<!-- <ShapeNode /> -->
+
+	{#if ShapeNode}
+		<svelte:component this={ShapeNode} />
+	{/if}
 	<!-- <div id="shape-container" /> -->
 </div>
 
@@ -207,8 +225,6 @@
 		text-decoration: none;
 	}
 
-
-
 	:global(.opaque) {
 		color: $ink-color;
 	}
@@ -299,9 +315,6 @@
 	// 	position: absolute;
 	// 	background-color: $background-color;
 	// 	left: 0px;
-
-		
-
 
 	// 	@media only screen and (max-width: 600px) {
 	// 		margin-top: 20px;
