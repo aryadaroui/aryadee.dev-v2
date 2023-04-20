@@ -91,21 +91,15 @@
 	</p>
 </div>
 
-<div class="scroll-button-container">
-	<button id="scroll-down-button" class="scroll-button">
-		<span style="vertical-align: 2px;"> ♥ ♥ ♥ </span>
-	</button>
-</div>
-
 <main>
 	<section id="page-1" style="touch-action: pan-y;">
-		<div id="page-1-content">
-			<div id="control-layer" />
+		<div id="control-layer" />
+		<div style="display: flex; justify-content: center;">
 			<div id="hello">
-				<h1><span class="blackground ">arya<span class="accent">dee</span> </span></h1>
+				<h1><span class="blackground">arya<span class="accent">dee</span> </span></h1>
 				<p>
 					<span
-						><span class="blackground">computer engineer.</span> <span class="blackground">ndarray lover.</span>
+						><span class="blackground">computer engineer.</span> <span class="blackground">ndarray lover.</span><br />
 						<span class="accent blackground">a person from planet earth.</span>
 					</span>
 				</p>
@@ -140,6 +134,11 @@
 				</div>
 			</div>
 		</div>
+		<div class="scroll-button-container">
+			<button id="scroll-down-button" class="scroll-button">
+				<span style="vertical-align: 2px;"> ♥ ♥ ♥ </span>
+			</button>
+		</div>
 	</section>
 	<section id="page-2">
 		<Page2 />
@@ -149,7 +148,7 @@
 <style lang="scss">
 	main {
 		margin: auto;
-		overflow-x: hidden;
+
 		@media only screen and (max-width: 400px) {
 			font-size: 1em;
 		}
@@ -194,30 +193,42 @@
 	}
 
 	.scroll-button {
-		background-color: $void-color;
+		background-color: darken($void-color, 5%);
 		border: $ink-color 1px solid;
 		width: 100px;
 		height: 50px;
 		font-size: large;
 		text-align: center;
-		z-index: 2;
+		z-index: 3;
 		user-select: none;
 		border-radius: 15px;
 		cursor: pointer;
+		transition: all 0.15s ease;
 
 		&:hover {
-			filter: brightness(66%);
+			// filter: brightness(90%);
+			border: rgba($blue-mid, 1) 1px solid;
+			color: $blue-mid 1px solid;
 		}
 
 		&:active {
-			filter: brightness(33%);
+			filter: brightness(70%);
+		}
+
+		@media only screen and (max-width: 600px) and (max-height: 600px) {
+			display: none;
+		}
+
+		@media only screen and (max-height: 500px) {
+			display: none;
 		}
 	}
 
 	.scroll-button-container {
 		width: calc(100vw - (100vw - 100%));
+		// margin: 50px;
 		bottom: 50px;
-		position: absolute;
+		position: fixed;
 		display: flex;
 		// justify-content: center;
 		justify-content: space-evenly;
@@ -226,7 +237,7 @@
 
 	#tooltip {
 		right: 62px;
-		bottom: 47px;
+		bottom: 40px;
 		color: $brown-soft;
 		font-family: $mono;
 		position: absolute;
@@ -237,29 +248,44 @@
 	}
 
 	.blackground {
-		background: $gray-mid;
+		background: $void-color;
 		display: inline-block;
 		padding: 0.3em 0.4em;
 		border-radius: 0.4em;
 		@media only screen and (max-width: 600px) {
-			background: rgb(26, 22, 20); // this is unfortunately hard coded.
+			background: hsl(220, 14%, 8%); // this is unfortunately hard coded.
 		}
 	}
 
+
 	#hello {
 		font-family: $sans;
-		font-size: clamp(1.2em, 5vw, 1.8em);
+		font-size: clamp(1em, 4vw, 2em);
 		font-weight: 200;
 		user-select: none;
 
 		pointer-events: none;
 
-		z-index: 3;
+		z-index: 2;
+		display: block;
 
-		margin-right: calc(20vw);
+		margin-bottom: 2em;
+
+		margin-right: calc(30vw);
+		// margin-left: 10%;
+
+		// overflow-y: visible;
+
+		@media only screen and (max-height: 800px) {
+			font-size: clamp(1.1em, 4vmin, 2em);
+			// h1 {
+			// 	margin-top: 1em;
+			// }
+			// font-size: clamp(0.9em, 4vh, 1.8em);
+		}
 
 		@media only screen and (max-width: 600px) {
-			padding: 1px 25px 25px 25px;
+			padding: 1px 15px 15px 15px;
 		}
 	}
 
@@ -340,34 +366,45 @@
 	}
 
 	#page-1 {
-		border: rgba(0, 0, 0, 0) 1px solid; // fixes overside page1 pushing down issue. it's a hack though
+		// border: rgba(0, 0, 0, 0) 1px solid; // fixes overside page1 pushing down issue. it's a hack though
+		min-height: 100vh;
 		@media only screen and (max-width: 600px) {
 			background-color: rgba($color: #000000, $alpha: 0.3);
-			height: 100vh;
+			// height: 100vh;
 		}
+		// overflow: overlay;
 	}
 
-	#page-1-content {
-		margin: 50px;
-		height: calc(100vh - 100px);
+	// #page-1-content {
+	// 	margin: 50px;
+	// 	height: calc(100vh - 100px);
 
-		display: flex;
-		justify-content: center;
+	// 	// display: flex;
+	// 	// justify-content: center;
 
-		@media only screen and (max-width: 600px) {
-			margin: 0px;
-		}
-	}
+	// 	// flex-grow: 2;
+
+	// 	@media only screen and (max-width: 600px) {
+	// 		margin: 0px;
+	// 	}
+
+	// 	@media only screen and (max-height: 500px) {
+	// 		height: 100vh;
+	// 		margin: 0px;
+	// 	}
+	// }
 
 	#page-2 {
 		position: relative;
-		overflow: hidden;
+		// overflow: hidden;
 		height: auto;
 		min-height: 100vh;
 
 		border-top: #6d6d6357 1px solid;
 
-		background-color: lighten(hsl(26, 15%, 10%), 4%);
+		// background-color: hsl(26, 12%, 10%);
+		// background-color: darken($void-color, 0%);
+		background-color: $gray-mid;
 
 		display: flex;
 		flex-direction: column;

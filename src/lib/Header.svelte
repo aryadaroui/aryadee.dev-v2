@@ -22,7 +22,7 @@
 
 <style lang="scss">
 	div#header {
-		background-color: $void-color;
+		background-color: darken($void-color, 0%);
 		width: 100%;
 
 		nav {
@@ -34,7 +34,7 @@
 			max-width: 720px;
 			height: 3em;
 
-			@media screen and (max-width: 500px) {
+			@media screen and (max-width: 502px) {
 				flex-direction: column;
 				// height: 4em;
 				gap: 10px;

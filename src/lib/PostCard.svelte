@@ -124,7 +124,8 @@
 
 		border-radius: 15px;
 		border: transparentize($border-link-translucent, 1) 1px solid;
-		background-color: $background-translucent;
+		// background-color: $background-translucent;
+		background-color: var(--background-color, $background-translucent);
 		overflow: hidden;
 
 		transition: background-color 0.15s ease, border 0.15s ease;
@@ -171,7 +172,7 @@
 
 		background-size: 150px;
 		background-repeat: repeat;
-		border: $border-link-translucent-hover 1px solid;
+		// border: $border-link-translucent-hover 1px solid;
 
 		transition: background-color 0.15s ease, border 0.15s ease;
 
@@ -201,26 +202,28 @@
 
 	.lang {
 		background-color: $gray-soft;
-		border: $brown-soft 1px solid;
+		// border: $brown-soft 1px solid;
 		color: $tan-soft;
 	}
 
 	.tool {
 		background-color: $gray-mid;
-		border: $brown-mid 1px solid;
+		// border: $brown-mid 1px solid;
 		color: $tan-mid;
 	}
 
 	.domain {
 		background-color: $gray-harder;
-		border: hsl(19, 20%, 25%) 1px solid; // $brown-hard but lighter
+		border: hsl(220, 20%, 25%) 1px solid; // $brown-hard but lighter
 		color: $tan-hard;
 	}
 
 	.category {
-		background-color: $gray-soft;
+		// background-color: $gray-soft;
 		border: transparentize($pink-soft, 0.7) 1px solid;
-		color: $pink-mid;
-		font-weight: 400;
+		// color: $pink-mid;
+		// font-weight: 400;
+		background-color: hsl(345, 50%, 30%);
+		color: $pink-soft;
 	}
 </style>

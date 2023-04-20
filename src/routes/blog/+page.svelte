@@ -26,7 +26,8 @@
 				tags={post.tags}
 				img_src={post.thumbnail}
 				link={'/blog/' + post.slug}
-				alt={'thumbnail of post'} />
+				alt={'thumbnail of post'}
+			/>
 		{/each}
 	</div>
 
@@ -158,7 +159,7 @@
 
 	ul {
 		list-style-type: circle;
-		line-height: 1.5em;
+		line-height: 1.6em;
 		li {
 			margin-bottom: 1em;
 		}

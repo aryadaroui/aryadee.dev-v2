@@ -1,5 +1,5 @@
 .aplayer {
-	background: #171312;
+	background: hsl(220, 13%, 11%);
 	font-family: 'Swiss 721', Helvetica, sans-serif;
 	margin: 5px;
 	box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .07), 0 1px 5px 0 rgba(0, 0, 0, .1);
@@ -125,7 +125,7 @@
 	transform-origin: 0 0;
 	transition: all .3s ease;
 	border-bottom: none;
-	border-top: 1px solid #443832
+	border-top: 1px solid hsl(220, 15%, 23%)
 }
 
 .aplayer.aplayer-fixed .aplayer-info .aplayer-music {
@@ -593,7 +593,7 @@
 	line-height: 32px;
 	padding: 0 15px;
 	font-size: 14px;
-	border-top: 1px solid #443832;
+	border-top: 1px solid hsl(220, 15%, 23%);
 	cursor: pointer;
 	transition: all .2s ease;
 	overflow: hidden;
@@ -605,15 +605,15 @@
 }
 
 .aplayer .aplayer-list ol li:hover {
-	background: #382B25
+	background: hsl(220, 20%, 28%)
 }
 
 .aplayer .aplayer-list ol li.aplayer-list-light {
-	background: #171312
+	background: hsl(220, 13%, 11%);
 }
 
 .aplayer .aplayer-list ol li.aplayer-list-light:hover {
-	background: #382B25
+	background: hsl(220, 20%, 18%)
 }
 
 .aplayer .aplayer-list ol li.aplayer-list-light .aplayer-list-cur {

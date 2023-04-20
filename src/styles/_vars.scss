@@ -3,23 +3,23 @@
 
 
 // general color palette. visible in /palette.png
-$gray-harder: #171312;
-$gray-hard: #221E1B;  // darker
-$brown-hard: #382B25; // dark
+$gray-harder: hsl(210, 12%, 10%);
+$gray-hard: hsl(220, 11%, 12%);  // darker
+$brown-hard: hsl(215, 20%, 18%); // dark
 $tan-hard: #EFC79C;  // lighter
 $pink-hard: #F7679C; // light
 $cyan-hard: #1ED3D3; // light
 $blue-hard: #1E91D3; // light
 
-$gray-mid: #26211D;  // back
-$brown-mid: #694D41; // paper
+$gray-mid: hsl(225, 8%, 18%);  // back
+$brown-mid: hsl(210, 24%, 33%); // paper
 $tan-mid: #E8CDAE;   // front
 $pink-mid: #FF99BE;  // accent
 $cyan-mid: #7AECEC;  // utility
 $blue-mid: #7AC6EC;  // utility
 
-$gray-soft: #2E2A28;  
-$brown-soft: #7E6959; 
+$gray-soft: hsl(220, 7%, 21%);  
+$brown-soft: hsl(220, 17%, 42%); 
 $tan-soft: #ffeed7;   
 $pink-soft: #FAC0D0;  
 $cyan-soft: #BCF8F3;  
@@ -32,14 +32,13 @@ $accent-color: $pink-mid;
 $link-color: $cyan-mid;
 $paper-color: $gray-hard;
 $background-color: $gray-mid;
-$background-color-light: hsl(20, 8.5%, 22%);
-$void-color: hsl(25, 12.5%, 10%);
+$background-color-light: hsl(20, 8.5%, 15%);
+$void-color: hsl(220, 13%, 12%);
 
 $border-translucent: rgba($tan-mid, 0.3);
 $border-link-translucent: rgba($blue-mid, 0.4);
 $border-link-translucent-hover: rgba($tan-mid, 0.8);
-$background-translucent: lighten($gray-mid, 10%);
-// $background-translucent: darken($background-color, 5%);
+$background-translucent: hsl(225, 10%, 12%);
 
 $link-background: #177587;
 

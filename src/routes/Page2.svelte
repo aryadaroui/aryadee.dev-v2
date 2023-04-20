@@ -9,7 +9,7 @@
 	<!-- <Header /> -->
 	<div class="center-stack">
 		<div style="max-width: 500px; flex-grow: 2;">
-			<h2>Hello world!</h2>
+			<h2>Hello world</h2>
 			<p>My name is Arya “<span class="accent">Dee</span>” Daroui.</p>
 			<p>I like to code, take photos, and make music. Most of what I share here is at the intersection of these things.</p>
 			<p />
@@ -164,7 +164,7 @@
 	a.link-box:hover {
 		color: $cyan-soft;
 		background-color: rgba($cyan-soft, 0.2);
-		border: $border-link-translucent-hover 1px solid;
+		// border: $border-link-translucent-hover 1px solid;
 		transition: background-color 0.15s ease, border 0.15s ease;
 	}
 
@@ -187,7 +187,8 @@
 	}
 	h2 {
 		color: $pink-hard;
-		font-weight: 800;
+		font-weight: 700;
+		font-size: 2em;
 	}
 	h3 {
 		margin-top: 0;
@@ -286,7 +287,7 @@
 	}
 
 	.tool {
-		background-color: lighten($gray-soft, 8%);
+		background-color: lighten($gray-soft, 2%);
 		// border: $brown-soft 1px solid;
 		color: $tan-soft;
 	}
@@ -295,7 +296,7 @@
 		background-color: $gray-harder;
 		color: lighten($tan-mid, 3%);
 		// border: darken($tan-mid, 50%) 1px solid;
-		border: hsl(19, 20%, 32%) 1px solid; // $brown-hard but lighter
+		border: hsl(220, 20%, 25%) 1px solid; // $brown-hard but lighter
 	}
 
 	.lang-light {

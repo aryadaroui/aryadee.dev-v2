@@ -32,7 +32,7 @@
 
 	#background {
 		z-index: -2;
-		background-color: $gray-mid;
+		// background-color: $void-color;
 		position: absolute;
 		top: 0;
 		left: 0;

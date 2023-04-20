@@ -125,7 +125,7 @@
 			cursor: pointer;
 
 			width: 100%;
-			border-radius: 15px;
+			border-radius: 8px;
 			border: rgba($border-link-translucent, 0.0) 1px solid;
 			// border: none;
 			margin: 0;
@@ -152,7 +152,7 @@
 				justify-content: space-between;
 				align-items: center;
 
-				border-radius: 13px;
+				border-radius: 6px;
 
 				z-index: 2;
 			}
@@ -187,7 +187,7 @@
 			top: -15px;
 			padding: 10px;
 			padding-top: 20px;
-			border-radius: 0px 0px 15px 15px;
+			border-radius: 0px 0px 8px 8px;
 
 		}
 
