@@ -113,9 +113,9 @@
 		background-color: #090909;
 	} */
 
-	:root {
+	/* :root {
 		background-color: #090909;
-	}
+	} */
 
 	/* .back-item {
 		cursor: pointer;

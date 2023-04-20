@@ -231,16 +231,16 @@
 		font-family: $mono;
 		position: absolute;
 		user-select: none;
-		@media only screen and (max-width: 600px) {
+		@media only screen and (max-width: 700px) {
 			visibility: hidden;
 		}
 	}
 
 	.blackground {
-		background: $void-color;
+		background: $gray-mid;
 		display: inline-block;
-		padding: 0.1em 0.2em 0.1em 0.2em;
-		border-radius: 0.2em;
+		padding: 0.3em 0.4em;
+		border-radius: 0.4em;
 		@media only screen and (max-width: 600px) {
 			background: rgb(26, 22, 20); // this is unfortunately hard coded.
 		}
@@ -367,7 +367,7 @@
 
 		border-top: #6d6d6357 1px solid;
 
-		background-color: $background-color;
+		background-color: lighten(hsl(26, 15%, 10%), 4%);
 
 		display: flex;
 		flex-direction: column;

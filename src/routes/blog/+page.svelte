@@ -33,7 +33,7 @@
 	<h2>Academic documents</h2>
 	<h3>Papers</h3>
 	<!-- maybe make post cards for these? -->
-	<ol>
+	<ul>
 		<li>
 			<a href="/blog/documents/thesis daroui.pdf">Modeling a multi-core checkerboard SoC with C++ SystemC.pdf</a>, my MS thesis
 		</li>
@@ -45,35 +45,35 @@
 			<a href="/blog/documents/shark paper.pdf">Classification of shark behaviors using accelerometer signals and KNN.pdf</a>,
 			collaborated, edited, and typeset.
 		</li>
-	</ol>
+	</ul>
 
 	<h3>Signal and data processing reports</h3>
-	<ol>
+	<ul>
 		<li><a href="/blog/documents/smart upres.pdf">Super sampling neural network slideshow.pdf</a></li>
 		<li><a href="/blog/documents/classification cnn.pdf">Simple image classification neural network report.pdf</a></li>
 		<li><a href="/blog/indexing.pdf">Indexing with MapReduce report.pdf</a></li>
 		<!-- <li><a href="/nerd-stuff/thesis.pdf">image skeletonization with Lantuéjoul's method example.pdf</a></li> -->
 		<li><a href="/blog/documents/synthboy.pdf">Digital synthesizer on Logic Pro using C++ and JUCE report.pdf</a></li>
-	</ol>
+	</ul>
 
 	<h3>Teaching</h3>
 	<h4>Control systems lab prompts</h4>
-	<ol>
+	<ul>
 		<li><a href="/blog/documents/lab 2.pdf">Lab 2: intro to LabVIEW.pdf</a></li>
 		<li><a href="/blog/documents/lab 3.pdf">Lab 3: intro to Simulink.pdf</a></li>
 		<li><a href="/blog/documents/lab 5.pdf">Lab 5: op-amp systems.pdf</a></li>
 		<li><a href="/blog/documents/lab 7.pdf">Lab 7: harmonic oscillator.pdf</a></li>
-	</ol>
+	</ul>
 	<p style="font-size: 0.8em; padding-left: 40px">
 		If you'd like the other lab prompts, please contact me; they contain material I cannot share publicly.
 	</p>
 
 	<h4>Other</h4>
-	<ol>
+	<ul>
 		<li><a href="/blog/documents/how to write lab reports.pdf">How to write lab reports.pdf</a></li>
 		<li><a href="/blog/documents/ray tracing.pdf">Ray tracing diagrams.pdf</a></li>
 		<li><a href="/blog/documents/fourier series example.pdf">Fourier series example.pdf</a></li>
-	</ol>
+	</ul>
 </main>
 <div class="light-background" />
 
@@ -81,14 +81,14 @@
 
 <style lang="scss">
 	body {
-		background-color: $background-color;
+		background-color: $gray-mid;
 	}
 
 	main {
 		// font-size: 1.25em;
 		margin: auto;
 		max-width: 1080px;
-		background-color: $background-color;
+		background-color: $gray-mid;
 		padding: 20px;
 	}
 
@@ -101,7 +101,7 @@
 	}
 
 	div.light-background {
-		background-color: $background-color;
+		background-color: $gray-mid;
 		width: 100vw;
 		height: 100vh;
 		z-index: -1;
@@ -156,8 +156,11 @@
 		// transition: background-color 0.15s ease, color 0.15s ease;
 	}
 
-	ol {
-		list-style-type: none;
+	ul {
+		list-style-type: circle;
 		line-height: 1.5em;
+		li {
+			margin-bottom: 1em;
+		}
 	}
 </style>

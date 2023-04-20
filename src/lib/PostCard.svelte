@@ -116,6 +116,8 @@
 		text-decoration: none;
 		color: $link-color;
 
+		font-size: clamp(0.9em, 2vw, 1.2em);
+
 		// backdrop-filter: blur(27px);
 
 		font-family: $sans;
@@ -131,12 +133,12 @@
 		flex-grow: 1;
 		flex-basis: 0;
 
-		@media (max-width: 1000px) {
+		@media (max-width: 1040px) {
 
 			flex-direction: row;
 			// max-height: 300px;
 			min-height: 150px;
-			max-width: 100%;
+			max-width: 800px;
 			justify-content: flex-start;
 		}
 	}
@@ -149,7 +151,7 @@
 		width: auto;
 		// min-height: 25%;
 		height: 30%;
-		@media (max-width: 1000px) {
+		@media (max-width: 1040px) {
 			height: auto;
 			width: 25%;
 		}

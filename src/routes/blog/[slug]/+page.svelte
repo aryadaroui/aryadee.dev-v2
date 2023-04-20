@@ -44,24 +44,34 @@
 			--toc-mobile-btn-border-radius="10px" />
 	</aside>
 </main>
+<div class="light-background" />
+
 
 <style global lang="scss">
 	// body {
 	// 	// background-color: #0e0d0d;
-	// 	background-color: $void-color;
+	// 	background-color: $background-color;
 
 	// }
 
 	// :root {
-	// 	background-color: $void-color;
+	// 	background-color: $background-color;
 	// }
+	div.light-background {
+		background-color: $background-color;
+		width: 100vw;
+		height: 100vh;
+		z-index: -1;
+		position: fixed;
+		top: 0;
+	}
 
 	blockquote {
 		border-left: 2px solid $tan-hard;
 		padding: 0.5em 1em 0.5em 1em;
 		margin-left: 0;
 		margin-right: 0;
-		background-color: $background-color;
+		background-color: darken($gray-hard, 3%);
 
 		border-radius: 0 15px 15px 0;
 
@@ -163,9 +173,9 @@
 		}
 
 		article {
-			background-color: $void-color;
+			background-color: $background-color;
 			font-family: $sans;
-			color: rgba($ink-color, 0.9);
+			color: rgba($ink-color, 0.99);
 			max-width: 600px;
 			// width: 400px;
 
@@ -279,7 +289,7 @@
 			p span[data-rehype-pretty-code-fragment] code {
 				padding: 0.3em 0.4em;
 				border-radius: 0.4em;
-				background-color: hsl(230, 10%, 4%);
+				background-color: hsl(230, 10%, 10%);
 				// border: $border-translucent 1px solid;
 			}
 
@@ -299,7 +309,7 @@
 			li span[data-rehype-pretty-code-fragment] code {
 				padding: 0.3em 0.4em;
 				border-radius: 0.4em;
-				background-color: hsl(230, 10%, 8%);
+				background-color: hsl(230, 10%, 10%);
 				// border: $border-translucent 1px solid;
 			}
 
@@ -319,12 +329,12 @@
 			}
 
 			div[data-rehype-pretty-code-title] {
-				font-family: $mono;
+				font-family: $sans;
 				font-size: 0.8em;
 				display: inline-block;
 				width: calc(100% - 1rem);
 				// background-color: $;
-				background-color: hsl(230, 10%, 20%);
+				background-color: hsl(230, 10%, 7%);
 
 				padding: 0.5em;
 				text-align: right;
@@ -357,7 +367,7 @@
 				border-radius: 15px;
 
 				pre {
-					background-color: hsl(230, 10%, 4%);
+					background-color: hsl(230, 10%, 10%);
 				}
 
 				// background: #2e2a28;
