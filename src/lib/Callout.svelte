@@ -17,6 +17,7 @@
 	export let title = '';
 	export let icon = 'info';
 	export let color = '';
+	export let is_expanded = false;
 
 	let icon_component = {
 		bug,
@@ -85,7 +86,7 @@
 		background_color = background_colors[color];
 	}
 
-	let is_expanded = false;
+	// let is_expanded = false;
 	const toggle = () => (is_expanded = !is_expanded);
 </script>
 

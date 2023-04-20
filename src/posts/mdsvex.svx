@@ -75,7 +75,7 @@ There's also support for numbering, titles and highlighting lines and words.
 
 And with mdsvex, we can easily use Svelte components, like custom callouts!
 
-<Callout title="Escaping special characters" icon="warning"  >
+<Callout title="Escaping special characters" icon="warning" >
 
 In code blocks, everything is displayed as expected, but outside of code blocks, you'll need to escape some characters.
 

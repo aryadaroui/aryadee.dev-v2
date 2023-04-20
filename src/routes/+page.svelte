@@ -285,7 +285,11 @@
 		}
 
 		@media only screen and (max-width: 600px) {
-			padding: 1px 15px 15px 15px;
+			padding: 1px 0px 10px 5px;
+		}
+
+		@media only screen and (max-width: 500px) {
+			margin-right: calc(20vw);
 		}
 	}
 
