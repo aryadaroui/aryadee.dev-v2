@@ -11,6 +11,8 @@
 	export let loaded: boolean = false;
 	export let reloadPlot = 0;
 
+	let status = 'loading Plotly.js';
+
 	function init() {
 		if (!$PlotlyLib) $PlotlyLib = window?.Plotly;
 	}
@@ -60,14 +62,18 @@
 			}
 		};
 	}
+
+	function handleLoadingError() {
+		status = 'Error loading Plotly.js';
+	}
 </script>
 
 <svelte:head>
-	<script src="https://cdn.plot.ly/plotly-latest.min.js" on:load={init}></script>
+	<script src="https://cdn.plot.ly/plotly-latest.min.js" on:load={init} on:error={handleLoadingError}></script>
 </svelte:head>
 
 {#if $PlotlyLib}
 	<div {id} use:plotlyAction={{ data, layout, config, reloadPlot }} {...$$restProps} />
 {:else}
-	<slot>Loading Plotly</slot>
+	<p>{status}</p>
 {/if}

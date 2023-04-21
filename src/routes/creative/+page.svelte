@@ -52,9 +52,8 @@
 	<h1>Creative</h1>
 
 	<h2>Music</h2>
-	<p style="font-size: 0.7em;">I do not endorse Spiro Agnew, his speech, or the Nixon administration.</p>
 	<div id="aplayer" />
-
+	<p style="font-size: 0.7em; color:gray;">I do not endorse Spiro Agnew, his speech, or the Nixon administration.</p>
 	<h2>Photos</h2>
 	<p style="font-size: 0.7em;">Use arrow keys to navigate images.</p>
 

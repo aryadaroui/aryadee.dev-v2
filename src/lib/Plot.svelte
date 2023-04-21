@@ -13,7 +13,7 @@
 	}
 
 	function init(loaded, plot_loader) {
-		console.log('loaded', loaded);
+		// console.log('loaded', loaded);
 		if (loaded) {
 			if (plot_loader) {
 				plot_loader.classList.add('loaded');
@@ -29,25 +29,28 @@
 	let plot_data = get_plot_json(plot_json);
 </script>
 
+
+
 <div class="skeleton">
 	{#await plot_data}
 		<p>Loading plot data</p>
 	{:then data}
 		<div bind:this={plot_loader}>
-			<Plotly data={data.data} layout={data.layout} bind:loaded>
-				<p>Loading Plotly.js</p>
-			</Plotly>
+			<Plotly data={data.data} layout={data.layout} bind:loaded />
 		</div>
+	{:catch error}
+		<p>{error}</p>
 	{/await}
 </div>
 
 <style global lang="scss">
 	.skeleton {
-		width: 600px;
+		width: calc(100% - 2px);
 		height: 450px;
 		border-radius: 8px;
 		background-color: rgb(17, 17, 17);
-		padding: 2px;
+		padding: 0px;
+		margin: 1em 0;
 
 		border: transparent 1px solid;
 		transition: border 0.15s ease;
@@ -78,7 +81,7 @@
 	}
 
 	.loaded {
-		animation: expand 1s ease;
+		animation: expand 0.9s ease;
 		overflow: hidden;
 	}
 

@@ -86,6 +86,20 @@ This is because mdsvex proactively converts html entities, so simply using `&amp
 
 </Callout>
 
+
+
 And interactive Plotly plots, thanks to [sveltekit-plotly](https://github.com/aknakos/sveltekit-plotly)!
 
 <Plot plot_json="/blog/mdsvex/hue_response_curve.json" />
+
+
+<Callout title="Nested callouts" icon="smile" >
+And yes you can embed them inside of each other!
+
+<Callout title="Example" icon="heart" >
+
+<Plot plot_json="/blog/mdsvex/hue_response_curve.json" />
+
+</Callout>
+
+</Callout>

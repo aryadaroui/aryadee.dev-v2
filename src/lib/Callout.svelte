@@ -94,9 +94,11 @@
 	<button on:click={toggle} aria-expanded={is_expanded} style="color: {foreground_color}; background: {background_color};">
 		<!-- icon -->
 		<div class="title" style="background-color: {background_color};">
-			<!-- <Fire /> -->
 
-			<svelte:component this={icon_component} />
+			<div style="flex-shrink: 0">
+				<svelte:component this={icon_component}/>
+			</div>
+			
 			{title}
 			<svg
 				style="tran"
@@ -122,14 +124,15 @@
 
 <style lang="scss">
 	#callout {
+		margin: 1em 0;
 		button {
 			cursor: pointer;
 
 			width: 100%;
 			border-radius: 8px;
-			border: rgba($border-link-translucent, 0.0) 1px solid;
+			border: rgba($border-link-translucent, 0) 1px solid;
 			// border: none;
-			margin: 0;
+			margin: 20;
 			padding: 1px 1px 1px 1px;
 
 			font-family: $sans;
@@ -145,34 +148,32 @@
 
 			transition: border 0.15s ease;
 
-
 			.title {
 				position: relative;
 				padding: 8px 12px 8px 15px;
 				display: flex;
 				justify-content: space-between;
 				align-items: center;
-
+				gap: 10px;
 				border-radius: 6px;
 
 				z-index: 2;
+				// .icon {
+				// 	flex-shrink: 0;
+				// }
 			}
 		}
 
 		button:hover {
-
 			transition: border 0.15s ease;
 
-
-			border: rgba($blue-mid, $alpha: 1.0) 1px solid;
-
+			border: rgba($blue-mid, $alpha: 1) 1px solid;
 		}
 
 		button:hover + div.content {
-			border: rgba($blue-mid, $alpha: 1.0) 1px solid;
+			border: rgba($blue-mid, $alpha: 1) 1px solid;
 			border-top: none;
 			transition: border 0.15s ease;
-
 		}
 
 		div.content {
@@ -181,15 +182,13 @@
 
 			transition: border 0.15s ease;
 
-
-			border: rgba($border-link-translucent, 0.0) 1px solid;
+			border: rgba($border-link-translucent, 0) 1px solid;
 			border-top: none;
 
 			top: -15px;
-			padding: 15px;
+			padding: 15px 15px 0px 15px;
 			padding-top: 20px;
 			border-radius: 0px 0px 8px 8px;
-
 		}
 
 		svg {

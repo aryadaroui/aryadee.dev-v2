@@ -38,10 +38,10 @@
 			--toc-active-bg="#A7687D00"
 			--toc-li-hover-color="#FF99BE"
 			--toc-z-index="3"
-			--toc-mobile-bg="#171312"
+			--toc-mobile-bg="hsl(210, 24%, 33%)"
 			--toc-mobile-shadow="box-shadow: 0px 5px 30px rgba(black, 0.7);"
 			--toc-mobile-btn-color="#FFEFD8"
-			--toc-mobile-btn-border-radius="10px" />
+			--toc-mobile-btn-border-radius="8px" />
 	</aside>
 </main>
 <div class="light-background" />
@@ -228,6 +228,7 @@
 
 			[data-post-date] {
 				margin: 1em 0em;
+				font-family: $mono;
 			}
 
 			em {
@@ -242,7 +243,7 @@
 			h1 {
 				color: $pink-hard;
 				// padding-left: 0em;
-				font-weight: 600;
+				font-weight: 500;
 				font-size: 1.8em;
 			}
 

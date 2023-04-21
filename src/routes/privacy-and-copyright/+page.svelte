@@ -33,19 +33,18 @@
 	<h3>Website and blog</h3>
 
 	<p>
-		<em>Unless otherwise stated</em>, my code shared on this website is available to you under the
-		<a href="https://opensource.org/licenses/MIT">MIT License</a>. In other words, it's free for you to use. Attribution is
-		appreciated, but not necessary.
+		<u>Unless otherwise stated</u>, my code shared on this website is available to you under the
+		<a href="https://opensource.org/licenses/MIT">MIT License</a>. Attribution is appreciated, but not necessary.
 	</p>
 
 	<p>
-		<em>Unless otherwise stated</em>, images and audio content shared on this website belong to me, and you may not (i.e., you
+		<u>Unless otherwise stated</u>, images and audio content shared on this website belong to me, and you may not (i.e., you
 		are not allowed to) redistribute them in any manner. You may download them for local, personal use, like for a desktop
 		wallpaper or to test against code examples from my blog.
 	</p>
 
 	<p>
-		<em>Unless otherwise stated</em>, written content is allowed to be reworked and reused, but attribution is appreciated, but
+		<u>Unless otherwise stated</u>, written content is allowed to be reworked and reused. Attribution is appreciated, but
 		not necesarry
 	</p>
 
@@ -53,7 +52,7 @@
 
 	<p>
 		What you make with Filmic belongs to you and is your responsibility. I bear no responsibility or ownership for content you
-		create and export with Filmic. Attributing Filmic is appreciated, but not required.
+		create and export with Filmic. Attributing Filmic is appreciated, but not necessary.
 	</p>
 
 	<h2>Contact</h2>
@@ -73,7 +72,7 @@
 
 <style lang="scss">
 	div.light-background {
-		background-color: $background-color-light;
+		background-color: $background-color;
 		width: 100vw;
 		height: 100vh;
 		z-index: -1;
@@ -84,9 +83,10 @@
 	main {
 		// font-size: 1.25em;
 		margin: auto;
-		max-width: 1080px;
-		background-color: $background-color-light;
+		max-width: 720px;
+		background-color: $background-color;
 		padding: 20px;
+		line-height: 1.5;
 	}
 
 	h1 {
