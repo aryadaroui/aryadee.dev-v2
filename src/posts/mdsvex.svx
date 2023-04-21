@@ -9,7 +9,7 @@ thumbnail: /blog/mdsvex/thumbnail.png
 ---
 
 
-> Previous renditions of my blog were cumbersome to write in and didn't let me express myself how I would've liked, so I've added more automation and features for this opening. I'm using [mdsvex](https://mdsvex.com/) to parse and transform markdown, and [rehype-pretty-code](https://rehype-pretty-code.netlify.app/) to add syntax highlighting to code. I've also added a few custom components, like callouts and a sticky table of contents, generated with [svelte-toc](https://github.com/janosh/svelte-toc).
+> Previous renditions of my blog were cumbersome to write in and didn't let me express myself how I would've liked, so I've added more automation and features for this opening. I'm using [mdsvex](https://mdsvex.com/) to parse and transform markdown, and [rehype-pretty-code](https://rehype-pretty-code.netlify.app/) to add syntax highlighting to code. I've also added a couple custom components and a sticky table of contents, generated with [svelte-toc](https://github.com/janosh/svelte-toc).
 
 # Basic Markdown
 
@@ -71,6 +71,7 @@ There's also support for numbering, titles and highlighting lines and words.
 </a>
 ```
 
+
 ## Custom components
 
 And with mdsvex, we can easily use Svelte components, like custom callouts!
@@ -85,3 +86,6 @@ This is because mdsvex proactively converts html entities, so simply using `&amp
 
 </Callout>
 
+And interactive Plotly plots, thanks to [sveltekit-plotly](https://github.com/aknakos/sveltekit-plotly)!
+
+<Plot plot_json="/blog/mdsvex/hue_response_curve.json" />

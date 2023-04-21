@@ -16,8 +16,8 @@
 
 		<!-- <div class="paper"> -->
 		<title>{data.title} - aryadee</title>
-		<div data-title>{data.title}</div>
-		<div data-date>{data.date}</div>
+		<div data-post-title>{data.title}</div>
+		<div data-post-date>{data.date}</div>
 
 		<!-- <hr /> -->
 
@@ -70,7 +70,6 @@
 	}
 
 
-
 	main#post {
 		font-family: $sans;
 		font-weight: 300;
@@ -101,6 +100,7 @@
 		// ::-webkit-scrollbar-corner {
 		// 	background: #00000000;
 		// }
+
 
 
 		@media (max-width: 690px) {
@@ -218,7 +218,7 @@
 				// color: #e8d16f;
 			}
 
-			[data-title] {
+			[data-post-title] {
 				font-weight: 100;
 				font-size: 3em;
 				// margin-bottom: 0;
@@ -226,7 +226,7 @@
 				width: 100%;
 			}
 
-			[data-date] {
+			[data-post-date] {
 				margin: 1em 0em;
 			}
 
