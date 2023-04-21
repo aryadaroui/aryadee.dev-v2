@@ -8,8 +8,8 @@
 		<hr />
 	{/if}
 	<div class="footer">
-		<span>arya<span class="accent">dee</span></span>&nbsp; · &nbsp<a href="mailto:adaroui@uci.edu">adaroui@uci.edu</a>&nbsp; ·
-		&nbsp;<a href="/privacy-and-copyright">privacy & copyright</a>
+		<span>arya<span class="accent">dee</span></span>&nbsp;  &nbsp<a href="mailto:adaroui@uci.edu">adaroui@uci.edu</a>&nbsp; 
+		&nbsp;<span style="white-space: nowrap;"><a href="/privacy-and-copyright">privacy & copyright</a></span>
 	</div>
 	{#if smiley === 'true'}
 		<span id="smiley">:-)</span>

@@ -20,7 +20,7 @@
 	</div>
 	<div class="spread-stack">
 		<div class="flex-child">
-			<h3>Langs and tools I&thinsp;&thinsp;<Heart /></h3>
+			<h3 style="margin-top:0;">Langs and tools I&thinsp;&thinsp;<Heart /></h3>
 			<span class="tag lang-light"><b>Python</b></span><span class="tag tool">NumPy</span><span class="tag tool">Pandas</span
 			><span class="tag tool">SciKit</span><span class="tag tool">OpenCV</span><span class="tag tool">Plotly</span><span
 				class="tag tool">Rich</span
@@ -81,7 +81,7 @@
 			alt={'thumbnail of filmic devblog 2'} />
 	</div>
 	<div class="footer">
-		<span>arya<span class="accent">dee</span></span>&nbsp; · &nbsp<a href="mailto:adaroui@uci.edu">adaroui@uci.edu</a>&nbsp; ·
+		<span>arya<span class="accent">dee</span></span>&nbsp; &nbsp<a href="mailto:adaroui@uci.edu">adaroui@uci.edu</a>&nbsp;
 		&nbsp;<a href="/privacy-and-copyright">privacy & copyright</a> <br /> <br />
 		:-)
 	</div>
@@ -202,8 +202,9 @@
 		justify-content: center;
 		align-items: center;
 		gap: 25px;
-		font-size: 1.1em;
+		font-size: clamp(0.9em, 4vw, 1.1em);
 		line-height: 1.8em;
+
 		color: lighten($ink-color, 2%);
 	}
 
@@ -287,7 +288,7 @@
 	}
 
 	.tool {
-		background-color: lighten($gray-soft, 2%);
+		background-color: lighten($gray-soft, 4%);
 		// border: $brown-soft 1px solid;
 		color: $tan-soft;
 	}

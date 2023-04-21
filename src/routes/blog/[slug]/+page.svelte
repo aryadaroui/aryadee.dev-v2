@@ -113,7 +113,7 @@
 		padding: 0.5em 1em 0.5em 1em;
 		margin-left: 0;
 		margin-right: 0;
-		background-color: hsl(230, 10%, 15%); 
+		background-color: hsl(230, 10%, 18%); 
 
 		border-radius: 0 8px 8px 0;
 
@@ -187,7 +187,7 @@
 		article {
 			background-color: darken($void-color, 0%);
 			font-family: $sans;
-			color: rgba($ink-color, 0.99);
+			color: rgba($ink-color, 0.95);
 			max-width: 600px;
 			// width: 400px;
 

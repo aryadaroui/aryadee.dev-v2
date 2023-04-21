@@ -186,7 +186,7 @@
 			border-top: none;
 
 			top: -15px;
-			padding: 10px;
+			padding: 15px;
 			padding-top: 20px;
 			border-radius: 0px 0px 8px 8px;
 

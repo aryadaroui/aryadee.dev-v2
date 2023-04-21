@@ -26,7 +26,7 @@
 	#shape {
 		z-index: -1;
 
-		animation: 4s ease-in fade-in;
+		animation: 3s ease-in fade-in;
 		// background-color: $gray-mid;
 	}
 
