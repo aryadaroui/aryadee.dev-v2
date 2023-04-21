@@ -202,19 +202,19 @@
 
 	.lang {
 		background-color: $gray-soft;
-		// border: $brown-soft 1px solid;
+		// border: $navy-soft 1px solid;
 		color: $tan-soft;
 	}
 
 	.tool {
 		background-color: $gray-mid;
-		// border: $brown-mid 1px solid;
+		// border: $navy-mid 1px solid;
 		color: $tan-mid;
 	}
 
 	.domain {
 		background-color: $gray-harder;
-		border: hsl(220, 20%, 25%) 1px solid; // $brown-hard but lighter
+		border: hsl(220, 20%, 25%) 1px solid; // $navy-hard but lighter
 		color: $tan-hard;
 	}
 

@@ -4,7 +4,7 @@
 
 <style lang="scss">
 	#img-box {
-		border: $brown-soft 1px solid;
+		border: $navy-soft 1px solid;
 		// box-shadow: 0px 5px 30px black;
 		border-radius: 15px;
 		background-image: url(/me_smile.webp);

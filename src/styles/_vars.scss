@@ -2,24 +2,26 @@
 // $test-red: red;
 
 
+//none of this shit is brown now
+
 // general color palette. visible in /palette.png
 $gray-harder: hsl(210, 12%, 10%);
 $gray-hard: hsl(220, 11%, 12%);  // darker
-$brown-hard: hsl(215, 20%, 18%); // dark
+$navy-hard: hsl(215, 20%, 18%); // dark
 $tan-hard: #EFC79C;  // lighter
 $pink-hard: #F7679C; // light
 $cyan-hard: #1ED3D3; // light
 $blue-hard: #1E91D3; // light
 
 $gray-mid: hsl(225, 8%, 18%);  // back
-$brown-mid: hsl(210, 24%, 33%); // paper
+$navy-mid: hsl(210, 24%, 33%); // paper
 $tan-mid: #E8CDAE;   // front
 $pink-mid: #FF99BE;  // accent
 $cyan-mid: #7AECEC;  // utility
 $blue-mid: #7AC6EC;  // utility
 
 $gray-soft: hsl(220, 7%, 21%);  
-$brown-soft: hsl(220, 17%, 42%); 
+$navy-soft: hsl(220, 17%, 42%); 
 $tan-soft: #ffeed7;   
 $pink-soft: #FAC0D0;  
 $cyan-soft: #BCF8F3;  

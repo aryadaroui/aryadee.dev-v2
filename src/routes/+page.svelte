@@ -238,7 +238,7 @@
 	#tooltip {
 		right: 62px;
 		bottom: 40px;
-		color: $brown-soft;
+		color: $navy-soft;
 		font-family: $mono;
 		position: absolute;
 		user-select: none;
@@ -347,7 +347,7 @@
 
 	@keyframes hint {
 		0% {
-			color: $brown-soft;
+			color: $navy-soft;
 		}
 		10% {
 			color: $accent-color;
@@ -356,7 +356,7 @@
 			color: $accent-color;
 		}
 		100% {
-			color: $brown-soft;
+			color: $navy-soft;
 		}
 	}
 
@@ -365,7 +365,7 @@
 			color: $ink-color;
 		}
 		100% {
-			color: $brown-soft;
+			color: $navy-soft;
 		}
 	}
 

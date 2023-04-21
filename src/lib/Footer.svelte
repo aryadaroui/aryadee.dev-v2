@@ -34,7 +34,7 @@
 		hr {
 			max-width: 720px;
 			height: 0px;
-			border: 1px solid $brown-soft;
+			border: 1px solid $navy-soft;
 		}
 
 		#smiley {

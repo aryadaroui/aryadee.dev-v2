@@ -9,7 +9,7 @@
 	<!-- <Header /> -->
 	<div class="center-stack">
 		<div style="max-width: 500px; flex-grow: 2;">
-			<h2>Hello world</h2>
+			<h2>Hi there</h2>
 			<p>My name is Arya “<span class="accent">Dee</span>” Daroui.</p>
 			<p>I like to code, take photos, and make music. Most of what I share here is at the intersection of these things.</p>
 			<p />
@@ -289,7 +289,7 @@
 
 	.tool {
 		background-color: lighten($gray-soft, 4%);
-		// border: $brown-soft 1px solid;
+		// border: $navy-soft 1px solid;
 		color: $tan-soft;
 	}
 
@@ -297,22 +297,22 @@
 		background-color: $gray-harder;
 		color: lighten($tan-mid, 3%);
 		// border: darken($tan-mid, 50%) 1px solid;
-		border: hsl(220, 20%, 25%) 1px solid; // $brown-hard but lighter
+		border: hsl(220, 20%, 25%) 1px solid; // $navy-hard but lighter
 	}
 
 	.lang-light {
 		background-color: darken($tan-soft, 5%);
-		// border: $brown-soft 1.5px solid;
-		color: darken($brown-soft, 20%);
+		// border: $navy-soft 1.5px solid;
+		color: darken($navy-soft, 20%);
 	}
 
 	.tool-light {
 		background-color: $tan-mid;
-		color: $brown-mid;
+		color: $navy-mid;
 	}
 
 	.domain-light {
 		background-color: lighten($tan-mid, 2%);
-		color: $brown-hard;
+		color: $navy-hard;
 	}
 </style>
