@@ -5,6 +5,12 @@
 			"name": "http://localhost:5173/",
 			"request": "launch",
 			"url": "http://localhost:5173/"
-		}
+		},
+		{
+			"type": "node",
+			"request": "launch",
+			"name": "node debug current file",
+			"program": "${file}"
+		  }
 	]
 }

@@ -4,8 +4,8 @@ import { error } from '@sveltejs/kit';
 export async function load() {
 	// error handling for imported file
 	// TODO: check to see if route exists, to throw 404 or 500
+	const post_paths = import.meta.glob('../../posts/**/*.svx'); // .svx in post folder and immediate subfolders
 	try {
-		const post_paths = import.meta.glob('../../posts/*.svx');
 		const posts = [];
 		let slug;
 		let metadata;

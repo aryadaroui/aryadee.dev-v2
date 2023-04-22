@@ -8,8 +8,15 @@ export async function load({ params, page }) {
 	try {
 		post = await import(`../../../posts/${params.slug}.svx`);
 	} catch (e) {
-		console.error(e);
-		throw error(404, 'Page not found');
+		// console.error(e);
+		// throw error(404, 'Page not found');
+		try {
+			post = await import(`../../../posts/${params.slug}/${params.slug}.svx`);
+		} catch (e) {
+			// console.error("\x1b[31m%s\x1b[0m", "Error loading post:");
+			// console.error(e);
+			throw error(404, 'Page not found');
+		}
 	}
 
 	try {

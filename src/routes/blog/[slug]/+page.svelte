@@ -137,7 +137,7 @@
 		img {
 			width: 50%;
 			height: auto;
-			border-radius: 15px;
+			border-radius: 8px;
 		}
 
 		div.margin-padding {

@@ -2,18 +2,20 @@
 title: Uses
 date: 31 Mar 2021
 update:
-thumbnail: /blog/uses/uses.webp
+thumbnail: ./thumbnail.webp
 tags: 
   - workflow
 ---
 
 <script>
-import ImgCap from '$lib/ImgCap.svelte'
+	import good_pic from './thumbnail.webp';
 </script>
 
+
+<!-- ![image]({good_pic}) -->
 <!-- <img src="/workflow.webp" > -->
 
-<ImgCap src="/blog/uses/uses.webp" alt="Programming with my cat." caption="A mouse enthusiast like his dad." make_fit=true/>
+<ImgCap src={good_pic} alt="Programming with my cat." caption="A mouse enthusiast like his dad." make_fit=true/>
 
 # Hardware
 

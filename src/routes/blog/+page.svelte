@@ -5,8 +5,17 @@
 	import Footer from '$lib/Footer.svelte';
 	import PostCard from '$lib/PostCard.svelte';
 
+	// import { onMount } from 'svelte';
+
 	export let data;
 	let posts = data.posts;
+
+
+	// onMount(async () => {
+	// 	// const thumb = (await import(data.posts[0].thumbnail)).default;
+
+	// 	// console.log("THUMB::: ", thumb)
+	// })
 
 	// console.log(posts);
 </script>
@@ -17,6 +26,9 @@
 <main>
 	<h1>Blog</h1>
 	<p>Articles, documents, and other random snippets.</p>
+
+
+	<!-- <ImgCap src="/src/posts/test_post/thumbnail.png" caption="wee woo" make_fit=true/> -->
 
 	<h2>Posts</h2>
 	<div class="post-container">

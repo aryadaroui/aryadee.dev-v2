@@ -1,0 +1,25 @@
+---
+title: subdirectory example
+date: 15 Apr 2023
+tags:
+  - Markdown
+  - SvelteKit
+  - writing
+thumbnail: ./thumbnail.png
+---
+
+<script>
+  import local_pic from './local-pic.jpg'
+</script>
+
+
+> blockquote
+
+# heading
+
+<ImgCap src={local_pic} caption="wee woo" make_fit=true/>
+
+
+<!-- ![wee woo]({local_pic}) -->
+
+<!-- ![image](./local-pic.jpg) -->

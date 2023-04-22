@@ -5,7 +5,7 @@ tags:
   - Markdown
   - SvelteKit
   - writing
-thumbnail: /blog/mdsvex/thumbnail.png
+thumbnail: ./thumbnail.png
 ---
 
 
