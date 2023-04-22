@@ -66,10 +66,7 @@
 
 <a href={link} id="post-card">
 	<div class="thumbnail-container">
-		<img class="thumbnail" src={img_src} {alt} onerror="this.onerror=null; this.src='/creative/art/cogito.webp'"/>
-		<!-- <object class="thumbnail" data={img_src} type="image/webp" aria-label="post thumbnail">
-			<img class="thumbnail" alt={alt} src="/creative/art/cogito.webp" />
-		</object> -->
+		<img class="thumbnail" src={img_src} {alt} onerror="this.src='/creative/art/cogito.webp'"/>
 	</div>
 	<div class="content">
 		<div class="title">

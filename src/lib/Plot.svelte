@@ -1,14 +1,20 @@
 <script lang="ts">
 	import Plotly from '../lib/Plotly.svelte';
 
-	async function get_plot_json(plot_json: URL | string) {
-		const response = await fetch(plot_json);
-		const plot_data = await response.json();
-
-		if (response.ok) {
-			return plot_data;
+	async function get_plot_json(plot_json: URL | string | JSON) {
+		if (typeof plot_json === 'object') {
+			return new Promise((resolve, reject) => {
+				resolve(plot_json);
+			});
 		} else {
-			throw new Error(plot_data);
+			const response = await fetch(plot_json);
+			const plot_data = await response.json();
+
+			if (response.ok) {
+				return plot_data;
+			} else {
+				throw new Error(plot_data);
+			}
 		}
 	}
 
@@ -21,15 +27,13 @@
 		}
 	}
 
-	export let plot_json: URL | string;
+	export let plot_json: URL | string | JSON;
 	let plot_loader;
 	let loaded;
 	$: init(loaded, plot_loader);
 
 	let plot_data = get_plot_json(plot_json);
 </script>
-
-
 
 <div class="skeleton">
 	{#await plot_data}
