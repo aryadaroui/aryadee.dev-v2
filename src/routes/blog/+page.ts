@@ -1,6 +1,10 @@
 
 import { error } from '@sveltejs/kit';
 
+// async function get_thumbnail() {
+
+// }
+
 export async function load() {
 	// error handling for imported file
 	// TODO: check to see if route exists, to throw 404 or 500
@@ -10,11 +14,11 @@ export async function load() {
 		let slug;
 		let metadata;
 		let is_valid_post;
-		let thumbnail;
+		// let thumbnail;
 		for (const post_path in post_paths) {
 			is_valid_post = true;
 			slug = post_path.split('/').pop().split('.').shift();
-			thumbnail = '/blog/thumbnails/' + slug + '.webp';
+			// thumbnail = '/blog/thumbnails/' + slug + '.webp';
 			
 			// skip files that start with an underscore. don't even check if valid post
 			// because presumably they're still being worked on
@@ -46,11 +50,14 @@ export async function load() {
 					// 	metadata.thumbnail = '/creative/art/cogito.webp';
 					// }
 
-					try {
-						fetch('/blog/thumbnails/' + slug + '.webp', { method: 'HEAD' });
-					} catch (e) {
-						thumbnail = '/creative/art/cogito.webp';
-					}
+					// try {
+					// 	console.log("trying thumbnail: ", thumbnail)
+					// 	fetch(thumbnail, { method: 'HEAD' });
+					// } catch (e) {
+					// 	console.log("actually using thumbnail: ", thumbnail)
+					// 	thumbnail = '/creative/art/cogito.webp';
+						
+					// }
 
 
 					if (is_valid_post) {
@@ -59,7 +66,7 @@ export async function load() {
 							slug: slug,
 							title: metadata.title,
 							tags: metadata.tags,
-							thumbnail: thumbnail
+							// thumbnail: thumbnail
 							// thumbnail: metadata.thumbnail,
 						});
 					}

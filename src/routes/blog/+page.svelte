@@ -36,9 +36,9 @@
 			<PostCard
 				title={post.title}
 				tags={post.tags}
-				img_src={post.thumbnail}
+				img_src={'/blog/thumbnails/' + post.slug + '.webp'}
 				link={'/blog/' + post.slug}
-				alt={'thumbnail of post'}
+				alt={'thumbnail of post: ' + post.title}
 			/>
 		{/each}
 	</div>

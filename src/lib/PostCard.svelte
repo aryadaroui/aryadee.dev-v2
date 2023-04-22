@@ -66,7 +66,10 @@
 
 <a href={link} id="post-card">
 	<div class="thumbnail-container">
-		<img class="thumbnail" src={img_src} {alt} />
+		<img class="thumbnail" src={img_src} {alt} onerror="this.onerror=null; this.src='/creative/art/cogito.webp'"/>
+		<!-- <object class="thumbnail" data={img_src} type="image/webp" aria-label="post thumbnail">
+			<img class="thumbnail" alt={alt} src="/creative/art/cogito.webp" />
+		</object> -->
 	</div>
 	<div class="content">
 		<div class="title">
@@ -102,6 +105,17 @@
 		width: 100%;
 		height: 100%;
 		image-rendering: smooth;
+		animation: fadein 1s;
+		// pointer-events: none;
+	}
+
+	@keyframes fadein {
+		from {
+			opacity: 0;
+		}
+		to {
+			opacity: 1;
+		}
 	}
 
 	#post-card {
@@ -128,14 +142,12 @@
 		background-color: var(--background-color, $background-translucent);
 		overflow: hidden;
 
-		transition: background-color 0.15s ease, border 0.15s ease;
-
+		transition: background-color 0.5s ease, border 0.15s ease;
 
 		flex-grow: 1;
 		flex-basis: 0;
 
 		@media (max-width: 1040px) {
-
 			flex-direction: row;
 			// max-height: 300px;
 			min-height: 150px;
@@ -143,7 +155,6 @@
 			justify-content: flex-start;
 		}
 	}
-
 
 	.thumbnail-container {
 		overflow: hidden;
@@ -164,7 +175,6 @@
 		justify-content: space-between;
 		flex: 2;
 		padding: 15px;
-
 	}
 
 	#post-card:hover {
