@@ -2,20 +2,20 @@
 title: Uses
 date: 31 Mar 2021
 update:
-thumbnail: ./thumbnail.webp
+thumbnail: ./cutie.webp
 tags: 
   - workflow
 ---
 
 <script>
-	import good_pic from './thumbnail.webp';
+	import cutie from './cutie.webp';
 </script>
 
 
 <!-- ![image]({good_pic}) -->
 <!-- <img src="/workflow.webp" > -->
 
-<ImgCap src={good_pic} alt="Programming with my cat." caption="A mouse enthusiast like his dad." make_fit=true/>
+<ImgCap src={cutie} alt="Programming with my cat." caption="A mouse enthusiast like his dad." make_fit=true/>
 
 # Hardware
 

@@ -105,7 +105,12 @@ function make_post_thumbnails(source_dir, target_dir) {
     const thumbnailPath = path.join(target_dir, path.basename(file_thumb.file, '.svx') + '.webp');
 
     sharp(file_thumb.thumb)
-      .resize(400)
+      .resize({
+        width: 400,
+        height: 400,
+        fit: sharp.fit.outside,
+        withoutEnlargement: true
+      })
       .toFile(thumbnailPath, err => {
         if (err) {
           console.error("\x1b[31m%s\x1b[0m", `Error generating thumbnail for ${file_thumb.file}:`);
@@ -126,8 +131,8 @@ const posts_dir = './src/posts';
 const posts_thumbnails_dir = './static/blog/thumbnails';
 const test_post = './src/posts/_error.svx'
 
-// make_thumbnails(photos_dir, photos_dir + '/thumbnails');
-// make_thumbnails(art_dir, art_dir + '/thumbnails');
+make_thumbnails(photos_dir, photos_dir + '/thumbnails');
+make_thumbnails(art_dir, art_dir + '/thumbnails');
 make_post_thumbnails(posts_dir, posts_thumbnails_dir)
 
 // ----

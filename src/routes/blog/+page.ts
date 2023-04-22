@@ -10,10 +10,11 @@ export async function load() {
 		let slug;
 		let metadata;
 		let is_valid_post;
+		let thumbnail;
 		for (const post_path in post_paths) {
 			is_valid_post = true;
 			slug = post_path.split('/').pop().split('.').shift();
-
+			thumbnail = '/blog/thumbnails/' + slug + '.webp';
 			
 			// skip files that start with an underscore. don't even check if valid post
 			// because presumably they're still being worked on
@@ -40,10 +41,17 @@ export async function load() {
 						is_valid_post = false;
 					}
 
-					if (!('thumbnail' in metadata) || metadata.thumbnail === null) {
-						console.error("http error", 500, ': thumbnail is missing or null in post: ' + post_path.split('/').pop());
-						metadata.thumbnail = '/creative/art/cogito.webp';
+					// if (!('thumbnail' in metadata) || metadata.thumbnail === null) {
+					// 	console.error("http error", 500, ': thumbnail is missing or null in post: ' + post_path.split('/').pop());
+					// 	metadata.thumbnail = '/creative/art/cogito.webp';
+					// }
+
+					try {
+						fetch('/blog/thumbnails/' + slug + '.webp', { method: 'HEAD' });
+					} catch (e) {
+						thumbnail = '/creative/art/cogito.webp';
 					}
+
 
 					if (is_valid_post) {
 						posts.push({
@@ -51,7 +59,8 @@ export async function load() {
 							slug: slug,
 							title: metadata.title,
 							tags: metadata.tags,
-							thumbnail: metadata.thumbnail,
+							thumbnail: thumbnail
+							// thumbnail: metadata.thumbnail,
 						});
 					}
 				} else {
