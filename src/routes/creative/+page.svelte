@@ -24,8 +24,8 @@
 	photos = Object.keys(photo_names).map((x) => {
 		let key = x.split('/').pop();
 		return {
-			src: `/src/routes/creative/assets/photos/${key}`,
-			thumbnail: `/src/routes/creative/assets/photos/thumbnails/${key}`,
+			src: `./assets/photos/${key}`,
+			thumbnail: `./assets/photos/thumbnails/${key}`,
 			key: key,
 		};
 	});
@@ -33,8 +33,8 @@
 	art = Object.keys(art_names).map((x) => {
 		let key = x.split('/').pop();
 		return {
-			src: `/src/routes/creative/assets/art/${key}`,
-			thumbnail: `/src/routes/creative/assets/art/thumbnails/${key}`,
+			src: `./assets/art/${key}`,
+			thumbnail: `./assets/art/thumbnails/${key}`,
 			key: key,
 		};
 	});
@@ -43,7 +43,7 @@
 		let key = x.split('/').pop();
 		return {
 			name: key,
-			url: `/src/routes/creative/assets/music/${key}`,
+			url: `./assets/music/${key}`,
 			artist: 'aryadee / pedestrian',
 			cover: '/mini-music-me.webp',
 		};
