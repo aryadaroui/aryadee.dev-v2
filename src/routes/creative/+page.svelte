@@ -5,34 +5,73 @@
 	import { onMount } from 'svelte';
 	import '../../styles/aplayer.css';
 
-	export let data;
+	import test_pic from './assets/photos/TEST.webp';
+
+	const photo_names = import.meta.glob('./assets/photos/*.webp');
+	const art_names = import.meta.glob('./assets/art/*.webp');
+	const song_names = import.meta.glob('./assets/music/*.m4a');
+
+	console.log('photo_names: ', photo_names);
+
+	// export let data;
+
+	let imgs;
 
 	let photos;
-	let photos_;
 	let art;
 	let songs;
 
-	photos_ = data.photo_names.map((x) => ({
-		src: `/creative/photos/${x}`,
-		thumbnail: `/creative/photos/thumbnails/${x}`,
-		key: x,
-	}));
+	photos = Object.keys(photo_names).map((x) => {
+		let key = x.split('/').pop();
+		return {
+			src: `/src/routes/creative/assets/photos/${key}`,
+			thumbnail: `/src/routes/creative/assets/photos/thumbnails/${key}`,
+			key: key,
+		};
+	});
 
-	art = data.art_names.map((x) => ({
-		src: `/creative/art/${x}`,
-		thumbnail: `/creative/art/thumbnails/${x}`,
-		key: x,
-	}));
+	art = Object.keys(art_names).map((x) => {
+		let key = x.split('/').pop();
+		return {
+			src: `/src/routes/creative/assets/art/${key}`,
+			thumbnail: `/src/routes/creative/assets/art/thumbnails/${key}`,
+			key: key,
+		};
+	});
 
-	songs = data.song_names.map((x) => ({
-		name: x,
-		url: `/creative/music/${x}`,
-		artist: 'aryadee / pedestrian',
-		cover: '/mini-music-me.webp',
-	}));
+	songs = Object.keys(song_names).map((x) => {
+		let key = x.split('/').pop();
+		return {
+			name: key,
+			url: `/src/routes/creative/assets/music/${key}`,
+			artist: 'aryadee / pedestrian',
+			cover: '/mini-music-me.webp',
+		};
+	});
+
+	console.log('photos', photos);
+
+	// photos = data.photo_names.map((x) => ({
+	// 	src: `./assets/photos/${x}`,
+	// 	thumbnail: `./assets/photos/thumbnails/${x}`,
+	// 	key: x,
+	// }));
+
+	// art = data.art_names.map((x) => ({
+	// 	src: `./assets/art/${x}`,
+	// 	thumbnail: `./assets/art/thumbnails/${x}`,
+	// 	key: x,
+	// }));
+
+	// songs = data.song_names.map((x) => ({
+	// 	name: x,
+	// 	url: `./assets/music/${x}`,
+	// 	artist: 'aryadee / pedestrian',
+	// 	cover: '/mini-music-me.webp',
+	// }));
 
 	// photoviewer needs variable called photos to handle all images
-	photos = photos_.concat(art);
+	imgs = photos.concat(art);
 
 	onMount(async () => {
 		const APlayer = (await import('aplayer')).default; // dynamic client-side import
@@ -58,9 +97,9 @@
 	<p style="font-size: 0.7em;">Use arrow keys to navigate images.</p>
 
 	<!-- passed in array needs to be called photos. stupid -->
-	<FSPhotoViewer {photos} />
+	<FSPhotoViewer photos={imgs} />
 	<ul>
-		{#each photos_ as photo}
+		{#each photos as photo}
 			<li>
 				<Thumbnail key={photo.key}>
 					<img src={photo.thumbnail} alt={photo.key} />
@@ -71,7 +110,6 @@
 	</ul>
 
 	<h2>Art</h2>
-	<!-- <FSPhotoViewer {art} /> -->
 	<ul>
 		{#each art as art_piece}
 			<li>

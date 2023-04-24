@@ -64,13 +64,13 @@
 		<PostCard
 			title={'A JPEG encoder on a modeled, multi-core "checkerboard" CPU'}
 			tags={['C++', 'SystemC', 'parallelization', 'modeling', 'image processing']}
-			img_src={'thesis_thumb.png'}
+			img_src={'thesis_thumb1.webp'}
 			alt={'thumbnail of thesis'}
 			link={'/blog/documents/thesis daroui.pdf'} />
 		<PostCard
 			title={'Filmic, an analog film emulation app'}
 			tags={['TypeScript', 'WebGL', 'Svelte', 'image processing']}
-			img_src={'filmic_thumb.png'}
+			img_src={'filmic_thumb1.webp'}
 			link={'/blog/about_filmic'}
 			alt={'thumbnail of filmic app'} />
 		<PostCard

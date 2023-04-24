@@ -7,15 +7,17 @@ import { error } from '@sveltejs/kit';
 
 export async function load() {
 	try {
-		const photos = import.meta.glob('/static/creative/photos/*.webp', );
+
+		// this isnt working; maybe i should just put theses all in $lib?
+		const photos = import.meta.glob('./assets/photos/*.webp', );
 		const photo_names = [];
 		let photo_name: string;
 
-		const art = import.meta.glob('/static/creative/art/*.webp', );
+		const art = import.meta.glob('./assets/art/*.webp', );
 		const art_names = [];
 		let art_name: string;
 
-		const songs = import.meta.glob('/static/creative/music/*.m4a', );
+		const songs = import.meta.glob('./assets/music/*.m4a', );
 		const song_names = [];
 		let song_name: string;
 

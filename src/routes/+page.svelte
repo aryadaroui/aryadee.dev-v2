@@ -257,7 +257,6 @@
 		}
 	}
 
-
 	#hello {
 		font-family: $sans;
 		font-size: clamp(1em, 4vw, 2em);
@@ -310,7 +309,9 @@
 	}
 
 	.chevron-link:hover {
-		visibility: visible;
+		@media screen and (min-width: 500px) {
+			visibility: visible;
+		}
 	}
 
 	.link {
