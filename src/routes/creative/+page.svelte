@@ -1,17 +1,14 @@
 <script>
 	import Header from '$lib/Header.svelte';
 	import Footer from '$lib/Footer.svelte';
-	import { FSPhotoViewer, Thumbnail, Photos, pannable } from 'svelte-photoviewer';
+	import { FSPhotoViewer, Thumbnail } from 'svelte-photoviewer';
 	import { onMount } from 'svelte';
 	import '../../styles/aplayer.css';
 
-	import test_pic from './assets/photos/TEST.webp';
 
 	const photo_names = import.meta.glob('./assets/photos/*.webp');
 	const art_names = import.meta.glob('./assets/art/*.webp');
 	const song_names = import.meta.glob('./assets/music/*.m4a');
-
-	console.log('photo_names: ', photo_names);
 
 	// export let data;
 
@@ -24,8 +21,8 @@
 	photos = Object.keys(photo_names).map((x) => {
 		let key = x.split('/').pop();
 		return {
-			src: `./assets/photos/${key}`,
-			thumbnail: `./assets/photos/thumbnails/${key}`,
+			src: `/creative/photos/${key}`,
+			thumbnail: `/creative/photos/thumbnails/${key}`,
 			key: key,
 		};
 	});
@@ -33,8 +30,8 @@
 	art = Object.keys(art_names).map((x) => {
 		let key = x.split('/').pop();
 		return {
-			src: `./assets/art/${key}`,
-			thumbnail: `./assets/art/thumbnails/${key}`,
+			src: `/creative/art/${key}`,
+			thumbnail: `/creative/art/thumbnails/${key}`,
 			key: key,
 		};
 	});
@@ -43,13 +40,11 @@
 		let key = x.split('/').pop();
 		return {
 			name: key,
-			url: `./assets/music/${key}`,
+			url: `/creative/music/${key}`,
 			artist: 'aryadee / pedestrian',
 			cover: '/mini-music-me.webp',
 		};
 	});
-
-	console.log('photos', photos);
 
 	// photos = data.photo_names.map((x) => ({
 	// 	src: `./assets/photos/${x}`,
