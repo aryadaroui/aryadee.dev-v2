@@ -12,8 +12,10 @@
 
 	<h1>Projects</h1>
 
-	<p>Coming soon. I just updated my blog for better automation, but I still have to reformat project markup.</p>
-	<p> If you are reading this past <strong>05 May 2023</strong>, and you're trying to access Filmic or Logica please send me an angry email Lol :').</p>
+	<p>🚧 This is page is under construction as I update my site 🚧. You can access Filmic <a href="/projects/filmic">here</a>, but I am still adding Logica.</p>
+
+	<code>24 Apr 2023</code>
+
 </main>
 <div class="light-background" />
 <Footer line="false" />
@@ -67,5 +69,26 @@
 
 	h1 {
 		color: $pink-hard;
+	}
+
+	a {
+		color: rgba($link-color, 0.9);
+		text-decoration: none;
+		border-radius: 0.4rem;
+		padding: 0.2rem;
+		margin: -0.2rem;
+		// padding: 0.1rem;
+		transition: background-color 0.15s ease, color 0.15s ease;
+	}
+
+	a:hover {
+		background-color: rgba($link-background, 0.8);
+		color: $cyan-soft;
+		// color: $cyan-hard;
+		// color: $ink-color;
+		padding: 0.2rem;
+		margin: -0.2rem;
+		// color: $tan-mid;
+		// transition: background-color 0.15s ease, color 0.15s ease;
 	}
 </style>
