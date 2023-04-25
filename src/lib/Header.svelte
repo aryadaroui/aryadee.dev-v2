@@ -60,6 +60,10 @@
 				padding: 0.4rem;
 
 				transition: background-color 0.15s ease, color 0.15s ease;
+
+				@media screen and (max-width: 600px) {
+					font-size: 0.9em;
+				}
 			}
 
 			.link {

@@ -15,7 +15,7 @@ const config = {
 	css: {
 		postcss: true
 	},
-	assetsInclude: ['**/*.m4a']
+	assetsInclude: ['**/*.m4a', '**/*.webp']
 };
 
 export default config;

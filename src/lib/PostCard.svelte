@@ -110,7 +110,7 @@
 		// max-width: 110%;
 		// max-height: 110%;
 
-		border-radius: 15px 15px 0px 0px;
+		// border-radius: 15px 15px 0px 0px;
 
 		width: 100%;
 		height: 100%;
@@ -123,7 +123,7 @@
 		animation: fadein 1s;
 		// pointer-events: none;
 		@media (max-width: 1040px) {
-			border-radius: 0px 0px 15px 15px;
+			border-radius: 15px 0px 0px 15px;
 
 		}
 

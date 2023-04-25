@@ -1,72 +1,96 @@
-<script>
+<script lang="ts">
 	import Header from '$lib/Header.svelte';
 	import Footer from '$lib/Footer.svelte';
-	import { FSPhotoViewer, Thumbnail } from 'svelte-photoviewer';
 	import { onMount } from 'svelte';
 	import '../../styles/aplayer.css';
 
+	import PhotoSwipeGallery from 'svelte-photoswipe';
+	import type { GalleryItem, GalleryData } from 'svelte-photoswipe';
 
-	const photo_names = import.meta.glob('./assets/photos/*.webp');
-	const art_names = import.meta.glob('./assets/art/*.webp');
-	const song_names = import.meta.glob('./assets/music/*.m4a');
+	function addTabIndexToImagesInAnchors() {
+		const anchors = document.querySelectorAll('a');
 
-	// export let data;
+		anchors.forEach((anchor) => {
+			const img = anchor.querySelector('img');
 
-	let imgs;
+			if (img) {
+				img.tabIndex = 0;
+			}
+		});
+	}
 
-	let photos;
-	let art;
-	let songs;
+	let photo_gallery: GalleryData = [];
+	let art_gallery: GalleryData = [];
 
-	photos = Object.keys(photo_names).map((x) => {
-		let key = x.split('/').pop();
-		return {
-			src: `/creative/photos/${key}`,
-			thumbnail: `/creative/photos/thumbnails/${key}`,
-			key: key,
-		};
+	let photos_full = Object.entries(import.meta.glob('./assets/photos/*.webp', { eager: true })).map(([path, module]) => ({
+		path, //@ts-ignore
+		url: module.default,
+	}));
+
+	let photos_thumb = Object.entries(import.meta.glob('./assets/photos/thumbnails/*.webp', { eager: true })).map(
+		([path, module]) => ({
+			path, //@ts-ignore
+			url: module.default,
+		}),
+	);
+
+	let songs = Object.entries(import.meta.glob('./assets/music/*.m4a', { eager: true })).map(([path, module]) => ({
+		name: path.split('/').pop().split('.').slice(0, -1).join('.'),
+		// @ts-ignore
+		url: module.default,
+		artist: 'aryadee / pedestrian',
+		cover: '/mini-music-me.webp',
+	}));
+
+	let photos = photos_full.map((photo, i) => ({
+		url: photo.url,
+		thumbnail_url: photos_thumb[i].url, // lists are alphabetical, so this works, but not the most robust
+		key: photo.url.split('/').pop(),
+	}));
+
+	photos.forEach((photo) => {
+		photo_gallery.push({
+			src: photo.url,
+			width: 3000,
+			height: 3000,
+			cropped: true,
+			thumbnail: {
+				src: photo.thumbnail_url,
+				// width: "100%",
+				// height: "200px",
+			},
+		});
 	});
 
-	art = Object.keys(art_names).map((x) => {
-		let key = x.split('/').pop();
-		return {
-			src: `/creative/art/${key}`,
-			thumbnail: `/creative/art/thumbnails/${key}`,
-			key: key,
-		};
+	let art_full = Object.entries(import.meta.glob('./assets/art/*.webp', { eager: true })).map(([path, module]) => ({
+		path, //@ts-ignore
+		url: module.default,
+	}));
+
+	let art_thumb = Object.entries(import.meta.glob('./assets/art/thumbnails/*.webp', { eager: true })).map(([path, module]) => ({
+		path, //@ts-ignore
+		url: module.default,
+	}));
+
+	let art = art_full.map((art, i) => ({
+		url: art.url,
+		thumbnail_url: art_thumb[i].url, // lists are alphabetical, so this works, but not the most robust
+		key: art.url.split('/').pop(),
+	}));
+
+	art.forEach((art) => {
+		art_gallery.push({
+			src: art.url,
+			width: 1500,
+			height: 1500,
+			cropped: true,
+			thumbnail: {
+				src: art.thumbnail_url,
+				// width: '48%',
+				// height: '200px',
+			},
+		});
 	});
-
-	songs = Object.keys(song_names).map((x) => {
-		let key = x.split('/').pop();
-		return {
-			name: key,
-			url: `/creative/music/${key}`,
-			artist: 'aryadee / pedestrian',
-			cover: '/mini-music-me.webp',
-		};
-	});
-
-	// photos = data.photo_names.map((x) => ({
-	// 	src: `./assets/photos/${x}`,
-	// 	thumbnail: `./assets/photos/thumbnails/${x}`,
-	// 	key: x,
-	// }));
-
-	// art = data.art_names.map((x) => ({
-	// 	src: `./assets/art/${x}`,
-	// 	thumbnail: `./assets/art/thumbnails/${x}`,
-	// 	key: x,
-	// }));
-
-	// songs = data.song_names.map((x) => ({
-	// 	name: x,
-	// 	url: `./assets/music/${x}`,
-	// 	artist: 'aryadee / pedestrian',
-	// 	cover: '/mini-music-me.webp',
-	// }));
-
-	// photoviewer needs variable called photos to handle all images
-	imgs = photos.concat(art);
 
 	onMount(async () => {
 		const APlayer = (await import('aplayer')).default; // dynamic client-side import
@@ -76,45 +100,23 @@
 			audio: songs,
 			theme: '#FADFA3',
 		});
+
+		addTabIndexToImagesInAnchors();
 	});
 </script>
 
 <title>creative - aryadee</title>
 
 <Header />
-<main>
+<main id="creative">
 	<h1>Creative</h1>
-
 	<h2>Music</h2>
 	<div id="aplayer" />
 	<p style="font-size: 0.7em; color:gray;">I do not endorse Spiro Agnew, his speech, or the Nixon administration.</p>
 	<h2>Photos</h2>
-	<p style="font-size: 0.7em;">Use arrow keys to navigate images.</p>
-
-	<!-- passed in array needs to be called photos. stupid -->
-	<FSPhotoViewer photos={imgs} />
-	<ul>
-		{#each photos as photo}
-			<li>
-				<Thumbnail key={photo.key}>
-					<img src={photo.thumbnail} alt={photo.key} />
-				</Thumbnail>
-			</li>
-		{/each}
-		<li />
-	</ul>
-
+	<PhotoSwipeGallery images={photo_gallery} styling="none" />
 	<h2>Art</h2>
-	<ul>
-		{#each art as art_piece}
-			<li>
-				<Thumbnail key={art_piece.key}>
-					<img src={art_piece.thumbnail} alt={art_piece.key} />
-				</Thumbnail>
-			</li>
-		{/each}
-		<li />
-	</ul>
+	<PhotoSwipeGallery images={art_gallery} styling="none" />
 </main>
 <div class="light-background" />
 <Footer line="false" />
@@ -128,38 +130,43 @@
 		position: fixed;
 		top: 0;
 	}
-	img {
-		/* width: 100px; */
-		max-height: 100%;
-		min-width: 100%;
-		display: block;
+
+	:global(div.gallery img) {
+		margin: 4px;
+		width: calc(50% - 12px);
+		max-height: 200px;
 		object-fit: cover;
+		transition: all 0.8s ease, border 0.15s ease;
+		border: rgba($blue-mid, 0) 1px solid;
+		border-radius: 8px;
+	}
+
+	:global(div.gallery > a > img:hover) {
+		max-height: 400px;
+		transition: all 0.4s ease, border 0.15s ease;
+		border: rgba($blue-mid, 1) 1px solid;
+	}
+
+	:global(div.gallery > a > img:focus) {
+		max-height: 800px;
+		transition: all 0.333s ease, border 0.15s ease;
+		border: rgba($blue-hard, 1) 1px solid;
+	}
+
+	:global(div.pswp.pswp--open.pswp--ui-visible) {
+		opacity: 1 !important;
+	}
+
+	:global(div.pswp.pswp--open) {
+		opacity: 0 !important;
+		transition: opacity 0.333s linear;
 	}
 
 	img:hover {
 		cursor: pointer;
 	}
 
-	ul {
-		display: flex;
-		flex-wrap: wrap;
-		list-style: none;
-		padding: 0;
-	}
-	li {
-		flex-grow: 1;
-		/* flex-basis: 0; */
-		position: relative;
-		height: 200px;
-		display: flex;
-		padding: 2px;
-	}
-	li:last-child {
-		flex-grow: 10;
-	}
-
 	main {
-		// font-size: 1.25em;
 		margin: auto;
 		max-width: 1080px;
 		background-color: $background-color;
@@ -168,15 +175,36 @@
 
 	h1 {
 		color: $pink-hard;
-		// padding-left: 0em;
 		font-weight: 800;
 		font-size: 2em;
 	}
 
 	h2 {
-		// color: $pink-mid;
-		// padding-left: 10px;
 		font-weight: 700;
 		font-size: 1.5em;
+	}
+
+	:global(#creative) {
+		:global(img) {
+			animation: fadein 0.3s ease;
+		}
+	}
+
+	@keyframes fadein {
+		from {
+			opacity: 0;
+		}
+		to {
+			opacity: 1;
+		}
+	}
+
+	@keyframes fadeout {
+		from {
+			opacity: 1;
+		}
+		to {
+			opacity: 0;
+		}
 	}
 </style>
