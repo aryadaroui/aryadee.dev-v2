@@ -74,6 +74,9 @@
 		font-family: $sans;
 		font-weight: 300;
 
+		font-size: clamp(0.9rem, 3.0vw, 1.15rem);
+
+
 		display: flex;
 		justify-content: center;
 
@@ -220,7 +223,7 @@
 
 			[data-post-title] {
 				font-weight: 100;
-				font-size: 3em;
+				font-size: 2.5em;
 				// margin-bottom: 0;
 				line-height: 1em;
 				width: 100%;
