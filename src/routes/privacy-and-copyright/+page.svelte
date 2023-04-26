@@ -9,7 +9,7 @@
 
 	<h1>Privacy and copyright</h1>
 
-	<p><code>13 Apr 2023</code></p>
+	<p><code>26 Apr 2023</code></p>
 	<p>These terms are subject to change.</p>
 
 	<h2>Privacy</h2>
@@ -25,7 +25,7 @@
 	</p>
 
 	<p>
-		Filmic does not share your data without your explicit, active consent, e.g. you uploading a custom preset to share publicly.
+		Filmic does not share your data without your consent, e.g. you uploading a custom preset to share publicly.
 	</p>
 
 	<h2>Copyright</h2>
@@ -51,7 +51,7 @@
 	<h3>Filmic</h3>
 
 	<p>
-		What you make with Filmic belongs to you and is your responsibility. I bear no responsibility or ownership for content you
+		What you make with Filmic belongs to you. I bear no responsibility or ownership for content you
 		create and export with Filmic. Attributing Filmic is appreciated, but not necessary.
 	</p>
 

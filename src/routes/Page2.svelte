@@ -71,7 +71,7 @@
 			title={'Filmic, an analog film emulation app'}
 			tags={['TypeScript', 'WebGL', 'Svelte', 'image processing']}
 			img_src={'filmic_thumb1.webp'}
-			link={'/blog/about_filmic'}
+			link={'/blog/about-filmic'}
 			alt={'thumbnail of filmic app'} />
 		<PostCard
 			title={'Filmic devblog 2: film grain and halation'}

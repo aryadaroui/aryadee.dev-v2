@@ -56,7 +56,7 @@
 		'frontend',
 		'graphics',
 	];
-	const category = ['code', 'photo', 'music', 'writing', 'workflow', 'snippet'];
+	const category = ['code', 'photo', 'music', 'writing', 'workflow', 'snippet', 'project', 'app'];
 
 	let lang_tags = tags.filter((tag) => langs.includes(tag));
 	let tool_tags = tags.filter((tag) => tools.includes(tag));

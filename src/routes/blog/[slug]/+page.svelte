@@ -74,8 +74,9 @@
 		font-family: $sans;
 		font-weight: 300;
 
-		font-size: clamp(0.9rem, 3.0vw, 1.15rem);
-
+		font-size: clamp(1.0rem, 3.0vw, 1.15rem);
+		text-align: justify;
+		hyphens: auto;
 
 		display: flex;
 		justify-content: center;
@@ -310,6 +311,8 @@
 				// background-color: lighten($void-color, 10%);
 				// background-color: $gray-harder;
 				// border: $border-translucent 1px solid;
+
+				hyphens: none;
 
 				span.line {
 					padding: 0;
