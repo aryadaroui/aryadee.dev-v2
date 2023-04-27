@@ -1,0 +1,17 @@
+---
+title: "Filmic devblog 1"
+date: 31 Mar 2021
+update:
+thumbnail: ./thumbnail.webp
+tags: 
+  - Python
+  - image processing
+  - Jupyter
+---
+
+<script>
+
+</script>
+
+# Quick background
+

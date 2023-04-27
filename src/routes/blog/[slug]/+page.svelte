@@ -5,11 +5,13 @@
 	import Toc from 'svelte-toc';
 	import Header from '$lib/Header.svelte';
 	import Footer from '$lib/Footer.svelte';
+
 </script>
 
 <Header />
 <main id="post">
 	<div class="margin-padding" />
+
 	<article>
 		<!-- <h1>{data.title}</h1> -->
 		<!-- <p>Published: {data.date}</p> -->

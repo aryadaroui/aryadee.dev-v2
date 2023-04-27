@@ -1,0 +1,180 @@
+---
+title: "Filmic devblog 0: tone curve and color response 🌈"
+date: 31 Mar 2021
+update:
+thumbnail: ./thumbnail.webp
+tags: 
+  - Python
+  - image processing
+  - Jupyter
+---
+
+<script>
+
+</script>
+
+In this first devblog, we cover testing the concepts behind Filmic's features in Python. We'll be applying interpolated functions to alter images in a pleasing way, and confirming these ideas work before we try building UI and GPU shader code around them.
+
+This post is also available as an interactive [Python (Jupyter) notebook](https://github.com/aryadaroui/filmic-devblog).
+
+## Quick background
+
+Analog photography is known for the character of its film stocks, e.g., the "Fuji greens." I've been collecting a large catalog of analog photos for this project, and the most common characteristics I've noticed in film scans are the contrast  of tones, shifted colors, film grain, and halation. Focusing on tuning these parameters, how well can we make a pleasing, filmic photo?
+
+## Goals
+
+Write some quick (in development time, not execution time) Python code to apply the aforementioned characteristics to digital photos. Explicitly:
+
+  1. remap RGB values for tone contrast adjustment
+  2. shift colors' hue, saturation, and luminosity with respect to their hue
+
+As a side requirement, we need to interpolate our image transformations. Ultimately, these are mathematical functions, and we must define our input domain and how it maps to our output range. Well, there are a lot of possible pixel values, and we can't realistically define them individually
+
+Instead, we'll define a handful of $(x,y)$ datapoints and interpolate between them; we can use this as an intuitive interface for making our adjustments.
+
+## The code
+
+Let's get started with our imports and some setup
+
+```python
+# standard numpy and typing
+import numpy as np
+
+# image read, write, and conversion tools
+import cv2
+from PIL import Image
+
+# to generate our cubic interpolation functions
+from scipy.interpolate import interp1d
+
+# nice image and plot display in our notebook
+import matplotlib.pyplot as plt # for our image output
+
+import plotly.graph_objects as go # for our plots, because plotly is awesome
+
+# makes the size of our images a bit bigger in our notebook.
+plt.rcParams['figure.figsize'] = [12, 8]
+plt.rcParams['figure.dpi'] = 100
+```
+
+We also have some reeusable visualization functions, but the code block is quite long, so you can check them out in the [notebook](https://github.com/aryadaroui/filmic-devblog). The logic behind these isn't really important, though.
+
+We read in out first test image and see what it looks like. Note that we read in the image data as a `float32{:.type}` with a value range of $[0.0,1.0]$, which gives us better precision in our processing before outputting our final images as a `uint8{:.type}`.
+
+```python
+img_rgb1 = read_img('test_pic1.jpg')
+show_img_rgb(img_rgb1)
+```
+
+IMG AND TABLE HERE
+
+Using `interp1d(){:python}`, we generate a function that will let us cubicly interpolate between these datapoints, yielding a nice sigmoid-ish curve that will squash our overall dynamic range and raise the blackpoint, but give us a bit more contrast around the midtones, and a bit less contrast around the shadows and highlights.
+
+```python
+# common sigmoid-ish curve to apply to our image's RGB
+tone_data_x = [0.0, 0.25, 0.5, 0.75, 1.0]
+tone_data_y = [0.2, 0.28, 0.5, 0.80, 1.0]
+
+# generate cubic interpolation function
+f_tone_curve = interp1d(tone_data_x, tone_data_y, kind='cubic') 
+
+plot_tone_curve(tone_data_y, f_tone_curve)
+```
+PLOT
+
+Just like we'd expect in the mathematical description of,
+
+$$
+y = \mathrm{tone\_curve}(x)
+$$
+
+NumPy let's us apply the curve with `f_tone_curve(img_rgb){:python}`, which will apply the function to every individual element in the `ndArray{:.type}`.
+
+```python
+show_img_left_right(img_rgb1, f_tone_curve(img_rgb1))
+```
+
+IMG
+
+Cool. Goal #1 is accomplished and it wasn't too hard. But now we're going to have to apply curves by separate HLS channels.
+
+Let's create a new curve and call it a color response curve. We'll give it 13 datapoints, the first twelve are for every 30 deg of hue, and the last datapoint is to capture the last 30 deg between 330 and 360 on the hue circle before it repeats itself.
+
+IMG
+
+In the first case, we'll be shifting hue with respect to hue:
+
+$$
+H' = H + \mathrm{color\_response}(H)
+$$
+
+Let's shift the azure sky about halfway toward cyan, which is a characteristic sometimes seen in film.
+
+```python
+img_hls = rgb_to_hls(img_rgb1) # convert our rgb image to hls
+
+# 12 colors for splitting the color wheel by 30 deg slices. The last element circles back to the first!
+# we'll set azure to -15 degrees, putting it halfway to cyan.
+color_response_data_y = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -15.0, 0.0, 0.0, 0.0, 0.0, 0.0] # shift azure -15.0 degrees
+color_response_data_x = np.linspace(0.0, 360, num=13) # [0.0, 30.0, 60.0, ...]
+f_color_response_curve = interp1d(color_response_data_x, color_response_data_y, kind='cubic')
+
+# we operate on all the pixels of the image but only on the 0th channel, hue.
+img_hls[:, :, 0] = img_hls[:, :, 0] + f_color_response_curve(img_hls[:, :, 0])
+img_out = hls_to_rgb(img_hls)
+
+# visualize our output
+plot_color_response_curve(color_response_data_y, f_color_response_curve, 'hue')
+show_img_left_right(img_rgb1, img_out)
+```
+
+PLOT AND IMG
+
+This actually looks quite nice. Let's try raising the saturation 20% for azure and see how it looks. The equation for this should look like
+
+$$
+S' = S + \mathrm{color\_response}(H)
+$$
+
+```python
+img_hls = rgb_to_hls(img_rgb1) # reset our img_hls
+
+color_response_data_y = np.array([0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.2, 0.0, 0.0, 0.0, 0.0, 0.0]) # increase saturation of azure 20%
+color_response_data_x = np.linspace(0.0, 360.0, num=13)
+f_color_response_curve = interp1d(color_response_data_x, color_response_data_y, kind='cubic')
+
+# we operate on all the pixels of the image on saturation channel, with respect to the hue channel.
+img_hls[:, :, 2] = img_hls[:, :, 2] + f_color_response_curve(img_hls[:, :, 0])
+img_out = hls_to_rgb(img_hls)
+
+plot_color_response_curve(color_response_data_y, f_color_response_curve, 'saturation')
+show_img_left_right(img_rgb1, img_out)
+```
+
+PLOT AND IMG
+
+So, we can generalize our shifting equation as
+
+$$
+Y' = Y + \mathrm{color\_response}(X)
+$$
+
+where $X$ and $Y$ are color channels.
+
+## Conclusion
+
+Nice. We successfully demonstrated the effectiveness of our ideas. Admittedly, the tone curve is a pretty proven photo-editing tool, but we were able to use that as a foundation to implement our color response technique, which words splendidly.
+
+In the next post, we'll focus on adding tone responsive film grain, and halation.
+
+## Appendix
+
+Some quick points worth noting:
+
+### Hue vs. color
+
+Color and hue are not the same; hue is a subcomponent of color. It's important to note this because our $\mathrm{color\_response}()$ is usually a function of hue, but it isn't always. We can also use it as a function of luminosity (or saturation), which is what we did with the grain application. But then you might ask, "why did you call it `f_tone_response(){:python}` in the code?" That's because, I think there needs to be an option of applying these effects both in the HSL and HSV color spaces in the app and tonality is a good umbrella term for luminosity and value.
+
+### Cubic ripples
+
+In the cubic interpolation plots, there are ripples where the interpolation overshoots after hitting our target datapoint. This may not seem like a big deal, but it's counterintuitive to the user when there's additional change (however slight in areas zeroed out. To fix this, we use monotonic cubic interpolation in filmic, and we'll cover that implementation in the WebGL shader article.
