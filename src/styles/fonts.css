@@ -286,3 +286,21 @@
 	font-weight: 900;
 	src: url('https://fonts.cdnfonts.com/s/62887/Swiss 721 Black Italic.woff') format('woff');
 }
+
+/* Open Sans */
+
+@font-face {
+	font-family: 'Open Sans';
+	font-style: normal;
+	font-weight: 300 800;
+	font-stretch: 100%;
+	src: url(/OpenSans-VariableFont_wdth,wght.ttf) format('woff');
+  }
+  
+  @font-face {
+	font-family: 'Open Sans';
+	font-style: italic;
+	font-weight: 300 800;
+	font-stretch: 100%;
+	src: url(/OpenSans-Italic-VariableFont_wdth,wght.ttf) format('woff');
+  }

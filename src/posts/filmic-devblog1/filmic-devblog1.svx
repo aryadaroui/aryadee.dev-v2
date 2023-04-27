@@ -2,7 +2,7 @@
 title: "Filmic devblog 1"
 date: 31 Mar 2021
 update:
-thumbnail: ./thumbnail.webp
+thumbnail: ./thumbnail.png
 tags: 
   - Python
   - image processing

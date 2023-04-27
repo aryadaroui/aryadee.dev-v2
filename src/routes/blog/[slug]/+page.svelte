@@ -5,7 +5,6 @@
 	import Toc from 'svelte-toc';
 	import Header from '$lib/Header.svelte';
 	import Footer from '$lib/Footer.svelte';
-
 </script>
 
 <Header />
@@ -21,7 +20,7 @@
 		<div data-post-title>{data.title}</div>
 		<div data-post-date>{data.date}</div>
 
-		<!-- <hr /> -->
+		<hr />
 
 		<svelte:component this={data.content} />
 		<Footer />
@@ -39,14 +38,13 @@
 			--toc-active-bg="#A7687D00"
 			--toc-li-hover-color="#FF99BE"
 			--toc-z-index="3"
-			--toc-mobile-bg="hsl(210, 24%, 33%)"
-			--toc-mobile-shadow="box-shadow: 0px 5px 30px rgba(black, 0.7);"
+			--toc-mobile-bg="hsl(225, 8%, 18%)"
+			--toc-mobile-shadow="0px 5px 20px #00000077"
 			--toc-mobile-btn-color="#FFEFD8"
 			--toc-mobile-btn-border-radius="8px" />
 	</aside>
 </main>
 <div class="light-background" />
-
 
 <style global lang="scss">
 	// body {
@@ -70,12 +68,11 @@
 		top: 0;
 	}
 
-
 	main#post {
 		font-family: $sans;
 		font-weight: 300;
 
-		font-size: clamp(1.0rem, 3.0vw, 1.15rem);
+		font-size: clamp(1rem, 3vw, 1.15rem);
 		text-align: justify;
 		hyphens: auto;
 
@@ -97,7 +94,7 @@
 		// 	background: #aaaaaaaa;
 		// 	-webkit-border-radius: 10px;
 		// 	border: 2px solid transparent;
-		// 	background-clip: padding-box;  
+		// 	background-clip: padding-box;
 
 		// 	// -webkit-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.75);
 		// }
@@ -106,26 +103,24 @@
 		// 	background: #00000000;
 		// }
 
-
-
 		@media (max-width: 690px) {
 			// display: block;
 			// width: 100vw;
 		}
 
 		blockquote {
-		border-left: 2px solid $tan-hard;
-		padding: 0.5em 1em 0.5em 1em;
-		margin-left: 0;
-		margin-right: 0;
-		background-color: hsl(230, 10%, 18%); 
+			border-left: 2px solid $tan-hard;
+			padding: 0.5em 1em 0.5em 1em;
+			margin-left: 0;
+			margin-right: 0;
+			background-color: hsl(230, 10%, 18%);
 
-		border-radius: 0 8px 8px 0;
+			border-radius: 0 8px 8px 0;
 
-		p {
-			margin: 0;
+			p {
+				margin: 0;
+			}
 		}
-	}
 
 		.katex {
 			font-size: 1.1em;
@@ -196,7 +191,7 @@
 			max-width: 600px;
 			// width: 400px;
 
-			line-height: 2.0em;
+			line-height: 2em;
 			// margin: auto;
 			// font-size: 1.2em;
 			padding: 80px;
@@ -319,8 +314,7 @@
 					padding: 0;
 				}
 			}
-			p span[
-				data-rehype-pretty-code-fragment] code {
+			p span[data-rehype-pretty-code-fragment] code {
 				padding: 0.3em 0.4em;
 				border-radius: 0.4em;
 				background-color: $code-color;
@@ -373,6 +367,7 @@
 				border: rgba($blue-mid, 0) 1px solid;
 				overflow: hidden;
 				line-height: 1em;
+				user-select: contain;
 
 				cursor: pointer;
 				z-index: 4;
@@ -385,7 +380,6 @@
 				// margin-bottom: 2px;
 				// transition: border 0.0s none;
 				// border: $border-translucent 1px solid;
-
 
 				border-radius: 8px;
 
@@ -535,6 +529,46 @@
 
 				// margin-left: 1em;
 			}
+		}
+
+		table {
+			border-collapse: collapse;
+			font-size: 0.9em;
+			font-family: $mono;
+			min-width: 300px;
+
+			margin-left: auto;
+			margin-right: auto;
+			margin-top: 25px;
+			margin-bottom: 25px;
+			border-radius: 8px;
+
+			overflow: hidden;
+			text-align: center;
+
+			box-shadow: 0 0 0 1px rgb(41, 42, 43); /* this draws the table border  */
+
+			/* border-collapse: separate; */
+		}
+
+		table thead tr {
+			background-color: #2e343dee;
+			// color: #ffffff;
+			// text-align: right;
+		}
+
+		table td {
+			text-align: right;
+
+			&:first-child {
+				text-align: left;
+			}
+		}
+
+
+		table th,
+		table td {
+			padding: 12px 15px;
 		}
 	}
 

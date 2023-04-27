@@ -74,7 +74,7 @@
 			.home {
 				// flex: 1;
 				font-size: 1.5rem;
-				font-weight: 800;
+				font-weight: 400;
 			}
 
 			.current {

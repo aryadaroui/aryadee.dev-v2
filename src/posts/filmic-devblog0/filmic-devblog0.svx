@@ -2,7 +2,7 @@
 title: "Filmic devblog 0: tone curve and color response 🌈"
 date: 31 Mar 2021
 update:
-thumbnail: ./thumbnail.webp
+thumbnail: ./img.webp
 tags: 
   - Python
   - image processing
@@ -10,7 +10,14 @@ tags:
 ---
 
 <script>
-
+  import img from './img.webp';
+  import img_hue from './img_hue.webp';
+  import img_sat from './img_sat.webp';
+  import img_tone from './img_tone.webp';
+  import color_wheel from './color_wheel.png';
+  import hue_plot from './hue_response_curve.json';
+  import saturation_plot from './saturation_response_curve.json';
+  import tone_plot from './tone_curve.json';
 </script>
 
 In this first devblog, we cover testing the concepts behind Filmic's features in Python. We'll be applying interpolated functions to alter images in a pleasing way, and confirming these ideas work before we try building UI and GPU shader code around them.
@@ -66,7 +73,18 @@ img_rgb1 = read_img('test_pic1.jpg')
 show_img_rgb(img_rgb1)
 ```
 
-IMG AND TABLE HERE
+<ImgCap src={img} caption="Original image" make_fit=false/>
+
+Cool. Let's try to apply a basic tone curve to the image. We'll use five datapoints:
+
+|   tone      | $x$    |  $y$    |
+| ----------- | ------ |  ------ |
+| blackpoint  | 0.00   |  0.20   |
+| shadows     | 0.25   |  0.28   |
+| midtones    | 0.50   |  0.50   |
+| highlights  | 0.75   |  0.80   |
+| whitepoint  | 1.00   |  1.00   |
+
 
 Using `interp1d(){:python}`, we generate a function that will let us cubicly interpolate between these datapoints, yielding a nice sigmoid-ish curve that will squash our overall dynamic range and raise the blackpoint, but give us a bit more contrast around the midtones, and a bit less contrast around the shadows and highlights.
 
@@ -80,7 +98,8 @@ f_tone_curve = interp1d(tone_data_x, tone_data_y, kind='cubic')
 
 plot_tone_curve(tone_data_y, f_tone_curve)
 ```
-PLOT
+<Plot plot_json={tone_plot} />
+
 
 Just like we'd expect in the mathematical description of,
 
@@ -94,13 +113,13 @@ NumPy let's us apply the curve with `f_tone_curve(img_rgb){:python}`, which will
 show_img_left_right(img_rgb1, f_tone_curve(img_rgb1))
 ```
 
-IMG
+<ImgCap src={img_tone} caption="Image with tone curve" make_fit=false/>
 
 Cool. Goal #1 is accomplished and it wasn't too hard. But now we're going to have to apply curves by separate HLS channels.
 
 Let's create a new curve and call it a color response curve. We'll give it 13 datapoints, the first twelve are for every 30 deg of hue, and the last datapoint is to capture the last 30 deg between 330 and 360 on the hue circle before it repeats itself.
 
-IMG
+<ImgCap src={color_wheel} caption="The (hue) color wheel with graduations for colors every 30°" make_fit=false/>
 
 In the first case, we'll be shifting hue with respect to hue:
 
@@ -128,7 +147,9 @@ plot_color_response_curve(color_response_data_y, f_color_response_curve, 'hue')
 show_img_left_right(img_rgb1, img_out)
 ```
 
-PLOT AND IMG
+<Plot plot_json={hue_plot} />
+
+<ImgCap src={img_hue} caption="Image with hue curve" make_fit=false/>
 
 This actually looks quite nice. Let's try raising the saturation 20% for azure and see how it looks. The equation for this should look like
 
@@ -151,7 +172,10 @@ plot_color_response_curve(color_response_data_y, f_color_response_curve, 'satura
 show_img_left_right(img_rgb1, img_out)
 ```
 
-PLOT AND IMG
+<Plot plot_json={saturation_plot} />
+
+<ImgCap src={img_sat} caption="Image with saturation curve" make_fit=false/>
+
 
 So, we can generalize our shifting equation as
 
@@ -171,6 +195,8 @@ In the next post, we'll focus on adding tone responsive film grain, and halation
 
 Some quick points worth noting:
 
+<!-- abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklm -->
+
 ### Hue vs. color
 
 Color and hue are not the same; hue is a subcomponent of color. It's important to note this because our $\mathrm{color\_response}()$ is usually a function of hue, but it isn't always. We can also use it as a function of luminosity (or saturation), which is what we did with the grain application. But then you might ask, "why did you call it `f_tone_response(){:python}` in the code?" That's because, I think there needs to be an option of applying these effects both in the HSL and HSV color spaces in the app and tonality is a good umbrella term for luminosity and value.
@@ -178,3 +204,14 @@ Color and hue are not the same; hue is a subcomponent of color. It's important t
 ### Cubic ripples
 
 In the cubic interpolation plots, there are ripples where the interpolation overshoots after hitting our target datapoint. This may not seem like a big deal, but it's counterintuitive to the user when there's additional change (however slight in areas zeroed out. To fix this, we use monotonic cubic interpolation in filmic, and we'll cover that implementation in the WebGL shader article.
+
+
+<style>
+
+p {
+  font-family: 'Open Sans' !important;
+  font-weight: 350;
+}
+
+
+</style>

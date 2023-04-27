@@ -34,10 +34,13 @@
 		img {
 			width: auto;
 			height: auto;
-			max-height: 300px;
+			max-height: 350px;
+			max-width: 100%;
+			margin: 1em 0 0 0;
 		}
 		p {
-			font-size: 0.8em;
+			font-size: 0.9em;
+			font-weight: 320;
 			color: $tan-mid;
 			text-align: center;
 		}
