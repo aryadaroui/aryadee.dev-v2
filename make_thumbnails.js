@@ -3,12 +3,10 @@ import fs from 'fs';
 import path from 'path';
 import yaml from 'js-yaml';
 
+/** makes thumbnails from all images in a source directory and puts them in a target directory */
 function make_thumbnails(source_dir, target_dir) {
 
   console.log(`making thumbnails from ${source_dir} into ${target_dir}`);
-
-  // const thumbnail_dir = source_dir + '/thumbnails';
-
 
   fs.readdir(source_dir, (err, files) => {
     if (err) {
@@ -21,14 +19,18 @@ function make_thumbnails(source_dir, target_dir) {
       fs.mkdirSync(target_dir);
     }
 
-    // Loop through files in photos directory and generate thumbnails
-    files.forEach(file => {
-      if (file.endsWith('.jpg') || file.endsWith('.jpeg') || file.endsWith('.png') || file.endsWith('.gif') || file.endsWith('.webp')) {
-        const photoPath = path.join(source_dir, file);
-        const thumbnailPath = path.join(target_dir, file);
+    async function process_images(files) {
+      let image_sizes = {};
+      for (const file of files) {
+        if (file.endsWith('.jpg') || file.endsWith('.jpeg') || file.endsWith('.png') || file.endsWith('.gif') || file.endsWith('.webp')) {
+          const imgPath = path.join(source_dir, file);
+          const thumbnailPath = path.join(target_dir, file);
 
-        sharp(photoPath)
-          .resize({
+          let img = sharp(imgPath);
+          let img_metadata = await img.metadata();
+          image_sizes[file] = { width: img_metadata.width, height: img_metadata.height };
+
+          img.resize({
             width: 500,
             height: 500,
             fit: sharp.fit.outside,
@@ -40,12 +42,18 @@ function make_thumbnails(source_dir, target_dir) {
               console.log(`Generated thumbnail for ${file}`);
             }
           });
+        }
       }
-    });
+
+      fs.writeFileSync(path.join(source_dir, path.basename(source_dir) + '_image_sizes.json'), JSON.stringify(image_sizes))
+    }
+
+    process_images(files);
+
   });
 }
 
-// a function to  a find all markdown files in a directory and its immediate subdirectory
+/** find all markdown (.svx, not .md) files in a directory and its immediate subdirectory */
 function find_markdown_files(start_dir) {
   let markdown_files = [];
 
@@ -65,7 +73,8 @@ function find_markdown_files(start_dir) {
   return markdown_files;
 }
 
-function find_thumbnail_path(file) {
+/** get the thumbnail path from a markdown file's YAML metadata */
+function find_post_thumbnail_path(file) {
   const data = fs.readFileSync(file, 'utf8');
   const content = data.split("---\n");
   const frontmatter = yaml.load(content[1]);
@@ -83,8 +92,7 @@ function find_thumbnail_path(file) {
   }
 }
 
-
-
+/** make thumbnails for the listed thumbnails in the frontmatter of each markdown file in a source directory and place them in a target directory */
 function make_post_thumbnails(source_dir, target_dir) {
 
   console.log(`making thumbnails from ${source_dir} into ${target_dir}`);
@@ -96,12 +104,13 @@ function make_post_thumbnails(source_dir, target_dir) {
 
   // files and their thumbnail paths
   const file_thumbs = find_markdown_files(source_dir).map((file) => {
-    return { file: file, thumb: find_thumbnail_path(file) }
+    return { file: file, thumb: find_post_thumbnail_path(file) }
   })
 
   // loop through files and generate thumbnails
   file_thumbs.forEach((file_thumb) => {
     if (file_thumb.thumb === undefined) {
+      // we alrady logged an error in find_post_thumbnail_path
       // console.error("\x1b[31m%s\x1b[0m", `No thumbnail found for ${file_thumb.file}`);
       return;
     }
@@ -127,17 +136,16 @@ function make_post_thumbnails(source_dir, target_dir) {
 }
 
 
-// ----
+// // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // 
+
 console.log("* Generating thumbnails *");
 const photos_dir = './src/routes/creative/assets/photos';
 const art_dir = './src/routes/creative/assets/art';
 const posts_dir = './src/posts';
 const posts_thumbnails_dir = './static/blog/thumbnails';
-// const test_post = './src/posts/_error.svx'
 
 make_thumbnails(photos_dir, photos_dir + '/thumbnails');
 make_thumbnails(art_dir, art_dir + '/thumbnails');
 make_post_thumbnails(posts_dir, posts_thumbnails_dir)
 
-// ----
 

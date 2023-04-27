@@ -2,11 +2,14 @@
 	import Header from '$lib/Header.svelte';
 	import Footer from '$lib/Footer.svelte';
 	import { onMount } from 'svelte';
-	import '../../styles/aplayer.css';
-
 	import PhotoSwipeGallery from 'svelte-photoswipe';
-	import type { GalleryItem, GalleryData } from 'svelte-photoswipe';
+	import type { GalleryData } from 'svelte-photoswipe';
 
+	import '../../styles/aplayer.css';
+	import photo_image_sizes from './assets/photos/photos_image_sizes.json';
+	import art_image_sizes from './assets/art/art_image_sizes.json';
+
+	/** adds tab index to <img> tags in <a> tags, making them focusable in the browser*/
 	function addTabIndexToImagesInAnchors() {
 		const anchors = document.querySelectorAll('a');
 
@@ -19,21 +22,68 @@
 		});
 	}
 
+	/* 
+	All of this import nonsense could be put in a function, but Vite demands object literals for imports
+	so you can't really reap the benefits of it.
+
+	IMPORT all photo and art URLS, full size and thumbnail size. do it eagerly to avoid async.
+	Then make the photoswipe galleries from the URLS, and the image sizes from the json file
+	*/
+
+	// Photos
 	let photo_gallery: GalleryData = [];
+	let photos_full = {};
+	let photos_thumb = {};
+	let photos = {}; // merge full and thumb together
+
+	Object.entries(import.meta.glob('./assets/photos/*.webp', { eager: true })).map(([path, module]) => {
+		photos_full[module.default.split('/').pop()] = module.default;
+	});
+	Object.entries(import.meta.glob('./assets/photos/thumbnails/*.webp', { eager: true })).map(([path, module]) => {
+		photos_thumb[module.default.split('/').pop()] = module.default;
+	});
+	Object.keys(photos_full).forEach((key) => {
+		photo_gallery.push({
+			src: photos_full[key],
+			width: photo_image_sizes[key].width,
+			height: photo_image_sizes[key].height,
+			cropped: true,
+			thumbnail: {
+				src: photos_thumb[key],
+				// width: "100%",
+				// height: "200px",
+			},
+		});
+	});
+
+	// Art
 	let art_gallery: GalleryData = [];
+	let art_full = {};
+	let art_thumb = {};
+	let art = {}; // merge full and thumb together
 
-	let photos_full = Object.entries(import.meta.glob('./assets/photos/*.webp', { eager: true })).map(([path, module]) => ({
-		path, //@ts-ignore
-		url: module.default,
-	}));
+	Object.entries(import.meta.glob('./assets/art/*.webp', { eager: true })).map(([path, module]) => {
+		art_full[module.default.split('/').pop()] = module.default;
+	});
+	Object.entries(import.meta.glob('./assets/art/thumbnails/*.webp', { eager: true })).map(([path, module]) => {
+		art_thumb[module.default.split('/').pop()] = module.default;
+	});
+	Object.keys(art_full).forEach((key) => {
+		art_gallery.push({
+			src: art_full[key],
+			width: art_image_sizes[key].width,
+			height: art_image_sizes[key].height,
+			cropped: true,
+			thumbnail: {
+				src: art_thumb[key],
+				// width: "100%",
+				// height: "200px",
+			},
+		});
+	});
 
-	let photos_thumb = Object.entries(import.meta.glob('./assets/photos/thumbnails/*.webp', { eager: true })).map(
-		([path, module]) => ({
-			path, //@ts-ignore
-			url: module.default,
-		}),
-	);
-
+	// Songs
+	// literally just import the song URLS to be used by aplayer
 	let songs = Object.entries(import.meta.glob('./assets/music/*.m4a', { eager: true })).map(([path, module]) => ({
 		name: path.split('/').pop().split('.').slice(0, -1).join('.'),
 		// @ts-ignore
@@ -42,61 +92,12 @@
 		cover: '/mini-music-me.webp',
 	}));
 
-	let photos = photos_full.map((photo, i) => ({
-		url: photo.url,
-		thumbnail_url: photos_thumb[i].url, // lists are alphabetical, so this works, but not the most robust
-		key: photo.url.split('/').pop(),
-	}));
-
-	photos.forEach((photo) => {
-		photo_gallery.push({
-			src: photo.url,
-			width: 3000,
-			height: 3000,
-			cropped: true,
-			thumbnail: {
-				src: photo.thumbnail_url,
-				// width: "100%",
-				// height: "200px",
-			},
-		});
-	});
-
-	let art_full = Object.entries(import.meta.glob('./assets/art/*.webp', { eager: true })).map(([path, module]) => ({
-		path, //@ts-ignore
-		url: module.default,
-	}));
-
-	let art_thumb = Object.entries(import.meta.glob('./assets/art/thumbnails/*.webp', { eager: true })).map(([path, module]) => ({
-		path, //@ts-ignore
-		url: module.default,
-	}));
-
-	let art = art_full.map((art, i) => ({
-		url: art.url,
-		thumbnail_url: art_thumb[i].url, // lists are alphabetical, so this works, but not the most robust
-		key: art.url.split('/').pop(),
-	}));
-
-	art.forEach((art) => {
-		art_gallery.push({
-			src: art.url,
-			width: 1500,
-			height: 1500,
-			cropped: true,
-			thumbnail: {
-				src: art.thumbnail_url,
-				// width: '48%',
-				// height: '200px',
-			},
-		});
-	});
-
+	let aplayer;
 	onMount(async () => {
 		const APlayer = (await import('aplayer')).default; // dynamic client-side import
 
 		const ap = new APlayer({
-			container: document.getElementById('aplayer'),
+			container: aplayer,
 			audio: songs,
 			theme: '#FADFA3',
 		});
@@ -111,7 +112,7 @@
 <main id="creative">
 	<h1>Creative</h1>
 	<h2>Music</h2>
-	<div id="aplayer" />
+	<div bind:this={aplayer}/>
 	<p style="font-size: 0.7em; color:gray;">I do not endorse Spiro Agnew, his speech, or the Nixon administration.</p>
 	<h2>Photos</h2>
 	<PhotoSwipeGallery images={photo_gallery} styling="none" />
