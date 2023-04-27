@@ -28,8 +28,12 @@ function make_thumbnails(source_dir, target_dir) {
         const thumbnailPath = path.join(target_dir, file);
 
         sharp(photoPath)
-          .resize(400)
-          .toFile(thumbnailPath, err => {
+          .resize({
+            width: 500,
+            height: 500,
+            fit: sharp.fit.outside,
+            withoutEnlargement: true
+          }).toFile(thumbnailPath, err => {
             if (err) {
               console.error(`Error generating thumbnail for ${file}: ${err}`);
             } else {
@@ -106,8 +110,8 @@ function make_post_thumbnails(source_dir, target_dir) {
 
     sharp(file_thumb.thumb)
       .resize({
-        width: 400,
-        height: 400,
+        width: 500,
+        height: 500,
         fit: sharp.fit.outside,
         withoutEnlargement: true
       })
@@ -125,11 +129,11 @@ function make_post_thumbnails(source_dir, target_dir) {
 
 // ----
 console.log("* Generating thumbnails *");
-const photos_dir = './static/creative/photos';
-const art_dir = './static/creative/art';
+const photos_dir = './src/routes/creative/assets/photos';
+const art_dir = './src/routes/creative/assets/art';
 const posts_dir = './src/posts';
 const posts_thumbnails_dir = './static/blog/thumbnails';
-const test_post = './src/posts/_error.svx'
+// const test_post = './src/posts/_error.svx'
 
 make_thumbnails(photos_dir, photos_dir + '/thumbnails');
 make_thumbnails(art_dir, art_dir + '/thumbnails');

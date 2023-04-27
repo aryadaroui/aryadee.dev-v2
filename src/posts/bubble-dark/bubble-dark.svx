@@ -3,9 +3,10 @@ title: Bubble dark, VS Code theme 🫧
 date: 01 Dec 2022
 updated: 27 Apr 2023
 tags:
-  - code
+  - C
+  - Python
   - workflow
-thumbnail: ./c.png
+thumbnail: ./thumbnail.png
 ---
 
 <script>
