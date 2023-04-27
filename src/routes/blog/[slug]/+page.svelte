@@ -22,7 +22,6 @@
 		<!-- <hr /> -->
 
 		<svelte:component this={data.content} />
-		<!-- </div> -->
 		<Footer />
 	</article>
 	<aside class="table-of-contents">
