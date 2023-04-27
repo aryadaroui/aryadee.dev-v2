@@ -1,0 +1,53 @@
+---
+title: Bubble dark, VS Code theme 🫧
+date: 01 Dec 2022
+updated: 27 Apr 2023
+tags:
+  - code
+  - workflow
+thumbnail: ./c.png
+---
+
+<script>
+  import c from './c.png'
+  import py from './py.png'
+</script>
+
+
+# Intro
+
+When I first started learning how to code in C++ eight years ago, I used Eclipse as my main IDE along with a very colorful syntax highlighting scheme called RainbowDrops. I moved on from Eclipse, but there has always been a small hole in my heart every time I code with fewer colors. This theme, bubble-dark, is an attempt to fill that hole.
+
+# Overview
+
+bubble-dark is a VS Code color theme available on the marketplace. I made it for myself, but it's gotten attention from others, so I figured it'd be nice to share it properly. It draws inspiration from the aforementioned RainbowDrops, and from the colors found from thin-film interference on bubbles.
+Details
+
+bubble-dark aims to have meaningful syntax highlighting to the extent that VS Code's syntax scope tools will allow. Operators, keywords, identifiers, function definitions, function calls, etc. all have different colors that (subjectively) make sense, allowing you to get a better feeling for the structure of your code at a glance.
+
+But be warned: some may find it to be too much, since other themes typically have fewer colors in an effort for greater generalizability between languages. In contrast, bubble-dark was purpose-built for Python and C (because that's what I use the most). It'll work just fine with other languages, but there won't be the same level and usage of colors due to how VS code handles syntax scope.
+
+<a href={c}><img src={c} alt="screenshot of bubble-dark theme on C code" /></a>
+<a href={py}><img src={py} alt="screenshot of bubble-dark theme on Python code" /></a>
+
+
+<style>
+	img {
+		width: 100% !important;
+		height: 300px;
+		display: block;
+		margin: 0 auto;
+	}
+
+	a:hover {
+		background-color: #00000000 !important;
+	}
+
+	a > img {
+		border: 1px solid transparent;
+	}
+
+	a > img:hover {
+		border: 1px solid #A5E0F5;
+	}
+</style>
