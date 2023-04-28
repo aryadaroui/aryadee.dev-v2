@@ -1,0 +1,1 @@
+export const ssr = false; // fixes 500 error on page refresh with photoswipe. But SSR is now disabled which isn't ideal. TODO: fix this properly
