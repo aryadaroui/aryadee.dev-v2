@@ -29,6 +29,7 @@
 
 	img {
 		margin: 20px;
+		border-radius: 8px;
 	}
 
 	p {

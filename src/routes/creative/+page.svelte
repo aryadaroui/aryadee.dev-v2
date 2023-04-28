@@ -34,12 +34,13 @@
 	let photo_gallery: GalleryData = [];
 	let photos_full = {};
 	let photos_thumb = {};
-	let photos = {}; // merge full and thumb together
 
 	Object.entries(import.meta.glob('./assets/photos/*.webp', { eager: true })).map(([path, module]) => {
+		// @ts-ignore. default does indeed exist on module
 		photos_full[module.default.split('/').pop()] = module.default;
 	});
 	Object.entries(import.meta.glob('./assets/photos/thumbnails/*.webp', { eager: true })).map(([path, module]) => {
+		// @ts-ignore. default does indeed exist on module
 		photos_thumb[module.default.split('/').pop()] = module.default;
 	});
 	Object.keys(photos_full).forEach((key) => {
@@ -48,10 +49,9 @@
 			width: photo_image_sizes[key].width,
 			height: photo_image_sizes[key].height,
 			cropped: true,
+			// @ts-ignore: we dont need the width and height. it adds it to the HTML itself and im using CSS rules anyway
 			thumbnail: {
 				src: photos_thumb[key],
-				// width: "100%",
-				// height: "200px",
 			},
 		});
 	});
@@ -60,12 +60,13 @@
 	let art_gallery: GalleryData = [];
 	let art_full = {};
 	let art_thumb = {};
-	let art = {}; // merge full and thumb together
 
 	Object.entries(import.meta.glob('./assets/art/*.webp', { eager: true })).map(([path, module]) => {
+		// @ts-ignore. default does indeed exist on module
 		art_full[module.default.split('/').pop()] = module.default;
 	});
 	Object.entries(import.meta.glob('./assets/art/thumbnails/*.webp', { eager: true })).map(([path, module]) => {
+		// @ts-ignore. default does indeed exist on module
 		art_thumb[module.default.split('/').pop()] = module.default;
 	});
 	Object.keys(art_full).forEach((key) => {
@@ -74,10 +75,9 @@
 			width: art_image_sizes[key].width,
 			height: art_image_sizes[key].height,
 			cropped: true,
+			// @ts-ignore: we dont need the width and height. it adds it to the HTML itself and im using CSS rules anyway
 			thumbnail: {
 				src: art_thumb[key],
-				// width: "100%",
-				// height: "200px",
 			},
 		});
 	});
@@ -160,7 +160,7 @@
 
 	:global(div.pswp.pswp--open) {
 		opacity: 0 !important;
-		transition: opacity 0.333s linear;
+		transition: opacity .333s linear;
 	}
 
 	img:hover {
@@ -187,7 +187,7 @@
 
 	:global(#creative) {
 		:global(img) {
-			animation: fadein 0.3s ease;
+			animation: fadein 0.333s ease;
 		}
 	}
 
