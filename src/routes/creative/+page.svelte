@@ -23,11 +23,11 @@
 	}
 
 	/* 
-	All of this import nonsense could be put in a function, but Vite demands object literals for imports
-	so you can't really reap the benefits of it.
+		All of this import nonsense could be put in a function, but Vite requires object literals for imports
+		so that's not actually possible.
 
-	IMPORT all photo and art URLS, full size and thumbnail size. do it eagerly to avoid async.
-	Then make the photoswipe galleries from the URLS, and the image sizes from the json file
+		IMPORT all photo and art URLs, full size and thumbnail size. do it eagerly to avoid async.
+		Then make the photoswipe galleries from the URLS, and the image sizes from the json file
 	*/
 
 	// Photos
@@ -36,14 +36,18 @@
 	let photos_thumb = {};
 
 	Object.entries(import.meta.glob('./assets/photos/*.webp', { eager: true })).map(([path, module]) => {
+		/*
+			this removes the path and *file extension* from the key because the bundler adds as hash to the filename
+			and we dont want that in the key because the image sizes json file doesn't/can't have the hash in the key.
+		*/
 		// @ts-ignore. default does indeed exist on module
-		photos_full[module.default.split('/').pop()] = module.default;
+		photos_full[module.default.split("/").pop().split(".")[0]] = module.default;
 	});
 	Object.entries(import.meta.glob('./assets/photos/thumbnails/*.webp', { eager: true })).map(([path, module]) => {
 		// @ts-ignore. default does indeed exist on module
-		photos_thumb[module.default.split('/').pop()] = module.default;
+		photos_thumb[module.default.split("/").pop().split(".")[0]] = module.default;
 	});
-	Object.keys(photos_full).forEach((key) => {
+	Object.keys(photo_image_sizes).forEach((key) => {
 		photo_gallery.push({
 			src: photos_full[key],
 			width: photo_image_sizes[key].width,
@@ -63,13 +67,13 @@
 
 	Object.entries(import.meta.glob('./assets/art/*.webp', { eager: true })).map(([path, module]) => {
 		// @ts-ignore. default does indeed exist on module
-		art_full[module.default.split('/').pop()] = module.default;
+		art_full[module.default.split('/').pop().split(".")[0]] = module.default;
 	});
 	Object.entries(import.meta.glob('./assets/art/thumbnails/*.webp', { eager: true })).map(([path, module]) => {
 		// @ts-ignore. default does indeed exist on module
-		art_thumb[module.default.split('/').pop()] = module.default;
+		art_thumb[module.default.split('/').pop().split(".")[0]] = module.default;
 	});
-	Object.keys(art_full).forEach((key) => {
+	Object.keys(art_image_sizes).forEach((key) => {
 		art_gallery.push({
 			src: art_full[key],
 			width: art_image_sizes[key].width,
@@ -112,7 +116,7 @@
 <main id="creative">
 	<h1>Creative</h1>
 	<h2>Music</h2>
-	<div bind:this={aplayer}/>
+	<div bind:this={aplayer} />
 	<p style="font-size: 0.7em; color:gray;">I do not endorse Spiro Agnew, his speech, or the Nixon administration.</p>
 	<h2>Photos</h2>
 	<PhotoSwipeGallery images={photo_gallery} styling="none" />
@@ -160,7 +164,7 @@
 
 	:global(div.pswp.pswp--open) {
 		opacity: 0 !important;
-		transition: opacity .333s linear;
+		transition: opacity 0.333s linear;
 	}
 
 	img:hover {

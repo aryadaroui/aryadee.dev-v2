@@ -28,7 +28,7 @@ function make_thumbnails(source_dir, target_dir) {
 
           let img = sharp(imgPath);
           let img_metadata = await img.metadata();
-          image_sizes[file] = { width: img_metadata.width, height: img_metadata.height };
+          image_sizes[file.split(".")[0]] = { width: img_metadata.width, height: img_metadata.height };
 
           img.resize({
             width: 500,
