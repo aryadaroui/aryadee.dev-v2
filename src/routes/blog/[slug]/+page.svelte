@@ -270,6 +270,7 @@
 
 			hr {
 				border: $tan-mid 0.5px solid;
+				width: 100%;
 			}
 
 			a {

@@ -45,29 +45,13 @@ export async function load() {
 						is_valid_post = false;
 					}
 
-					// if (!('thumbnail' in metadata) || metadata.thumbnail === null) {
-					// 	console.error("http error", 500, ': thumbnail is missing or null in post: ' + post_path.split('/').pop());
-					// 	metadata.thumbnail = '/creative/art/cogito.webp';
-					// }
-
-					// try {
-					// 	console.log("trying thumbnail: ", thumbnail)
-					// 	fetch(thumbnail, { method: 'HEAD' });
-					// } catch (e) {
-					// 	console.log("actually using thumbnail: ", thumbnail)
-					// 	thumbnail = '/creative/art/cogito.webp';
-						
-					// }
-
-
 					if (is_valid_post) {
 						posts.push({
 							post_path: post_path,
 							slug: slug,
 							title: metadata.title,
 							tags: metadata.tags,
-							// thumbnail: thumbnail
-							// thumbnail: metadata.thumbnail,
+							date: new Date(metadata.date),
 						});
 					}
 				} else {
@@ -75,6 +59,12 @@ export async function load() {
 				}
 			});
 		}
+
+		// sort posts by date
+		posts.sort((a, b) => {
+			return b.date - a.date;
+		});
+
 		return { posts };
 	} catch (e) {
 		console.error(e);

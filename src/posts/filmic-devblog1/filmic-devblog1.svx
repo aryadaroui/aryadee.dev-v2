@@ -1,5 +1,5 @@
 ---
-title: "Filmic devblog 0: tone curve and color response 🌈"
+title: "Filmic devblog 1: tone curve and color response 🌈"
 date: 31 Mar 2021
 update:
 thumbnail: ./img.webp

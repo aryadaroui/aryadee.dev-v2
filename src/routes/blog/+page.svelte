@@ -43,7 +43,7 @@
 		{/each}
 	</div>
 
-	<h2>Academic documents</h2>
+	<h2>Documents</h2>
 	<h3>Papers</h3>
 	<!-- maybe make post cards for these? -->
 	<ul>
@@ -86,6 +86,7 @@
 		<li><a href="/blog/documents/how to write lab reports.pdf">How to write lab reports.pdf</a></li>
 		<li><a href="/blog/documents/ray tracing.pdf">Ray tracing diagrams.pdf</a></li>
 		<li><a href="/blog/documents/fourier series example.pdf">Fourier series example.pdf</a></li>
+		<li><a href="/blog/documents/jm mod.pdf">Jazzmaster mod.pdf</a></li>
 	</ul>
 </main>
 <div class="light-background" />

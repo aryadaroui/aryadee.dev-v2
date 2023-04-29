@@ -1,5 +1,5 @@
 ---
-title: "Filmic devblog 1"
+title: "Filmic devblog 2"
 date: 31 Mar 2021
 update:
 thumbnail: ./thumbnail.png
