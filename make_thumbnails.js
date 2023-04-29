@@ -30,6 +30,7 @@ function make_thumbnails(source_dir, target_dir) {
           let img_metadata = await img.metadata();
           image_sizes[file.split(".")[0]] = { width: img_metadata.width, height: img_metadata.height };
 
+          // minimum 500px on shortest side
           img.resize({
             width: 500,
             height: 500,
