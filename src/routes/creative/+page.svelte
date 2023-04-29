@@ -41,11 +41,11 @@
 			and we dont want that in the key because the image sizes json file doesn't/can't have the hash in the key.
 		*/
 		// @ts-ignore. default does indeed exist on module
-		photos_full[module.default.split('/').pop().split('.')[0]] = module.default;
+		photos_full[path.split('/').pop().split('.')[0]] = module.default;
 	});
 	Object.entries(import.meta.glob('./assets/photos/thumbnails/*.webp', { eager: true })).map(([path, module]) => {
 		// @ts-ignore. default does indeed exist on module
-		photos_thumb[module.default.split('/').pop().split('.')[0]] = module.default;
+		photos_thumb[path.split('/').pop().split('.')[0]] = module.default;
 	});
 	Object.keys(photo_image_sizes).forEach((key) => {
 		photo_gallery.push({
@@ -67,11 +67,12 @@
 
 	Object.entries(import.meta.glob('./assets/art/*.webp', { eager: true })).map(([path, module]) => {
 		// @ts-ignore. default does indeed exist on module
-		art_full[module.default.split('/').pop().split('.')[0]] = module.default;
+		art_full[path.split('/').pop().split('.')[0]] = module.default;
 	});
 	Object.entries(import.meta.glob('./assets/art/thumbnails/*.webp', { eager: true })).map(([path, module]) => {
 		// @ts-ignore. default does indeed exist on module
-		art_thumb[module.default.split('/').pop().split('.')[0]] = module.default;
+		// debugger
+		art_thumb[path.split('/').pop().split('.')[0]] = module.default;
 	});
 
 	console.log('art thumb import eager', import.meta.glob('./assets/art/thumbnails/*.webp', { eager: true, as: 'url' }));
@@ -199,7 +200,7 @@
 
 	main {
 		margin: auto;
-		max-width: 1080px;
+		max-width: 900px;
 		background-color: $background-color;
 		padding: 20px;
 	}

@@ -15,7 +15,10 @@ const config = {
 	css: {
 		postcss: true
 	},
-	assetsInclude: ['**/*.m4a', '**/*.webp']
+	assetsInclude: ['**/*.m4a', '**/*.webp'],
+	// build: {
+	// 	assetsInlineLimit: 2048,
+	// }
 };
 
 export default config;
