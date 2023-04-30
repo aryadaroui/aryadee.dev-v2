@@ -14,7 +14,7 @@
 
 
 	<p>
-		a
+		
 	</p>
 
 	<!-- <p>🚧 This is page is under construction as I update my site 🚧. You can access Filmic <a href="/projects/filmic">here</a>. If you are of the few people that know about Logica, I have not added it yet.</p> -->

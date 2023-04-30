@@ -25,6 +25,8 @@
 		background-color: darken($void-color, 0%);
 		width: 100%;
 
+		user-select: none;
+
 		nav {
 			margin: auto;
 			display: flex;
