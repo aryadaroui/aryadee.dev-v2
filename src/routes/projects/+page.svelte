@@ -9,6 +9,7 @@
 	import synthboy_thumb from './assets/synthboy.webp';
 	import bubble_thumb from './assets/bubble.webp';
 	import banner_report_thumb from './assets/banner_report.webp';
+	import jm_mod from './assets/jm_mod.webp';
 </script>
 
 <Header />
@@ -17,36 +18,50 @@
 
 	<h1>Projects</h1>
 
-	<ProjCard title="This blog" type="GitHub" img_src={blogv2_thumb} link_src="https://github.com/aryadaroui/aryadee.dev-v2">
-		<p>This is my blog is built mostly from scratch using SvelteKit.</p>
-	</ProjCard>
+	<p>Source, documentation, and other stuff for my projects.</p>
 
 	<ProjCard title="Filmic" type="Web app" img_src={filmic_thumb} link_src="/projects/filmic">
 		<p>Filmic is a photo editing web app. Its desktop version is in development</p>
 	</ProjCard>
 
-	<ProjCard title="Old blog" type="GitHub" img_src={blogv1_thumb} link_src="https://github.com/aryadaroui/aryadee.dev">
-		<p>Old version of my blog that I built with SvelteKit. Not as good as this one, and not as automated.</p>
+	<ProjCard title="This blog" type="GitHub" img_src={blogv2_thumb} link_src="https://github.com/aryadaroui/aryadee.dev-v2">
+		<p>The source for this blog, built with SvelteKit, Vite, and MDsveX.</p>
 	</ProjCard>
 
-	<ProjCard title="SynthBoy, digital synth plugin" type="GitHub" img_src={synthboy_thumb} link_src="https://github.com/aryadaroui/synthboy">
-		<p>Digital synth</p>
+	<ProjCard title="Old blog" type="GitHub" img_src={blogv1_thumb} link_src="https://github.com/aryadaroui/aryadee.dev">
+		<p>Old version of my blog, also built with SvelteKit and Vite.</p>
+	</ProjCard>
+
+	<ProjCard
+		title="SynthBoy, digital synth plugin"
+		type="GitHub"
+		img_src={synthboy_thumb}
+		link_src="https://github.com/aryadaroui/synthboy">
+		<p>Simple digital synthesizer VST. Can be used as a plugin in common DAWs.</p>
 	</ProjCard>
 
 	<ProjCard title="Logica" type="GitHub" img_src={blogv1_thumb} link_src="https://github.com/aryadaroui/aryadee.dev">
-		<p>a</p>
+		<p>A command-line, offline audio FX tool for resampling audio in rhythmic patterns.</p>
 	</ProjCard>
 
 	<ProjCard title="hud" type="GitHub" img_src={blogv1_thumb} link_src="https://github.com/aryadaroui/aryadee.dev">
-		<p>a</p>
+		<p>A command-line tool I made to manage deadlines. It's been abandoned since I started using Obsidian MD.</p>
 	</ProjCard>
 
 	<ProjCard title="bubble dark" type="GitHub" img_src={bubble_thumb} link_src="https://github.com/aryadaroui/aryadee.dev">
-		<p>a</p>
+		<p>My preferred color theme for Python and C</p>
 	</ProjCard>
 
-	<ProjCard title="Banner report" type="GitHub" img_src={banner_report_thumb} link_src="https://github.com/aryadaroui/banner-report">
-		<p>a</p>
+	<ProjCard
+		title="Banner report"
+		type="GitHub"
+		img_src={banner_report_thumb}
+		link_src="https://github.com/aryadaroui/banner-report">
+		<p>A LaTeX template for simple reports.</p>
+	</ProjCard>
+
+	<ProjCard title="Jazzmaster mod" type="GitHub" img_src={jm_mod} link_src="https://github.com/aryadaroui/jazzmaster-mod">
+		<p>PDF plan and LTspice schematic for a PBT parallel-series mod for a jazzmaster.</p>
 	</ProjCard>
 </main>
 <div class="light-background" />

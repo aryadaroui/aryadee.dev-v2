@@ -25,7 +25,7 @@
 <Header />
 <main>
 	<h1>Blog</h1>
-	<p>Articles, documents, and other random snippets.</p>
+	<p>Articles, documents, and other writing snippets.</p>
 
 
 	<!-- <ImgCap src="/src/posts/test_post/thumbnail.png" caption="wee woo" make_fit=true/> -->
@@ -101,7 +101,7 @@
 	main {
 		// font-size: 1.25em;
 		margin: auto;
-		max-width: 800px;
+		max-width: 1080px;
 		background-color: $gray-mid;
 		padding: 20px;
 	}
