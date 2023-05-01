@@ -84,6 +84,9 @@
 </div>
 
 <div id="tooltip" class="hint-tooltip">
+	<div class="hover-tooltip">
+		<p>Press any key to rotate.<br><code>S</code> and <code>D</code> to zoom and pan.</p>
+	</div>
 	<p>
 		<span class="blackground">
 			<span id="key-tip">[key] </span><span id="plus-tip"> + </span><span id="mouse-tip"> [mouse]</span>
@@ -235,12 +238,38 @@
 		align-items: center;
 	}
 
+	.hover-tooltip {
+		font-family: $sans;
+		font-size: 0.7em;
+
+		visibility: hidden;
+		width: 180px;
+		background-color: $background-color;
+		color: #fff;
+		text-align: center;
+
+		border-radius: 6px;
+		padding: 0.3em 0.4em;
+
+		bottom: 60px;
+
+		/* Position the tooltip text - see examples below! */
+		position: absolute;
+	}
+
+	#tooltip:hover .hover-tooltip {
+		visibility: visible;
+	}
+
+
 	#tooltip {
 		right: 62px;
 		bottom: 40px;
 		color: $navy-soft;
 		font-family: $mono;
 		position: absolute;
+		z-index: 2;
+
 		user-select: none;
 		@media only screen and (max-width: 700px) {
 			visibility: hidden;
