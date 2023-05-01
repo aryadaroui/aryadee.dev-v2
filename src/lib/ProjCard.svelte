@@ -1,6 +1,8 @@
 <script lang="ts">
 	export let img_src: string;
 	export let link_src: string;
+	export let title: string;
+	export let type: string;
 </script>
 
 <a href={link_src} id="ProjCard">
@@ -8,6 +10,10 @@
 	<img src={img_src} />
 	<!-- </div> -->
 	<div class="content-container">
+		<div class="title-container">
+			<h2>{title}</h2>
+			<aside>{type}</aside>
+		</div>
 		<slot />
 	</div>
 </a>
@@ -16,8 +22,8 @@
 	#ProjCard {
 		margin: 20px 0;
 		width: 100%;
-		min-height: 150px;
-		max-height: 300px;
+		min-height: 100px;
+		max-height: 200px;
 		display: flex;
 		flex-direction: row;
 		// justify-content: ;
@@ -56,14 +62,30 @@
 
 		.content-container {
 			padding: 10px 20px;
+			width: 100%;
 
 			// width: 70%;
 			// border: pink 1px solid;
 
-			:global(h2) {
-				margin-top: 0;
-				color: $cyan-mid;
-				font-weight: 200;
+			.title-container {
+				display: flex;
+				flex-direction: row;
+				justify-content: space-between;
+				align-items: center;
+				// border: pink 1px solid;
+
+				:global(h2) {
+					margin: 0;
+					color: $cyan-mid;
+					font-weight: 400;
+				}
+
+				aside {
+					margin: 0;
+					font-size: 0.9em;
+					font-weight: 200;
+					color: transparentize($cyan-hard, 0.1);
+				}
 			}
 
 			:global(p) {

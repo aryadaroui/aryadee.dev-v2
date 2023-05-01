@@ -17,63 +17,37 @@
 
 	<h1>Projects</h1>
 
-	<ProjCard img_src={blogv2_thumb} link_src="https://github.com/aryadaroui/aryadee.dev-v2">
-		<h2>This blog, GitHub</h2>
-		<p>
-			This is my blog is built mostly from scratch using SvelteKit.
-		</p>
+	<ProjCard title="This blog" type="GitHub" img_src={blogv2_thumb} link_src="https://github.com/aryadaroui/aryadee.dev-v2">
+		<p>This is my blog is built mostly from scratch using SvelteKit.</p>
 	</ProjCard>
 
-	<ProjCard img_src={filmic_thumb} link_src="/projects/filmic">
-		<h2>Filmic, web app</h2>
-		<p>
-			Filmic is a photo editing web app. Its desktop version is in development
-		</p>
+	<ProjCard title="Filmic" type="Web app" img_src={filmic_thumb} link_src="/projects/filmic">
+		<p>Filmic is a photo editing web app. Its desktop version is in development</p>
 	</ProjCard>
 
-	<ProjCard img_src={blogv1_thumb} link_src="https://github.com/aryadaroui/aryadee.dev">
-		<h2>Old blog -- GitHub</h2>
-		<p>
-			Old version of my blog that I built with SvelteKit. Not as good as this one, and not as automated.
-		</p>
+	<ProjCard title="Old blog" type="GitHub" img_src={blogv1_thumb} link_src="https://github.com/aryadaroui/aryadee.dev">
+		<p>Old version of my blog that I built with SvelteKit. Not as good as this one, and not as automated.</p>
 	</ProjCard>
 
-	<ProjCard img_src={synthboy_thumb} link_src="https://github.com/aryadaroui/synthboy">
-		<h2>SynthBoy, digital synth plugin -- GitHub</h2>
-		<p>
-			Digital synth
-		</p>
+	<ProjCard title="SynthBoy, digital synth plugin" type="GitHub" img_src={synthboy_thumb} link_src="https://github.com/aryadaroui/synthboy">
+		<p>Digital synth</p>
 	</ProjCard>
 
-	<ProjCard img_src={blogv1_thumb} link_src="https://github.com/aryadaroui/aryadee.dev">
-		<h2>Logica -- GitHub</h2>
-		<p>
-			a
-		</p>
+	<ProjCard title="Logica" type="GitHub" img_src={blogv1_thumb} link_src="https://github.com/aryadaroui/aryadee.dev">
+		<p>a</p>
 	</ProjCard>
 
-	<ProjCard img_src={blogv1_thumb} link_src="https://github.com/aryadaroui/aryadee.dev">
-		<h2>hud -- GitHub</h2>
-		<p>
-			a
-		</p>
+	<ProjCard title="hud" type="GitHub" img_src={blogv1_thumb} link_src="https://github.com/aryadaroui/aryadee.dev">
+		<p>a</p>
 	</ProjCard>
 
-	<ProjCard img_src={bubble_thumb} link_src="https://github.com/aryadaroui/aryadee.dev">
-		<h2>bubble dark -- GitHub</h2>
-		<p>
-			a
-		</p>
+	<ProjCard title="bubble dark" type="GitHub" img_src={bubble_thumb} link_src="https://github.com/aryadaroui/aryadee.dev">
+		<p>a</p>
 	</ProjCard>
 
-
-	<ProjCard img_src={banner_report_thumb} link_src="https://github.com/aryadaroui/banner-report">
-		<h2>Banner report -- GitHub</h2>
-		<p>
-			a
-		</p>
+	<ProjCard title="Banner report" type="GitHub" img_src={banner_report_thumb} link_src="https://github.com/aryadaroui/banner-report">
+		<p>a</p>
 	</ProjCard>
-
 </main>
 <div class="light-background" />
 <Footer line="false" />
@@ -120,7 +94,7 @@
 	main {
 		// font-size: 1.25em;
 		margin: auto;
-		max-width: 800px;
+		max-width: 700px;
 		background-color: $background-color;
 		padding: 20px;
 	}
