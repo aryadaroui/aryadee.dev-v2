@@ -109,8 +109,8 @@ If what you're looking for is outside of this scope, there are a few other tools
     padding: 10px;
   }
 
-  a:hover {
-    background-color: #00000000 !important;
+  a:hover:has(img) {
+    background-color: transparent !important;
   }
 
   a > img {

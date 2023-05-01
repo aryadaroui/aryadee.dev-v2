@@ -1,32 +1,85 @@
 <script>
 	import Header from '$lib/Header.svelte';
 	import Footer from '$lib/Footer.svelte';
+	import ProjCard from '$lib/ProjCard.svelte';
 
-
+	import blogv1_thumb from './assets/blogv1.webp';
+	import blogv2_thumb from './assets/blogv2.webp';
+	import filmic_thumb from './assets/filmic.webp';
+	import synthboy_thumb from './assets/synthboy.webp';
+	import bubble_thumb from './assets/bubble.webp';
+	import banner_report_thumb from './assets/banner_report.webp';
 </script>
 
 <Header />
 <main>
-
 	<title>projects - aryadee</title>
 
 	<h1>Projects</h1>
 
+	<ProjCard img_src={blogv2_thumb} link_src="https://github.com/aryadaroui/aryadee.dev-v2">
+		<h2>This blog, GitHub</h2>
+		<p>
+			This is my blog is built mostly from scratch using SvelteKit.
+		</p>
+	</ProjCard>
 
-	<p>
-		
-	</p>
+	<ProjCard img_src={filmic_thumb} link_src="/projects/filmic">
+		<h2>Filmic, web app</h2>
+		<p>
+			Filmic is a photo editing web app. Its desktop version is in development
+		</p>
+	</ProjCard>
 
-	<!-- <p>🚧 This is page is under construction as I update my site 🚧. You can access Filmic <a href="/projects/filmic">here</a>. If you are of the few people that know about Logica, I have not added it yet.</p> -->
+	<ProjCard img_src={blogv1_thumb} link_src="https://github.com/aryadaroui/aryadee.dev">
+		<h2>Old blog -- GitHub</h2>
+		<p>
+			Old version of my blog that I built with SvelteKit. Not as good as this one, and not as automated.
+		</p>
+	</ProjCard>
 
-	<code>24 Apr 2023</code>
+	<ProjCard img_src={synthboy_thumb} link_src="https://github.com/aryadaroui/synthboy">
+		<h2>SynthBoy, digital synth plugin -- GitHub</h2>
+		<p>
+			Digital synth
+		</p>
+	</ProjCard>
+
+	<ProjCard img_src={blogv1_thumb} link_src="https://github.com/aryadaroui/aryadee.dev">
+		<h2>Logica -- GitHub</h2>
+		<p>
+			a
+		</p>
+	</ProjCard>
+
+	<ProjCard img_src={blogv1_thumb} link_src="https://github.com/aryadaroui/aryadee.dev">
+		<h2>hud -- GitHub</h2>
+		<p>
+			a
+		</p>
+	</ProjCard>
+
+	<ProjCard img_src={bubble_thumb} link_src="https://github.com/aryadaroui/aryadee.dev">
+		<h2>bubble dark -- GitHub</h2>
+		<p>
+			a
+		</p>
+	</ProjCard>
+
+
+	<ProjCard img_src={banner_report_thumb} link_src="https://github.com/aryadaroui/banner-report">
+		<h2>Banner report -- GitHub</h2>
+		<p>
+			a
+		</p>
+	</ProjCard>
 
 </main>
 <div class="light-background" />
 <Footer line="false" />
 
 <style lang="scss">
-		div.light-background {
+	div.light-background {
 		background-color: $background-color;
 		width: 100vw;
 		height: 100vh;
@@ -56,7 +109,7 @@
 		flex-grow: 1;
 		/* flex-basis: 0; */
 		position: relative;
-		height: 200px;
+		// height: 200px;
 		display: flex;
 		padding: 2px;
 	}
@@ -67,7 +120,7 @@
 	main {
 		// font-size: 1.25em;
 		margin: auto;
-		max-width: 1080px;
+		max-width: 800px;
 		background-color: $background-color;
 		padding: 20px;
 	}

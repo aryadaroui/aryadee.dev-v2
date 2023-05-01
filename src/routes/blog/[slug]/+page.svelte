@@ -59,6 +59,19 @@
 
 	$code-color: hsl(230, 10%, 7%);
 
+	// li a {
+	// 	color: $link-color;
+	// 	// border: #e8d16f 1px solid;
+	// 	transition: background-color 0.2s ease-in-out;
+	// }
+
+	// li a:hover {
+	// 	// background-color: rgba($link-background, 0.8);
+	// 	background-color: pink;
+	// 	padding: 0.2rem;
+	// 	margin: -0.2rem;
+	// }
+
 	div.light-background {
 		background-color: darken($void-color, 0%);
 		width: 100vw;
@@ -565,7 +578,6 @@
 				text-align: left;
 			}
 		}
-
 
 		table th,
 		table td {

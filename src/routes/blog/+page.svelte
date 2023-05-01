@@ -101,7 +101,7 @@
 	main {
 		// font-size: 1.25em;
 		margin: auto;
-		max-width: 1080px;
+		max-width: 800px;
 		background-color: $gray-mid;
 		padding: 20px;
 	}

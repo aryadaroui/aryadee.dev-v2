@@ -23,6 +23,7 @@
 		// background-color: $void-color;
 		color: rgba($tan-soft, 0.8);
 		height: 100px;
+		user-select: none;
 		// width: 100%;
 
 		// position: absolute;
