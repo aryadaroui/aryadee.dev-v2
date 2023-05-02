@@ -18,7 +18,7 @@
 
 	<h1>Projects</h1>
 
-	<p>Source, documentation, and other stuff for my projects.</p>
+	<p>Source, docs, executables, and other stuff for some of my personal projects.</p>
 
 	<ProjCard title="Filmic" type="Web app" img_src={filmic_thumb} link_src="/projects/filmic">
 		<p>Filmic is a photo editing web app. Its desktop version is in development</p>

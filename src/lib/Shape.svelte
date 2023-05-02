@@ -26,7 +26,7 @@
 	#shape {
 		z-index: -1;
 
-		animation: 3s ease-in fade-in;
+		animation: 4s ease-in fade-in;
 		// background-color: $gray-mid;
 	}
 
@@ -43,10 +43,10 @@
 	}
 
 	@keyframes fade-in {
-		from {
+		0% {
 			opacity: 0;
 		}
-		to {
+		100% {
 			opacity: 1;
 		}
 	}
