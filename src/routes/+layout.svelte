@@ -22,7 +22,7 @@
 					user_data['fingerprint'] = result.visitorId;
 					user_data['components'] = result.components;
 					user_data['confidence'] = result.confidence.score;
-					user_data['page'] = $page.url.pathname;
+					user_data['page_start'] = $page.url.pathname;
 					promise_resolve(true);
 				});
 			})

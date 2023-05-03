@@ -75,9 +75,6 @@
 		art_thumb[path.split('/').pop().split('.')[0]] = module.default;
 	});
 
-	console.log('art thumb import eager', import.meta.glob('./assets/art/thumbnails/*.webp', { eager: true, as: 'url' }));
-	console.log('art thumb import', import.meta.glob('./assets/art/thumbnails/*.webp', { eager: true }));
-
 	const test_modules = import.meta.glob('./assets/art/thumbnails/*.webp');
 
 	for (const path in test_modules) {
@@ -86,21 +83,8 @@
 		});
 	}
 
-	// console.log("art_thumb", art_thumb);
 
 	Object.keys(art_image_sizes).forEach((key) => {
-		// console.log('key: ', key);
-		// console.log('art_gallery item: ', {
-		// 	src: art_full[key],
-		// 	width: art_image_sizes[key].width,
-		// 	height: art_image_sizes[key].height,
-		// 	cropped: true,
-		// 	// @ts-ignore: we dont need the width and height. it adds it to the HTML itself and im using CSS rules anyway
-		// 	thumbnail: {
-		// 		src: art_thumb[key],
-		// 	},
-		// });
-
 		art_gallery.push({
 			src: art_full[key],
 			width: art_image_sizes[key].width,

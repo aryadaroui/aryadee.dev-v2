@@ -20,13 +20,10 @@
 	</p>
 
 	<p>
-		This website and Filmic Desktop may log basic user analytics like IP, platform, and browser. I do not share or release this
-		data.
+		This website and Filmic Desktop may log user data like IP, and browser information. This is used for visitor ID and analytics. I do not share or release this data in an identifiable manner, but I may share the statistics publicly.
 	</p>
 
-	<p>
-		Filmic does not share your data without your consent, e.g. you uploading a custom preset to share publicly.
-	</p>
+	<p>Filmic does not share your data without your consent, e.g. you uploading a custom preset to share publicly.</p>
 
 	<h2>Copyright</h2>
 
@@ -38,21 +35,21 @@
 	</p>
 
 	<p>
-		<u>Unless otherwise stated</u>, images and audio content shared on this website belong to me, and you may not (i.e., you
-		are not allowed to) redistribute them in any manner. You may download them for local, personal use, like for a desktop
-		wallpaper or to test against code examples from my blog.
+		<u>Unless otherwise stated</u>, images and audio content shared on this website belong to me, and you may not (i.e., you are
+		not allowed to) redistribute them in any manner. You may download them for local, personal use, like for a desktop wallpaper
+		or to test against code examples from my blog.
 	</p>
 
 	<p>
-		<u>Unless otherwise stated</u>, written content is allowed to be reworked and reused. Attribution is appreciated, but
-		not necesarry
+		<u>Unless otherwise stated</u>, written content is allowed to be reworked and reused. Attribution is appreciated, but not
+		necesarry
 	</p>
 
 	<h3>Filmic</h3>
 
 	<p>
-		What you make with Filmic belongs to you. I bear no responsibility or ownership for content you
-		create and export with Filmic. Attributing Filmic is appreciated, but not necessary.
+		What you make with Filmic belongs to you. I bear no responsibility or ownership for content you create and export with
+		Filmic. Attributing Filmic is appreciated, but not necessary.
 	</p>
 
 	<h2>Contact</h2>
