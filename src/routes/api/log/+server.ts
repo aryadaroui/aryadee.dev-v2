@@ -1,4 +1,3 @@
-// const SECRET = import.meta.env.SECRET_API_KEY_DUMMY
 import { VITE_SECRET_DUMMY_KEY } from '$env/static/private';
 
 export async function POST({ request, getClientAddress }) {
@@ -6,7 +5,8 @@ export async function POST({ request, getClientAddress }) {
 		"https://aryadee.dev",
 		"http://aryadee.dev",
 		"http://localhost:5173",
-		"http://localhost:4173"
+		"http://localhost:4173",
+		"https://aryadee-dev-v2.vercel.app"
 	];
 	const origin = request.headers.get("Origin");
 
