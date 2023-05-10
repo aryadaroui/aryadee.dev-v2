@@ -3,15 +3,13 @@ import { PUBLIC_MOUNT_LOG_TOKEN } from "$env/static/public";
 import { UAParser } from 'ua-parser-js';
 
 export async function POST({ request }) {
-	const parse = new UAParser('Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36');
-
 	const origin = request.headers.get("Origin");
 	const token = request.headers.get("Authorization");
 
 	// this is less about security and more about preventing spam as this endpoint only exists for pushing logs
-	// technically, these could be 401s but I don't need to give away info about this endpoint. my use only
+	// technically, these could be 401s but I don't need to give away info about this endpoint. it's for my use only
 	if (!token) {
-		console.warn('api/mount-log POST got invalid auth token: ', token);
+		console.warn('api/mount-log POST missing auth token: ', token);
 		return new Response(JSON.stringify({ message: "forbidden" }), { status: 403 });
 	} else if (token !== PUBLIC_MOUNT_LOG_TOKEN) {
 		console.warn('api/mount-log POST got invalid auth token: ', token);
@@ -30,8 +28,8 @@ export async function POST({ request }) {
 		const client_data = {
 			fingerprint: data.fingerprint,
 			confidence: data.confidence,
-			browser: parse.getBrowser(),
-			os: parse.getOS(),
+			browser: parsed_UA.getBrowser(),
+			os: parsed_UA.getOS(),
 			device: device,
 			visit_id: data.visit_id,
 		};
