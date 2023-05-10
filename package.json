@@ -43,7 +43,7 @@
 		"@types/d3": "^7.4.0",
 		"@types/fingerprintjs": "^0.5.28",
 		"@types/three": "^0.149.0",
-		"@vercel/kv": "^0.1.2",
+		"@upstash/redis": "^1.20.6",
 		"aplayer": "^1.10.1",
 		"d3": "^7.8.4",
 		"d3-color": "^3.1.0",
