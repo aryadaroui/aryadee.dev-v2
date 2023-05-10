@@ -1,7 +1,7 @@
 import { origin_allowlist } from "../origin_allowlist.json";
 import { PUBLIC_MOUNT_LOG_TOKEN } from "$env/static/public";
 
-export async function POST({ request, locals }) {
+export async function POST({ request }) {
 
 	const origin = request.headers.get("Origin");
 	const token = request.headers.get("Authorization");
@@ -27,7 +27,7 @@ export async function POST({ request, locals }) {
 			visit_id: data.visit_id,
 		};
 
-		if (locals.ip_address !== "::1") {
+		if (!origin.includes('localhost')) {
 			// console.log('api/log-mount POST got data: ', data);
 			// write to DB visits table
 		} else {

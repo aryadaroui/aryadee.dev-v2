@@ -28,15 +28,8 @@ function dir_and_slug(url_string: string) {
 	return { directory, pageSlug };
 }
 
-/**Gives the path of a URL only, i.e. removes the domain. `apple.com/product` -> `/product`*/
-function path_only(url_string: string) {
-	return url_string.replace(/^.*\/\/[^\/]+/, '')
-}
-
 export async function handle({ event, resolve }) {
-
-
-
+	console.log('handle called!');
 	if (dir_and_slug(event.request.url).directory !== 'api') { // normal page visit
 		const user_agent = new UAParser(event.request.headers.get('user-agent'));
 		const device = user_agent.getDevice();
@@ -47,7 +40,7 @@ export async function handle({ event, resolve }) {
 			browser: user_agent.getBrowser().name,
 			os: user_agent.getOS().name,
 			referrer: event.request.headers.get('referer'),
-			page: path_only(event.request.url),
+			page: event.url.pathname,
 			ip_address: event.getClientAddress(),
 			timestamp: new Date().toISOString(),
 			visit_id: uuid(),
@@ -55,12 +48,11 @@ export async function handle({ event, resolve }) {
 
 		console.log('hooks handle page got data:', visit);
 
-		if (visit.ip_address !== "::1") {
 
+		if (visit.ip_address !== "::1") {
 			// write to DB table visits
 			// const dynamoDB = new DynamoDB({region: 'us-west-1'});
-		}
-		else {
+		} else {
 			console.info("\x1b[35m%s\x1b[0m", 'hooks handle: localhost detected; not writing to DB');
 		}
 		event.locals.timestamp = visit.timestamp;

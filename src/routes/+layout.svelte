@@ -3,6 +3,7 @@
 	import { onMount } from 'svelte';
 
 	import fingerprinter from '@fingerprintjs/fingerprintjs';
+  import { afterNavigate } from '$app/navigation';
 
 	export let data; // has visit id
 
@@ -27,6 +28,13 @@
 			});
 		});
 	});
+
+	// afterNavigate(async () => {
+	// 	fetch('/api/nav', {
+	// 		method: 'POST',
+
+	// 	})
+	// })
 </script>
 
 <slot />
