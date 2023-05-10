@@ -1,62 +1,30 @@
 <script lang="ts">
+	import { PUBLIC_MOUNT_LOG_TOKEN } from '$env/static/public';
 	import { onMount } from 'svelte';
-	import { afterNavigate } from '$app/navigation';
-	import { page } from '$app/stores';
 
 	import fingerprinter from '@fingerprintjs/fingerprintjs';
-	// import type { UnknownComponents,  } from '@fingerprintjs/fingerprintjs';
 
-	export let data;
-
-	let client_data = {};
-
-	var promise_resolve, promise_reject;
-	let is_fingerprinted = new Promise((resolve, reject) => {
-		promise_resolve = resolve;
-		promise_reject = reject;
-	});
+	export let data; // has visit id
 
 	onMount(async () => {
-		const fpPromise = fingerprinter.load({ monitoring: false });
-		// console.log("mounted data: ", data.visit_id)
+		fingerprinter.load({ monitoring: false }).then((fp) => {
+			fp.get().then((result) => {
+				let client_data = {
+					fingerprint: result.visitorId,
+					confidence: result.confidence.score,
+					user_agent: navigator.userAgent,
+					visit_id: data.visit_id,
+					// page_start: $page.url.pathname,
+				};
 
-		fpPromise
-			.then((fp) => {
-				fp.get().then((result) => {
-					client_data['fingerprint'] = result.visitorId;
-					client_data['confidence'] = result.confidence.score;
-					client_data['platform'] = navigator.platform
-					client_data['browser'] = navigator.userAgent;
-					// user_data['page_start'] = $page.url.pathname;
-					promise_resolve(true);
-				});
-			})
-			.catch((err) => {
-				console.error(err);
-				promise_reject(false);
+				fetch('/api/mount-log', {
+					method: 'POST',
+					headers: {
+						Authorization: PUBLIC_MOUNT_LOG_TOKEN,
+					},
+					body: JSON.stringify(client_data),
+				}).then((response) => response.json());
 			});
-	});
-
-	afterNavigate(async () => {
-		is_fingerprinted.then(() => {
-			client_data['page'] = $page.url.pathname;
-			// client_data['referer'] = $page.url.searchParams.get('referer');
-
-			fetch('/api/log', {
-				method: 'POST',
-				headers: {
-					'Content-Type': 'application/json',
-					Authorization: 'SPAGHETTI',
-				},
-				body: JSON.stringify(client_data),
-			})
-				.then((response) => response.json())
-				.then((data) => {
-					console.log('Success:', data);
-				})
-				.catch((error) => {
-					console.error('Error:', error);
-				});
 		});
 	});
 </script>

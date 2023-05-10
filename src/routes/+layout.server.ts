@@ -1,10 +1,10 @@
 import { Redis } from '@upstash/redis';
 
-import { VITE_REDIS_URL, VITE_REDIS_TOKEN } from '$env/static/private';
+import { REDIS_URL, REDIS_TOKEN } from '$env/static/private';
 
 const redis = new Redis({
-	url: VITE_REDIS_URL,
-	token: VITE_REDIS_TOKEN,
+	url: REDIS_URL,
+	token: REDIS_TOKEN,
 });
 
 type IPLookupCalls = {
@@ -42,7 +42,7 @@ async function write_visitor(locals: App.Locals) {
 	return redis.hgetall('ip_lookup_calls').then((request) => {
 		const ip_lookup_calls = request as IPLookupCalls;
 
-		if (ip_lookup_calls !== null) { // it exists
+		if (ip_lookup_calls !== null) { // entry exists
 			// update value for current time after relaxing
 			// this uses logic from TODO: link to blog post
 			ip_lookup_calls.value = floor(ip_lookup_calls.value - ms_to_min(Date.now() - new Date(ip_lookup_calls.timestamp).getTime()), 0);

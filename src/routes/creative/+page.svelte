@@ -75,15 +75,6 @@
 		art_thumb[path.split('/').pop().split('.')[0]] = module.default;
 	});
 
-	const test_modules = import.meta.glob('./assets/art/thumbnails/*.webp');
-
-	for (const path in test_modules) {
-		test_modules[path]().then((mod) => {
-			console.log("import promise", path, mod);
-		});
-	}
-
-
 	Object.keys(art_image_sizes).forEach((key) => {
 		art_gallery.push({
 			src: art_full[key],
