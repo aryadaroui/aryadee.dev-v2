@@ -1,0 +1,9 @@
+{
+	"origin_allowlist": [
+		"https://aryadee.dev",
+		"http://aryadee.dev",
+		"http://localhost:5173",
+		"http://localhost:4173",
+		"https://aryadee-dev-v2.vercel.app"
+	]
+}

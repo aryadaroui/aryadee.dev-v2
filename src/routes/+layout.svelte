@@ -3,9 +3,12 @@
 	import { afterNavigate } from '$app/navigation';
 	import { page } from '$app/stores';
 
-	import FingerprintJS from '@fingerprintjs/fingerprintjs';
+	import fingerprinter from '@fingerprintjs/fingerprintjs';
+	// import type { UnknownComponents,  } from '@fingerprintjs/fingerprintjs';
 
-	let user_data = {};
+	export let data;
+
+	let client_data = {};
 
 	var promise_resolve, promise_reject;
 	let is_fingerprinted = new Promise((resolve, reject) => {
@@ -14,15 +17,17 @@
 	});
 
 	onMount(async () => {
-		const fpPromise = FingerprintJS.load({ monitoring: false });
+		const fpPromise = fingerprinter.load({ monitoring: false });
+		// console.log("mounted data: ", data.visit_id)
 
 		fpPromise
 			.then((fp) => {
 				fp.get().then((result) => {
-					user_data['fingerprint'] = result.visitorId;
-					user_data['components'] = result.components;
-					user_data['confidence'] = result.confidence.score;
-					user_data['page_start'] = $page.url.pathname;
+					client_data['fingerprint'] = result.visitorId;
+					client_data['confidence'] = result.confidence.score;
+					client_data['platform'] = navigator.platform
+					client_data['browser'] = navigator.userAgent;
+					// user_data['page_start'] = $page.url.pathname;
 					promise_resolve(true);
 				});
 			})
@@ -34,16 +39,16 @@
 
 	afterNavigate(async () => {
 		is_fingerprinted.then(() => {
-			user_data['page_nav'] = $page.url.pathname;
-			console.log('Sending data to endpoint: ', user_data);
+			client_data['page'] = $page.url.pathname;
+			// client_data['referer'] = $page.url.searchParams.get('referer');
 
 			fetch('/api/log', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',
-					// 'Authorization': 'DUMMY TOKEN'
+					Authorization: 'SPAGHETTI',
 				},
-				body: JSON.stringify(user_data),
+				body: JSON.stringify(client_data),
 			})
 				.then((response) => response.json())
 				.then((data) => {

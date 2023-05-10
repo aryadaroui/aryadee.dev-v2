@@ -1,0 +1,18 @@
+%%{init: {'theme':'dark'}}%%
+%% @backgroundColor(black)
+
+sequenceDiagram
+    participant client
+	box midnightblue server
+    participant hook
+	participant load
+    participant api/log
+	end
+	participant DB
+    
+    client 		->>	hook: page request
+	hook 		->>	DB: visitor data
+    hook		->>	client: page data & visit_uuid
+	load 		->> client: session_uuid
+	client 		->>	api/log: POST fingerprint & visit_uuid & session_uuid
+	api/log 	->>	DB: fingerprint & uuid

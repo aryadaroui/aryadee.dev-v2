@@ -22,8 +22,8 @@ const fpPromise = FingerprintJS.load( {monitoring: false} );
 // 		user_id: string;
 
 // 		constructor () {
-// 			this.browser = navigator.userAgent;
-// 			this.platform = navigator.platform;
+			// this.browser = navigator.userAgent;
+			// this.platform = navigator.platform;
 // 			this.screen_width = window.screen.width;
 // 			this.screen_height = window.screen.height;
 // 			this.color_depth = window.screen.colorDepth;

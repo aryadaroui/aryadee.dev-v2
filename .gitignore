@@ -5,6 +5,7 @@ node_modules
 /package
 .env
 .env.*
+db schema.mindnode
 !.env.example
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
