@@ -1,41 +1,49 @@
+import { DynamoDB } from '@aws-sdk/client-dynamodb';
 import { v4 as uuid } from 'uuid';
 
+import { UAParser } from 'ua-parser-js';
 
-// interface Visitor {
-// 	ip: {
-// 		ip_address: string;
-// 		isp: string;
-// 		mobile: boolean;
-// 		proxy: boolean;
-// 		geo: {
-// 			continent: string;
-// 			country: string;
-// 			region_name: string;
-// 			city: string;
-// 			district: string;
-// 			zip: string;
-// 			lat: number;
-// 			lon: number;
-// 		};
-// 	};
-// 	referrer: string;
-// 	fingerprint: string;
-// 	timestamp: string; // ISO 8601 format - sort key for DB
-// 	visit_uuid: string // primary key for DB
-// }
+
+interface Visit {
+	device: {
+		vendor: string;
+		model: string;
+		type: string;
+	};
+	browser: string;
+	os: string;
+	referrer: string;
+	ip_address: string;
+	timestamp: string; // ISO 8601 format - sort key for DB
+	visit_id: string; // primary key for DB
+}
 
 export async function handle({ event, resolve }) {
-	const ip_address = event.getClientAddress();
-	const timestamp = new Date().toISOString();
-	const referrer = event.request.headers.get('referer');
-	const visit_id = uuid();
+	const user_agent = new UAParser(event.request.headers.get('user-agent'));
+	const device = user_agent.getDevice();
+	if (device.type === undefined) device.type = 'desktop'; // assume desktop if not specified
 
-	// write to DB table Visits
+	const visit = {
+		device: device,
+		browser: user_agent.getBrowser().name,
+		os: event.request.headers.get('sec-ch-ua-platform'),
+		referrer: event.request.headers.get('referer'),
+		ip_address: event.getClientAddress(),
+		timestamp: new Date().toISOString(),
+		visit_id: uuid(),
+	} satisfies Visit;
 
-	event.locals.ip_address = ip_address;
-	event.locals.timestamp = timestamp;
-	event.locals.visit_id = visit_id;
 
+
+
+	// write to DB table visits
+
+	// const dynamoDB = new DynamoDB({region: 'us-west-1'});
+
+
+	event.locals.ip_address = visit.ip_address;
+	event.locals.timestamp = visit.timestamp;
+	event.locals.visit_id = visit.visit_id;
 	const response = await resolve(event);
 	return response;
 }

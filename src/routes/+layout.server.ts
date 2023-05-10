@@ -24,7 +24,7 @@ async function write_visitor(locals: App.Locals) {
 	async function lookup_and_write(locals: App.Locals, ip_lookup_calls: IPLookupCalls) {
 		// const ip_lookup = fetch(`http://ip-api.com/json/${locals.ip_address}?fields=1689337`);
 
-		// MUST DO: write to DB table UniqueVisitors
+		// MUST DO: write to DB table unique_IPs
 
 		// update/add redis hash key
 		ip_lookup_calls.value += 1;
@@ -72,17 +72,23 @@ export async function load({ locals }) {
 
 	// // We write visitor to DB, but we don't want to write same vistior repeatedly
 	// check if they've visited recently
-	// redis.get(locals.ip_address).then((value) => {
-	// 	if (value) {
-	// 		// they already visited within the last 24 hours
-	// 		// do nothing
-	// 		console.info('recent visitor: ', locals.ip_address)
-	// 	} else {
-	// 		write_visitor(locals).then(() => {
-	// 			redis.set(locals.ip_address, new Date().toISOString(), { ex: RECENT_IP_TIMER });
-	// 		});
-	// 	}
-	// });
+	if (locals.ip_address !== "::1") {
+		redis.get(locals.ip_address).then((value) => {
+			if (value) {
+				// they already visited within the last 24 hours
+				// do nothing
+				console.info('recent visitor: ', locals.ip_address);
+			} else {
+				write_visitor(locals).then(() => {
+					redis.set(locals.ip_address, new Date().toISOString(), { ex: RECENT_IP_TIMER });
+				});
+			}
+		});
+	}
+	else {
+		console.info("\x1b[35m%s\x1b[0m", '--localhost detected; not writing to DB--');
+	}
+
 	return {
 		visit_id: locals.visit_id,
 	};

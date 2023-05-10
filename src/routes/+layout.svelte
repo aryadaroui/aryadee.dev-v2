@@ -9,10 +9,9 @@
 	onMount(async () => {
 		fingerprinter.load({ monitoring: false }).then((fp) => {
 			fp.get().then((result) => {
-				let client_data = {
+				let client_mount = {
 					fingerprint: result.visitorId,
 					confidence: result.confidence.score,
-					user_agent: navigator.userAgent,
 					visit_id: data.visit_id,
 					// page_start: $page.url.pathname,
 				};
@@ -22,7 +21,8 @@
 					headers: {
 						Authorization: PUBLIC_MOUNT_LOG_TOKEN,
 					},
-					body: JSON.stringify(client_data),
+					body: JSON.stringify(client_mount),
+					keepalive: false,
 				}).then((response) => response.json());
 			});
 		});
