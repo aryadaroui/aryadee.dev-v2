@@ -86,7 +86,7 @@ export async function load({ locals }) {
 		});
 	}
 	else {
-		console.info("\x1b[35m%s\x1b[0m", '--localhost detected; not writing to DB--');
+		console.info("\x1b[35m%s\x1b[0m", 'layout load: localhost detected; not writing to DB');
 	}
 
 	return {
