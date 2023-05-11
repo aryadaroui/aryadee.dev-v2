@@ -1,5 +1,23 @@
 import { origin_allowlist } from "../origin_allowlist.json";
-import {  PUBLIC_LOG_TOKEN } from "$env/static/public";
+import { PUBLIC_LOG_TOKEN } from "$env/static/public";
+import { AWS_ACCESS_KEY, AWS_SECRET_ACCESS_KEY } from '$env/static/private';
+
+import { DynamoDB } from '@aws-sdk/client-dynamodb';
+import { marshall } from '@aws-sdk/util-dynamodb';
+
+const ddb = new DynamoDB({
+	region: 'us-west-1',
+	credentials: {
+		accessKeyId: AWS_ACCESS_KEY,
+		secretAccessKey: AWS_SECRET_ACCESS_KEY,
+	},
+});
+
+const MARSHALL_OPTS = {
+	convertClassInstanceToMap: true,
+	convertEmptyValues: false, // converts empty strings, binary buffers, and sets to `null`
+	removeUndefinedValues: true // removes undefined values from final object
+};
 
 export async function POST({ request }) {
 
@@ -27,8 +45,17 @@ export async function POST({ request }) {
 		};
 
 		if (!origin.includes('localhost')) {
-			// console.log('api/log-mount POST got data: ', data);
+			// console.log('api/mount-log POST got client_mount:', client_mount);
 			// write to DB visits table with primary key of visit_id, add new key client_mount IFF visit_id exists
+
+			ddb.putItem({
+				TableName: 'visits',
+				Item: marshall(client_mount, MARSHALL_OPTS),
+				ConditionExpression: 'attribute_exists(visit_id)',
+			}).catch((err) => {
+				console.error("Error writing to visits table with `client_mount` item: ", client_mount, "\n┗>AWS error:", err);
+			});
+
 		} else {
 			console.info("\x1b[35m%s\x1b[0m", 'mount-log POST(): localhost detected; not writing to DB');
 		}
