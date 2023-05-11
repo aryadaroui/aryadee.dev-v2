@@ -5,6 +5,8 @@ import { error } from '@sveltejs/kit';
 
 // }
 
+// this is extra slow for some reason
+
 export async function load() {
 	// error handling for imported file
 	// TODO: check to see if route exists, to throw 404 or 500

@@ -1,11 +1,13 @@
 import { origin_allowlist } from "../origin_allowlist.json";
-import { PUBLIC_LOG_TOKEN } from "$env/static/public";
+import { PUBLIC_LOG_TOKEN, PUBLIC_DEV_FLAG } from "$env/static/public";
 import { AWS_ACCESS_KEY, AWS_SECRET_ACCESS_KEY } from '$env/static/private';
 
-import { DynamoDB } from '@aws-sdk/client-dynamodb';
+import { DynamoDBClient } from '@aws-sdk/client-dynamodb';
+import { DynamoDBDocumentClient, UpdateCommand } from "@aws-sdk/lib-dynamodb";
+
 import { marshall } from '@aws-sdk/util-dynamodb';
 
-const ddb = new DynamoDB({
+const client = new DynamoDBClient({
 	region: 'us-west-1',
 	credentials: {
 		accessKeyId: AWS_ACCESS_KEY,
@@ -13,11 +15,13 @@ const ddb = new DynamoDB({
 	},
 });
 
-const MARSHALL_OPTS = {
-	convertClassInstanceToMap: true,
-	convertEmptyValues: false, // converts empty strings, binary buffers, and sets to `null`
-	removeUndefinedValues: true // removes undefined values from final object
-};
+const ddb = DynamoDBDocumentClient.from(client);
+
+// const MARSHALL_OPTS = {
+// 	convertClassInstanceToMap: true,
+// 	convertEmptyValues: false, // converts empty strings, binary buffers, and sets to `null`
+// 	removeUndefinedValues: true // removes undefined values from final object
+// };
 
 export async function POST({ request }) {
 	const origin = request.headers.get("Origin");
@@ -40,22 +44,32 @@ export async function POST({ request }) {
 		const new_page = {
 			page: data.page,
 			timestamp: new Date().toISOString()
-		}
+		};
 
-		if (!origin.includes('localhost')) {
+		if (PUBLIC_DEV_FLAG) {
 			// console.log('api/mount-log POST got new_page:', new_page);
 
-			// console.log('api/log-mount POST got data: ', data);
-			// write to DB visits table
-			// with primary key of visit_id, append to page list with page name and timestamp IFF visit_id exists
+			// console.log('api/nav-log POST() called: ');
+			const params = {
+				TableName: 'visits',
+				Key: {
+					'visit_id': data.visit_id,
+				},
+				UpdateExpression: 'set #pages = list_append(#pages, :new_page)',
+				ExpressionAttributeNames: {
+					'#pages': 'pages',
+				},
+				ExpressionAttributeValues: {
+					':new_page': [new_page],
+				},
+				ReturnValues: 'ALL_NEW',
+			};
 
-			// ddb.putItem({
-			// 	TableName: 'visits',
-			// 	Item: marshall(new_page, MARSHALL_OPTS),
-			// 	ConditionExpression: 'attribute_exists(visit_id)',
-			// }).catch((err) => {
-			// 	console.error("Error writing to visits table with `client_mount` item: ", new_page, "\n┗>AWS error:", err);
-			// });
+			// Execute the update command
+			ddb.send(new UpdateCommand(params))
+				.catch(err => {
+					console.error("\x1b[31m%s\x1b[0m", "Error updating visits table when appending `pages` with `new_page` item: ", new_page, "\n┗>on primary key `visit_id`:", data.visit_id, "\n┗>AWS error:", err);
+				});
 		} else {
 			console.info("\x1b[35m%s\x1b[0m", 'nav-log POST(): localhost detected; not writing to DB');
 		}

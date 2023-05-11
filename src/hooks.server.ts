@@ -1,4 +1,6 @@
-import { DynamoDB } from '@aws-sdk/client-dynamodb';
+import { DynamoDBClient } from '@aws-sdk/client-dynamodb';
+import { DynamoDBDocumentClient, PutCommand } from "@aws-sdk/lib-dynamodb";
+
 import { marshall } from '@aws-sdk/util-dynamodb';
 
 import { v4 as uuid } from 'uuid';
@@ -6,6 +8,7 @@ import { UAParser } from 'ua-parser-js';
 
 import { Redis } from '@upstash/redis';
 import { REDIS_URL, REDIS_TOKEN, AWS_ACCESS_KEY, AWS_SECRET_ACCESS_KEY } from '$env/static/private';
+import { PUBLIC_DEV_FLAG} from '$env/static/public';
 import type { RequestEvent } from '@sveltejs/kit';
 
 
@@ -14,7 +17,7 @@ const redis = new Redis({
 	token: REDIS_TOKEN,
 });
 
-const ddb = new DynamoDB({
+const client = new DynamoDBClient({
 	region: 'us-west-1',
 	credentials: {
 		accessKeyId: AWS_ACCESS_KEY,
@@ -22,11 +25,14 @@ const ddb = new DynamoDB({
 	},
 });
 
-const MARSHALL_OPTS = {
-	convertClassInstanceToMap: true,
-	convertEmptyValues: false, // converts empty strings, binary buffers, and sets to `null`
-	removeUndefinedValues: true // removes undefined values from final object
-};
+const ddb = DynamoDBDocumentClient.from(client);
+
+
+// const MARSHALL_OPTS = {
+// 	convertClassInstanceToMap: true,
+// 	convertEmptyValues: false, // converts empty strings, binary buffers, and sets to `null`
+// 	removeUndefinedValues: true // removes undefined values from final object
+// };
 
 function dir_and_slug(url_string: string) {
 	const url = new URL(url_string);
@@ -101,15 +107,16 @@ async function write_unique_IP(visit_id: string, ip_address: string, timestamp: 
 					ip_address,
 				};
 
+				// TODO: update with the document client package. much easier to use
 				// write unique_IP to dynamoDB
 				ddb.putItem({
 					TableName: 'unique_IPs',
-					Item: marshall(unique_ip, MARSHALL_OPTS),
+					Item: marshall(unique_ip),
 				}).catch((err) => {
 					console.error("Error writing to unique_IPs table with `unique_ip` item: ", unique_ip, "\n┗>AWS error:", err);
 				});
 			}).catch((err) => {
-				console.error("Error looking up IP address:", ip_address, "\n┗>fetch error:", err);
+				console.error("\x1b[31m%s\x1b[0m", "Error looking up IP address:", ip_address, "\n┗>fetch error:", err);
 			});
 
 
@@ -211,6 +218,12 @@ async function write_visit(event: RequestEvent, ip_address: string, timestamp: s
 		visit_id: event.locals.visit_id,
 	};
 
+	ddb.send(new PutCommand({
+		TableName: 'visits',
+		Item: visit
+	}))
+
+
 	// write to DB table visits
 	// ddb.putItem({
 	// 	TableName: 'visits',
@@ -231,12 +244,13 @@ export async function handle({ event, resolve }) {
 	// const ip_address = "1111"
 
 	if (dir_and_slug(event.request.url).directory !== 'api') { // not an API request
-		if (ip_address !== "::1") {
+		console.log("hook handle() routing")
+		if (PUBLIC_DEV_FLAG) {
 			// write to visits table
 			// write_visit(event, ip_address, timestamp);
 
 			// write to unique_IPs table
-			write_unique_IP(event.locals.visit_id, ip_address, timestamp);
+			// write_unique_IP(event.locals.visit_id, ip_address, timestamp);
 		} else {
 			console.info("\x1b[35m%s\x1b[0m", 'hooks handle(): localhost detected; not writing to DB');
 		}

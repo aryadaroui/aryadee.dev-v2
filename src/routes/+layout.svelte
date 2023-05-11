@@ -8,6 +8,8 @@
 
 	export let data; // has visit id
 
+	let pre_navigated = false; // to prevent logging on first load
+
 	onMount(async () => {
 		fingerprinter.load({ monitoring: false }).then((fp) => {
 			fp.get().then((result) => {
@@ -30,7 +32,9 @@
 	});
 
 	afterNavigate(async () => {
-		fetch('/api/nav-log', {
+
+		if (pre_navigated) {
+			fetch('/api/nav-log', {
 			method: 'POST',
 			headers: {
 				Authorization: PUBLIC_LOG_TOKEN,
@@ -40,6 +44,9 @@
 				page: $page.url.pathname,
 			}),
 		});
+		}
+
+		pre_navigated = true;
 	});
 </script>
 
