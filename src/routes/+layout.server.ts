@@ -70,22 +70,21 @@ async function write_visitor(locals: App.Locals) {
 
 export async function load({ locals }) {
 
-	// // We write visitor to DB, but we don't want to write same vistior repeatedly
-	// check if they've visited recently
 	if (locals.ip_address !== "::1") {
+
+		// We write to unique_IPs DB, but we don't want to write same IP repeatedly
+		// so wecheck if they've visited recently
 		redis.get(locals.ip_address).then((value) => {
-			if (value) {
-				// they already visited within the last 24 hours
+			if (value) { // they already visited within the last 24 hours
 				// do nothing
 				console.info('recent visitor: ', locals.ip_address);
-			} else {
+			} else { // they haven't visited within the last 24 hours
 				write_visitor(locals).then(() => {
 					redis.set(locals.ip_address, new Date().toISOString(), { ex: RECENT_IP_TIMER });
 				});
 			}
 		});
-	}
-	else {
+	} else {
 		console.info("\x1b[35m%s\x1b[0m", 'layout load: localhost detected; not writing to DB');
 	}
 

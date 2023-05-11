@@ -1,9 +1,10 @@
 <script lang="ts">
 	import { PUBLIC_MOUNT_LOG_TOKEN } from '$env/static/public';
 	import { onMount } from 'svelte';
+	import { page } from '$app/stores';
 
 	import fingerprinter from '@fingerprintjs/fingerprintjs';
-  import { afterNavigate } from '$app/navigation';
+	import { afterNavigate } from '$app/navigation';
 
 	export let data; // has visit id
 
@@ -14,7 +15,6 @@
 					fingerprint: result.visitorId,
 					confidence: result.confidence.score,
 					visit_id: data.visit_id,
-					// page_start: $page.url.pathname,
 				};
 
 				fetch('/api/mount-log', {
@@ -22,19 +22,25 @@
 					headers: {
 						Authorization: PUBLIC_MOUNT_LOG_TOKEN,
 					},
-					body: JSON.stringify(client_mount),
 					keepalive: false,
+					body: JSON.stringify(client_mount),
 				}).then((response) => response.json());
 			});
 		});
 	});
 
-	// afterNavigate(async () => {
-	// 	fetch('/api/nav', {
-	// 		method: 'POST',
-
-	// 	})
-	// })
+	afterNavigate(async () => {
+		fetch('/api/nav-log', {
+			method: 'POST',
+			headers: {
+				Authorization: PUBLIC_MOUNT_LOG_TOKEN,
+			},
+			body: JSON.stringify({
+				visit_id: data.visit_id,
+				page: $page.url.pathname,
+			}),
+		});
+	});
 </script>
 
 <slot />

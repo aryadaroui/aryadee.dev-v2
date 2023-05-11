@@ -1,4 +1,4 @@
-import { DynamoDB } from '@aws-sdk/client-dynamodb';
+// import { DynamoDB } from '@aws-sdk/client-dynamodb';
 import { v4 as uuid } from 'uuid';
 
 import { UAParser } from 'ua-parser-js';
@@ -29,7 +29,6 @@ function dir_and_slug(url_string: string) {
 }
 
 export async function handle({ event, resolve }) {
-	console.log('handle called!');
 	if (dir_and_slug(event.request.url).directory !== 'api') { // normal page visit
 		const user_agent = new UAParser(event.request.headers.get('user-agent'));
 		const device = user_agent.getDevice();
@@ -46,7 +45,7 @@ export async function handle({ event, resolve }) {
 			visit_id: uuid(),
 		};
 
-		console.log('hooks handle page got data:', visit);
+		// console.log('hooks handle page got data:', visit);
 
 
 		if (visit.ip_address !== "::1") {
@@ -55,7 +54,7 @@ export async function handle({ event, resolve }) {
 		} else {
 			console.info("\x1b[35m%s\x1b[0m", 'hooks handle: localhost detected; not writing to DB');
 		}
-		event.locals.timestamp = visit.timestamp;
+		// event.locals.timestamp = visit.timestamp;
 		event.locals.visit_id = visit.visit_id;
 		event.locals.ip_address = visit.ip_address;
 	} else {// api call
