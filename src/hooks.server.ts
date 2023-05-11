@@ -1,20 +1,15 @@
 import { DynamoDBClient } from '@aws-sdk/client-dynamodb';
 import { DynamoDBDocumentClient, PutCommand } from "@aws-sdk/lib-dynamodb";
 
-import { marshall } from '@aws-sdk/util-dynamodb';
-
 import { v4 as uuid } from 'uuid';
 import { UAParser } from 'ua-parser-js';
 
 import { Redis } from '@upstash/redis';
-import { REDIS_URL, REDIS_TOKEN, AWS_ACCESS_KEY, AWS_SECRET_ACCESS_KEY, VISIT_HASH_KEY } from '$env/static/private';
-import { PUBLIC_DEV_FLAG } from '$env/static/public';
+import { REDIS_URL, REDIS_TOKEN, AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, VISIT_HASH_KEY } from '$env/static/private';
 import type { RequestEvent } from '@sveltejs/kit';
 
-import { createHmac } from 'crypto';
 
-// import 'Buffer'
-
+import {  ms_to_min, floor, minute_hash_absolute } from '$lib/utils';
 
 const redis = new Redis({
 	url: REDIS_URL,
@@ -24,22 +19,27 @@ const redis = new Redis({
 const client = new DynamoDBClient({
 	region: 'us-west-1',
 	credentials: {
-		accessKeyId: AWS_ACCESS_KEY,
+		accessKeyId: AWS_ACCESS_KEY_ID,
 		secretAccessKey: AWS_SECRET_ACCESS_KEY,
 	},
 });
 
-const ddb = DynamoDBDocumentClient.from(client);
+const marshallOptions = {
+	// Whether to automatically convert empty strings, blobs, and sets to `null`.
+	convertEmptyValues: false, // false, by default.
+	// Whether to remove undefined values while marshalling.
+	removeUndefinedValues: true, // false, by default.
+	// Whether to convert typeof object to map attribute.
+	convertClassInstanceToMap: false, // false, by default.
+};
 
-// const min_to_sec = (min: number) => min * 60;
-const ms_to_min = (ms: number) => ms / 1000 / 60;
-const floor = (num: number, floor: number) => Math.max(num, floor); // more readable than Math.max()
+const unmarshallOptions = {
+	// Whether to return numbers as a string instead of converting them to native JavaScript numbers.
+	wrapNumbers: false, // false, by default.
+};
 
-// const MARSHALL_OPTS = {
-// 	convertClassInstanceToMap: true,
-// 	convertEmptyValues: false, // converts empty strings, binary buffers, and sets to `null`
-// 	removeUndefinedValues: true // removes undefined values from final object
-// };
+const ddb = DynamoDBDocumentClient.from(client, { marshallOptions, unmarshallOptions });
+
 
 function dir_and_slug(url_string: string) {
 	const url = new URL(url_string);
@@ -112,14 +112,14 @@ async function write_unique_IP(visit_id: string, ip_address: string, timestamp: 
 					ip_address,
 				};
 
-				// TODO: update with the document client package. much easier to use
-				// write unique_IP to dynamoDB
-				ddb.putItem({
+				// write unique_IP
+				ddb.send(new PutCommand({
 					TableName: 'unique_IPs',
-					Item: marshall(unique_ip),
-				}).catch((err) => {
+					Item: unique_ip
+				})).catch((err) => {
 					console.error("Error writing to unique_IPs table with `unique_ip` item: ", unique_ip, "\n┗>AWS error:", err);
 				});
+
 			}).catch((err) => {
 				console.error("\x1b[31m%s\x1b[0m", "Error looking up IP address:", ip_address, "\n┗>fetch error:", err);
 			});
@@ -208,7 +208,7 @@ async function write_visit(event: RequestEvent, ip_address: string, timestamp: s
 	const device = user_agent.getDevice();
 	if (device.type === undefined) device.type = 'desktop'; // assume desktop if not specified
 
-	const visit = {
+	const visit: Visit = {
 		client_mount: null,
 		device: device,
 		browser: user_agent.getBrowser().name,
@@ -223,51 +223,35 @@ async function write_visit(event: RequestEvent, ip_address: string, timestamp: s
 		visit_id: event.locals.visit_id,
 	};
 
+	// write visit to DB
 	ddb.send(new PutCommand({
 		TableName: 'visits',
 		Item: visit
-	}));
-
-
-	// write to DB table visits
-	// ddb.putItem({
-	// 	TableName: 'visits',
-	// 	Item: marshall(visit, MARSHALL_OPTS)
-	// }).catch((err) => {
-	// console.error("Error writing to visits table with `visit` item: ", visit, "\n┗>AWS error:", err);
-	// });
+	})).catch((err) => {
+		console.error("Error writing to visits table with `visit` item: ", visit, "\n┗>AWS error:", err);
+	});
 }
 
 // // ENTRY POINT // //
 export async function handle({ event, resolve }) {
 
 	// immediately assign
-	event.locals.token = createHmac('md5', Math.floor(ms_to_min(new Date().getTime())).toString()).update(VISIT_HASH_KEY).digest('base64'); // make a hash that changes every minute
 	event.locals.visit_id = uuid();
 	const timestamp = new Date().toISOString();
-	const ip_address = event.getClientAddress();
-	// const ip_address = "70.187.244.194.a"; // DEBUG ONLY
-	// const ip_address = "1111"
-
-
-
-
-	// console.log("hash: ", Buffer.from(createHash('sha256').update('asdf').digest(),toString('hex'), 'hex').toString('hex') )
-	console.log("server token:", event.locals.token);
+	event.locals.token = minute_hash_absolute(VISIT_HASH_KEY, new Date(timestamp)); // make a hash that changes every minute
+	// const ip_address = event.getClientAddress();
+	const ip_address = "70.187.244.194"; // DEBUG ONLY
 
 	if (dir_and_slug(event.request.url).directory !== 'api') { // not an API request
-		if (PUBLIC_DEV_FLAG) {
-			// write to visits table
-			// write_visit(event, ip_address, timestamp);
+		// write to visits table
+		write_visit(event, ip_address, timestamp);
+		console.log("handle() server token:", event.locals.token);
 
-			// write to unique_IPs table
-			// write_unique_IP(event.locals.visit_id, ip_address, timestamp);
-		} else {
-			console.info("\x1b[35m%s\x1b[0m", 'hooks handle(): localhost detected; not writing to DB');
-		}
+		// write to unique_IPs table
+		write_unique_IP(event.locals.visit_id, ip_address, timestamp);
 	} else { // an API request
 		// you might be tempted to populate event.locals to validate the API, but don't.
-		// each time handle() is called is a new instance, so your uuid and timestamp will be different. you could use the IP though
+		// each time handle() is called is a new instance, so your visit uuid and timestamp will be different. you could use the IP though
 	}
 
 	const response = await resolve(event);

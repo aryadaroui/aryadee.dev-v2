@@ -5,8 +5,7 @@
 declare namespace App {
 	interface Locals {
 		visit_id: string;
-		ip_address: string;
-		timestamp: string;
+		token: string;
 	}
 
 	interface Platform {}

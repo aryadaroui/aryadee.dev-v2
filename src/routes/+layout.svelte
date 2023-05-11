@@ -33,16 +33,16 @@
 
 	afterNavigate(async () => {
 		if (pre_navigated) {
-			// fetch('/api/nav-log', {
-			// 	method: 'POST',
-			// 	headers: {
-			// 		Authorization: PUBLIC_LOG_TOKEN,
-			// 	},
-			// 	body: JSON.stringify({
-			// 		visit_id: data.visit_id,
-			// 		page: $page.url.pathname,
-			// 	}),
-			// });
+			fetch('/api/nav-log', {
+				method: 'POST',
+				headers: {
+					token: data.token,
+				},
+				body: JSON.stringify({
+					visit_id: data.visit_id,
+					page: $page.url.pathname,
+				}),
+			});
 		}
 
 		pre_navigated = true;
