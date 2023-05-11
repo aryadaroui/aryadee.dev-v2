@@ -6,7 +6,7 @@
 	import fingerprinter from '@fingerprintjs/fingerprintjs';
 	import { afterNavigate } from '$app/navigation';
 
-	export let data; // has visit id
+	export let data; // has visit id and token
 
 	let pre_navigated = false; // to prevent logging on first load
 
@@ -22,7 +22,7 @@
 				fetch('/api/mount-log', {
 					method: 'POST',
 					headers: {
-						Authorization: PUBLIC_LOG_TOKEN,
+						token: data.token,
 					},
 					keepalive: false,
 					body: JSON.stringify(client_mount),
@@ -32,18 +32,17 @@
 	});
 
 	afterNavigate(async () => {
-
 		if (pre_navigated) {
-			fetch('/api/nav-log', {
-			method: 'POST',
-			headers: {
-				Authorization: PUBLIC_LOG_TOKEN,
-			},
-			body: JSON.stringify({
-				visit_id: data.visit_id,
-				page: $page.url.pathname,
-			}),
-		});
+			// fetch('/api/nav-log', {
+			// 	method: 'POST',
+			// 	headers: {
+			// 		Authorization: PUBLIC_LOG_TOKEN,
+			// 	},
+			// 	body: JSON.stringify({
+			// 		visit_id: data.visit_id,
+			// 		page: $page.url.pathname,
+			// 	}),
+			// });
 		}
 
 		pre_navigated = true;

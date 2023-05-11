@@ -7,9 +7,13 @@ import { v4 as uuid } from 'uuid';
 import { UAParser } from 'ua-parser-js';
 
 import { Redis } from '@upstash/redis';
-import { REDIS_URL, REDIS_TOKEN, AWS_ACCESS_KEY, AWS_SECRET_ACCESS_KEY } from '$env/static/private';
-import { PUBLIC_DEV_FLAG} from '$env/static/public';
+import { REDIS_URL, REDIS_TOKEN, AWS_ACCESS_KEY, AWS_SECRET_ACCESS_KEY, VISIT_HASH_KEY } from '$env/static/private';
+import { PUBLIC_DEV_FLAG } from '$env/static/public';
 import type { RequestEvent } from '@sveltejs/kit';
+
+import { createHmac } from 'crypto';
+
+// import 'Buffer'
 
 
 const redis = new Redis({
@@ -27,6 +31,9 @@ const client = new DynamoDBClient({
 
 const ddb = DynamoDBDocumentClient.from(client);
 
+// const min_to_sec = (min: number) => min * 60;
+const ms_to_min = (ms: number) => ms / 1000 / 60;
+const floor = (num: number, floor: number) => Math.max(num, floor); // more readable than Math.max()
 
 // const MARSHALL_OPTS = {
 // 	convertClassInstanceToMap: true,
@@ -79,9 +86,7 @@ async function write_unique_IP(visit_id: string, ip_address: string, timestamp: 
 		proxy: boolean;
 	};
 
-	// const min_to_sec = (min: number) => min * 60;
-	const ms_to_min = (ms: number) => ms / 1000 / 60;
-	const floor = (num: number, floor: number) => Math.max(num, floor); // more readable than Math.max()
+
 
 	const RECENT_IP_TIMER = 60 * 60 * 24; // 24 hours
 	const LOOKUP_THRESHOLD = 30; // 30 req / minute. http://ip-api.com is okay with up to 45 req / minute, but I want to be safe because idk their rate limit algorithm
@@ -221,7 +226,7 @@ async function write_visit(event: RequestEvent, ip_address: string, timestamp: s
 	ddb.send(new PutCommand({
 		TableName: 'visits',
 		Item: visit
-	}))
+	}));
 
 
 	// write to DB table visits
@@ -237,14 +242,20 @@ async function write_visit(event: RequestEvent, ip_address: string, timestamp: s
 export async function handle({ event, resolve }) {
 
 	// immediately assign
+	event.locals.token = createHmac('md5', Math.floor(ms_to_min(new Date().getTime())).toString()).update(VISIT_HASH_KEY).digest('base64'); // make a hash that changes every minute
 	event.locals.visit_id = uuid();
 	const timestamp = new Date().toISOString();
 	const ip_address = event.getClientAddress();
 	// const ip_address = "70.187.244.194.a"; // DEBUG ONLY
 	// const ip_address = "1111"
 
+
+
+
+	// console.log("hash: ", Buffer.from(createHash('sha256').update('asdf').digest(),toString('hex'), 'hex').toString('hex') )
+	console.log("server token:", event.locals.token);
+
 	if (dir_and_slug(event.request.url).directory !== 'api') { // not an API request
-		console.log("hook handle() routing")
 		if (PUBLIC_DEV_FLAG) {
 			// write to visits table
 			// write_visit(event, ip_address, timestamp);

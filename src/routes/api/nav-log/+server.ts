@@ -1,6 +1,6 @@
 import { origin_allowlist } from "../origin_allowlist.json";
 import { PUBLIC_LOG_TOKEN, PUBLIC_DEV_FLAG } from "$env/static/public";
-import { AWS_ACCESS_KEY, AWS_SECRET_ACCESS_KEY } from '$env/static/private';
+import { AWS_ACCESS_KEY, AWS_SECRET_ACCESS_KEY, VISIT_HASH_KEY } from '$env/static/private';
 
 import { DynamoDBClient } from '@aws-sdk/client-dynamodb';
 import { DynamoDBDocumentClient, UpdateCommand } from "@aws-sdk/lib-dynamodb";
@@ -17,11 +17,10 @@ const client = new DynamoDBClient({
 
 const ddb = DynamoDBDocumentClient.from(client);
 
-// const MARSHALL_OPTS = {
-// 	convertClassInstanceToMap: true,
-// 	convertEmptyValues: false, // converts empty strings, binary buffers, and sets to `null`
-// 	removeUndefinedValues: true // removes undefined values from final object
-// };
+type IncomingData = {
+	visit_id: string;
+	page: string;
+}
 
 export async function POST({ request }) {
 	const origin = request.headers.get("Origin");
@@ -40,16 +39,14 @@ export async function POST({ request }) {
 		return new Response(JSON.stringify({ message: "forbidden" }), { status: 403 });
 	}
 
-	request.json().then((data) => {
+	request.json().then((data: IncomingData) => {
 		const new_page = {
 			page: data.page,
 			timestamp: new Date().toISOString()
 		};
 
 		if (PUBLIC_DEV_FLAG) {
-			// console.log('api/mount-log POST got new_page:', new_page);
 
-			// console.log('api/nav-log POST() called: ');
 			const params = {
 				TableName: 'visits',
 				Key: {
