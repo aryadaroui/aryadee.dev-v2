@@ -1,5 +1,5 @@
 import { origin_allowlist } from "../origin_allowlist.json";
-import { PUBLIC_MOUNT_LOG_TOKEN } from "$env/static/public";
+import {  PUBLIC_LOG_TOKEN } from "$env/static/public";
 
 export async function POST({ request }) {
 
@@ -11,7 +11,7 @@ export async function POST({ request }) {
 	if (!token) {
 		console.warn('api/mount-log POST missing auth token: ', token);
 		return new Response(JSON.stringify({ message: "forbidden" }), { status: 403 });
-	} else if (token !== PUBLIC_MOUNT_LOG_TOKEN) {
+	} else if (token !== PUBLIC_LOG_TOKEN) {
 		console.warn('api/mount-log POST got invalid auth token: ', token);
 		return new Response(JSON.stringify({ message: "forbidden" }), { status: 403 });
 	} else if (!origin_allowlist.includes(origin)) { // don't need the else but it looks better this way
@@ -28,12 +28,12 @@ export async function POST({ request }) {
 
 		if (!origin.includes('localhost')) {
 			// console.log('api/log-mount POST got data: ', data);
-			// write to DB visits table
+			// write to DB visits table with primary key of visit_id, add new key client_mount IFF visit_id exists
 		} else {
-			console.info("\x1b[35m%s\x1b[0m", 'mount-log POST: localhost detected; not writing to DB');
+			console.info("\x1b[35m%s\x1b[0m", 'mount-log POST(): localhost detected; not writing to DB');
 		}
 	});
-	
+
 	return new Response(JSON.stringify({ message: "ok" }), { status: 200 });
 }
 

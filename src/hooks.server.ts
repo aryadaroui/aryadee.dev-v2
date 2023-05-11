@@ -1,23 +1,21 @@
 // import { DynamoDB } from '@aws-sdk/client-dynamodb';
-import { v4 as uuid } from 'uuid';
 
+
+import { v4 as uuid } from 'uuid';
 import { UAParser } from 'ua-parser-js';
 
+import { Redis } from '@upstash/redis';
+import { REDIS_URL, REDIS_TOKEN } from '$env/static/private';
+import type { RequestEvent } from '@sveltejs/kit';
 
-interface Visit {
-	device: { // { vendor: 'Apple', model: 'iPhone', type: 'mobile' }
-		vendor: string;
-		model: string;
-		type: string;
-	};
-	browser: string;
-	os: string;
-	referrer: string;
-	page: string;
-	ip_address: string;
-	timestamp: string; // ISO 8601 format - sort key for DB
-	visit_id: string; // primary key for DB
-}
+
+const redis = new Redis({
+	url: REDIS_URL,
+	token: REDIS_TOKEN,
+});
+
+
+
 
 function dir_and_slug(url_string: string) {
 	const url = new URL(url_string);
@@ -28,38 +26,147 @@ function dir_and_slug(url_string: string) {
 	return { directory, pageSlug };
 }
 
-export async function handle({ event, resolve }) {
-	if (dir_and_slug(event.request.url).directory !== 'api') { // normal page visit
-		const user_agent = new UAParser(event.request.headers.get('user-agent'));
-		const device = user_agent.getDevice();
-		if (device.type === undefined) device.type = 'desktop'; // assume desktop if not specified
 
-		const visit: Visit = {
-			device: device,
-			browser: user_agent.getBrowser().name,
-			os: user_agent.getOS().name,
-			referrer: event.request.headers.get('referer'),
-			page: event.url.pathname,
-			ip_address: event.getClientAddress(),
-			timestamp: new Date().toISOString(),
-			visit_id: uuid(),
-		};
+async function write_unique_IP(ip_address: string, timestamp: string) {
 
-		// console.log('hooks handle page got data:', visit);
+	type IPLookupCalls = {
+		saturation: number;
+		timestamp: string;
+	} | null;
 
 
-		if (visit.ip_address !== "::1") {
-			// write to DB table visits
-			// const dynamoDB = new DynamoDB({region: 'us-west-1'});
-		} else {
-			console.info("\x1b[35m%s\x1b[0m", 'hooks handle: localhost detected; not writing to DB');
+
+	// const min_to_sec = (min: number) => min * 60;
+	const ms_to_min = (ms: number) => ms / 1000 / 60;
+	const floor = (num: number, floor: number) => Math.max(num, floor); // more readable than Math.max()
+
+	const RECENT_IP_TIMER = 60 * 60 * 24; // 24 hours
+	const LOOKUP_THRESHOLD = 30; // 30 req / minute. http://ip-api.com is okay with up to 45 req / minute, but I want to be safe because idk their rate limit algorithm
+
+	async function lookup_and_write(ip_address: string, ip_lookup_calls: IPLookupCalls, timestamp: string) {
+		// const ip_lookup = fetch(`http://ip-api.com/json/${locals.ip_address}?fields=1689337`);
+		// const timestamp = new Date().toISOString(); // use same timestamp for both general ip_address cache and ip_lookup_calls
+
+
+		// MUST DO: write to DB table unique_IPs
+		// 
+
+		// write to redis that we have recently logged this IP
+		redis.set(ip_address, timestamp, { ex: RECENT_IP_TIMER });
+
+		// update/add redis hash key
+		ip_lookup_calls.saturation += 1;
+		ip_lookup_calls.timestamp = timestamp;
+		redis.hset('ip_lookup_calls', ip_lookup_calls);
+		/* You might be tempted to set an expiration for this key because you know when the saturation would relax to 0. Don't.
+		* `ip_lookup_calls` shares`the redis store with recent IPs, which do have an expiration.
+		* This store has an eviction policy that preferentially evicts keys with an expiration
+		* So if you set an expiration for this key, it can be deleted per the eviction policy, which would be bad.
+		* Info on the eviction policy: https://docs.upstash.com/redis/features/eviction
+		*/
+	}
+
+	// We write to unique_IPs DB, but we don't want to write same IP repeatedly
+	// so we check if they've visited recently
+	redis.get(ip_address).then((ip_address_entry) => {
+		if (ip_address_entry == null) { // ip address entry does not exist => they haven't visited within the last 24 hours => we can look up / update their IP
+
+			// check if we've made too many requests to our IP lookup API
+			redis.hgetall('ip_lookup_calls').then((request) => {
+				const ip_lookup_calls = request as IPLookupCalls;
+
+				if (ip_lookup_calls !== null) { // entry exists
+					// update saturation for current time after relaxing
+					// this uses logic from TODO: link to blog post
+					ip_lookup_calls.saturation = floor(ip_lookup_calls.saturation - ms_to_min(Date.now() - new Date(ip_lookup_calls.timestamp).getTime()), 0);
+					// can also update timestamp here, but not necessary because we will overwrite it later
+
+					console.log("ip_lookup_calls:", ip_lookup_calls);
+					if (ip_lookup_calls.saturation < LOOKUP_THRESHOLD) {
+						lookup_and_write(ip_address, ip_lookup_calls, timestamp);
+					} else {
+						console.warn('too many requests! `ip_lookup_calls.saturation`: ', ip_lookup_calls.saturation, "\n┗> not looking up IP: ", ip_address);
+					}
+				} else { // it doesn't exist
+					console.warn('`ip_lookup_calls` does not exist; creating new entry');
+
+					const ip_lookup_calls: IPLookupCalls = {
+						saturation: 0, // will get incremented in lookup_and_write()
+						timestamp: "", // this gets overwritten in lookup_and_write()
+					};
+
+					lookup_and_write(ip_address, ip_lookup_calls, timestamp);
+				}
+			});
+		} else { // ip address entry exists => they already visited within the last 24 hours
+			// do nothing
+			console.info('recent visitor: ', ip_address);
 		}
-		// event.locals.timestamp = visit.timestamp;
-		event.locals.visit_id = visit.visit_id;
-		event.locals.ip_address = visit.ip_address;
-	} else {// api call
+	});
+}
+
+async function write_visit(event: RequestEvent, timestamp: string) {
+
+	type Visit = {
+		device: { // { vendor: 'Apple', model: 'iPhone', type: 'mobile' }
+			vendor: string;
+			model: string;
+			type: string;
+		};
+		pages: {
+			page: string;
+			timestamp: string;
+		}[];
+		browser: string;
+		os: string;
+		referrer: string;
+
+		ip_address: string;
+		timestamp: string; // ISO 8601 format - sort key for DB
+		visit_id: string; // primary key for DB
+	}; // to verify we've populated all the fields
+
+	const user_agent = new UAParser(event.request.headers.get('user-agent'));
+	const device = user_agent.getDevice();
+	if (device.type === undefined) device.type = 'desktop'; // assume desktop if not specified
+
+	const visit: Visit = {
+		device: device,
+		browser: user_agent.getBrowser().name,
+		os: user_agent.getOS().name,
+		referrer: event.request.headers.get('referer'),
+		pages: [{
+			page: event.url.pathname,
+			timestamp: timestamp,
+		}],
+		ip_address: event.locals.ip_address,
+		timestamp: timestamp,
+		visit_id: event.locals.visit_id,
+	};
+
+}
+
+// // ENTRY POINT // //
+export async function handle({ event, resolve }) {
+
+	// immediately assign
+	event.locals.visit_id = uuid();
+	const timestamp = new Date().toISOString();
+	const ip_address = event.getClientAddress();
+
+	if (dir_and_slug(event.request.url).directory !== 'api') { // not an API request
+		if (ip_address !== "::1") {
+			// write to visits table
+			write_visit(event, timestamp);
+
+			// write to unique_IPs table
+			write_unique_IP(ip_address, timestamp);
+		} else {
+			console.info("\x1b[35m%s\x1b[0m", 'hooks handle(): localhost detected; not writing to DB');
+		}
+	} else { // an API request
 		// you might be tempted to populate event.locals to validate the API, but don't.
-		// each time handle() is called is a new instance, so your uuid and timestamp will be different. although you could maybe use the IP
+		// each time handle() is called is a new instance, so your uuid and timestamp will be different. you could use the IP though
 	}
 
 	const response = await resolve(event);

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { PUBLIC_MOUNT_LOG_TOKEN } from '$env/static/public';
+	import { PUBLIC_LOG_TOKEN } from '$env/static/public';
 	import { onMount } from 'svelte';
 	import { page } from '$app/stores';
 
@@ -20,7 +20,7 @@
 				fetch('/api/mount-log', {
 					method: 'POST',
 					headers: {
-						Authorization: PUBLIC_MOUNT_LOG_TOKEN,
+						Authorization: PUBLIC_LOG_TOKEN,
 					},
 					keepalive: false,
 					body: JSON.stringify(client_mount),
@@ -33,7 +33,7 @@
 		fetch('/api/nav-log', {
 			method: 'POST',
 			headers: {
-				Authorization: PUBLIC_MOUNT_LOG_TOKEN,
+				Authorization: PUBLIC_LOG_TOKEN,
 			},
 			body: JSON.stringify({
 				visit_id: data.visit_id,
