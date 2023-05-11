@@ -40,6 +40,7 @@
 	"type": "module",
 	"dependencies": {
 		"@aws-sdk/client-dynamodb": "^3.329.0",
+		"@aws-sdk/util-dynamodb": "^3.329.0",
 		"@fingerprintjs/fingerprintjs": "^3.4.1",
 		"@types/d3": "^7.4.0",
 		"@types/fingerprintjs": "^0.5.28",
