@@ -42,7 +42,7 @@ export async function POST({ request, url }) {
 	} else if (!hashes.includes(token)) {
 		console.warn('api/mount-log POST() got invalid auth token: ', token, "\n┗>with possible hash tokens:", hashes);
 		return new Response(JSON.stringify({ message: "forbidden" }), { status: 403 });
-	} else if (origin != url.origin) { // don't need the else but it looks better this way
+	} else if (origin !== url.origin) { // don't need the else but it looks better this way
 		console.warn('api/mount-log POST() got invalid origin: ', origin);
 		return new Response(JSON.stringify({ message: "forbidden" }), { status: 403 });
 	}

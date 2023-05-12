@@ -30,7 +30,7 @@ export async function POST({ request, url }) {
 		console.warn('api/nav-log POST missing auth token:', token);
 		return new Response(JSON.stringify({ message: "forbidden" }), { status: 403 });
 	}
-	if (origin != url.origin) { // don't need the else but it looks better this way
+	if (origin !== url.origin) { // don't need the else but it looks better this way
 		console.warn('api/nav-log POST got invalid origin:', origin);
 		return new Response(JSON.stringify({ message: "forbidden" }), { status: 403 });
 	}
