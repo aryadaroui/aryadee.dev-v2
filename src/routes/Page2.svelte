@@ -76,7 +76,7 @@
 			title={'Filmic devblog 1: tone curve and color response 🌈'}
 			tags={['Python', 'image processing', 'Jupyter']}
 			img_src={'devblog1_thumb.png'}
-			link={'/blog/filmic-devblog-1'}
+			link={'/blog/filmic-devblog1'}
 			alt={'thumbnail of filmic devblog 1'} />
 	</div>
 	<div class="footer">
