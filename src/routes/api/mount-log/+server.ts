@@ -1,4 +1,3 @@
-import { origin_allowlist } from "../origin_allowlist.json";
 import { AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, VISIT_HASH_KEY } from '$env/static/private';
 
 import { DynamoDBClient } from '@aws-sdk/client-dynamodb';
@@ -25,7 +24,7 @@ type IncomingData = {
 };
 
 
-export async function POST({ request }) {
+export async function POST({ request, url }) {
 
 	const origin = request.headers.get("Origin");
 	const token = request.headers.get("token");
@@ -43,7 +42,7 @@ export async function POST({ request }) {
 	} else if (!hashes.includes(token)) {
 		console.warn('api/mount-log POST() got invalid auth token: ', token, "\n┗>with possible hash tokens:", hashes);
 		return new Response(JSON.stringify({ message: "forbidden" }), { status: 403 });
-	} else if (!origin_allowlist.includes(origin)) { // don't need the else but it looks better this way
+	} else if (origin != url.origin) { // don't need the else but it looks better this way
 		console.warn('api/mount-log POST() got invalid origin: ', origin);
 		return new Response(JSON.stringify({ message: "forbidden" }), { status: 403 });
 	}

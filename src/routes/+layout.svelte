@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { PUBLIC_LOG_TOKEN } from '$env/static/public';
 	import { onMount } from 'svelte';
 	import { page } from '$app/stores';
 

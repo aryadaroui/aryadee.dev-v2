@@ -239,8 +239,8 @@ export async function handle({ event, resolve }) {
 	event.locals.visit_id = uuid();
 	const timestamp = new Date().toISOString();
 	event.locals.token = minute_hash_absolute(VISIT_HASH_KEY, new Date(timestamp)); // make a hash that changes every minute
-	// const ip_address = event.getClientAddress();
-	const ip_address = "70.187.244.194"; // DEBUG ONLY
+	const ip_address = event.getClientAddress();
+	// const ip_address = "70.187.244.194"; // DEBUG ONLY
 
 	if (dir_and_slug(event.request.url).directory !== 'api') { // not an API request
 		// write to visits table
