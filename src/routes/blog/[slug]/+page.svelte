@@ -306,6 +306,19 @@
 				// color: $tan-mid;
 				// transition: background-color 0.15s ease, color 0.15s ease;
 			}
+			
+			a.img-link:hover {
+				background-color: transparent;
+			}
+
+
+			a > img {
+				border: 1px solid transparent;
+			}
+
+			a > img:hover {
+				border: 1px solid #a5e0f5;
+			}
 
 			pre > code {
 				display: grid;

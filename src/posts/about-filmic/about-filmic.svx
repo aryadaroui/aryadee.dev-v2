@@ -37,38 +37,38 @@ Let's go through each of the features and how I would expect them to be used.
 
 The color response curves represent the shift in hue, saturation, and value of a pixel with respect to its initial hue. In other words, it can make greens more yellow, blues less saturated, and reds darker. One of my favorites is to push the sky from azure closer to cyan, drop the saturation a bit, and then decrease the value of the greens.
 
-<a href={hsv0}><img src={hsv0} alt="photo of building without color response adjustment" /></a>
-<a href={hsv1}><img src={hsv1} alt="photo of building with color response adjustment" /></a>
+<a class="img-link" href={hsv0}><img src={hsv0} alt="photo of building without color response adjustment" /></a>
+<a class="img-link" href={hsv1}><img src={hsv1} alt="photo of building with color response adjustment" /></a>
 
 ### Tone curve
 
 A mainstay in many photo editing programs, this simply remaps combined RGB intensity. A good go-to is give the curve a sigmoid shape to accentuate the shadows and highlights, and to raise the blackpoint a bit.
 
-<a href={tone0}><img src={tone0} alt="photo of woman without tone curve adjustment" /></a>
-<a href={tone1}><img src={tone1} alt="photo of woman with tone curve adjustment" /></a>
+<a class="img-link" href={tone0}><img src={tone0} alt="photo of woman without tone curve adjustment" /></a>
+<a class="img-link" href={tone1}><img src={tone1} alt="photo of woman with tone curve adjustment" /></a>
 
 ### Grain control
 
 Grain is a random pattern of light and dark pixels that is added to the image. It's a common feature in film photography, and is often used to add a vintage look to digital photos. The grain intensity, size, and exposure can be controlled independently.
 
-<a href={grain0}><img src={grain0} alt="photo of woman without grain adjustment" /></a>
-<a href={grain1}><img src={grain1} alt="photo of woman with grain adjustment" /></a>
+<a class="img-link" href={grain0}><img src={grain0} alt="photo of woman without grain adjustment" /></a>
+<a class="img-link" href={grain1}><img src={grain1} alt="photo of woman with grain adjustment" /></a>
 
 One of my preferred uses is to cover up gross digital ISO noise with film grain.
 
-<a href={grain2}><img src={grain2} alt="photo of gradient without grain adjustment" /></a>
-<a href={grain3}><img src={grain3} alt="photo of gradient with grain adjustment" /></a>
+<a class="img-link" href={grain2}><img src={grain2} alt="photo of gradient without grain adjustment" /></a>
+<a class="img-link" href={grain3}><img src={grain3} alt="photo of gradient with grain adjustment" /></a>
 
 ## Process
 
 The image processing flow of Filmic is shown below:
 
-<a href={filmic}><img src={filmic} alt="processing flow of Filmic v0.3" class="diagram"/></a>
+<a class="img-link" href={filmic}><img src={filmic} alt="processing flow of Filmic v0.3" /></a>
 
 With its subcomponents:
 
-<a href={color_response}><img src={color_response} class="diagram"/></a>
-<a href={grain_control}><img src={grain_control}  class="diagram"/></a>
+<a class="img-link" href={color_response}><img src={color_response}/></a>
+<a class="img-link" href={grain_control}><img src={grain_control}  /></a>
 
 The intimate details of the design, and programming Filmic (including the pitfalls I run into) are be discussed in some of my blog posts.
 
@@ -96,28 +96,12 @@ If what you're looking for is outside of this scope, there are a few other tools
 
 
 <style>
-	img {
-		width: 80% !important;
-		height: 300px;
-		display: block;
-    margin: 0 auto;
-	}
 
-  img.diagram {
+
+  img {
     width: calc(100% - 20px) !important;
     height: auto;
     padding: 10px;
   }
 
-  a:hover:has(img) {
-    background-color: transparent !important;
-  }
-
-  a > img {
-    border: 1px solid transparent;
-  }
-
-  a > img:hover {
-    border: 1px solid #A5E0F5;
-  }
 </style>

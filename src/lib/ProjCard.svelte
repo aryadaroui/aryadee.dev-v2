@@ -23,7 +23,7 @@
 		margin: 20px 0;
 		width: 100%;
 		min-height: 100px;
-		max-height: 200px;
+		max-height: 300px;
 		display: flex;
 		flex-direction: row;
 		// justify-content: ;
