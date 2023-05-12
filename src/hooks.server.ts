@@ -245,7 +245,6 @@ export async function handle({ event, resolve }) {
 	if (dir_and_slug(event.request.url).directory !== 'api') { // not an API request
 		// write to visits table
 		write_visit(event, ip_address, timestamp);
-		console.log("handle() server token:", event.locals.token);
 
 		// write to unique_IPs table
 		write_unique_IP(event.locals.visit_id, ip_address, timestamp);
