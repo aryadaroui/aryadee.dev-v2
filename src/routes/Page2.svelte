@@ -49,15 +49,14 @@
 				class="tag domain">modeling</span
 			><br />
 
-			<span class="tag domain-light"><b>WebDev</b></span><span class="tag domain">frontend</span><span class="tag domain"
-				>graphics</span>
+			<span class="tag domain-light"><b>WebDev</b></span><span class="tag domain">a little bit of everything</span>
 		</div>
 		<div class="flex-child" id="links">
 			<h3>Links</h3>
 			<a class="link-box" href="/blog/uses">Uses</a>
 			<!-- <a class="link-box" href="/">about</a>  -->
 			<a class="link-box" href="/maxim">Maxim</a>
-			<a class="link-box" href="/">Resumé</a>
+			<a class="link-box" href="/arya_daroui_resume.pdf">Resumé</a>
 		</div>
 	</div>
 	<div class="around-stack">
@@ -74,11 +73,11 @@
 			link={'/blog/about-filmic'}
 			alt={'thumbnail of filmic app'} />
 		<PostCard
-			title={'Filmic devblog 2: film grain and halation'}
+			title={'Filmic devblog 1: tone curve and color response 🌈'}
 			tags={['Python', 'image processing', 'Jupyter']}
-			img_src={'devblog2_thumb.png'}
-			link={'/blog/filmic_devblog_2'}
-			alt={'thumbnail of filmic devblog 2'} />
+			img_src={'devblog1_thumb.png'}
+			link={'/blog/filmic-devblog-1'}
+			alt={'thumbnail of filmic devblog 1'} />
 	</div>
 	<div class="footer">
 		<span>arya<span class="accent">dee</span></span>&nbsp; &nbsp<a href="mailto:adaroui@uci.edu">adaroui@uci.edu</a>&nbsp;

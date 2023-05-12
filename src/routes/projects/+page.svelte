@@ -32,6 +32,10 @@
 		<p>Old version of my blog, also built with SvelteKit and Vite.</p>
 	</ProjCard>
 
+	<ProjCard title="Filmic devblog files" type="GitHub" img_src={blogv1_thumb} link_src="https://github.com/aryadaroui/filmic-devblog">
+		<p>Code I used for testing concepts in Filmic, turned into shareable devblog files.</p>
+	</ProjCard>
+
 	<ProjCard
 		title="SynthBoy, digital synth plugin"
 		type="GitHub"
