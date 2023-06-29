@@ -11,9 +11,38 @@ tags:
 
 <script>
   import {math, display} from 'mathlifier';
+  import ExpandingBox from '$lib/ExpandingBox.svelte';
 </script>
 
 # Intro
+
+<ExpandingBox>
+
+| Algorithm                        |   overshoot max    |    steady-state max    |     stored data     |     distribution     |
+| :------------------------------- | :----------------: | :--------------------: | :-----------------: | :------------------: |
+| `fixed_window(...)`              | $l-1$ cross-window |         $l/w$          |       counter       |        greedy        |
+| `enforced_avg(...)`              |         0          |         $l/w$          |  the entry itself   |       uniform        |
+| `sliding_window(...)`            |         0          |         $l/w$          | $l$-many timestamps |        greedy        |
+| `leaky_bucket(..., mode='soft')` |  $l-1$ transient   |         $l/w$          | counter, timestamp  | greedy T, uniform SS |
+| `leaky_bucket(..., mode='hard')` |         0          | ${\color{magenta}1}/w$ | counter, timestamp  | greedy T, uniform SS |
+
+</ExpandingBox>
+
+<ExpandingBox>
+
+$$
+\begin{split}
+(\lambda_1-2n+l+4)(\lambda_1-n-l+2)\leq l(n-l) 
+\\
+\implies \lambda_1^2+\lambda_1(6-3n)+(2n^2-2l-8n+8)\leq 0
+\\
+\implies \bigg \{ 2\lambda_1-\bigg(3n-6-\sqrt{8l+n^2-4n+4}\bigg )\bigg \}\bigg \{ 2\lambda_1-\bigg(3n-6+\sqrt{8l+n^2-4n+4}\bigg)\bigg \} \leq 0
+\\
+\implies  \frac{3n-6-\sqrt{8l+n^2-4n+4}}{2}\leq \lambda_1 \leq \frac{3n-6+\sqrt{8l+n^2-4n+4}}{2}
+\end{split}
+$$
+
+</ExpandingBox>
 
 When making an API endpoint  available on the web, one of the first concerns you run into is:
 
@@ -101,8 +130,7 @@ $$
 
 </Callout>
 
-
-# Enforced average
+<h1 id="enforced-average">Enforced average</h1>
 
 We normally describe the function of rate limiting in units $\text{req} / \text{s}$, but we can also think about it in its reciprocal: $\text{s} / \text{req}$. This describes the average time between requests if we were to fully distribute $l$ requests across our window $w$. We can enforce this average by waiting $\tau$ seconds between accepted requests, where $\tau$ is our *waiting time*.
 $$
@@ -147,13 +175,9 @@ PLOT uniform rate
 
 PLOT cross-window burst
 
-This is a better model of continuous state compared to the fixed window, but you will still have to settle your [transient vs. steady-state](#transient-vs.-steady-state-limiting) tradeoff. This better performance comes at the cost of having to record and manage sets of timestamps for every request, whereas in other algorithms, we only need to increment a counter. If you have a high $l$, this can be a nontrivial cost.
+This is a better model of continuous state compared to the fixed window, but you will still have to settle your [transient vs. steady-state](#transient-vs.-steady-state) tradeoff. This better performance comes at the cost of having to record and manage sets of timestamps for every request, whereas in other algorithms, we only need to increment a counter. If you have a high $l$, this can be a nontrivial cost.
 
 # Leaky bucket
-
-
-
-
 
 For leaky bucket, we accept requests until our bucket is full, waiting for it to leak more capacity. Normally, we'd have parameters of `bucket_size` and `leak_rate`, which ties in the analogy, but I don't find it intuitive for rate limiting. Instead, I'm going to keep the same `limit` and `window_length_ms` parameters as in the other algorithms, with an additional `mode` parameter for `'soft'` or `'hard'` limiting, which determines our leak rate.
 
@@ -161,13 +185,13 @@ At its core, our leaky bucket is like a blend of all of our previous algorithms.
 
 For the soft and hard modes:
 
-`mode='soft'`
-- Steady-state: $l_\text{rps} = l/w$
-- Transient: $\text{overshoot}_\text{max} = l-1$
+- `mode='soft'`
+  - Steady-state: $l_\text{rps} = l/w$
+  - Transient: $\text{overshoot}_\text{max} = l-1$
 
-`mode='hard'`
-- Steady-state: $l_\text{rps} = 1 \text{ req} / w$
-- Transient: $\text{burst}_\text{max} = l$
+- `mode='hard'`
+  - Steady-state: $l_\text{rps} = 1 \text{ req} / w$
+  - Transient: $\text{overshoot}_\text{max} = l$
 
 In other words, you choose whether you want to limit steady-state, or transients.
 
@@ -235,7 +259,8 @@ There are also some  features you may want to consider exploring that I did not 
 
 # Appendix
 
-## Transient vs. steady-state
+<!-- This is a lazy solution -->
+<h2 id="transient-vs.-steady-state">Transient vs. steady-state</h2>
 
 While we may be accepting only 5 requests every second; nothing stops all 5 of those requests from arriving at the same time.
 

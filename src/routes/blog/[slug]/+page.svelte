@@ -57,6 +57,10 @@
 	// 	background-color: $background-color;
 	// }
 
+	html {
+		scroll-behavior: smooth;
+	}
+
 	$code-color: hsl(230, 10%, 7%);
 
 	// li a {
@@ -97,6 +101,7 @@
 		border-top: 1px solid $border-translucent;
 
 		color: black;
+
 
 		// ::-webkit-scrollbar {
 		// 	height: 10px;
@@ -637,7 +642,8 @@
 
 		table {
 			border-collapse: collapse;
-			font-size: 0.9em;
+			// width: 100%;
+			font-size: 0.8em;
 			font-family: $mono;
 			min-width: 300px;
 
