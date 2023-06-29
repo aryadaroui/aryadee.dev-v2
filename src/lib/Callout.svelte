@@ -214,6 +214,8 @@
 				gap: 10px;
 				border-radius: 6px;
 
+				font-weight: 350;
+
 				z-index: 2;
 
 			}
