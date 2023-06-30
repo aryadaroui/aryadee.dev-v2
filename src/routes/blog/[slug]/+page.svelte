@@ -32,6 +32,7 @@
 			title="On this page"
 			headingSelector=":is(h1, h2, h3):not(.toc-exclude)"
 			activeHeadingScrollOffset="150"
+			
 			--toc-li-color="#FFEFD8"
 			--toc-active-border-radius="0.5rem"
 			--toc-active-color="#F7679C"
@@ -90,11 +91,14 @@
 		font-weight: 400;
 
 		font-size: clamp(1rem, 3vw, 1.15rem);
-		text-align: justify;
 		hyphens: auto;
 
 		display: flex;
 		justify-content: center;
+
+		text-align: justify;
+		text-justify: distribute;
+
 
 		min-height: calc(100vh - 200px);
 
@@ -146,12 +150,17 @@
 		}
 
 		ul {
-			// line-height: 1.8em;
-
 			padding-left: 1em;
+		
+			line-height: 1.25em;
+
+
+
 
 			li {
+				// padding-left: 1.0em;
 				margin-bottom: 0.5em;
+				line-height: 1.5em;
 
 				code {
 					padding: 0.3em 0.4em;

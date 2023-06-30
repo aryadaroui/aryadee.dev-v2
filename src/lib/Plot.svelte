@@ -33,6 +33,8 @@
 	$: init(loaded, plot_loader);
 
 	let plot_data = get_plot_json(plot_json);
+
+	const config = {responsive: true};
 </script>
 
 <div class="skeleton">
@@ -40,7 +42,7 @@
 		<p>Loading plot data</p>
 	{:then data}
 		<div bind:this={plot_loader}>
-			<Plotly data={data.data} layout={data.layout} bind:loaded />
+			<Plotly data={data.data} layout={data.layout} config={config} bind:loaded />
 		</div>
 	{:catch error}
 		<p>{error}</p>
@@ -49,7 +51,7 @@
 
 <style global lang="scss">
 	.skeleton {
-		width: calc(100% - 2px);
+		// width: calc(100% - 2px);
 		height: 450px;
 		border-radius: 8px;
 		background-color: rgb(17, 17, 17);
@@ -58,15 +60,15 @@
 
 		border: transparent 1px solid;
 		transition: border 0.15s ease;
-		&:hover {
-			border: hsl(220, 20%, 30%) 1px solid;
-			transition: border 0.15s ease;
-		}
+		// &:hover {
+		// 	border: hsl(220, 20%, 30%) 1px solid;
+		// 	transition: border 0.15s ease;
+		// }
 
-		&:active {
-			border: hsl(220, 20%, 30%) 1px solid;
-			transition: border 0.15s ease;
-		}
+		// &:active {
+		// 	border: hsl(220, 20%, 30%) 1px solid;
+		// 	transition: border 0.15s ease;
+		// }
 
 		overflow: hidden;
 

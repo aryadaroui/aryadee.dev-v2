@@ -1,11 +1,25 @@
-<script>
+<!-- svelte-ignore a11y-no-noninteractive-tabindex -->
+<script lang="ts">
 	import { onMount } from 'svelte';
 
-	onMount(() => {});
+	export let dispatch_event = true; // dispatches a resize event when the box is expanded. This is useful for plots that need to be resized when the box is expanded.
+
+	let expanding_box: HTMLDivElement;
+
+	onMount(() => {
+		if (dispatch_event) {
+			expanding_box.addEventListener('transitionend', (event) => {
+				if (event.propertyName === 'width') {
+					window.dispatchEvent(new Event('resize'));
+				}
+			});
+		}
+	});
+
 </script>
 
-<div class="expanding-box" tabindex="0">
-	<div class="container" id="container">
+<div class="expanding-box" tabindex="0" bind:this={expanding_box}>
+	<div class="container">
 		<slot />
 	</div>
 </div>
