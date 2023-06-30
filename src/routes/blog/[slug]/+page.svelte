@@ -102,7 +102,6 @@
 
 		color: black;
 
-
 		// ::-webkit-scrollbar {
 		// 	height: 10px;
 		// 	width: 10px;
@@ -155,25 +154,22 @@
 				margin-bottom: 0.5em;
 
 				code {
-				padding: 0.3em 0.4em;
-				border-radius: 0.4em;
-				// background-color: hsl(230, 10%, 18%);
-				background-color: $code-color;
-				// background-color: lighten($void-color, 10%);
-				// background-color: $gray-harder;
-				// border: $border-translucent 1px solid;
-				color: $tan-hard;
+					padding: 0.3em 0.4em;
+					border-radius: 0.4em;
+					// background-color: hsl(230, 10%, 18%);
+					background-color: $code-color;
+					// background-color: lighten($void-color, 10%);
+					// background-color: $gray-harder;
+					// border: $border-translucent 1px solid;
+					color: $tan-hard;
 
-				hyphens: none;
+					hyphens: none;
 
-
-				span.line {
-					padding: 0;
+					span.line {
+						padding: 0;
+					}
 				}
 			}
-			}
-
-
 		}
 
 		img {
@@ -244,16 +240,12 @@
 
 			// min-width: 600px;
 
-
-
 			flex-grow: 3;
 			// margin-left: 2vw;
 
 			.math {
 				color: darken($tan-mid, 5%);
 			}
-
-
 
 			@media (max-width: 1080px) {
 				// width: 0;
@@ -300,8 +292,8 @@
 				font-size: 1.8em;
 
 				&::before {
-					content: "# ";
-					color: $gray-soft;
+					content: '# ';
+					color: hsl(230, 10%, 40%);
 					font-size: 0.9em;
 				}
 			}
@@ -313,8 +305,8 @@
 				font-size: 1.5em;
 
 				&::before {
-					content: "## ";
-					color: $gray-soft;
+					content: '## ';
+					color: hsl(230, 10%, 40%);
 					font-size: 0.9em;
 				}
 			}
@@ -326,8 +318,8 @@
 				font-size: 1.2em;
 
 				&::before {
-					content: "### ";
-					color: $gray-soft;
+					content: '### ';
+					color: hsl(230, 10%, 40%);
 					font-size: 0.9em;
 				}
 			}
@@ -339,7 +331,7 @@
 				font-size: 1.1em;
 
 				&::before {
-					content: "#### ";
+					content: '#### ';
 					color: $gray-soft;
 					font-size: 0.9em;
 				}
@@ -371,8 +363,6 @@
 				// transition: background-color 0.15s ease, color 0.15s ease;
 			}
 
-
-
 			a > code {
 				transition: background-color 0.15s ease, color 0.15s ease;
 
@@ -382,11 +372,10 @@
 
 				// padding: 0;
 			}
-			
+
 			a.img-link:hover {
 				background-color: transparent;
 			}
-
 
 			a > img {
 				border: 1px solid transparent;
@@ -412,7 +401,6 @@
 				// border: $border-translucent 1px solid;
 
 				hyphens: none;
-
 
 				span.line {
 					padding: 0;
@@ -643,8 +631,8 @@
 		table {
 			border-collapse: collapse;
 			// width: 100%;
-			font-size: 0.8em;
-			font-family: $mono;
+			// font-size: 0.8em;
+			// font-family: $mono;
 			min-width: 300px;
 
 			margin-left: auto;
@@ -659,6 +647,19 @@
 			box-shadow: 0 0 0 1px rgb(41, 42, 43); /* this draws the table border  */
 
 			/* border-collapse: separate; */
+
+			code {
+				padding: 0.3em 0.4em;
+				border-radius: 0.4em;
+				background-color: $code-color;
+				// background-color: $background-translucent;
+				// border: $border-translucent 1px solid;
+				color: $tan-hard;
+
+				span.line {
+					padding: 0;
+				}
+			}
 		}
 
 		table thead tr {
@@ -667,13 +668,13 @@
 			// text-align: right;
 		}
 
-		table td {
-			text-align: right;
+		// table td {
+		// 	// text-align: right;
 
-			&:first-child {
-				text-align: left;
-			}
-		}
+		// 	&:first-child {
+		// 		text-align: left;
+		// 	}
+		// }
 
 		table th,
 		table td {

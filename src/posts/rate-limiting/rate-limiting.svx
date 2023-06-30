@@ -16,17 +16,7 @@ tags:
 
 # Intro
 
-<ExpandingBox>
 
-| Algorithm                        |   overshoot max    |    steady-state max    |     stored data     |     distribution     |
-| :------------------------------- | :----------------: | :--------------------: | :-----------------: | :------------------: |
-| `fixed_window(...)`              | $l-1$ cross-window |         $l/w$          |       counter       |        greedy        |
-| `enforced_avg(...)`              |         0          |         $l/w$          |  the entry itself   |       uniform        |
-| `sliding_window(...)`            |         0          |         $l/w$          | $l$-many timestamps |        greedy        |
-| `leaky_bucket(..., mode='soft')` |  $l-1$ transient   |         $l/w$          | counter, timestamp  | greedy T, uniform SS |
-| `leaky_bucket(..., mode='hard')` |         0          | ${\color{magenta}1}/w$ | counter, timestamp  | greedy T, uniform SS |
-
-</ExpandingBox>
 
 <ExpandingBox>
 
@@ -210,15 +200,7 @@ PLOT soft and hard
 
 A summary of results are presented in the following table:
 
-```
-| Algorithm                        |   overshoot max    |    steady-state max    |     stored data     |     distribution     |
-| :------------------------------- | :----------------: | :--------------------: | :-----------------: | :------------------: |
-| fixed_window(...)                | l-1, cross-window  |           l/w          |       counter       |        greedy        |
-| enforced_avg(...)                |         0          |           l/w          |  the entry itself   |       uniform        |
-| sliding_window(...)              |         0          |           l/w          |  l-many timestamps  |        greedy        |
-| leaky_bucket(..., mode='soft')   |   l-1, transient   |           l/w          | counter, timestamp  | greedy T, uniform SS |
-| leaky_bucket(..., mode='hard')   |         0          |           1/w          | counter, timestamp  | greedy T, uniform SS |
-```
+<ExpandingBox>
 
 | Algorithm                        |   overshoot max    |    steady-state max    |     stored data     |     distribution     |
 | :------------------------------- | :----------------: | :--------------------: | :-----------------: | :------------------: |
@@ -227,6 +209,8 @@ A summary of results are presented in the following table:
 | `sliding_window(...)`            |         0          |         $l/w$          | $l$-many timestamps |        greedy        |
 | `leaky_bucket(..., mode='soft')` |  $l-1$ transient   |         $l/w$          | counter, timestamp  | greedy T, uniform SS |
 | `leaky_bucket(..., mode='hard')` |         0          | ${\color{magenta}1}/w$ | counter, timestamp  | greedy T, uniform SS |
+
+</ExpandingBox>
 
 should talk about different between transient vs burst max, and also distribution in uniform request rate
 
