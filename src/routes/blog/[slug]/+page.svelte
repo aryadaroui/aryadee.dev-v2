@@ -648,12 +648,12 @@
 			margin-right: auto;
 			margin-top: 25px;
 			margin-bottom: 25px;
-			border-radius: 8px;
+			// border-radius: 8px;
 
 			overflow: hidden;
 			text-align: center;
 
-			box-shadow: 0 0 0 1px rgb(41, 42, 43); /* this draws the table border  */
+			// box-shadow: 0 0 0 1px rgb(41, 42, 43); /* this draws the table border  */
 
 			/* border-collapse: separate; */
 
@@ -672,9 +672,10 @@
 		}
 
 		table thead tr {
-			background-color: #2e343dee;
+			// background-color: #2e343dee;
 			// color: #ffffff;
 			// text-align: right;
+			border-bottom: $tan-hard 1px solid;
 		}
 
 		// table td {

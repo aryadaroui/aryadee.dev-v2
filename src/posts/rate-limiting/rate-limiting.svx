@@ -12,19 +12,24 @@ tags:
 <script>
   import {math, display} from 'mathlifier';
   import ExpandingBox from '$lib/ExpandingBox.svelte';
-  import plot_json from './hue_response_curve.json'
+  import fixed_window from './fixed_window.json'
+  import enforced_avg from './enforced_avg.json'
+  import sliding_window from './sliding_window.json'
+  import leaky_bucket from './leaky_bucket.json'
 
 </script>
 
 # Intro
 
-When making an API endpoint  available on the web, one of the first concerns you run into is:
+When making any sort of API available on the web, one of the first concerns you run into is:
 
 > How do I protect this endpoint from being inundated by requests, so that I can maintain system stability?
 
-The simple answer to this is limiting the rate (i.e. rate limiting) of processed requests--either by requester, or globally, on your endpoint.
+Assuming you already have auth figured out, a simple solution is limiting the rate (rate-limiting) of processed requests--either by user, or globally.
 
-I'm going to go over examples of common algorithms for designing a rate limiter, and provide some code along with it. The algorithms we're going to cover are:
+I'm going to go over the most common rate limiting algorithms, and provide some code and plots along with it. You can find the full code (in Python and TypeScript) [here](www.github.com/aryadaroui).
+
+The algorithms we're going to cover are:
 
 1. Fixed window
 2. Enforced average
@@ -57,7 +62,7 @@ $$
 
 ## Fixed window
 
-Probably the most intuitive method is to set a `counter` in our cache with a $w$-length timer for [expiration](https://redis.io/commands/expire/) when we first receive a request. For every subsequent request in our window, we'll increment the count. When  the counter goes over the limit, we stop accepting requests.
+Probably the most intuitive algorithm is to set a `counter` in our cache with a $w$-length timer for [expiration](https://redis.io/commands/expire/) when we first receive a request. For every subsequent request in our window, we'll increment the count. When the counter goes over the limit, we stop accepting requests.
 
 ```python
 def fixed_window(key: str, limit: float, window_length_ms: float) -> dict
@@ -78,15 +83,11 @@ def fixed_window(key: str, limit: float, window_length_ms: float) -> dict
 		return {"status": "OK", "counter": 1}
 ```
 
+
+
 <ExpandingBox>
-
-<Plot plot_json={plot_json} />
-
+  <Plot plot_json={fixed_window} />
 </ExpandingBox>
-
-
-
-PLOT uniform rate
 
 Looking at the plot, we see that we're effective in limiting requests arriving at a uniform rate, but there is a caveat we have to address.
 
@@ -149,7 +150,9 @@ def enforced_average(key: str, limit: float, window_length_ms: float) -> dict:
 		return {"status": "OK"}
 ```
 
-PLOT
+<ExpandingBox>
+  <Plot plot_json={enforced_avg} />
+</ExpandingBox>
 
 The key feature of this limiter is that it only accepts a single request per $\tau$ seconds, allowing for a more even distribution of accepted requests.
 
@@ -159,7 +162,7 @@ We can resolve the window boundary issue of the fixed window by modeling a slidi
 
 <Callout title='Leveraging Redis' icon="lightning" color='blue'>
 
-I kept the code example generic, but we offload more of the work to Redis and get the count directly from the cache.
+I kept the code example generic, but we could offload more of the work to Redis and get the count directly from the cache.
 
 Using a [sorted set](https://redis.io/docs/data-types/sorted-sets/) with the timestamp as the score, we use [`ZREMRANGEBYSCORE`](https://redis.io/commands/zremrangebyscore) to remove all timestamps older than $w$ seconds. Then, we count what's left (within the window) with [`ZCOUNT`](https://redis.io/commands/zcount/), and finally compare that to our limit.
 
@@ -167,7 +170,9 @@ Using a [sorted set](https://redis.io/docs/data-types/sorted-sets/) with the tim
 
 CODE
 
-PLOT uniform rate
+<ExpandingBox>
+  <Plot plot_json={sliding_window} />
+</ExpandingBox>
 
 PLOT cross-window burst
 
@@ -194,7 +199,6 @@ In other words, you choose whether you want to limit steady-state, or transients
 CODE
 
 PLOT soft and hard
-
 
 
 - No cross-window inconsistency
@@ -234,7 +238,7 @@ A summary of results are presented in the following table:
 
 <ExpandingBox>
 
-| Algorithm                        |   overshoot max    |    steady-state max    |     stored data     |     distribution     |
+| Algorithm                        |   overshoot max    |    steady-state max    |  space complexity   |     distribution     |
 | :------------------------------- | :----------------: | :--------------------: | :-----------------: | :------------------: |
 | `fixed_window(...)`              | $l-1$ cross-window |         $l/w$          |       counter       |        greedy        |
 | `enforced_avg(...)`              |         0          |         $l/w$          |  the entry itself   |       uniform        |

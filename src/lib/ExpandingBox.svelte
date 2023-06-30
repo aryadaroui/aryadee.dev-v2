@@ -32,8 +32,10 @@
 		overflow: scroll;
 		width: 100%;
 
+		padding: 0;
+
 		position: relative;
-		z-index: 100;
+		z-index: 5;
 		background-color: hsl(230, 10%, 7%);
 
 		display: flex;

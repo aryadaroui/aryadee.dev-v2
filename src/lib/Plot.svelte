@@ -56,7 +56,8 @@
 		border-radius: 8px;
 		background-color: rgb(17, 17, 17);
 		padding: 0px;
-		margin: 1em 0;
+		// margin: 1em 0;
+		margin: 0;
 
 		border: transparent 1px solid;
 		transition: border 0.15s ease;
