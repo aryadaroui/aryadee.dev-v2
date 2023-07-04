@@ -1,6 +1,6 @@
 ---
-title: "Rate Limiting Algorithms: a Deep Dive"
-date: 30 May 2021
+title: "Rate Limiting Algorithms Compared "
+date: 03 July 2023
 update:
 thumbnail: ./thumbnail.png
 tags: 
