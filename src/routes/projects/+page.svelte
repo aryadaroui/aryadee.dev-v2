@@ -80,6 +80,16 @@
 		position: fixed;
 		top: 0;
 	}
+
+	p {
+		font-weight: 400;
+	}
+
+	li {
+		font-weight: 300;
+	}
+
+
 	img {
 		/* width: 100px; */
 		max-height: 100%;

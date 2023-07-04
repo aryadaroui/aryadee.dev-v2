@@ -3,6 +3,7 @@
 	import { onMount } from 'svelte';
 
 	export let dispatch_event = true; // dispatches a resize event when the box is expanded. This is useful for plots that need to be resized when the box is expanded.
+	export let center;
 
 	let expanding_box: HTMLDivElement;
 
@@ -21,7 +22,7 @@
 	});
 </script>
 
-<div class="expanding-box" tabindex="0" bind:this={expanding_box}>
+<div class="expanding-box { Boolean(center) ? 'left' : 'center'}" tabindex="0" bind:this={expanding_box}>
 	<div class="container">
 		<slot />
 	</div>
@@ -42,7 +43,9 @@
 		background-color: hsl(230, 10%, 7%);
 
 		display: flex;
-		justify-content: center;
+		// justify-content: left;
+
+		// justify-content: center;
 
 		transition: width 0.3s ease, margin-left 0.3s ease, border 0.15s ease;
 		&:hover {
@@ -84,5 +87,13 @@
 			// width: calc(98vw - 40px);
 			width: calc(98vw);
 		}
+	}
+
+	.center {
+		justify-content: center; 
+	}
+
+	.left {
+		justify-content: left;
 	}
 </style>

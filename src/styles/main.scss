@@ -8,6 +8,18 @@
     color-scheme: dark;
 }
 
+html {
+    scroll-behavior: smooth;
+    // font-weight: 400;
+}
+
+// p {
+//     font-weight: 400;
+// }
+
+// li {
+//     font-weight: 400;
+// }
 
 
 
@@ -16,7 +28,7 @@
     color: $ink-color;
     font-family: $sans;
     // font-family: Hack, monospace;
-    font-weight: 300;
+    font-weight: 400;
     font-size: 1.2rem;
     margin: 0;
 }

@@ -57,9 +57,7 @@
 	// 	background-color: $background-color;
 	// }
 
-	html {
-		scroll-behavior: smooth;
-	}
+
 
 	$code-color: hsl(230, 10%, 7%);
 

@@ -10,7 +10,6 @@
 	export let data;
 	let posts = data.posts;
 
-
 	// onMount(async () => {
 	// 	// const thumb = (await import(data.posts[0].thumbnail)).default;
 
@@ -27,7 +26,6 @@
 	<h1>Blog</h1>
 	<p>Articles, documents, and other writing snippets.</p>
 
-
 	<!-- <ImgCap src="/src/posts/test_post/thumbnail.png" caption="wee woo" make_fit=true/> -->
 
 	<h2>Posts</h2>
@@ -38,8 +36,7 @@
 				tags={post.tags}
 				img_src={'/blog/thumbnails/' + post.slug + '.webp'}
 				link={'/blog/' + post.slug}
-				alt={'thumbnail of post: ' + post.title}
-			/>
+				alt={'thumbnail of post: ' + post.title} />
 		{/each}
 	</div>
 
@@ -96,6 +93,14 @@
 <style lang="scss">
 	body {
 		background-color: $gray-mid;
+	}
+
+	p {
+		font-weight: 400;
+	}
+
+	li {
+		font-weight: 400;
 	}
 
 	main {

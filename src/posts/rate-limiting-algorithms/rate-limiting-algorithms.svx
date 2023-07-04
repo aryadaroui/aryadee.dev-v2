@@ -65,7 +65,7 @@ $$
 
 ## Fixed window
 
-Probably the most intuitive rate limiting algorithms is the fixed window. In this algorithm, we set a `counter` in our cache with a $w$-length expiration timer when we receive the first request. For every subsequent request within the window, we increment the count. When the counter goes over the limit, we stop accepting requests. Note that the `incr(){:python}` command does not reset the [TTL](#ttl) of the cache entry.
+Probably the most intuitive rate limiting algorithms is the fixed window. In this algorithm, we set a `counter` in our cache with a $w$-length expiration timer when we receive the first request. For every subsequent request within the window, we increment the count. When the counter goes over the limit, we stop accepting requests. Note that the `incr(){:python}` command does not reset the [TTL](#glossary) of the cache entry.
 
 ```python
 def fixed_window(key: str, limit: float, window_length_ms: float) -> dict
@@ -376,39 +376,23 @@ For this article, I just use the term "leaky bucket", because the GCRA optimiziz
 
 ## Glossary
 
-- `cache`: Data store optimized for fast reads
-  - Typically in-memory, and non persistent
-  - This is usually a key-value store like Redis or Memcached
+<ExpandingBox center=false>
 
-- **Greedy**: accepts requests as fast as possible
-  - No minimum interval between accepted requests
+<div id='glossary'> </div>
 
-- **Interval**: the time between accepted requests
+| Term          | Definition                                                                                     |
+|:---------------|:------------------------------------------------------------------------------------------------|
+| **cache**         | Data store optimized for fast reads. Usually a key-value store.|
+| **Greedy**        | Accepts requests as fast as possible. No min interval between accepted requests.|
+| **Interval**      | The time between accepted requests.|
+| **key**           | Unique identifier for the cache entry. This is usually the IP address of the requester.|
+| **Overshoot**     | The number of requests that exceed the given limit                                             |
+| **Requests**      | Incoming API requests                                                                         |
+| **rps**           | Requests per second                                                                            |
+| **Steady-state**  | The long-term effect of a system after it settles. For leaky bucket, this is the bucket leaking at a constant rate|
+| **SS**            | Shorthand for "steady-state"                                                                   |
+| **T**             | Shorthand for "transient"                                                                      |
+| **TTL**           | Time-to-live. The remaining time until the cache entry expires                                 |
+| **Transient**     | The initial effect of a system, before it reaches steady-state. For leaky bucket, this is the initial filling of the bucket |
 
-- `key`: unique identifier for the cache entry
-  - This is usually the IP address of the requester.
-  - If you're limiting the endpoint globally, it could be a static value like `'global'`
-
-- **Overshoot**: the number of requests that exceed the given limit
-  - This is usually a transient effect; does not happen at steady-state
-
-- **Requests**: Incoming API requests
-  - You could also imagine them as general, incoming network traffic
-
-- `rps`: requests per second
-
-- **Steady-state**: the long-term effect of a system after it settles
-  - For leaky bucket, this is the bucket leaking at a constant rate
-
-- **SS**: shorthand for "steady-state"
-
-- **T**: shorthand for "transient"
-
-<div id='ttl'> </div>
-
-- **TTL**: time-to-live
-  - The remaining time until the cache entry expires
-
-- **Transient**: the initial effect of a system, before it reaches steady-state
-  - For leaky bucket, this is the initial filling of the bucket
-
+</ExpandingBox>
