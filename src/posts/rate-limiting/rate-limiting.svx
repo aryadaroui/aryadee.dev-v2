@@ -2,7 +2,7 @@
 title: "Rate Limiting Algorithms: a Deep Dive"
 date: 30 May 2021
 update:
-thumbnail: ./thumbnail.webp
+thumbnail: ./thumbnail.png
 tags: 
   - webdev
   - TypeScript
@@ -13,23 +13,23 @@ tags:
   import {math, display} from 'mathlifier';
   import ExpandingBox from '$lib/ExpandingBox.svelte';
   import fixed_window from './fixed_window.json'
+  import fixed_window_cross_window from './fixed_window_cross_window.json'
   import enforced_avg from './enforced_avg.json'
   import sliding_window from './sliding_window.json'
-  import leaky_bucket from './leaky_bucket.json'
-
+  import leaky_bucket_soft from './leaky_bucket_soft.json'
+  import leaky_bucket_hard from './leaky_bucket_hard.json'
+  import subplots from './subplots.json'
 </script>
 
 # Intro
 
 When making any sort of API available on the web, one of the first concerns you run into is:
 
-> How do I protect this endpoint from being inundated by requests, so that I can maintain system stability?
+> How do I protect an endpoint from being inundated by requests, so that I can maintain system stability?
 
-Assuming you already have auth figured out, a simple solution is limiting the rate (rate-limiting) of processed requests--either by user, or globally.
+Assuming you already have [auth](https://en.wikipedia.org/wiki/Authorization) figured out, the go-to solution is limiting the rate (rate limiting) of processed requests--either by user, or globally on the endpoint.
 
-I'm going to go over the most common rate limiting algorithms, and provide some code and plots along with it. You can find the full code (in Python and TypeScript) [here](www.github.com/aryadaroui).
-
-The algorithms we're going to cover are:
+There are a handful of algorithms used for rate limiting. I'm going to go cover how they each work, and provide some code samples and plots along with it. You can find the full code, with proper Python dataclasses (and TypeScript interfaces) [on my GitHub](www.github.com/aryadaroui/rate-limiting-algorithms). The algorithms we're going to cover are:
 
 1. Fixed window
 2. Enforced average
@@ -37,7 +37,9 @@ The algorithms we're going to cover are:
 4. Leaky bucket (Generic Cell Rate)
 
 <Callout title="Architecture abstraction" icon="smile" color='pink'>
-I can't really go into the details of how to architect your system. But, in my code examples, I'm using an abstraction of a Redis-like cache data store, which are commonly used for this sort of  application.
+Distributed, scalable systems commonly use an external cache to store rate limiting data. This is so that the rate limit can be enforced across multiple instances of the application.
+
+In my code samples, I'm using an abstraction of a Redis-like cache data store. If you use my code samples, you'll need to replace my `cache` with your own implementation.
 </Callout>
 
 ## Problem setup
@@ -62,7 +64,7 @@ $$
 
 ## Fixed window
 
-Probably the most intuitive algorithm is to set a `counter` in our cache with a $w$-length timer for [expiration](https://redis.io/commands/expire/) when we first receive a request. For every subsequent request in our window, we'll increment the count. When the counter goes over the limit, we stop accepting requests.
+Probably the most intuitive rate limiting algorithms is the fixed window. In this algorithm, we set a `counter` in our cache with a $w$-length expiration timer when we receive the first request. For every subsequent request within the window, we increment the count. When the counter goes over the limit, we stop accepting requests. Note that the `incr(){:python}` command does not reset the [TTL](#ttl) of the cache entry.
 
 ```python
 def fixed_window(key: str, limit: float, window_length_ms: float) -> dict
@@ -70,8 +72,7 @@ def fixed_window(key: str, limit: float, window_length_ms: float) -> dict
 	counter = cache.get(key)
 
 	if counter is not None:  # cache entry exists
-
-		if count < limit:  # increment the count
+		if count < limit:
       cache.incr(key) # incr() does not reset TTL
 			return {"status": 'OK', "counter": counter + 1}
 
@@ -79,30 +80,30 @@ def fixed_window(key: str, limit: float, window_length_ms: float) -> dict
 			return {"status": "DENIED", "counter": counter}
 
 	else:  # cache entry does not exist
-		cache.set(key, 1, window_length_ms)  # set the target cache entry with TTL
+		cache.set(key, 1, window_length_ms)  # set the target cache entry with TTL of window_length_ms
 		return {"status": "OK", "counter": 1}
 ```
-
-
 
 <ExpandingBox>
   <Plot plot_json={fixed_window} />
 </ExpandingBox>
 
-Looking at the plot, we see that we're effective in limiting requests arriving at a uniform rate, but there is a caveat we have to address.
+Looking at the plot, we see that we're effective in limiting requests arriving at a uniform rate, but there there are two things two point out. First, we see that the requests are accepted greedily; there is no minimum interval between accepted requests. Second--and this isn't as see to see--it's possible we can **overshoot** the limit across window boundaries.
 
 ### Cross-window flaw
 
-Because the fixed window inherently models the continuous flow of time into discrete, fixed windows, we can **overshoot** our limit across window boundaries. This happens because at every window boundary, our `counter` resets, losing track of the true number of requests in the last $w$ seconds.
+Because fixed window inherently models the continuous flow of time into fixed windows, at every window boundary, the `counter` resets, losing track of the true number of requests in the last $w$ seconds. So a burst of requests arriving at the end of a window can be accepted, even if it puts us over the limit.
 
-PLOT cross-window burst
+<ExpandingBox>
+  <Plot plot_json={fixed_window_cross_window} />
+</ExpandingBox>
 
-Fortunately, we can calculate the maximum cross-window overshoot in so that we can account for it when choosing our limit:
+To account for this, we can calculate the maximum cross-window overshoot:
 
 $$
 \text{overshoot}_\text{max} = l-1 \\
 $$
-
+ 
 But, keep in mind that the overshoot is relative to the limit,
 
 $$
@@ -111,7 +112,6 @@ $$
 
 So for $l=5$, we could hit have up to  $l_\text{total}=9$ accepted requests across window boundaries.
 
-Although it's not ideal, the overshoot is bounded to a relatively near value--you may actually want leniency like this when you get bursts of requests. The trouble is that this leniency occurs at the somewhat arbitrary time of between window boundaries.
 
 <Callout title='Using a static timer' icon="warning" color='orange'>
 
@@ -125,9 +125,14 @@ $$
 
 </Callout>
 
-<h2 id="enforced-average">Enforced average</h2>
+<!-- <h2 id="enforced-average">Enforced average</h2> -->
+## Enforced average
 
-We normally describe the function of rate limiting in units $\text{req} / \text{s}$, but we can also think about it in its reciprocal: $\text{s} / \text{req}$. This describes the average time between requests if we were to fully distribute $l$ requests across our window $w$. We can enforce this average by waiting $\tau$ seconds between accepted requests, where $\tau$ is our *waiting time*.
+The enforced average rate limiting algorithm focuses on the average time between requests rather than the rate itself. Normally, we think about rate limiting in units $\text{req} / \text{s}$, but we can also describe it by its reciprocal: $\text{s} / \text{req}$. This reciprocal represents the average time between requests if we were to distribute $l$ requests evenly across $w$ seconds. 
+
+
+We can enforce this average by waiting $\tau$ seconds between accepted requests, where $\tau$ is our *waiting time*.
+
 $$
 \begin{aligned}
 l_\text{rps} &= 5 \text{ req/s} = \frac{1}{\tau_\text{spr}} \\
@@ -135,7 +140,8 @@ l_\text{rps} &= 5 \text{ req/s} = \frac{1}{\tau_\text{spr}} \\
 \implies \tau &= 0.2 \text{ s}
 \end{aligned}
 $$
-To implement this, we set our $\tau$ as the expiry timer of our cache entry. If the entry exists, we've already received a request in $\tau$ seconds, and we deny it; otherwise, we accept it.
+
+In this algorithm, we set $\tau$ as the expiry timer of our cache entry. If the entry exists, we've already received a request in $\tau$ seconds, and we deny it; otherwise, we accept it.
 
 ```python
 def enforced_average(key: str, limit: float, window_length_ms: float) -> dict:
@@ -145,6 +151,7 @@ def enforced_average(key: str, limit: float, window_length_ms: float) -> dict:
 
 	if entry is not None:  # cache entry exists
 		return {"status": "DENIED"}
+
 	else:  # cache entry does not exist
 		cache.set(key, 1, avg_time_ms)  # set cache entry with TTL of avg_time_ms
 		return {"status": "OK"}
@@ -154,112 +161,168 @@ def enforced_average(key: str, limit: float, window_length_ms: float) -> dict:
   <Plot plot_json={enforced_avg} />
 </ExpandingBox>
 
-The key feature of this limiter is that it only accepts a single request per $\tau$ seconds, allowing for a more even distribution of accepted requests.
+The key feature of this limiter is that it has a minimum interval of $\tau$ seconds between accepted requests, yielding a more even distribution.
 
 ## Sliding window
 
-We can resolve the window boundary issue of the fixed window by modeling a sliding window. Instead of a counter, upon every request, we record the timestamp, and then count the number of timestamps in the last $w$ seconds. If the count is less than our limit, we accept the request; otherwise, we deny it. Also, every time we receive a request, we will set an expiry timer for $w$ seconds so that our entry expires when the count would hit 0; this isn't necessary, but it keeps our cache free from stale entries.
+The sliding window rate limiting algorithm addresses the window boundary issue present in the fixed window algorithm. Instead of using a dedicated counter, this algorithm records the timestamp of every request and counts the number of timestamps within the last $w$ seconds. If the count is less than the limit, the request is accepted; otherwise, it is denied. Additionally, an expiry timer is set for $w$ seconds upon receiving a request to keep the cache free from stale entries.
+
+```python
+def sliding_window(key: str, limit: float, window_length_ms: float = 1000):
+
+	times: list = cache.get(key)
+	if times is not None:  # cache entry exists
+
+		# remove all times that are outside the window
+		times = [time for time in times if globals.CURRENT_TIME - time < window_length_ms]
+
+		if len(times) < limit:
+			times.append(globals.CURRENT_TIME)
+			cache.set(key, times, window_length_ms)
+			return {"status": "OK", "counter": len(times), "new": False}
+
+		else:
+			return {"status": "DENIED", "counter": len(times), "new": False}
+
+	else:
+		cache.set(key, [globals.CURRENT_TIME], window_length_ms)
+		return {"status": "OK", "counter": 1, "new": True}
+```
 
 <Callout title='Leveraging Redis' icon="lightning" color='blue'>
 
 I kept the code example generic, but we could offload more of the work to Redis and get the count directly from the cache.
 
-Using a [sorted set](https://redis.io/docs/data-types/sorted-sets/) with the timestamp as the score, we use [`ZREMRANGEBYSCORE`](https://redis.io/commands/zremrangebyscore) to remove all timestamps older than $w$ seconds. Then, we count what's left (within the window) with [`ZCOUNT`](https://redis.io/commands/zcount/), and finally compare that to our limit.
+Instead of storing the timestamps in a list, we could use a [sorted set](https://redis.io/docs/data-types/sorted-sets/) with the timestamp as the score. Using [`ZREMRANGEBYSCORE`](https://redis.io/commands/zremrangebyscore), we remove all timestamps older than $w$ seconds and get the count of what's left (within the window) with [`ZCOUNT`](https://redis.io/commands/zcount/).
 
 </Callout>
-
-CODE
 
 <ExpandingBox>
   <Plot plot_json={sliding_window} />
 </ExpandingBox>
 
-PLOT cross-window burst
-
-This is a better model of continuous state compared to the fixed window, but you will still have to settle your [transient vs. steady-state](#transient-vs.-steady-state) tradeoff. This better performance comes at the cost of having to record and manage sets of timestamps for every request, whereas in other algorithms, we only need to increment a counter. If you have a high $l$, this can be a nontrivial cost.
+This is a better model of continuous state compared to the fixed window, but it comes at the cost of having to record and manage sets of timestamps for every request, whereas in other algorithms, we only need to increment a counter. If you have a high $l$, this can be a nontrivial cost.
 
 ## Leaky bucket
 
-For leaky bucket, we accept requests until our bucket is full, waiting for it to leak more capacity. Normally, we'd have parameters of `bucket_size` and `leak_rate`, which ties in the analogy, but I don't find it intuitive for rate limiting. Instead, I'm going to keep the same `limit` and `window_length_ms` parameters as in the other algorithms, with an additional `mode` parameter for `'soft'` or `'hard'` limiting, which determines our leak rate.
+For the leaky bucket algorithm, we accept requests until our bucket is full, waiting for it to leak more capacity. Normally, we'd have parameters of `bucket_size` and `leak_rate`, which ties in the analogy, but I don't find it intuitive for rate limiting. Instead, I'm going to keep the same `limit` and `window_length_ms` parameters from the other algorithms, with an additional `mode` parameter for `'soft'` or `'hard'` limiting, which determines the leak rate.
 
-At its core, our leaky bucket is like a blend of all of our previous algorithms. When we receive our first request, we start a counter in our cache entry and give it a timestamp. For each subsequent request, we calculate what our counter decreases (leaks) to from the last timestamp, and then increment it; if it goes over the limit, we deny the request. Additionally, to keep our cache tidy, we set the expiry timer on every request to be the time it would take for the counter to leak to 0.
+Our leaky bucket is like a blend of all of our previous algorithms. When we receive our first request, we start a counter in our cache entry and give it a timestamp. For each subsequent request, we calculate what our counter decreases (leaks) to from the last timestamp and add one for the new request; if it goes over the limit, we deny it. Additionally, to keep our cache tidy, we set the expiry timer on every request to be the time it would take for the counter to leak to 0.
 
-For the soft and hard modes:
-
-- `mode='soft'`
-  - Steady-state: $l_\text{rps} = l/w$
-  - Transient: $\text{overshoot}_\text{max} = l-1$
-
-- `mode='hard'`
-  - Steady-state: $l_\text{rps} = 1 \text{ req} / w$
-  - Transient: $\text{overshoot}_\text{max} = l$
-
-In other words, you choose whether you want to limit steady-state, or transients.
-
-CODE
-
-PLOT soft and hard
-
-
-- No cross-window inconsistency
-- Low resource cost (only a counter and timestamp per entry)
-- Transient vs. steady-state adjustment for burst tolerance
-
-<!-- This is a lazy solution -->
-<h1 id="transient-vs.-steady-state">Transient vs. steady-state</h1>
-
-While we may be accepting only 5 requests every second; nothing stops all 5 of those requests from arriving at the same time.
-
-TODO: Because it's greedy. this isn't unique to this algorithm. maybe move this into appendix
-
-PLOT plot greedy transient vs steady-state
-
-We can maintain the same $l_\text{rps}$ but modify our the max possible transient by scaling $l$ and $w$. For example, if you can only handle a maximum of 3 requests at once without system strain:
-$$
-\begin{aligned}
-l_\text{rps} &= \frac{5 \text{ req}}{1 \text{ s}} = \boxed{\frac{3 \text{ req}}{0.6 \text{ s}}}\\
-l_\text{scaled} &= 3 \text{ req} \\
-w_\text{scaled} &= 0.6 \text{ s}
-\end{aligned}
-$$
-
-This way, you still have same steady-state *average* $5 \text{ req/s}$, but the maximum transient at any one time is $3 \text{ req}$.
-
-You may then wonder,
-
-> Why not extend this principle to the extreme of $1 \text{ req}/ 0.2 \text{ s}$?
-
-This is a special case I call the [enforced average](#enforced-average). What you're trading off is transient vs. steady-state limiting, or the *burst tolerance* of the limiter. At $1 \text{ req} / w$, you have no burst tolerance; it is enforcing the steady-state average.
-
-# Conclusion
-## Summary
-
-A summary of results are presented in the following table:
+The soft and hard modes set the leak rate to $l/w$ and $1/w$, respectively. This sets the transient and steady-state limiting behavior, as shown in the table below.
 
 <ExpandingBox>
 
-| Algorithm                        |   overshoot max    |    steady-state max    |  space complexity   |     distribution     |
-| :------------------------------- | :----------------: | :--------------------: | :-----------------: | :------------------: |
-| `fixed_window(...)`              | $l-1$ cross-window |         $l/w$          |       counter       |        greedy        |
-| `enforced_avg(...)`              |         0          |         $l/w$          |  the entry itself   |       uniform        |
-| `sliding_window(...)`            |         0          |         $l/w$          | $l$-many timestamps |        greedy        |
-| `leaky_bucket(..., mode='soft')` |  $l-1$ transient   |         $l/w$          | counter, timestamp  | greedy T, uniform SS |
-| `leaky_bucket(..., mode='hard')` |         0          | ${\color{magenta}1}/w$ | counter, timestamp  | greedy T, uniform SS |
+| Mode  | Transient overshoot max | Steady-state avg |
+| :---- | :---------------------: | :--------------------: |
+| soft  |  $l-1$                  |  $l/w$               |
+| hard  |  $0$                    |  $1 \text{ req} / w$ |
 
 </ExpandingBox>
 
-should talk about different between transient vs burst max, and also distribution in uniform request rate
+This code block is a bit longer than our previous ones, but it's mostly bloat from error checking and packing. The core logic is fairly similar to before.
 
-PLOT
+```python
+def leaky_bucket(key: str, limit: float, window_length_ms: float = 1000, mode = 'soft') -> dict:
 
-It's sounds like a cop out, but the best choice depends on your use case
+	if mode == 'soft':
+		leak_rate = limit # leak at limit-many requests per window
+	elif mode == 'hard':
+		leak_rate = 1 # leak at 1 request per window
+	else:
+		raise ValueError(f'Invalid mode: {mode}')
+
+	entry: dict = cache.get(key)
+
+	if entry is not None:  # cache entry exists
+		# unpack the cache entry because `['key']` notation is ugly
+		counter = entry['counter']
+		time = entry['time']
+
+		delta_time_ms = (globals.CURRENT_TIME - time)  # time since last request
+		counter = max(counter - (delta_time_ms * leak_rate) / window_length_ms, 0) # get the extrapolated counter value
+
+		if counter + 1 < limit:  # increment the counter
+			cache.set(
+				key,
+        {
+					'counter': counter + 1,
+					'time': globals.CURRENT_TIME
+				},
+        (counter + 1) * 1000 / leak_rate # this is the TTL
+			)
+			return {"status": "OK", "counter": counter + 1, "new": False}
+
+		else:  # we hit counter threshold
+			return {"status": "DENIED", "counter": counter, "new": False}
+
+	else:  # cache entry does not exist
+		cache.set(
+			key,
+      {
+				'counter': 1,
+				'time': globals.CURRENT_TIME
+			},
+      window_length_ms / leak_rate # this is the TTL
+		) 
+		return {"status": "OK", "counter": 1, "new": True}
+```
+
+<ExpandingBox>
+  <Plot plot_json={leaky_bucket_soft} />
+</ExpandingBox>
+
+<ExpandingBox>
+  <Plot plot_json={leaky_bucket_hard} />
+</ExpandingBox>
+
+The defining feature of the leaky bucket is its dynamic nature. It can handle a transient burst of requests, but also eases into an even interval of accepted requests at steady-state.
+
+# Conclusion
+
+In summary:
+
+- **Fixed window**
+  - Cheap
+  - Greedy. No min interval between accepted requests
+  - Cross-window flaw
+
+- **Enforced average**
+  - Cheap
+  - Strict. Has minimum interval between accepted requests
+
+- **Sliding window**
+  - Expensive, but better version of fixed window
+  - Greedy. No min interval between accepted requests
+  - Resolves the cross-window flaw
+
+- **Leaky bucket**
+  - Cheap
+  - Dynamic. No interval min on transient, but has min interval on steady-state
+  - Soft mode overshoots on transients, which may be desirable
+
+This is shown in more detail in the table below.
+
+<ExpandingBox>
+
+| Algorithm                        |   Overshoot max    |     Steady-state avg   |       Stored data      |     Interval min     |
+| :------------------------------- | :----------------: | :--------------------: | :--------------------: | :------------------: |
+| `fixed_window(...)`              | $l-1$ cross-window |         $l/w$          |        `counter`       |          0           |
+| `enforced_avg(...)`              |         0          |         $l/w$          |           `1`          |        $w/l$         |
+| `sliding_window(...)`            |         0          |         $l/w$          | $l$-many `timestamps`  |          0           |
+| `leaky_bucket(..., mode='soft')` |  $l-1$ transient   |         $l/w$          | `counter`, `timestamp` |    0 T, $w/l$ SS     |
+| `leaky_bucket(..., mode='hard')` |         0          | ${\color{magenta}1}/w$ | `counter`, `timestamp` |    0 T, $1/w$ SS     |
+
+</ExpandingBox>
+
+# Appendix
 
 ## Other features to consider
 
-There are also some  features you may want to consider exploring that I did not cover here, such as:
+There are other features you may want to explore that I did not cover here, such as:
 
 - Traffic shaping
-  - Using a simple queue, you can place your denied requests into a queue until they're ready to be processed, instead of wholly denying them
+  - You can place your denied requests into a queue until they're ready to be processed, instead of rejecting them outright
   - Also known as *traffic shaping* vs. *traffic policing*
 
 - Timeout
@@ -274,32 +337,7 @@ There are also some  features you may want to consider exploring that I did not 
   - Compensate for the time it takes when getting and setting
   - I think this is pretty niche. Only needed for high frequency systems
 
-# Appendix
-
-
-
-## Glossary
-
-key words and identifiers
-
-- `key`: unique identifier for the cache entry
-  - This is usually the IP address of the requester.
-  - If you're limiting the endpoint globally, it could be a static value like `'global'`
-  
-- `rps`: requests per second
-
-- `cache`: 
-
-- *TTL*: time-to-live
-
-- *T*: shorthand for "transient"
-
-- *SS*: shorthand for "steady-state"
-
-- *Requests*: Incoming API requests
-  - You could also imagine them as general, incoming network traffic
-
-## Leaky bucket terminology
+  ## Leaky bucket terminology
 
 There is reasonable confusion over the terminology of leaky bucket, token bucket, and Generic Cell Rate Algorithm (GCRA) on the internet. 
 
@@ -316,18 +354,60 @@ There is reasonable confusion over the terminology of leaky bucket, token bucket
 - Both leaky and token bucket are used to shape network traffic by using the bucket "*as a queue*", but they can also be used "*as a meter*" for rate limiting by using the bucket as a counter and incrementing/decrementing it at a constant rate
   - Classically, "constant rate" is done by a literal background process that manages the leak/refill of the bucket
 
-- The **GCRA** is the same as the leaky bucket as a meter, but by just keeping track of the last timestamp, we can calculate how much the bucket would've leaked since then, eliminating the need for a background process to constantly leak the bucket
+- The **GCRA** is the same as the *leaky bucket as a meter*, but by knowing the leak rate and keeping track of the last timestamp, we can calculate how much the bucket would've leaked since then, eliminating the need for a background process to constantly leak the bucket
 
-- The leaky bucket and token bucket are effectively the same as a meter, but there are differences as a queue; you can read more about it on [wikipedia](https://en.wikipedia.org/wiki/Leaky_bucket)
+- The leaky bucket and token bucket are effectively the same "as a meter", but there are differences as a queue; you can read more about it on [wikipedia](https://en.wikipedia.org/wiki/Leaky_bucket)
 
-For this article, I'm going to use the term "leaky bucket" for GCRA
+For this article, I just use the term "leaky bucket", because the GCRA optimizization is not worth distinguishing.
 
-## Cache
+## Reading the plots
 
-methods
+- Traces
+  - *OK* and *DENIED* are incoming requests that were accepted or denied, respectively
+  - *counter* is the algorithm's internal `counter`. The "#" is for the lifetime of the cache entry
+  - *num OKs* is the number of requests accepted in the last $w$ seconds
 
-https://upstash.com/blog/upstash-ratelimit
+- Reference lines
+  - *limit* is the given limit
+  - The <span style="color: forestgreen;">green</span> line is the start of a new cache entry
+  - The <span style="color: firebrick;">red</span> line is the expiration of a cache entry
+  - The <span style="color: goldenrod;">yellow</span> line is the overlap of start and expiration lines
 
-https://github.com/upstash/ratelimit#ratelimiting-algorithms
+## Glossary
 
- 
+- `cache`: Data store optimized for fast reads
+  - Typically in-memory, and non persistent
+  - This is usually a key-value store like Redis or Memcached
+
+- **Greedy**: accepts requests as fast as possible
+  - No minimum interval between accepted requests
+
+- **Interval**: the time between accepted requests
+
+- `key`: unique identifier for the cache entry
+  - This is usually the IP address of the requester.
+  - If you're limiting the endpoint globally, it could be a static value like `'global'`
+
+- **Overshoot**: the number of requests that exceed the given limit
+  - This is usually a transient effect; does not happen at steady-state
+
+- **Requests**: Incoming API requests
+  - You could also imagine them as general, incoming network traffic
+
+- `rps`: requests per second
+
+- **Steady-state**: the long-term effect of a system after it settles
+  - For leaky bucket, this is the bucket leaking at a constant rate
+
+- **SS**: shorthand for "steady-state"
+
+- **T**: shorthand for "transient"
+
+<div id='ttl'> </div>
+
+- **TTL**: time-to-live
+  - The remaining time until the cache entry expires
+
+- **Transient**: the initial effect of a system, before it reaches steady-state
+  - For leaky bucket, this is the initial filling of the bucket
+

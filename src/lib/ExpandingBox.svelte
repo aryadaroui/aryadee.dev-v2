@@ -14,8 +14,11 @@
 				}
 			});
 		}
-	});
 
+		expanding_box.addEventListener('scroll', () => {
+			expanding_box.focus();
+		});
+	});
 </script>
 
 <div class="expanding-box" tabindex="0" bind:this={expanding_box}>
@@ -26,7 +29,7 @@
 
 <style lang="scss">
 	.expanding-box {
-		margin: 0;
+		margin: 1em 0;
 		border-radius: 8px;
 		border: transparent 1px solid;
 		overflow: scroll;

@@ -32,7 +32,6 @@
 			title="On this page"
 			headingSelector=":is(h1, h2, h3):not(.toc-exclude)"
 			activeHeadingScrollOffset="150"
-			
 			--toc-li-color="#FFEFD8"
 			--toc-active-border-radius="0.5rem"
 			--toc-active-color="#F7679C"
@@ -99,12 +98,11 @@
 		text-align: justify;
 		text-justify: distribute;
 
-
 		min-height: calc(100vh - 200px);
 
 		border-top: 1px solid $border-translucent;
 
-		color: black;
+		// color: black;
 
 		// ::-webkit-scrollbar {
 		// 	height: 10px;
@@ -151,11 +149,8 @@
 
 		ul {
 			padding-left: 1em;
-		
+
 			line-height: 1.25em;
-
-
-
 
 			li {
 				// padding-left: 1.0em;
@@ -690,6 +685,10 @@
 		table td {
 			padding: 12px 15px;
 		}
+
+		// tr:nth-child(even) {
+		// 	background-color: hsl(230, 10%, 12%);
+		// }
 	}
 
 	// code[data-line-numbers-max-digits='2'] > .line::before {
