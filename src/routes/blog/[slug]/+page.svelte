@@ -462,7 +462,7 @@
 
 			div[data-rehype-pretty-code-fragment] {
 				// margin-top: 1em;
-				// margin-bottom: 1em;
+				margin-bottom: 1em;
 				position: relative;
 				// border-radius: 15px;
 				border: rgba($blue-mid, 0) 1px solid;

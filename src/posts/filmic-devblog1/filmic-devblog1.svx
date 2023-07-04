@@ -7,6 +7,7 @@ tags:
   - Python
   - image processing
   - Jupyter
+  - code
 ---
 
 <script>
@@ -24,7 +25,7 @@ In this first devblog, we cover testing the concepts behind Filmic's features in
 
 This post is also available as an interactive [Python (Jupyter) notebook](https://github.com/aryadaroui/filmic-devblog).
 
-## Quick background
+# Intro
 
 Analog photography is known for the character of its film stocks, e.g., the "Fuji greens." I've been collecting a large catalog of analog photos for this project, and the most common characteristics I've noticed in film scans are the contrast  of tones, shifted colors, film grain, and halation. Focusing on tuning these parameters, how well can we make a pleasing, filmic photo?
 
@@ -39,9 +40,11 @@ As a side requirement, we need to interpolate our image transformations. Ultimat
 
 Instead, we'll define a handful of $(x,y)$ datapoints and interpolate between them; we can use this as an intuitive interface for making our adjustments.
 
-## The code
+## Setup
 
-Let's get started with our imports and some setup
+The setup is available in the callout below.
+
+<Callout title="Setup" icon="code">
 
 ```python
 # standard numpy and typing
@@ -66,7 +69,11 @@ plt.rcParams['figure.dpi'] = 100
 
 We also have some reeusable visualization functions, but the code block is quite long, so you can check them out in the [notebook](https://github.com/aryadaroui/filmic-devblog). The logic behind these isn't really important, though.
 
-We read in out first test image and see what it looks like. Note that we read in the image data as a `float32{:.type}` with a value range of $[0.0,1.0]$, which gives us better precision in our processing before outputting our final images as a `uint8{:.type}`.
+</Callout>
+
+# Tone curve
+
+We first read in our test image and see what it looks like. Note that we read in the image data as a `float32{:.type}` with a value range of $[0.0,1.0]$, which gives us better precision in our processing before outputting our final images as a `uint8{:.type}`.
 
 ```python
 img_rgb1 = read_img('test_pic1.jpg')
@@ -98,8 +105,9 @@ f_tone_curve = interp1d(tone_data_x, tone_data_y, kind='cubic')
 
 plot_tone_curve(tone_data_y, f_tone_curve)
 ```
+<ExpandingBox>
 <Plot plot_json={tone_plot} />
-
+</ExpandingBox>
 
 Just like we'd expect in the mathematical description of,
 
@@ -116,6 +124,8 @@ show_img_left_right(img_rgb1, f_tone_curve(img_rgb1))
 <ImgCap src={img_tone} caption="Image with tone curve" make_fit=false/>
 
 Cool. Goal #1 is accomplished and it wasn't too hard. But now we're going to have to apply curves by separate HLS channels.
+
+# Color response curve
 
 Let's create a new curve and call it a color response curve. We'll give it 13 datapoints, the first twelve are for every 30 deg of hue, and the last datapoint is to capture the last 30 deg between 330 and 360 on the hue circle before it repeats itself.
 
@@ -147,7 +157,9 @@ plot_color_response_curve(color_response_data_y, f_color_response_curve, 'hue')
 show_img_left_right(img_rgb1, img_out)
 ```
 
+<ExpandingBox>
 <Plot plot_json={hue_plot} />
+</ExpandingBox>
 
 <ImgCap src={img_hue} caption="Image with hue curve" make_fit=false/>
 
@@ -172,7 +184,9 @@ plot_color_response_curve(color_response_data_y, f_color_response_curve, 'satura
 show_img_left_right(img_rgb1, img_out)
 ```
 
+<ExpandingBox>
 <Plot plot_json={saturation_plot} />
+</ExpandingBox>
 
 <ImgCap src={img_sat} caption="Image with saturation curve" make_fit=false/>
 

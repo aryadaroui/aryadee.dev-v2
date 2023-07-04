@@ -28,13 +28,13 @@
 		img.fit {
 			width: 100%;
 			height: auto;
-			max-height: 300px;
+			max-height: 400px;
 			object-fit: cover;
 		}
 		img {
 			width: auto;
 			height: auto;
-			max-height: 350px;
+			max-height: 400px;
 			max-width: 100%;
 			margin: 1em 0 0 0;
 		}

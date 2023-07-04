@@ -44,15 +44,15 @@
 		<p>Simple digital synthesizer VST. Can be used as a plugin in common DAWs.</p>
 	</ProjCard>
 
-	<ProjCard title="Logica" type="GitHub" img_src={blogv1_thumb} link_src="https://github.com/aryadaroui/aryadee.dev">
+	<ProjCard title="Logica" type="GitHub" img_src={blogv1_thumb} link_src="https://github.com/aryadaroui/logica">
 		<p>A command-line, offline audio FX tool for resampling audio in rhythmic patterns.</p>
 	</ProjCard>
 
-	<ProjCard title="hud" type="GitHub" img_src={blogv1_thumb} link_src="https://github.com/aryadaroui/aryadee.dev">
+	<ProjCard title="hud" type="GitHub" img_src={blogv1_thumb} link_src="https://github.com/aryadaroui/hud">
 		<p>A command-line tool I made to manage deadlines. It's been abandoned since I started using Obsidian MD.</p>
 	</ProjCard>
 
-	<ProjCard title="bubble dark" type="GitHub" img_src={bubble_thumb} link_src="https://github.com/aryadaroui/aryadee.dev">
+	<ProjCard title="bubble dark" type="GitHub" img_src={bubble_thumb} link_src="https://github.com/aryadaroui/bubble">
 		<p>My preferred color theme for Python and C</p>
 	</ProjCard>
 

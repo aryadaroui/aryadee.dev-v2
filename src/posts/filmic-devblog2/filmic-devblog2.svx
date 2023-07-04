@@ -1,5 +1,5 @@
 ---
-title: "Filmic devblog 2"
+title: "Filmic devblog 2: film grain and halation 👼"
 date: 31 Mar 2021
 update:
 thumbnail: ./thumbnail.png
@@ -7,9 +7,17 @@ tags:
   - Python
   - image processing
   - Jupyter
+  - code
 ---
 
 <script>
+import grain_params from './grain_params.png'
+import grain_applied from './grain_applied.png'
+import grain from './grain.png'
+import halation_steps from './halation_steps.webp'
+import halation_applied from './halation_applied.png'
+import tone_response_curve from './tone_response_curve.json'
+import threshold_curve from './threshold_curve.json'
 
 </script>
 
@@ -113,8 +121,8 @@ axarr[2, 1].axis('off'); axarr[2, 1].set_title('offset = 0.5', color='#CCCCCC')
 axarr[2, 2].axis('off'); axarr[2, 2].set_title('offset = 1.0', color='#CCCCCC')
 ```
 
+<ImgCap src={grain_params} caption="Grain texture at varying size, intensity, and offset" make_fit=false/>
 
-![png](/blog/filmic-devblog1-film-grain-and-halation/filmic-devblog1-film-grain-and-halation_5_1.png)
 
 Now we have a better sense of what the granular noise looks like. Let's choose some values for our parameters and make an array big enough for our test image. This may take a few seconds to run on our CPU.
 
@@ -141,13 +149,19 @@ print('noise mean:', round(noise.mean(), 2))
 # don't forget that we have values going below 0.0 that are getting clipped on output!
 show_img_gray(noise)
 
+```
 
+<Callout title="Terminal output" icon="terminal">
+
+```
 noise max: 0.35
 noise min: -0.35
 noise mean: -0.0
 ```
 
-![png](/blog/filmic-devblog1-film-grain-and-halation/filmic-devblog1-film-grain-and-halation_7_1.png)
+</Callout>
+
+<ImgCap src={grain} caption="Our film grain texture" make_fit=false/>
 
 Now, we do what we did earlier and create another color response curve, but this time it applies the granular noise with respect to the image's tonality. Typically, we see more noise in darker regions, so lets set our response curve to match that.
 
@@ -170,9 +184,12 @@ show_img_rgb(img_out)
 # write_img(img_out, 'test_pic1_grain.jpg')
 ```
 
-![png](/blog/filmic-devblog1-film-grain-and-halation/tone_response_plot.png)
+<ExpandingBox>
+  <Plot plot_json={tone_response_curve} />
+</ExpandingBox>
 
-![png](/blog/filmic-devblog1-film-grain-and-halation/filmic-devblog1-film-grain-and-halation_9_1.png)
+
+<ImgCap src={grain_applied} caption="The film grain applied to our image" make_fit=false/>
 
 Looking good! The next feature on our list is halation.
 
@@ -225,10 +242,12 @@ axarr[1, 0].imshow(gaussian_mask); axarr[1, 0].axis('off'); axarr[1, 0].set_titl
 axarr[1, 1].imshow(rescaled); axarr[1, 1].axis('off'); axarr[1, 1].set_title('rescale opacity', color='#CCCCCC') 
 ```
 
+<ExpandingBox>
+  <Plot plot_json={threshold_curve} />
+</ExpandingBox>
 
-![png](/blog/filmic-devblog1-film-grain-and-halation/thresh_plot.png)
+<ImgCap src={halation_steps} caption="The intermediate steps in applying halation" make_fit=false/>
 
-![png](/blog/filmic-devblog1-film-grain-and-halation/filmic-devblog1-film-grain-and-halation_11_2.png)
 
 Okay now let's actually add the `rescale_opacity` on top of the original image and see the outcome.
 ```python
@@ -238,7 +257,7 @@ img_out[:, :, 0] = img_rgb2[:, :, 0] + opacity * (gaussian_filter(img_rgb2[:, :,
 show_img_left_right(img_rgb2, img_out)
 ```
 
-![png](/blog/filmic-devblog1-film-grain-and-halation/filmic-devblog1-film-grain-and-halation_13_1.png)
+<ImgCap src={halation_applied} caption="Halation applied to our image" make_fit=false/>
 
 # Conclusion
 
