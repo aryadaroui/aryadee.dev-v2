@@ -34,4 +34,6 @@ and for block:
 
 ## License
 
-(Please) do not copy, repost, or reuse my creative content like photos, art, audio, writing. Otherwise, MIT License for all the code and logic.
+(Please) do not copy, repost, or reuse my creative content like photos, art, audio. Written content is allowed to be reworked and reused. Otherwise, MIT License for all the code and logic.
+
+Attribution is appreciated, but not necesarry.
