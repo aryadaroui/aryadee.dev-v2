@@ -29,6 +29,7 @@ and for block:
 
 ## Credits
 - (Svelte and SvelteKit)[https://svelte.dev/]
+- (Shiki)[https://github.com/shikijs/shiki]
 - (MDsveX)[https://github.com/pngwn/MDsveX]
 - (Mathlifier)[https://github.com/kelvinsjk/mathlified/tree/main/sites/mdsvex-math-starter]
 
