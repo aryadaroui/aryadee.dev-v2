@@ -14,7 +14,10 @@
 	let status = 'loading Plotly.js';
 
 	function init() {
-		if (!$PlotlyLib) $PlotlyLib = window?.Plotly;
+		// console.debug('PlotlyLib init status: ', PlotlyLib);
+		if (!$PlotlyLib) {
+			$PlotlyLib = window?.Plotly;
+		}
 	}
 
 	onMount(async () => init());
