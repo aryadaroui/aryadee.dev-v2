@@ -36,18 +36,16 @@
 			});
 		});
 
+		// Load Plotly.js
 		const script = document.createElement('script');
 		script.src = 'https://cdn.plot.ly/plotly-latest.min.js';
-
 		script.onload = () => {
 			$plotly_status = 'Loaded Plotly.js';
 			init();
 		};
-
 		script.onerror = () => {
 			$plotly_status = 'Error loading Plotly.js';
 		};
-
 		document.head.appendChild(script);
 	});
 

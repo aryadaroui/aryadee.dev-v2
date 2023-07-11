@@ -19,7 +19,6 @@
 	}
 
 	function init(loaded, plot_loader) {
-		// console.log('loaded', loaded);
 		if (loaded) {
 			if (plot_loader) {
 				plot_loader.classList.add('loaded');
