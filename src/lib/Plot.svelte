@@ -51,25 +51,15 @@
 
 <style global lang="scss">
 	.skeleton {
-		// width: calc(100% - 2px);
 		height: 450px;
 		border-radius: 8px;
 		background-color: rgb(17, 17, 17);
 		padding: 0px;
-		// margin: 1em 0;
 		margin: 0;
 
 		border: transparent 1px solid;
 		transition: border 0.15s ease;
-		// &:hover {
-		// 	border: hsl(220, 20%, 30%) 1px solid;
-		// 	transition: border 0.15s ease;
-		// }
 
-		// &:active {
-		// 	border: hsl(220, 20%, 30%) 1px solid;
-		// 	transition: border 0.15s ease;
-		// }
 
 		overflow: hidden;
 
