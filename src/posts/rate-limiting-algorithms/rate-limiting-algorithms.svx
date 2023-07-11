@@ -36,7 +36,7 @@ There are a handful of algorithms used for rate limiting. I'm going to go over h
 3. Sliding window
 4. Leaky bucket (Generic Cell Rate)
 
-You can find the full Python code [on my GitHub](www.github.com/aryadaroui/rate-limiting-algorithms).
+You can find the full Python code [on my GitHub](https://github.com/aryadaroui/rate-limiting-algorithms).
 
 <Callout title="Architecture abstraction" icon="smile" color='pink'>
 Distributed, scalable systems commonly use an external cache to store rate limiting data. This is so that the rate limit can be enforced across multiple instances of the application.
