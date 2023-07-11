@@ -25,7 +25,7 @@ tags:
 
 When making any sort of API available on the web, one of the first concerns you run into is:
 
-> How do I protect an endpoint from being inundated by requests, so that I can maintain system stability?
+> How do I protect an endpoint from being inundated by requests so that I can maintain system stability?
 
 Assuming you already have [auth](https://en.wikipedia.org/wiki/Authorization) figured out, the go-to solution is limiting the rate (rate limiting) of processed requests--either by user, or globally on the endpoint.
 

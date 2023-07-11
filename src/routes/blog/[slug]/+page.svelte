@@ -507,7 +507,7 @@
 				// transition: left 0.3s ease;
 				// transition: border-color 0.3s ease;
 				// transition: border-width 0.0s none;
-				z-index: 100;
+				z-index: 5;
 
 				cursor: auto;
 
