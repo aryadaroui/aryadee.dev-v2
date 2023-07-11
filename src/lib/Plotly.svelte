@@ -1,7 +1,6 @@
 <script lang="ts">
-	import { PlotlyLib } from '$lib/store';
-
-	import { createEventDispatcher, onMount } from 'svelte';
+	import { PlotlyLib, plotly_status } from '$lib/store';
+	import { createEventDispatcher } from 'svelte';
 	const dispatch = createEventDispatcher();
 
 	export let id: string = 'plot-' + Math.floor(Math.random() * 100).toString();
@@ -11,23 +10,11 @@
 	export let loaded: boolean = false;
 	export let reloadPlot = 0;
 
-	let status = 'loading Plotly.js';
-
-	function init() {
-		// console.debug('PlotlyLib init status: ', PlotlyLib);
-		if (!$PlotlyLib) {
-			$PlotlyLib = window?.Plotly;
-		}
-	}
-
-	onMount(async () => init());
-
 	const onHover = (d) => dispatch('hover', d);
 	const onUnhover = (d) => dispatch('unhover', d);
 	const onClick = (d) => dispatch('click', d);
 	const onSelected = (d) => dispatch('selected', d);
 	const onRelayout = (d) => dispatch('relayout', d);
-
 
 	const generatePlot = (node, data, layout, config, reloadPlot) => {
 		return $PlotlyLib.newPlot(node, data, { ...layout }, { ...config }).then(() => {
@@ -42,7 +29,6 @@
 
 	const updatePlot = (node, data, layout, config, reloadPlot) => {
 		return $PlotlyLib.react(node, data, layout, config).then(() => {
-			console.debug('update ploty', data);
 			loaded = true;
 		});
 	};
@@ -66,17 +52,10 @@
 		};
 	}
 
-	function handleLoadingError() {
-		status = 'Error loading Plotly.js';
-	}
 </script>
-
-<svelte:head>
-	<script src="https://cdn.plot.ly/plotly-latest.min.js" on:load={init} on:error={handleLoadingError}></script>
-</svelte:head>
 
 {#if $PlotlyLib}
 	<div {id} use:plotlyAction={{ data, layout, config, reloadPlot }} {...$$restProps} />
 {:else}
-	<p>{status}</p>
+	<p>{$plotly_status}</p>
 {/if}
