@@ -164,7 +164,7 @@
 
 				font-weight: 350;
 
-				z-index: 6;
+				z-index: 5;
 
 			}
 		}
@@ -183,7 +183,7 @@
 
 		div.content {
 			position: relative;
-			z-index: 5;
+			z-index: 4;
 
 			transition: border 0.15s ease;
 

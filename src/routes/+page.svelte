@@ -17,6 +17,71 @@
 		}
 	}
 
+	let hobbies = [
+		'a person from planet earth',
+		'n-dimensional array lover',
+		'visualization enthusiast',
+		'dataframe wizard',
+		'spaghetti code chef',
+		'workflow optimizer',
+		'parallelization fanatic',
+		'signal processing nerd',
+		'fake film photographer',
+		'Java disliker',
+		'Python lover',
+		'TypeScript fan',
+		'Rust evangelist',
+		'big data explorer',
+		'music maker',
+		'graduate degree waster',
+		'email replier',
+		'open source contributor',
+		'sadistic tester',
+		'circuit solderer',
+		'tape loop maker',
+		'pedal builder',
+		'reverb hydrologist',
+		'video game hoarder',
+		'keyboard collector',
+		'synth experimentalist',
+		'jazzmaster fiddler',
+		'tube amp denier',
+		'data structure over thinker',
+		'FFT admirer',
+		'UNIX apologist',
+		'server desirer',
+		'RISC-V believer',
+		'Intel GPU hoper',
+		'web assembly dreamer',
+		'Windows begrudger',
+		'web standard abuser',
+		'WebGPU waiter',
+		'SCSS truster',
+		'SvelteKit aficionado',
+		'React denier',
+		'JS framework skeptic',
+		'prod destroyer',
+		'VS Code zealot',
+		'vim tolerator',
+		'git command forgetter',
+	]
+
+	$: hobby = hobbies[0];
+
+	function change_hobby() {
+		let current_thing = hobby;
+
+		let new_hobby = hobbies[Math.floor(Math.random() * hobbies.length)];
+
+		while (new_hobby === current_thing) {
+			new_hobby = hobbies[Math.floor(Math.random() * hobbies.length)];
+		}
+
+		hobby = new_hobby;
+	}
+
+
+
 	onMount(() => {
 		let scroll_down_button = document.querySelector('#scroll-down-button');
 		scroll_down_button.addEventListener('click', function () {
@@ -96,14 +161,15 @@
 
 <main>
 	<section id="page-1" style="touch-action: pan-y;">
-		<div id="control-layer" />
+		<div id="control-layer"  on:click={change_hobby}/>
 		<div style="display: flex; justify-content: center;">
 			<div id="hello">
 				<h1><span class="blackground">arya<span class="accent">dee</span> </span></h1>
 				<p>
 					<span
-						><span class="blackground">computer engineer.</span> <span class="blackground">ndarray lover.</span><br />
-						<span class="accent blackground">a person from planet earth.</span>
+						><span class="blackground">computer engineer.</span> <span class="blackground">programmer.</span><br />
+						<!-- <span class="accent blackground">a person from planet earth.</span> -->
+						<span class="accent blackground">{hobby}.</span>
 					</span>
 				</p>
 
