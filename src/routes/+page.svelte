@@ -89,6 +89,7 @@
 
 	function change_hobby() {
 		hobby_idx = (hobby_idx + 1) % hobbies.length;
+
 	}
 
 
