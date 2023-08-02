@@ -1,7 +1,7 @@
 
 # aryadee.dev - personal blog
 
-This is my blog is built mostly from scratch using SvelteKit.
+This is my blog. It is built mostly from scratch using SvelteKit.
 
 ## How to
 To run on your local machine,
