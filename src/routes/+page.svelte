@@ -24,7 +24,7 @@
 		'dataframe wizard',
 		'spaghetti code chef',
 		'workflow optimizer',
-		'parallelization fanatic',
+		'parallelization desirer',
 		'signal processing nerd',
 		'fake film photographer',
 		'Java disliker',
@@ -40,7 +40,7 @@
 		'circuit solderer',
 		'tape loop maker',
 		'pedal builder',
-		'reverb hydrologist',
+		'reverb inundator',
 		'video game hoarder',
 		'keyboard collector',
 		'synth experimentalist',
@@ -64,20 +64,32 @@
 		'VS Code zealot',
 		'vim tolerator',
 		'git command forgetter',
+		'machine teacher',
+		'tabs enjoyer',
+		'snake_case_user',
+		'table joiner',
+		'violin plot fanatic',
+		'gaussian respecter',
+		'typography appreciator',
+		'dark mode demander',
+		'GUI designer',
+		'UI tinkerer',
+		'UX critic',
+		'color palette maker',
+		'kanban tasker',
+		'commit overwriter',
 	]
 
-	$: hobby = hobbies[0];
+	let hobby_idx = 0;
+	$: hobby = hobbies[hobby_idx];
+
+	// shuffle hobbies
+	hobbies.sort(() => Math.random() - 0.5);
+
 
 	function change_hobby() {
-		let current_thing = hobby;
+		hobby_idx = (hobby_idx + 1) % hobbies.length;
 
-		let new_hobby = hobbies[Math.floor(Math.random() * hobbies.length)];
-
-		while (new_hobby === current_thing) {
-			new_hobby = hobbies[Math.floor(Math.random() * hobbies.length)];
-		}
-
-		hobby = new_hobby;
 	}
 
 

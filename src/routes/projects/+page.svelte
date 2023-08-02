@@ -20,6 +20,12 @@
 
 	<p>Source, docs, executables, and other stuff for some of my personal projects.</p>
 
+	<ProjCard title="Favy" type="Desktop app" img_src={'/favy.webp'} link_src="https://github.com/aryadaroui/Favy">
+		<p>
+			A lightweight, cross-platform photo management app.
+		</p>
+	</ProjCard>
+
 	<ProjCard title="Filmic" type="Web app" img_src={filmic_thumb} link_src="/projects/filmic">
 		<p>Filmic is a photo editing web app. Its desktop version is in development</p>
 	</ProjCard>
@@ -32,7 +38,11 @@
 		<p>Old version of my blog, also built with SvelteKit and Vite.</p>
 	</ProjCard>
 
-	<ProjCard title="Filmic devblog files" type="GitHub" img_src={blogv1_thumb} link_src="https://github.com/aryadaroui/filmic-devblog">
+	<ProjCard
+		title="Filmic devblog files"
+		type="GitHub"
+		img_src={blogv1_thumb}
+		link_src="https://github.com/aryadaroui/filmic-devblog">
 		<p>Code I used for testing concepts in Filmic, turned into shareable devblog files.</p>
 	</ProjCard>
 
@@ -88,7 +98,6 @@
 	li {
 		font-weight: 300;
 	}
-
 
 	img {
 		/* width: 100px; */

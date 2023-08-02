@@ -559,6 +559,8 @@
 				// background-color: hsl(240, 13%, 6%);
 				font-family: $mono;
 				font-size: 0.85em;
+				// font-size: clamp(0.85rem, 3vw, 1.0rem);
+				font-size: 0.95rem;
 
 				padding-left: 0;
 				padding-right: 0;
